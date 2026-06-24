@@ -1,0 +1,112 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<main id="main-content" class="content">
+	<article class="page-card">
+		<header class="page-header">
+			<h2>{title}</h2>
+		</header>
+		<div class="page-inner">
+			<div class="page-content">
+				<slot />
+			</div>
+		</div>
+	</article>
+</main>
+
+<style>
+	.content {
+		position: relative;
+		z-index: 2;
+		width: min(90%, 1040px);
+		margin: 0 auto;
+	}
+
+	.page-card {
+		background: #fff;
+		color: #1d1d1d;
+	}
+
+	.page-header {
+		width: 90%;
+		margin: 0 auto;
+		padding: 5rem 0;
+	}
+
+	h2 {
+		margin: 0;
+		font-size: 2.5rem;
+		font-weight: 700;
+		line-height: 1.2;
+		text-align: center;
+		text-transform: uppercase;
+	}
+
+	.page-inner {
+		width: min(85%, 520px);
+		margin: 0 auto;
+		padding: 0 0 5.625rem;
+	}
+
+	.page-content {
+		color: #333;
+		font-family: Georgia, 'Times New Roman', serif;
+		font-size: 1rem;
+		line-height: 1.6;
+	}
+
+	.page-content :global(> :first-child) {
+		margin-top: 0;
+	}
+
+	.page-content :global(> :last-child) {
+		margin-bottom: 0;
+	}
+
+	.page-content :global(h5) {
+		margin: 2rem 0 0.75rem;
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 0.9rem;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+	}
+
+	.page-content :global(a) {
+		color: #177e5e;
+	}
+
+	.page-content :global(figure) {
+		margin: 2.5rem auto;
+	}
+
+	.page-content :global(figcaption) {
+		margin-top: 0.5rem;
+		color: #666;
+		font-size: 0.875rem;
+		text-align: center;
+	}
+
+	@media (max-width: 600px) {
+		.content {
+			width: 100%;
+		}
+
+		.page-header {
+			max-width: 85%;
+			padding: 2.5rem 0;
+		}
+
+		h2 {
+			font-size: 2rem;
+		}
+
+		.page-inner {
+			padding-bottom: 3.125rem;
+		}
+	}
+</style>
