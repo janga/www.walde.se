@@ -1,0 +1,72 @@
+<div class="lightbox" data-lightbox hidden>
+	<figure class="lightbox-figure">
+		<div class="lightbox-image-wrap">
+			<img src="" alt="" data-lightbox-image />
+			<button class="lightbox-close" type="button" data-lightbox-close aria-label="Stäng bildvisning">
+				<span aria-hidden="true">×</span>
+			</button>
+		</div>
+		<figcaption data-lightbox-caption></figcaption>
+	</figure>
+</div>
+
+<script>
+	const lightbox = document.querySelector('[data-lightbox]');
+	const lightboxImage = document.querySelector('[data-lightbox-image]');
+	const lightboxCaption = document.querySelector('[data-lightbox-caption]');
+	const closeButton = document.querySelector('[data-lightbox-close]');
+	const triggers = document.querySelectorAll('.gallery-lightbox-trigger');
+
+	const closeLightbox = () => {
+		if (!(lightbox instanceof HTMLElement)) return;
+		lightbox.hidden = true;
+		document.documentElement.classList.remove('has-open-lightbox');
+	};
+
+	const openLightbox = (trigger) => {
+		if (
+			!(lightbox instanceof HTMLElement) ||
+			!(lightboxImage instanceof HTMLImageElement) ||
+			!(lightboxCaption instanceof HTMLElement)
+		) {
+			return;
+		}
+
+		const src = trigger.dataset.lightboxSrc;
+		const alt = trigger.dataset.lightboxAlt ?? '';
+		const title = trigger.dataset.lightboxTitle ?? '';
+
+		if (!src) return;
+
+		lightboxImage.src = src;
+		lightboxImage.alt = alt;
+		lightboxCaption.textContent = title;
+		lightboxCaption.hidden = title.length === 0;
+		lightbox.hidden = false;
+		document.documentElement.classList.add('has-open-lightbox');
+		closeButton?.focus();
+	};
+
+	triggers.forEach((trigger) => {
+		trigger.addEventListener('click', (event) => {
+			event.preventDefault();
+			if (trigger instanceof HTMLElement) {
+				openLightbox(trigger);
+			}
+		});
+	});
+
+	closeButton?.addEventListener('click', closeLightbox);
+
+	lightbox?.addEventListener('click', (event) => {
+		if (event.target === lightbox) {
+			closeLightbox();
+		}
+	});
+
+	document.addEventListener('keydown', (event) => {
+		if (event.key === 'Escape') {
+			closeLightbox();
+		}
+	});
+</script>

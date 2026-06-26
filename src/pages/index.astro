@@ -1,29 +1,27 @@
 ---
-import { getEntry, render } from 'astro:content';
-import PageShell from '../components/PageShell.astro';
+import { getCollection } from 'astro:content';
+import Lightbox from '../components/Lightbox.astro';
+import SiteNavigation from '../components/SiteNavigation.astro';
+import SiteSection from '../components/SiteSection.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const page = await getEntry('pages', 'home');
+const [site] = await getCollection('site');
 
-if (!page) {
-	throw new Error('Startsidesinnehållet content/pages/home.md saknas.');
+if (!site) {
+	throw new Error('Innehållsfilen content/site.md saknas.');
 }
 
-const { Content } = await render(page);
+const sections = site.data.sections;
 ---
 
-<BaseLayout title={page.data.title} description={page.data.description}>
-	<PageShell title={page.data.title}>
-		<Content />
-		<figure>
-			<img
-				src="/bilder/legacy/till-KIR-Karin-Walde-1.jpg"
-				width="500"
-				height="500"
-				alt="Fossil 1"
-				fetchpriority="high"
-			/>
-			<figcaption>Grafiskt verk</figcaption>
-		</figure>
-	</PageShell>
+<BaseLayout title={site.data.title} description={site.data.description}>
+	<SiteNavigation sections={sections} />
+
+	<main id="main-content" class="site-content">
+		{sections.map((section) => (
+			<SiteSection section={section} />
+		))}
+	</main>
+
+	<Lightbox />
 </BaseLayout>

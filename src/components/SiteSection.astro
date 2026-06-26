@@ -1,0 +1,66 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import GalleryGrid from './GalleryGrid.astro';
+
+type SiteSection = CollectionEntry<'site'>['data']['sections'][number];
+
+interface Props {
+	section: SiteSection;
+}
+
+const { section } = Astro.props;
+
+const normalizeSwedishPhoneHref = (phone: string) => {
+	const digits = phone.replace(/\D/g, '');
+	return `tel:${digits.replace(/^0/, '+46')}`;
+};
+---
+
+<section id={section.id} class="site-section" data-section-title={section.title}>
+	<div class="section-card">
+		<header class="section-header">
+			<h1>{section.title}</h1>
+		</header>
+
+		<div class="section-body">
+			{(section.intro.length > 0 || section.contact) && (
+				<div class="intro">
+					{section.intro.map((paragraph) => <p>{paragraph}</p>)}
+					{section.contact?.phone && (
+						<p><a href={normalizeSwedishPhoneHref(section.contact.phone)}>{section.contact.phone}</a></p>
+					)}
+					{section.contact?.email && (
+						<p><a href={`mailto:${section.contact.email}`}>{section.contact.email}</a></p>
+					)}
+				</div>
+			)}
+
+			{section.image && (
+				<figure class="standalone-image">
+					<img src={section.image.src} alt={section.image.alt} loading="lazy" />
+					{section.image.caption && <figcaption>{section.image.caption}</figcaption>}
+				</figure>
+			)}
+
+			{section.groups.length > 0 && (
+				<div class="content-groups">
+					{section.groups.map((group) => (
+						<section class="content-group">
+							<h2>{group.title}</h2>
+							{group.text?.map((paragraph) => <p>{paragraph}</p>)}
+							{group.items && (
+								<ul>
+									{group.items.map((item) => <li>{item}</li>)}
+								</ul>
+							)}
+						</section>
+					))}
+				</div>
+			)}
+
+			{section.gallery.length > 0 && (
+				<GalleryGrid title={section.title} images={section.gallery} />
+			)}
+		</div>
+	</div>
+</section>

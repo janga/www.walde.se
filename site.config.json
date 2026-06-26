@@ -1,48 +1,4 @@
 {
   "siteName": "Karin Walde",
-  "backgroundImage": "/bilder/cropped-bakgrund-3.jpg",
-  "sections": [
-    {
-      "title": "grafik",
-      "slug": "grafik",
-      "type": "gallery"
-    },
-    {
-      "title": "fiber art",
-      "slug": "fiber-art",
-      "type": "gallery"
-    },
-    {
-      "title": "offentlig konst",
-      "slug": "offentlig-konst",
-      "type": "gallery"
-    },
-    {
-      "title": "akvarell",
-      "slug": "akvarell",
-      "type": "gallery"
-    },
-    {
-      "title": "utställningar",
-      "slug": "utstallningar",
-      "type": "page"
-    },
-    {
-      "title": "CV",
-      "slug": "cv",
-      "type": "page"
-    }
-  ],
-  "paths": {
-    "galleryContent": "content/galleries",
-    "galleryOriginals": "originals",
-    "generatedImages": "public/bilder/generated",
-    "pageContent": "content/pages"
-  },
-  "imageSizes": {
-    "thumb": 400,
-    "mobile": 800,
-    "desktop": 1600
-  },
-  "imageFormats": ["avif", "webp", "jpg"]
+  "backgroundImage": "/bilder/cropped-bakgrund-3.jpg"
 }

@@ -1,0 +1,63 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+type SiteSection = CollectionEntry<'site'>['data']['sections'][number];
+
+interface Props {
+	sections: SiteSection[];
+}
+
+const { sections } = Astro.props;
+---
+
+<a class="skip-link" href="#main-content">Hoppa till innehåll</a>
+
+<header class="site-top">
+	<nav class="section-nav" aria-label="Sektioner">
+		<ul>
+			{sections.map((section, index) => (
+				<li>
+					<a href={`#${section.id}`} aria-current={index === 0 ? 'true' : undefined}>
+						{section.title}
+					</a>
+				</li>
+			))}
+		</ul>
+	</nav>
+</header>
+
+<script>
+	const sections = Array.from(document.querySelectorAll('.site-section'));
+	const links = Array.from(document.querySelectorAll('.section-nav a'));
+
+	const setActiveSection = (section) => {
+		if (!section) return;
+
+		links.forEach((link) => {
+			const isActive = link.getAttribute('href') === `#${section.id}`;
+			if (isActive) {
+				link.setAttribute('aria-current', 'true');
+			} else {
+				link.removeAttribute('aria-current');
+			}
+		});
+	};
+
+	const observer = new IntersectionObserver(
+		(entries) => {
+			const visible = entries
+				.filter((entry) => entry.isIntersecting)
+				.sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+			if (visible?.target) {
+				setActiveSection(visible.target);
+			}
+		},
+		{
+			rootMargin: '-35% 0px -55% 0px',
+			threshold: [0, 0.25, 0.5, 0.75, 1],
+		},
+	);
+
+	sections.forEach((section) => observer.observe(section));
+</script>

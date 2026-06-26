@@ -1,8 +1,13 @@
 # Karin Walde
 
-Statisk Astro-version av [walde.se](https://walde.se). Projektet återskapar den
-befintliga sidstrukturen utan att vara beroende av WordPress vid byggning eller
-drift.
+Statisk Astro-version av Karin Waldes webbplats.
+
+Sajten är byggd som en enda sida. Allt egentligt innehåll styrs från en
+Markdown-fil:
+
+```text
+content/site.md
+```
 
 ## Kommandon
 
@@ -19,51 +24,101 @@ npm run astro -- dev stop
 
 ```text
 content/
-├── pages/                         # Vanliga sidor i Markdown
-└── galleries/
-    └── <gallery-slug>/
-        ├── gallery.json           # Titel, texter, ordning och bildmetadata
-        └── originals/             # Ej publicerade masterbilder
+└── site.md                         # Alla sektioner, texter, bildreferenser och gallerimetadata
 public/bilder/
-├── generated/<gallery-slug>/      # Framtida webboptimerade bilder
-└── legacy/                         # Redan webbanpassade bilder från gamla sajten
+├── cropped-bakgrund-3.jpg          # Projektgemensam bakgrund
+└── site/
+    ├── karin-walde/                # Bilder som hör till sektionen Karin Walde
+    ├── min-konst/                  # Bilder som hör till sektionen Min konst
+    └── cv/                         # Bilder som hör till sektionen CV
 src/
-├── components/                    # Navigation, sidhuvud, sidfot och sidmallar
-├── layouts/BaseLayout.astro       # Projektgemensam HTML och bakgrund
-├── pages/                         # Filbaserade och statiskt genererade routes
-└── content.config.ts              # Validering av sidor och gallerier
-site.config.json                   # Meny, sökvägar och framtida bildformat
+├── layouts/BaseLayout.astro        # Projektgemensam HTML, metadata och bakgrund
+├── pages/index.astro               # Renderar hela sajten från content/site.md
+├── styles/global.css               # Layout, sticky navigation och responsiv design
+└── content.config.ts               # Validerar content/site.md
+site.config.json                    # Globala projektvärden, till exempel bakgrundsbild
 ```
 
-Huvudmenyn motsvarar WordPress-sajten: hem, grafik, fiber art, offentlig konst,
-akvarell, utställningar och CV. De publicerade men meny-dolda sidorna `nyheter`
-och `objekt` byggs också för att bevara befintliga URL:er.
+## Innehållsmodell
 
-## Lägga till galleriinnehåll
+`content/site.md` använder frontmatter. Varje sektion definieras i `sections`:
 
-1. Välj galleri genom att välja katalog, exempelvis
-   `content/galleries/grafik/`.
-2. Lägg masterbilden i galleriets `originals/`-katalog.
-3. Använd ett beskrivande filnamn med gemener och bindestreck, exempelvis
-   `rorelse-i-rott.jpg`.
-4. Lägg senare till titel, alt-text, bildtext, år och visningsordning i samma
-   galleris `gallery.json`.
+```yaml
+sections:
+  - id: min-konst
+    title: Min konst
+    intro:
+      - Inledande text.
+    contact:
+      phone: "0730-577 855"
+      email: karin@walde.se
+    image:
+      src: /bilder/site/min-konst/exempel.jpg
+      alt: Beskrivande alt-text.
+    gallery:
+      - src: /bilder/site/min-konst/verk.jpg
+        title: Titel
+        year: 2026
+        technique: Teknik
+        text: Fri text.
+        alt: Beskrivande alt-text.
+```
 
-Katalogen är den entydiga kopplingen mellan bild och galleri. Galleri-sluggen
-ska vara densamma i katalogen, URL:en och den framtida genererade
-bildkatalogen. Se även `content/galleries/README.md`.
+`id` används som ankare i navigationen. Exempel: `id: min-konst` ger länken
+`#min-konst`.
 
-## Framtida bildgenerering
+`contact` är valfritt och används för kontaktlänkar. Telefonnumret visas som
+klickbar `tel:`-länk och e-postadressen som klickbar `mailto:`-länk.
 
-Bildgenereringen är inte implementerad ännu. När den införs ska en byggprocess
-läsa masterbilder från `originals/` och skapa de storlekar och format som anges
-i `site.config.json`. Endast de genererade filerna ska publiceras.
+## Bilder
 
-Planerad utdata är miniatyr, mobil och desktop i AVIF, WebP och JPEG. Mallarna
-ska då använda `srcset` och `sizes` så att webbläsaren väljer lämplig fil.
+Bilder ska ligga i katalogen för den sektion de hör till:
 
-## Innehållskällor
+```text
+public/bilder/site/karin-walde/
+public/bilder/site/min-konst/
+public/bilder/site/cv/
+```
 
-Texter, sidtitlar, menyordning och den befintliga startsidesbilden migrerades
-från den publika WordPress-sajten. Migrerat innehåll lagras lokalt och ska inte
-hotlinkas från `walde.se` eller `media.walde.se`.
+Publicerad bildreferens i `content/site.md` ska börja med `/bilder/site/...`.
+
+Bakgrunden är gemensam för hela projektet och pekas ut i `site.config.json`:
+
+```json
+{
+  "backgroundImage": "/bilder/cropped-bakgrund-3.jpg"
+}
+```
+
+## Presentation
+
+Navigationen ligger sticky överst på sidan. Aktiv sektion markeras endast genom
+att länken i navigationen visas med vit text. Det ska inte finnas någon separat
+rad under navigationen som upprepar aktuell sektions namn.
+
+Galleribilder visas stora direkt på sidan, inte som thumbnails. Bilderna ska
+inte beskäras. Höga bilder begränsas med CSS så att de ryms bättre inom
+viewporten även i den vanliga gallerivisningen.
+
+Klick på en galleribild öppnar bilden i en lightbox. Lightboxen ska kunna
+stängas med:
+
+- kryss nära bildens övre högra hörn
+- Escape
+- klick på den mörka bakgrunden
+
+Om JavaScript inte körs ska bildlänkarna fortfarande fungera som vanliga länkar
+till bildfilen.
+
+## Routing
+
+Sajten byggs som en enda statisk sida på `/`. Navigationen använder ankare till
+sektioner på samma sida:
+
+```text
+/#karin-walde
+/#min-konst
+/#cv
+```
+
+Det finns inte längre separata Astro-routes för gallerier eller sidor.

@@ -23,16 +23,17 @@ Consult these guides before working on related tasks:
 
 ## Content and gallery images
 
-- Keep editable page content in `content/pages/` and gallery metadata in
-  `content/galleries/<gallery-slug>/gallery.json`.
-- Put new master images in the matching
-  `content/galleries/<gallery-slug>/originals/` directory. The directory, not
-  the filename, determines which gallery owns an image.
+- Keep all editable site content, section definitions, image references, and
+  gallery metadata in `content/site.md`.
+- The site is a single Astro page. Do not add separate routes or separate
+  Markdown files for sections unless the user explicitly changes this decision.
+- Put published images in the matching section directory under
+  `public/bilder/site/`, for example:
+  - `public/bilder/site/karin-walde/`
+  - `public/bilder/site/min-konst/`
+  - `public/bilder/site/cv/`
+- Reference published images from `content/site.md` with absolute public paths,
+  for example `/bilder/site/min-konst/verk.jpg`.
 - Use lowercase, descriptive filenames with ASCII letters, numbers, and
   hyphens. Do not use spaces or Swedish characters in filenames.
-- Never place gallery master images in `public/`. Future generated web images
-  belong in `public/bilder/generated/<gallery-slug>/`.
-- Do not implement or run image generation until that workflow is explicitly
-  requested. The intended sizes and formats live in `site.config.json`.
-- Preserve the existing public route slugs when migrating content from the
-  WordPress site.
+- The common background image is configured in `site.config.json`.

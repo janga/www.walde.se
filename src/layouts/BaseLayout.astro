@@ -1,8 +1,5 @@
 ---
 import siteConfig from '../../site.config.json';
-import Navigation from '../components/Navigation.astro';
-import SiteFooter from '../components/SiteFooter.astro';
-import SiteHeader from '../components/SiteHeader.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -33,9 +30,6 @@ const documentTitle = title === siteConfig.siteName || title.toLowerCase() === '
 		<title>{documentTitle}</title>
 	</head>
 	<body style={backgroundStyle}>
-		<Navigation />
-		<SiteHeader />
 		<slot />
-		<SiteFooter />
 	</body>
 </html>

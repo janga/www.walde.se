@@ -1,0 +1,38 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+type SiteSection = CollectionEntry<'site'>['data']['sections'][number];
+type GalleryImage = SiteSection['gallery'][number];
+
+interface Props {
+	title: string;
+	images: GalleryImage[];
+}
+
+const { title, images } = Astro.props;
+---
+
+<div class="gallery" aria-label={`Galleri: ${title}`}>
+	{images.map((image) => (
+		<article class="gallery-item">
+			<a
+				href={image.src}
+				class="gallery-lightbox-trigger"
+				data-lightbox-src={image.src}
+				data-lightbox-alt={image.alt}
+				data-lightbox-title={image.title ?? ''}
+			>
+				<img src={image.src} alt={image.alt} loading="lazy" />
+			</a>
+			<div class="gallery-meta">
+				{image.title && <h2>{image.title}</h2>}
+				{(image.year || image.technique) && (
+					<p class="meta-line">
+						{[image.year, image.technique].filter(Boolean).join(', ')}
+					</p>
+				)}
+				{image.text && <p>{image.text}</p>}
+			</div>
+		</article>
+	))}
+</div>
