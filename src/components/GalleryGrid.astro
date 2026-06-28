@@ -10,6 +10,11 @@ interface Props {
 }
 
 const { title, images } = Astro.props;
+
+const getDetails = (image: GalleryImage) =>
+	[image.year, image.technique, image.material, image.dimensions, image.edition, image.location, image.status]
+		.filter(Boolean)
+		.join(', ');
 ---
 
 <div class="gallery" aria-label={`Galleri: ${title}`}>
@@ -26,11 +31,8 @@ const { title, images } = Astro.props;
 			</a>
 			<div class="gallery-meta">
 				{image.title && <h2>{image.title}</h2>}
-				{(image.year || image.technique) && (
-					<p class="meta-line">
-						{[image.year, image.technique].filter(Boolean).join(', ')}
-					</p>
-				)}
+				{getDetails(image) && <p class="meta-line">{getDetails(image)}</p>}
+				{image.caption && <p>{image.caption}</p>}
 				{image.text && <p>{image.text}</p>}
 			</div>
 		</article>

@@ -184,14 +184,13 @@ h1 {
 	line-height: 1.65;
 }
 
-.intro {
+.section-markdown {
 	width: min(100%, 620px);
 	margin: 0 auto 3rem;
 	text-align: center;
 }
 
-.intro p:last-child,
-.content-group :last-child,
+.section-markdown > :last-child,
 .gallery-meta :last-child {
 	margin-bottom: 0;
 }
@@ -208,29 +207,35 @@ figcaption {
 	text-align: center;
 }
 
-.content-groups {
-	display: grid;
-	gap: 2.25rem;
-	width: min(100%, 720px);
-	margin: 0 auto;
-}
-
-.content-group {
+.section-markdown h3 {
+	margin: 2.25rem 0 0.75rem;
 	border-top: 1px solid #ddd;
 	padding-top: 1.5rem;
-}
-
-.content-group h2,
-.gallery-meta h2 {
-	margin-bottom: 0.75rem;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 1rem;
 	letter-spacing: 0.06em;
 	text-transform: uppercase;
 }
 
-.content-group ul {
+.section-markdown ul,
+.section-markdown ol {
+	display: inline-block;
+	margin-right: auto;
+	margin-left: auto;
 	padding-left: 1.2rem;
+	text-align: left;
+}
+
+.section-markdown li + li {
+	margin-top: 0.15rem;
+}
+
+.gallery-meta h2 {
+	margin-bottom: 0.75rem;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
 }
 
 .gallery {

@@ -16,18 +16,13 @@ const galleryImage = z.object({
 	title: z.string().optional(),
 	year: z.union([z.string(), z.number()]).optional(),
 	technique: z.string().optional(),
+	material: z.string().optional(),
+	dimensions: z.string().optional(),
+	edition: z.string().optional(),
+	location: z.string().optional(),
+	status: z.string().optional(),
+	caption: z.string().optional(),
 	text: z.string().optional(),
-});
-
-const contentGroup = z.object({
-	title: z.string(),
-	items: z.array(z.string()).optional(),
-	text: z.array(z.string()).optional(),
-});
-
-const contact = z.object({
-	phone: z.string().optional(),
-	email: z.string().email().optional(),
 });
 
 const site = defineCollection({
@@ -39,10 +34,7 @@ const site = defineCollection({
 			z.object({
 				id: z.string().regex(/^[a-z0-9-]+$/),
 				title: z.string(),
-				intro: z.array(z.string()).default([]),
-				contact: contact.optional(),
 				image: image.optional(),
-				groups: z.array(contentGroup).default([]),
 				gallery: z.array(galleryImage).default([]),
 			}),
 		).min(1),

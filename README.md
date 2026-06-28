@@ -47,11 +47,6 @@ site.config.json                    # Globala projektvärden, till exempel bakgr
 sections:
   - id: min-konst
     title: Min konst
-    intro:
-      - Inledande text.
-    contact:
-      phone: "0730-577 855"
-      email: karin@walde.se
     image:
       src: /bilder/site/min-konst/exempel.jpg
       alt: Beskrivande alt-text.
@@ -60,15 +55,30 @@ sections:
         title: Titel
         year: 2026
         technique: Teknik
-        text: Fri text.
+        caption: Bildtext.
         alt: Beskrivande alt-text.
 ```
 
 `id` används som ankare i navigationen. Exempel: `id: min-konst` ger länken
 `#min-konst`.
 
-`contact` är valfritt och används för kontaktlänkar. Telefonnumret visas som
-klickbar `tel:`-länk och e-postadressen som klickbar `mailto:`-länk.
+Frontmatter styr sektionernas ordning, introbild och gallerimetadata. Den
+löpande texten skrivs som vanlig Markdown i samma fil under `##`-rubriker som
+matchar sektionernas `id` eller `title`:
+
+```md
+## Min konst
+
+Inledande text.
+
+### Underrubrik
+
+- Punktlista
+- Fler punkter
+```
+
+Introbilden renderas efter sektionens Markdown-text och före ett eventuellt
+galleri.
 
 ## Bilder
 

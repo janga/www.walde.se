@@ -4,6 +4,7 @@ import Lightbox from '../components/Lightbox.astro';
 import SiteNavigation from '../components/SiteNavigation.astro';
 import SiteSection from '../components/SiteSection.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getSectionHtml } from '../lib/sectionContent';
 
 const [site] = await getCollection('site');
 
@@ -12,6 +13,8 @@ if (!site) {
 }
 
 const sections = site.data.sections;
+const siteHtml = site.rendered?.html ?? '';
+const sectionHtml = getSectionHtml(siteHtml, sections);
 ---
 
 <BaseLayout title={site.data.title} description={site.data.description}>
@@ -19,7 +22,7 @@ const sections = site.data.sections;
 
 	<main id="main-content" class="site-content">
 		{sections.map((section) => (
-			<SiteSection section={section} />
+			<SiteSection section={section} contentHtml={sectionHtml[section.id] ?? ''} />
 		))}
 	</main>
 
