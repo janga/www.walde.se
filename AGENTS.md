@@ -1,5 +1,7 @@
 ## Development
 
+Before changing this project, read `README.md`.
+
 When starting the dev server, use background mode:
 
 ```
