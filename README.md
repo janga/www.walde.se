@@ -55,7 +55,8 @@ sections:
         title: Titel
         year: 2026
         technique: Teknik
-        caption: Bildtext.
+        dimensions: 30 x 40 cm
+        sold: false
         alt: Beskrivande alt-text.
 ```
 
@@ -65,6 +66,9 @@ sections:
 Frontmatter styr sektionernas ordning, introbild och gallerimetadata. Den
 löpande texten skrivs som vanlig Markdown i samma fil under `##`-rubriker som
 matchar sektionernas `id` eller `title`:
+
+Galleriets metadatafält `title`, `year`, `technique`, `dimensions` och `sold`
+är valfria. `src` och `alt` ska finnas för varje bild.
 
 ```md
 ## Min konst
@@ -110,15 +114,8 @@ Galleribilder visas stora direkt på sidan, inte som thumbnails. Bilderna ska
 inte beskäras. Höga bilder begränsas med CSS så att de ryms bättre inom
 viewporten även i den vanliga gallerivisningen.
 
-Klick på en galleribild öppnar bilden i en lightbox. Lightboxen ska kunna
-stängas med:
-
-- kryss nära bildens övre högra hörn
-- Escape
-- klick på den mörka bakgrunden
-
-Om JavaScript inte körs ska bildlänkarna fortfarande fungera som vanliga länkar
-till bildfilen.
+Gallerimetadata visas i kortform på en rad: titel, år, teknik, mått och
+eventuell såld-markering. Klick på bilden går till bildfilen.
 
 ## Routing
 

@@ -13,24 +13,52 @@ sections:
     gallery:
       - src: /bilder/site/min-konst/penningby-collage.jpg
         title: Penningby collage
+        year: "2017"
+        technique: "Fotografiskt trolleri"
+        dimensions: "47x87"
+        sold: false
         alt: Konstverk av Karin Walde, Penningby collage.
       - src: /bilder/site/min-konst/verk-01.png
-        title: Verk 1
+        title: Tre stengrejer
+        year: "1973"
+        technique: "Sten, sax och påse"
+        dimensions: "150x150"
+        sold: false
         alt: Konstverk av Karin Walde.
       - src: /bilder/site/min-konst/verk-02.png
         title: Verk 2
+        year: ""
+        technique: ""
+        dimensions: ""
+        sold: false
         alt: Konstverk av Karin Walde.
       - src: /bilder/site/min-konst/verk-03.png
         title: Verk 3
+        year: ""
+        technique: ""
+        dimensions: ""
+        sold: false
         alt: Konstverk av Karin Walde.
       - src: /bilder/site/min-konst/verk-04.png
         title: Verk 4
+        year: ""
+        technique: ""
+        dimensions: ""
+        sold: false
         alt: Konstverk av Karin Walde.
       - src: /bilder/site/min-konst/verk-05.png
         title: Verk 5
+        year: ""
+        technique: ""
+        dimensions: ""
+        sold: false
         alt: Konstverk av Karin Walde.
       - src: /bilder/site/min-konst/verk-06.png
         title: Verk 6
+        year: ""
+        technique: ""
+        dimensions: ""
+        sold: false
         alt: Konstverk av Karin Walde.
 
   - id: cv

@@ -1,6 +1,5 @@
 ---
 import { getCollection } from 'astro:content';
-import Lightbox from '../components/Lightbox.astro';
 import SiteNavigation from '../components/SiteNavigation.astro';
 import SiteSection from '../components/SiteSection.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -25,6 +24,4 @@ const sectionHtml = getSectionHtml(siteHtml, sections);
 			<SiteSection section={section} contentHtml={sectionHtml[section.id] ?? ''} />
 		))}
 	</main>
-
-	<Lightbox />
 </BaseLayout>

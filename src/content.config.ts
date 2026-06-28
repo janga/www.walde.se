@@ -16,13 +16,8 @@ const galleryImage = z.object({
 	title: z.string().optional(),
 	year: z.union([z.string(), z.number()]).optional(),
 	technique: z.string().optional(),
-	material: z.string().optional(),
 	dimensions: z.string().optional(),
-	edition: z.string().optional(),
-	location: z.string().optional(),
-	status: z.string().optional(),
-	caption: z.string().optional(),
-	text: z.string().optional(),
+	sold: z.boolean().optional(),
 });
 
 const site = defineCollection({
