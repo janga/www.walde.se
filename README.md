@@ -13,6 +13,7 @@ content/site.md
 
 ```sh
 npm install
+npm run images
 npm run build
 npm run astro -- dev --background
 npm run astro -- dev status
@@ -27,6 +28,7 @@ content/
 └── site.md                         # Alla sektioner, texter, bildreferenser och gallerimetadata
 public/bilder/
 ├── cropped-bakgrund-3.jpg          # Projektgemensam bakgrund
+├── generated/                      # Genererade WebP-varianter
 └── site/
     ├── karin-walde/                # Bilder som hör till sektionen Karin Walde
     ├── min-konst/                  # Bilder som hör till sektionen Min konst
@@ -95,6 +97,9 @@ public/bilder/site/cv/
 ```
 
 Publicerad bildreferens i `content/site.md` ska börja med `/bilder/site/...`.
+Kör `npm run images` efter att bilder lagts till eller bytts ut. `npm run build`
+kör bildgenereringen automatiskt. Bildgenereringen kräver ImageMagick-kommandot
+`magick`.
 
 Bakgrunden är gemensam för hela projektet och pekas ut i `site.config.json`:
 

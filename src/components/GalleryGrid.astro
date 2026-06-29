@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { getImageAttributes } from '../lib/generatedImages';
 
 type SiteSection = CollectionEntry<'site'>['data']['sections'][number];
 type GalleryImage = SiteSection['gallery'][number];
@@ -27,7 +28,11 @@ const hasMetadata = (image: GalleryImage) =>
 				href={image.src}
 				class="gallery-image-link"
 			>
-				<img src={image.src} alt={image.alt} loading="lazy" />
+				<img
+					{...getImageAttributes(image.src, '(max-width: 700px) 100vw, 900px')}
+					alt={image.alt}
+					loading="lazy"
+				/>
 			</a>
 			{hasMetadata(image) && (
 				<div class="gallery-meta">

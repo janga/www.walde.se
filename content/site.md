@@ -69,7 +69,7 @@ sections:
 
 Tar emot besök från konstföreningar i ateljén i mitt hem.
 
-Har ofta många glada idéer!
+Har många glada idéer!
 
 [0730-577 855](tel:+46730577855)
 
@@ -77,7 +77,7 @@ Har ofta många glada idéer!
 
 ## Min konst
 
-Här visas ett urval av Karin Waldes konst. Galleriet kan byggas ut med titel, år, teknik och fri text för varje bild.
+Här visas ett urval av Karin Waldes konst. Under varje bild i galleriet visas den extrainformation som angetts: titel, år, teknik och mått. Ytterligare information kan visas, men helst ska allt få plats på en rad.
 
 ## CV
 

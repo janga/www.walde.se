@@ -43,6 +43,12 @@ body::before {
 	background-size: cover;
 }
 
+@media (max-width: 700px) {
+	body::before {
+		background-image: var(--site-background-image-small, var(--site-background-image));
+	}
+}
+
 body::after {
 	z-index: -1;
 	background: linear-gradient(to bottom, rgb(29 29 29 / 20%), #1d1d1d 100vh);
@@ -136,6 +142,26 @@ a {
 	width: min(90%, 1160px);
 	margin: 0 auto;
 	padding: 4rem 0 6rem;
+}
+
+.site-footer {
+	position: relative;
+	z-index: 2;
+	width: min(90%, 1160px);
+	margin: 0 auto;
+	padding: 0 0 2rem;
+	color: rgb(255 255 255 / 62%);
+	font-size: 0.75rem;
+	line-height: 1.5;
+	text-align: center;
+}
+
+.site-footer p {
+	margin: 0;
+}
+
+.site-footer span {
+	display: block;
 }
 
 .site-section {
@@ -298,6 +324,10 @@ figcaption {
 	.site-content {
 		width: 100%;
 		padding-top: 2rem;
+	}
+
+	.site-footer {
+		width: min(88%, 34rem);
 	}
 
 	.site-section {
