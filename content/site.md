@@ -55,8 +55,8 @@ sections:
         alt: Konstverk av Karin Walde.
       - src: /bilder/site/min-konst/verk-06.png
         title: Verk 6
-        year: ""
-        technique: ""
+        year: "1941"
+        technique: "Här är jag igen! :)"
         dimensions: ""
         sold: false
         alt: Konstverk av Karin Walde.

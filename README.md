@@ -27,6 +27,7 @@ npm run astro -- dev stop
 content/
 └── site.md                         # Alla sektioner, texter, bildreferenser och gallerimetadata
 public/bilder/
+├── CNAME                           # Testdomän för GitHub Pages
 ├── cropped-bakgrund-3.jpg          # Projektgemensam bakgrund
 ├── generated/                      # Genererade WebP-varianter
 └── site/
@@ -39,6 +40,7 @@ src/
 ├── styles/global.css               # Layout, sticky navigation och responsiv design
 └── content.config.ts               # Validerar content/site.md
 site.config.json                    # Globala projektvärden, till exempel bakgrundsbild
+.github/workflows/deploy.yml        # Bygger och publicerar dist/ till GitHub Pages
 ```
 
 ## Innehållsmodell
@@ -98,8 +100,8 @@ public/bilder/site/cv/
 
 Publicerad bildreferens i `content/site.md` ska börja med `/bilder/site/...`.
 Kör `npm run images` efter att bilder lagts till eller bytts ut. `npm run build`
-kör bildgenereringen automatiskt. Bildgenereringen kräver ImageMagick-kommandot
-`magick`.
+kör bildgenereringen automatiskt. Bildgenereringen kräver ImageMagick, antingen
+kommandot `magick` eller de äldre kommandona `identify` och `convert`.
 
 Bakgrunden är gemensam för hela projektet och pekas ut i `site.config.json`:
 
@@ -134,3 +136,12 @@ sektioner på samma sida:
 ```
 
 Det finns inte längre separata Astro-routes för gallerier eller sidor.
+
+## Publicering
+
+GitHub Pages ska använda GitHub Actions som källa. Workflow-filen
+`.github/workflows/deploy.yml` kör `npm ci`, `npm run build` och publicerar
+Astros genererade `dist/`-katalog.
+
+Testdomänen för GitHub Pages anges i `public/CNAME` och kopieras till `dist/`
+vid build.

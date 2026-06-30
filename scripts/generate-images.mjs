@@ -21,6 +21,51 @@ const run = async (command, args) => {
 	return stdout.trim();
 };
 
+const canRun = async (command, args = ['-version']) => {
+	try {
+		await run(command, args);
+		return true;
+	} catch {
+		return false;
+	}
+};
+
+const getImageMagick = async () => {
+	if (await canRun('magick')) {
+		return {
+			identify: (sourcePath) => run('magick', ['identify', '-format', '%w %h', sourcePath]),
+			convert: (sourcePath, outputPath, width) => run('magick', [
+				sourcePath,
+				'-auto-orient',
+				'-resize',
+				`${width}x`,
+				'-strip',
+				'-quality',
+				'82',
+				outputPath,
+			]),
+		};
+	}
+
+	if (await canRun('identify') && await canRun('convert')) {
+		return {
+			identify: (sourcePath) => run('identify', ['-format', '%w %h', sourcePath]),
+			convert: (sourcePath, outputPath, width) => run('convert', [
+				sourcePath,
+				'-auto-orient',
+				'-resize',
+				`${width}x`,
+				'-strip',
+				'-quality',
+				'82',
+				outputPath,
+			]),
+		};
+	}
+
+	throw new Error('ImageMagick saknas. Installera antingen kommandot "magick" eller "identify" och "convert".');
+};
+
 const getPublicPath = (filePath) => `/${path.relative(publicDir, filePath).split(path.sep).join('/')}`;
 
 const getGeneratedPath = (sourcePath, width) => {
@@ -49,24 +94,17 @@ const walk = async (entry) => {
 };
 
 const identify = async (sourcePath) => {
-	const output = await run('magick', ['identify', '-format', '%w %h', sourcePath]);
+	const output = await imageMagick.identify(sourcePath);
 	const [width, height] = output.split(' ').map(Number);
 	return { width, height };
 };
 
 const convert = async (sourcePath, outputPath, width) => {
 	await mkdir(path.dirname(outputPath), { recursive: true });
-	await run('magick', [
-		sourcePath,
-		'-auto-orient',
-		'-resize',
-		`${width}x`,
-		'-strip',
-		'-quality',
-		'82',
-		outputPath,
-	]);
+	await imageMagick.convert(sourcePath, outputPath, width);
 };
+
+const imageMagick = await getImageMagick();
 
 await rm(generatedDir, { recursive: true, force: true });
 await mkdir(generatedDir, { recursive: true });
