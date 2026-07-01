@@ -1,9 +1,9 @@
 ---
-title: Testsajt för Karin Walde
+title: Karin Walde
 description: Konstnären Karin Waldes officiella webbplats.
 sections:
   - id: karin-walde
-    title: Karin Walde
+    title: Testsajt KW
     image:
       src: /bilder/site/karin-walde/karin-walde.png
       alt: Fotografi av Karin Walde
@@ -65,7 +65,7 @@ sections:
     title: CV
 ---
 
-## Karin Walde
+## Testsajt KW 
 
 Tar emot besök från konstföreningar i ateljén i mitt hem.
 
