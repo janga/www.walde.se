@@ -23,6 +23,9 @@ sections:
       - src: karin-walde/verk06.png
         alt: Konstverk av Karin Walde.
         caption: "Belyst runmotiv i rondellgestaltningen vid Roslags Näsby trafikplats, Täby."
+      - src: karin-walde/verk11.png
+        alt: Konstverk av Karin Walde.
+        caption: "Runristad sten med ormform i landskapet."
 
   - id: min-konst
     title: Min konst
@@ -48,9 +51,6 @@ sections:
       - src: min-konst/verk10.png
         alt: Konstverk av Karin Walde.
         caption: "Installation med textila objekt i utställningsrum."
-      - src: min-konst/verk11.png
-        alt: Konstverk av Karin Walde.
-        caption: "Runristad sten med ormform i landskapet."
       - src: min-konst/verk15.png
         alt: Konstverk av Karin Walde.
         caption: "Båtstäv mot vatten och ljus horisont."
