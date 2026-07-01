@@ -68,7 +68,6 @@ sections:
 ## Karin Walde 
 
 #### Grafik – Bildväv – Offentlig utsmyckning – Fiber art – Akvarell – Objekt
-
 Ateljé och showroom i Näsbypark, Täby
 
 
