@@ -282,12 +282,11 @@ h1 {
 	justify-content: center;
 	gap: 0.5rem;
 	margin-bottom: 0;
-	color: var(--color-muted);
-	font-size: 0.78rem;
-	font-family: var(--font-sans);
-	letter-spacing: 0.06em;
+	color: #000;
+	font-size: 1rem;
+	font-family: var(--font-serif);
+	letter-spacing: 0;
 	line-height: 1.5;
-	text-transform: uppercase;
 }
 
 @media (max-width: 700px) {
@@ -367,6 +366,6 @@ h1 {
 
 	.gallery-details {
 		padding: 0 0.25rem;
-		font-size: 0.72rem;
+		font-size: 0.92rem;
 	}
 }
