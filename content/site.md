@@ -67,13 +67,12 @@ sections:
 
 ## Karin Walde 
 
-Tar emot besök från konstföreningar i ateljén i mitt hem.
+#### Grafik – Bildväv – Offentlig utsmyckning – Fiber art – Akvarell – Objekt
 
-Har många glada idéer!
+Ateljé och showroom i Näsbypark, Täby
 
-[0730-577 855](tel:+46730577855)
 
-[karin@walde.se](mailto:karin@walde.se)
+[0730-577 855](tel:+46730577855) [karin@walde.se](mailto:karin@walde.se)
 
 ## Min konst
 
