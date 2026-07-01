@@ -1,5 +1,5 @@
 ---
-title: Karin Walde
+title: Testsajt för Karin Walde
 description: Konstnären Karin Waldes officiella webbplats.
 sections:
   - id: karin-walde
