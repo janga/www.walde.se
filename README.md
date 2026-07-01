@@ -25,21 +25,18 @@ npm run astro -- dev stop
 
 ```text
 content/
-└── site.md                         # Alla sektioner, texter, bildreferenser och gallerimetadata
+├── site.md                         # Alla sektioner, texter, bildreferenser och gallerimetadata
+├── karin-walde/                    # Källbilder för galleriet Karin Walde
+└── min-konst/                      # Källbilder för galleriet Min konst
 public/bilder/
 ├── CNAME                           # Testdomän för GitHub Pages
-├── cropped-bakgrund-3.jpg          # Projektgemensam bakgrund
 ├── generated/                      # Genererade WebP-varianter
-└── site/
-    ├── karin-walde/                # Bilder som hör till sektionen Karin Walde
-    ├── min-konst/                  # Bilder som hör till sektionen Min konst
-    └── cv/                         # Bilder som hör till sektionen CV
+└── original/                       # Originalkopior som publiceras av bildflödet
 src/
-├── layouts/BaseLayout.astro        # Projektgemensam HTML, metadata och bakgrund
+├── layouts/BaseLayout.astro        # Projektgemensam HTML och metadata
 ├── pages/index.astro               # Renderar hela sajten från content/site.md
 ├── styles/global.css               # Layout, sticky navigation och responsiv design
 └── content.config.ts               # Validerar content/site.md
-site.config.json                    # Globala projektvärden, till exempel bakgrundsbild
 .github/workflows/deploy.yml        # Bygger och publicerar dist/ till GitHub Pages
 ```
 
@@ -51,28 +48,21 @@ site.config.json                    # Globala projektvärden, till exempel bakgr
 sections:
   - id: min-konst
     title: Min konst
-    image:
-      src: /bilder/site/min-konst/exempel.jpg
-      alt: Beskrivande alt-text.
     gallery:
-      - src: /bilder/site/min-konst/verk.jpg
-        title: Titel
-        year: 2026
-        technique: Teknik
-        dimensions: 30 x 40 cm
-        sold: false
+      - src: min-konst/verk.jpg
         alt: Beskrivande alt-text.
+        caption: Bildtext.
 ```
 
 `id` används som ankare i navigationen. Exempel: `id: min-konst` ger länken
 `#min-konst`.
 
-Frontmatter styr sektionernas ordning, introbild och gallerimetadata. Den
+Frontmatter styr sektionernas ordning och gallerimetadata. Den
 löpande texten skrivs som vanlig Markdown i samma fil under `##`-rubriker som
 matchar sektionernas `id` eller `title`:
 
-Galleriets metadatafält `title`, `year`, `technique`, `dimensions` och `sold`
-är valfria. `src` och `alt` ska finnas för varje bild.
+Bildtext anges med det valfria fältet `caption`. `src` och `alt` ska finnas
+för varje bild.
 
 ```md
 ## Min konst
@@ -85,31 +75,26 @@ Inledande text.
 - Fler punkter
 ```
 
-Introbilden renderas efter sektionens Markdown-text och före ett eventuellt
-galleri.
+Alla bilder som visas på sidan ska ligga i en sektions `gallery`.
 
 ## Bilder
 
-Bilder ska ligga i katalogen för den sektion de hör till:
+Bilder ska ligga i katalogen för den sektion de hör till under `content/`:
 
 ```text
-public/bilder/site/karin-walde/
-public/bilder/site/min-konst/
-public/bilder/site/cv/
+content/karin-walde/
+content/min-konst/
 ```
 
-Publicerad bildreferens i `content/site.md` ska börja med `/bilder/site/...`.
-Kör `npm run images` efter att bilder lagts till eller bytts ut. `npm run build`
-kör bildgenereringen automatiskt. Bildgenereringen kräver ImageMagick, antingen
-kommandot `magick` eller de äldre kommandona `identify` och `convert`.
+Bildreferens i `content/site.md` ska vara relativ till `content/`, till exempel
+`min-konst/verk.jpg`. Kör `npm run images` efter att bilder lagts till eller
+bytts ut. `npm run build` kör bildgenereringen automatiskt. Bildgenereringen
+kräver ImageMagick, antingen kommandot `magick` eller de äldre kommandona
+`identify` och `convert`.
 
-Bakgrunden är gemensam för hela projektet och pekas ut i `site.config.json`:
-
-```json
-{
-  "backgroundImage": "/bilder/cropped-bakgrund-3.jpg"
-}
-```
+Bildflödet kopierar original till `public/bilder/original/` för vanliga
+bildlänkar och skapar WebP-varianter i `public/bilder/generated/` för visning på
+sidan.
 
 ## Presentation
 
@@ -121,8 +106,8 @@ Galleribilder visas stora direkt på sidan, inte som thumbnails. Bilderna ska
 inte beskäras. Höga bilder begränsas med CSS så att de ryms bättre inom
 viewporten även i den vanliga gallerivisningen.
 
-Gallerimetadata visas i kortform på en rad: titel, år, teknik, mått och
-eventuell såld-markering. Klick på bilden går till bildfilen.
+Bildtext visas lågmält under bilden när `caption` är ifyllt. Klick på bilden
+går till bildfilen.
 
 ## Routing
 

@@ -1,28 +1,20 @@
 ---
-import siteConfig from '../../site.config.json';
 import '../styles/global.css';
-import { getGeneratedImage } from '../lib/generatedImages';
 
 interface Props {
 	title?: string;
 	description?: string;
 }
 
+const siteName = 'Karin Walde';
 const {
-	title = siteConfig.siteName,
+	title = siteName,
 	description = 'Konstnären Karin Waldes officiella webbplats.',
 } = Astro.props;
 
-const backgroundImage = getGeneratedImage(siteConfig.backgroundImage);
-const backgroundStyle = backgroundImage
-	? [
-		`--site-background-image: url("${backgroundImage.variants.at(-1)?.src ?? siteConfig.backgroundImage}")`,
-		`--site-background-image-small: url("${backgroundImage.variants.find((variant) => variant.width >= 768)?.src ?? backgroundImage.variants[0]?.src ?? siteConfig.backgroundImage}")`,
-	].join('; ')
-	: `--site-background-image: url("${siteConfig.backgroundImage}")`;
-const documentTitle = title === siteConfig.siteName || title.toLowerCase() === 'hem'
-	? siteConfig.siteName
-	: `${title} – ${siteConfig.siteName}`;
+const documentTitle = title === siteName || title.toLowerCase() === 'hem'
+	? siteName
+	: `${title} – ${siteName}`;
 ---
 
 <!doctype html>
@@ -37,7 +29,7 @@ const documentTitle = title === siteConfig.siteName || title.toLowerCase() === '
 		<link rel="icon" href="/favicon.ico" />
 		<title>{documentTitle}</title>
 	</head>
-	<body style={backgroundStyle}>
+	<body>
 		<slot />
 		<footer class="site-footer" aria-label="Copyright">
 			<p>

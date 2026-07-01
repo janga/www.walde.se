@@ -2,22 +2,12 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
-const publicImagePath = z.string().startsWith('/');
-
-const image = z.object({
-	src: publicImagePath,
-	alt: z.string(),
-	caption: z.string().optional(),
-});
+const contentImagePath = z.string().regex(/^[a-z0-9][a-z0-9./-]*\.(jpe?g|png)$/i);
 
 const galleryImage = z.object({
-	src: publicImagePath,
+	src: contentImagePath,
 	alt: z.string(),
-	title: z.string().optional(),
-	year: z.union([z.string(), z.number()]).optional(),
-	technique: z.string().optional(),
-	dimensions: z.string().optional(),
-	sold: z.boolean().optional(),
+	caption: z.string().optional(),
 });
 
 const site = defineCollection({
@@ -29,7 +19,6 @@ const site = defineCollection({
 			z.object({
 				id: z.string().regex(/^[a-z0-9-]+$/),
 				title: z.string(),
-				image: image.optional(),
 				gallery: z.array(galleryImage).default([]),
 			}),
 		).min(1),

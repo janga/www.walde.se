@@ -8,7 +8,7 @@ sections:
       - src: karin-walde/karin-walde.png
         alt: Fotografi av Karin Walde
         caption: ""
-      - src: tva-fossiler.jpg
+      - src: karin-walde/tva-fossiler.jpg
         alt: Fotografi av Karin Walde
         caption: "Två fossiler"
         

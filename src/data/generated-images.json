@@ -1,186 +1,199 @@
 {
-  "/bilder/cropped-bakgrund-3.jpg": {
-    "width": 1440,
-    "height": 900,
-    "variants": [
-      {
-        "src": "/bilder/generated/cropped-bakgrund-3-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/cropped-bakgrund-3-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/bilder/generated/cropped-bakgrund-3-1080.webp",
-        "width": 1080
-      },
-      {
-        "src": "/bilder/generated/cropped-bakgrund-3-1440.webp",
-        "width": 1440
-      }
-    ]
-  },
-  "/bilder/site/karin-walde/karin-walde.png": {
+  "karin-walde/karin-walde.png": {
     "width": 1596,
     "height": 1070,
+    "originalSrc": "/bilder/original/karin-walde/karin-walde.png",
     "variants": [
       {
-        "src": "/bilder/generated/site/karin-walde/karin-walde-480.webp",
+        "src": "/bilder/generated/karin-walde/karin-walde-480.webp",
         "width": 480
       },
       {
-        "src": "/bilder/generated/site/karin-walde/karin-walde-768.webp",
+        "src": "/bilder/generated/karin-walde/karin-walde-768.webp",
         "width": 768
       },
       {
-        "src": "/bilder/generated/site/karin-walde/karin-walde-1080.webp",
+        "src": "/bilder/generated/karin-walde/karin-walde-1080.webp",
         "width": 1080
       },
       {
-        "src": "/bilder/generated/site/karin-walde/karin-walde-1440.webp",
+        "src": "/bilder/generated/karin-walde/karin-walde-1440.webp",
         "width": 1440
       },
       {
-        "src": "/bilder/generated/site/karin-walde/karin-walde-1596.webp",
+        "src": "/bilder/generated/karin-walde/karin-walde-1596.webp",
         "width": 1596
       }
     ]
   },
-  "/bilder/site/min-konst/penningby-collage.jpg": {
-    "width": 1890,
-    "height": 1063,
+  "karin-walde/tva-fossiler.jpg": {
+    "width": 2109,
+    "height": 1098,
+    "originalSrc": "/bilder/original/karin-walde/tva-fossiler.jpg",
     "variants": [
       {
-        "src": "/bilder/generated/site/min-konst/penningby-collage-480.webp",
+        "src": "/bilder/generated/karin-walde/tva-fossiler-480.webp",
         "width": 480
       },
       {
-        "src": "/bilder/generated/site/min-konst/penningby-collage-768.webp",
+        "src": "/bilder/generated/karin-walde/tva-fossiler-768.webp",
         "width": 768
       },
       {
-        "src": "/bilder/generated/site/min-konst/penningby-collage-1080.webp",
+        "src": "/bilder/generated/karin-walde/tva-fossiler-1080.webp",
         "width": 1080
       },
       {
-        "src": "/bilder/generated/site/min-konst/penningby-collage-1440.webp",
+        "src": "/bilder/generated/karin-walde/tva-fossiler-1440.webp",
         "width": 1440
       },
       {
-        "src": "/bilder/generated/site/min-konst/penningby-collage-1890.webp",
+        "src": "/bilder/generated/karin-walde/tva-fossiler-2109.webp",
+        "width": 2109
+      }
+    ]
+  },
+  "min-konst/penningby-collage.jpg": {
+    "width": 1890,
+    "height": 1063,
+    "originalSrc": "/bilder/original/min-konst/penningby-collage.jpg",
+    "variants": [
+      {
+        "src": "/bilder/generated/min-konst/penningby-collage-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/min-konst/penningby-collage-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/min-konst/penningby-collage-1080.webp",
+        "width": 1080
+      },
+      {
+        "src": "/bilder/generated/min-konst/penningby-collage-1440.webp",
+        "width": 1440
+      },
+      {
+        "src": "/bilder/generated/min-konst/penningby-collage-1890.webp",
         "width": 1890
       }
     ]
   },
-  "/bilder/site/min-konst/verk-01.png": {
+  "min-konst/verk-01.png": {
     "width": 1002,
     "height": 1004,
+    "originalSrc": "/bilder/original/min-konst/verk-01.png",
     "variants": [
       {
-        "src": "/bilder/generated/site/min-konst/verk-01-480.webp",
+        "src": "/bilder/generated/min-konst/verk-01-480.webp",
         "width": 480
       },
       {
-        "src": "/bilder/generated/site/min-konst/verk-01-768.webp",
+        "src": "/bilder/generated/min-konst/verk-01-768.webp",
         "width": 768
       },
       {
-        "src": "/bilder/generated/site/min-konst/verk-01-1002.webp",
+        "src": "/bilder/generated/min-konst/verk-01-1002.webp",
         "width": 1002
       }
     ]
   },
-  "/bilder/site/min-konst/verk-02.png": {
+  "min-konst/verk-02.png": {
     "width": 694,
     "height": 1062,
+    "originalSrc": "/bilder/original/min-konst/verk-02.png",
     "variants": [
       {
-        "src": "/bilder/generated/site/min-konst/verk-02-480.webp",
+        "src": "/bilder/generated/min-konst/verk-02-480.webp",
         "width": 480
       },
       {
-        "src": "/bilder/generated/site/min-konst/verk-02-694.webp",
+        "src": "/bilder/generated/min-konst/verk-02-694.webp",
         "width": 694
       }
     ]
   },
-  "/bilder/site/min-konst/verk-03.png": {
+  "min-konst/verk-03.png": {
     "width": 830,
     "height": 646,
+    "originalSrc": "/bilder/original/min-konst/verk-03.png",
     "variants": [
       {
-        "src": "/bilder/generated/site/min-konst/verk-03-480.webp",
+        "src": "/bilder/generated/min-konst/verk-03-480.webp",
         "width": 480
       },
       {
-        "src": "/bilder/generated/site/min-konst/verk-03-768.webp",
+        "src": "/bilder/generated/min-konst/verk-03-768.webp",
         "width": 768
       },
       {
-        "src": "/bilder/generated/site/min-konst/verk-03-830.webp",
+        "src": "/bilder/generated/min-konst/verk-03-830.webp",
         "width": 830
       }
     ]
   },
-  "/bilder/site/min-konst/verk-04.png": {
+  "min-konst/verk-04.png": {
     "width": 746,
     "height": 746,
+    "originalSrc": "/bilder/original/min-konst/verk-04.png",
     "variants": [
       {
-        "src": "/bilder/generated/site/min-konst/verk-04-480.webp",
+        "src": "/bilder/generated/min-konst/verk-04-480.webp",
         "width": 480
       },
       {
-        "src": "/bilder/generated/site/min-konst/verk-04-746.webp",
+        "src": "/bilder/generated/min-konst/verk-04-746.webp",
         "width": 746
       }
     ]
   },
-  "/bilder/site/min-konst/verk-05.png": {
+  "min-konst/verk-05.png": {
     "width": 1156,
     "height": 644,
+    "originalSrc": "/bilder/original/min-konst/verk-05.png",
     "variants": [
       {
-        "src": "/bilder/generated/site/min-konst/verk-05-480.webp",
+        "src": "/bilder/generated/min-konst/verk-05-480.webp",
         "width": 480
       },
       {
-        "src": "/bilder/generated/site/min-konst/verk-05-768.webp",
+        "src": "/bilder/generated/min-konst/verk-05-768.webp",
         "width": 768
       },
       {
-        "src": "/bilder/generated/site/min-konst/verk-05-1080.webp",
+        "src": "/bilder/generated/min-konst/verk-05-1080.webp",
         "width": 1080
       },
       {
-        "src": "/bilder/generated/site/min-konst/verk-05-1156.webp",
+        "src": "/bilder/generated/min-konst/verk-05-1156.webp",
         "width": 1156
       }
     ]
   },
-  "/bilder/site/min-konst/verk-06.png": {
+  "min-konst/verk-06.png": {
     "width": 1596,
     "height": 1070,
+    "originalSrc": "/bilder/original/min-konst/verk-06.png",
     "variants": [
       {
-        "src": "/bilder/generated/site/min-konst/verk-06-480.webp",
+        "src": "/bilder/generated/min-konst/verk-06-480.webp",
         "width": 480
       },
       {
-        "src": "/bilder/generated/site/min-konst/verk-06-768.webp",
+        "src": "/bilder/generated/min-konst/verk-06-768.webp",
         "width": 768
       },
       {
-        "src": "/bilder/generated/site/min-konst/verk-06-1080.webp",
+        "src": "/bilder/generated/min-konst/verk-06-1080.webp",
         "width": 1080
       },
       {
-        "src": "/bilder/generated/site/min-konst/verk-06-1440.webp",
+        "src": "/bilder/generated/min-konst/verk-06-1440.webp",
         "width": 1440
       },
       {
-        "src": "/bilder/generated/site/min-konst/verk-06-1596.webp",
+        "src": "/bilder/generated/min-konst/verk-06-1596.webp",
         "width": 1596
       }
     ]

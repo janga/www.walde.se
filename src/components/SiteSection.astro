@@ -1,7 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import GalleryGrid from './GalleryGrid.astro';
-import { getImageAttributes } from '../lib/generatedImages';
 
 type SiteSection = CollectionEntry<'site'>['data']['sections'][number];
 
@@ -11,9 +10,6 @@ interface Props {
 }
 
 const { section, contentHtml } = Astro.props;
-const sectionImage = section.image
-	? getImageAttributes(section.image.src, '(max-width: 700px) 85vw, 520px')
-	: undefined;
 ---
 
 <section id={section.id} class="site-section" data-section-title={section.title}>
@@ -24,18 +20,6 @@ const sectionImage = section.image
 
 		<div class="section-body">
 			{contentHtml && <div class="section-markdown" set:html={contentHtml} />}
-
-			{section.image && (
-				<figure class="standalone-image">
-					<img
-						{...sectionImage}
-						alt={section.image.alt}
-						loading={section.id === 'karin-walde' ? 'eager' : 'lazy'}
-						fetchpriority={section.id === 'karin-walde' ? 'high' : 'auto'}
-					/>
-					{section.image.caption && <figcaption>{section.image.caption}</figcaption>}
-				</figure>
-			)}
 
 			{section.gallery.length > 0 && (
 				<GalleryGrid title={section.title} images={section.gallery} />

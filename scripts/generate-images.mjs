@@ -1,5 +1,5 @@
 import { execFile } from 'node:child_process';
-import { mkdir, readdir, rm, writeFile } from 'node:fs/promises';
+import { copyFile, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { promisify } from 'node:util';
 
@@ -7,13 +7,12 @@ const execFileAsync = promisify(execFile);
 
 const root = process.cwd();
 const publicDir = path.join(root, 'public');
+const contentDir = path.join(root, 'content');
 const generatedDir = path.join(publicDir, 'bilder', 'generated');
+const originalDir = path.join(publicDir, 'bilder', 'original');
 const manifestPath = path.join(root, 'src', 'data', 'generated-images.json');
+const siteContentPath = path.join(contentDir, 'site.md');
 const widths = [480, 768, 1080, 1440];
-const sourceRoots = [
-	path.join(publicDir, 'bilder', 'cropped-bakgrund-3.jpg'),
-	path.join(publicDir, 'bilder', 'site'),
-];
 const supportedExtensions = new Set(['.jpg', '.jpeg', '.png']);
 
 const run = async (command, args) => {
@@ -67,30 +66,28 @@ const getImageMagick = async () => {
 };
 
 const getPublicPath = (filePath) => `/${path.relative(publicDir, filePath).split(path.sep).join('/')}`;
+const getContentPath = (filePath) => path.relative(contentDir, filePath).split(path.sep).join('/');
 
 const getGeneratedPath = (sourcePath, width) => {
-	const parsed = path.parse(path.relative(path.join(publicDir, 'bilder'), sourcePath));
+	const parsed = path.parse(path.relative(contentDir, sourcePath));
 	return path.join(generatedDir, parsed.dir, `${parsed.name}-${width}.webp`);
 };
 
-const walk = async (entry) => {
-	const files = [];
-	const stats = await readdir(entry, { withFileTypes: true }).catch(() => null);
+const getOriginalPath = (sourcePath) => path.join(originalDir, path.relative(contentDir, sourcePath));
 
-	if (!stats) {
-		return supportedExtensions.has(path.extname(entry).toLowerCase()) ? [entry] : [];
-	}
+const getReferencedSources = async () => {
+	const siteContent = await readFile(siteContentPath, 'utf8');
+	const sources = new Set();
+	const srcPattern = /^\s+-?\s*src:\s+["']?([^"'\n]+)["']?\s*$/gm;
 
-	for (const stat of stats) {
-		const fullPath = path.join(entry, stat.name);
-		if (stat.isDirectory()) {
-			files.push(...await walk(fullPath));
-		} else if (supportedExtensions.has(path.extname(stat.name).toLowerCase())) {
-			files.push(fullPath);
+	for (const match of siteContent.matchAll(srcPattern)) {
+		const source = match[1].trim();
+		if (!source.startsWith('/') && supportedExtensions.has(path.extname(source).toLowerCase())) {
+			sources.add(path.join(contentDir, source));
 		}
 	}
 
-	return files;
+	return Array.from(sources).sort();
 };
 
 const identify = async (sourcePath) => {
@@ -107,14 +104,20 @@ const convert = async (sourcePath, outputPath, width) => {
 const imageMagick = await getImageMagick();
 
 await rm(generatedDir, { recursive: true, force: true });
+await rm(originalDir, { recursive: true, force: true });
 await mkdir(generatedDir, { recursive: true });
+await mkdir(originalDir, { recursive: true });
 
-const sources = (await Promise.all(sourceRoots.map(walk))).flat().sort();
+const sources = await getReferencedSources();
 const manifest = {};
 
 for (const sourcePath of sources) {
 	const dimensions = await identify(sourcePath);
+	const originalPath = getOriginalPath(sourcePath);
 	const variantWidths = widths.filter((width) => width <= dimensions.width);
+
+	await mkdir(path.dirname(originalPath), { recursive: true });
+	await copyFile(sourcePath, originalPath);
 
 	if (!variantWidths.includes(dimensions.width)) {
 		variantWidths.push(dimensions.width);
@@ -131,9 +134,10 @@ for (const sourcePath of sources) {
 		});
 	}
 
-	manifest[getPublicPath(sourcePath)] = {
+	manifest[getContentPath(sourcePath)] = {
 		width: dimensions.width,
 		height: dimensions.height,
+		originalSrc: getPublicPath(originalPath),
 		variants,
 	};
 }

@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { getImageAttributes } from '../lib/generatedImages';
+import { getImageAttributes, getOriginalImageSrc } from '../lib/generatedImages';
 
 type SiteSection = CollectionEntry<'site'>['data']['sections'][number];
 type GalleryImage = SiteSection['gallery'][number];
@@ -11,21 +11,13 @@ interface Props {
 }
 
 const { title, images } = Astro.props;
-
-const getDetails = (image: GalleryImage) =>
-	[image.title, image.year, image.technique, image.dimensions, image.sold ? 'Såld' : undefined]
-		.filter(Boolean)
-		.join(', ');
-
-const hasMetadata = (image: GalleryImage) =>
-	Boolean(getDetails(image));
 ---
 
 <div class="gallery" aria-label={`Galleri: ${title}`}>
 	{images.map((image) => (
 		<article class="gallery-item">
 			<a
-				href={image.src}
+				href={getOriginalImageSrc(image.src)}
 				class="gallery-image-link"
 			>
 				<img
@@ -34,10 +26,10 @@ const hasMetadata = (image: GalleryImage) =>
 					loading="lazy"
 				/>
 			</a>
-			{hasMetadata(image) && (
+			{image.caption && (
 				<div class="gallery-meta">
 					<div class="gallery-details">
-						{getDetails(image) && <span>{getDetails(image)}</span>}
+						<span>{image.caption}</span>
 					</div>
 				</div>
 			)}

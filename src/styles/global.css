@@ -41,22 +41,6 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-body::before,
-body::after {
-	content: "";
-	display: none;
-}
-
-body::before {
-	background-image: var(--site-background-image);
-}
-
-@media (max-width: 700px) {
-	body::before {
-		background-image: var(--site-background-image-small, var(--site-background-image));
-	}
-}
-
 img {
 	display: block;
 	height: auto;
@@ -224,22 +208,6 @@ h1 {
 .section-markdown > :last-child,
 .gallery-meta :last-child {
 	margin-bottom: 0;
-}
-
-.standalone-image {
-	width: min(100%, 560px);
-	margin: clamp(2.5rem, 6vw, 4.75rem) auto 0;
-}
-
-#karin-walde .standalone-image {
-	width: min(100%, 620px);
-}
-
-figcaption {
-	margin-top: 0.85rem;
-	color: var(--color-muted);
-	font-size: 0.875rem;
-	text-align: center;
 }
 
 .section-markdown h3 {

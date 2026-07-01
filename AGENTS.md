@@ -29,13 +29,11 @@ Consult these guides before working on related tasks:
   gallery metadata in `content/site.md`.
 - The site is a single Astro page. Do not add separate routes or separate
   Markdown files for sections unless the user explicitly changes this decision.
-- Put published images in the matching section directory under
-  `public/bilder/site/`, for example:
-  - `public/bilder/site/karin-walde/`
-  - `public/bilder/site/min-konst/`
-  - `public/bilder/site/cv/`
-- Reference published images from `content/site.md` with absolute public paths,
-  for example `/bilder/site/min-konst/verk.jpg`.
+- Put source images in the matching gallery directory under `content/`, next to
+  `site.md`, for example:
+  - `content/karin-walde/`
+  - `content/min-konst/`
+- Reference images from `content/site.md` with paths relative to `content/`, for
+  example `min-konst/verk.jpg`.
 - Use lowercase, descriptive filenames with ASCII letters, numbers, and
   hyphens. Do not use spaces or Swedish characters in filenames.
-- The common background image is configured in `site.config.json`.
