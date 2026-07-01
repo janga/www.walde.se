@@ -80,87 +80,30 @@
       }
     ]
   },
-  "karin-walde/verk04.png": {
-    "width": 830,
-    "height": 646,
-    "originalSrc": "/bilder/original/karin-walde/verk04.png",
+  "karin-walde/verk10.png": {
+    "width": 1474,
+    "height": 712,
+    "originalSrc": "/bilder/original/karin-walde/verk10.png",
     "variants": [
       {
-        "src": "/bilder/generated/karin-walde/verk04-480.webp",
+        "src": "/bilder/generated/karin-walde/verk10-480.webp",
         "width": 480
       },
       {
-        "src": "/bilder/generated/karin-walde/verk04-768.webp",
+        "src": "/bilder/generated/karin-walde/verk10-768.webp",
         "width": 768
       },
       {
-        "src": "/bilder/generated/karin-walde/verk04-830.webp",
-        "width": 830
-      }
-    ]
-  },
-  "karin-walde/verk05.png": {
-    "width": 746,
-    "height": 746,
-    "originalSrc": "/bilder/original/karin-walde/verk05.png",
-    "variants": [
-      {
-        "src": "/bilder/generated/karin-walde/verk05-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/karin-walde/verk05-746.webp",
-        "width": 746
-      }
-    ]
-  },
-  "karin-walde/verk06.png": {
-    "width": 1156,
-    "height": 644,
-    "originalSrc": "/bilder/original/karin-walde/verk06.png",
-    "variants": [
-      {
-        "src": "/bilder/generated/karin-walde/verk06-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/karin-walde/verk06-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/bilder/generated/karin-walde/verk06-1080.webp",
+        "src": "/bilder/generated/karin-walde/verk10-1080.webp",
         "width": 1080
       },
       {
-        "src": "/bilder/generated/karin-walde/verk06-1156.webp",
-        "width": 1156
-      }
-    ]
-  },
-  "karin-walde/verk11.png": {
-    "width": 1470,
-    "height": 1106,
-    "originalSrc": "/bilder/original/karin-walde/verk11.png",
-    "variants": [
-      {
-        "src": "/bilder/generated/karin-walde/verk11-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/karin-walde/verk11-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/bilder/generated/karin-walde/verk11-1080.webp",
-        "width": 1080
-      },
-      {
-        "src": "/bilder/generated/karin-walde/verk11-1440.webp",
+        "src": "/bilder/generated/karin-walde/verk10-1440.webp",
         "width": 1440
       },
       {
-        "src": "/bilder/generated/karin-walde/verk11-1470.webp",
-        "width": 1470
+        "src": "/bilder/generated/karin-walde/verk10-1474.webp",
+        "width": 1474
       }
     ]
   },
@@ -225,6 +168,63 @@
       }
     ]
   },
+  "min-konst/verk04.png": {
+    "width": 830,
+    "height": 646,
+    "originalSrc": "/bilder/original/min-konst/verk04.png",
+    "variants": [
+      {
+        "src": "/bilder/generated/min-konst/verk04-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/min-konst/verk04-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/min-konst/verk04-830.webp",
+        "width": 830
+      }
+    ]
+  },
+  "min-konst/verk05.png": {
+    "width": 746,
+    "height": 746,
+    "originalSrc": "/bilder/original/min-konst/verk05.png",
+    "variants": [
+      {
+        "src": "/bilder/generated/min-konst/verk05-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/min-konst/verk05-746.webp",
+        "width": 746
+      }
+    ]
+  },
+  "min-konst/verk06.png": {
+    "width": 1156,
+    "height": 644,
+    "originalSrc": "/bilder/original/min-konst/verk06.png",
+    "variants": [
+      {
+        "src": "/bilder/generated/min-konst/verk06-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/min-konst/verk06-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/min-konst/verk06-1080.webp",
+        "width": 1080
+      },
+      {
+        "src": "/bilder/generated/min-konst/verk06-1156.webp",
+        "width": 1156
+      }
+    ]
+  },
   "min-konst/verk07.png": {
     "width": 1108,
     "height": 1104,
@@ -286,30 +286,30 @@
       }
     ]
   },
-  "min-konst/verk10.png": {
-    "width": 1474,
-    "height": 712,
-    "originalSrc": "/bilder/original/min-konst/verk10.png",
+  "min-konst/verk11.png": {
+    "width": 1470,
+    "height": 1106,
+    "originalSrc": "/bilder/original/min-konst/verk11.png",
     "variants": [
       {
-        "src": "/bilder/generated/min-konst/verk10-480.webp",
+        "src": "/bilder/generated/min-konst/verk11-480.webp",
         "width": 480
       },
       {
-        "src": "/bilder/generated/min-konst/verk10-768.webp",
+        "src": "/bilder/generated/min-konst/verk11-768.webp",
         "width": 768
       },
       {
-        "src": "/bilder/generated/min-konst/verk10-1080.webp",
+        "src": "/bilder/generated/min-konst/verk11-1080.webp",
         "width": 1080
       },
       {
-        "src": "/bilder/generated/min-konst/verk10-1440.webp",
+        "src": "/bilder/generated/min-konst/verk11-1440.webp",
         "width": 1440
       },
       {
-        "src": "/bilder/generated/min-konst/verk10-1474.webp",
-        "width": 1474
+        "src": "/bilder/generated/min-konst/verk11-1470.webp",
+        "width": 1470
       }
     ]
   },

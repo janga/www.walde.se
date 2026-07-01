@@ -14,18 +14,9 @@ sections:
       - src: karin-walde/lysande-rondell.png
         alt: ""
         caption: "Runmotiv i ljus vid Roslags Näsby trafikplats, Täby."
-      - src: karin-walde/verk04.png
+      - src: karin-walde/verk10.png
         alt: Konstverk av Karin Walde.
-        caption: "Runmotiv på corténstål vid Roslags Näsby trafikplats, Täby."
-      - src: karin-walde/verk05.png
-        alt: Konstverk av Karin Walde.
-        caption: "Runsten i rondellgestaltningen vid Roslags Näsby trafikplats, Täby."
-      - src: karin-walde/verk06.png
-        alt: Konstverk av Karin Walde.
-        caption: "Belyst runmotiv i rondellgestaltningen vid Roslags Näsby trafikplats, Täby."
-      - src: karin-walde/verk11.png
-        alt: Konstverk av Karin Walde.
-        caption: "Runristad sten med ormform i landskapet."
+        caption: "Separatutställning på Karby gård, Täby."
 
   - id: min-konst
     title: Min konst
@@ -48,9 +39,18 @@ sections:
       - src: min-konst/verk09.png
         alt: Konstverk av Karin Walde.
         caption: "Avlång textilform med skugga."
-      - src: min-konst/verk10.png
+      - src: min-konst/verk04.png
         alt: Konstverk av Karin Walde.
-        caption: "Installation med textila objekt i utställningsrum."
+        caption: "Runmotiv på corténstål vid Roslags Näsby trafikplats, Täby."
+      - src: min-konst/verk05.png
+        alt: Konstverk av Karin Walde.
+        caption: "Runsten i rondellgestaltningen vid Roslags Näsby trafikplats, Täby."
+      - src: min-konst/verk06.png
+        alt: Konstverk av Karin Walde.
+        caption: "Belyst runmotiv i rondellgestaltningen vid Roslags Näsby trafikplats, Täby."
+      - src: min-konst/verk11.png
+        alt: Konstverk av Karin Walde.
+        caption: "Runristad sten med ormform i landskapet."
       - src: min-konst/verk15.png
         alt: Konstverk av Karin Walde.
         caption: "Båtstäv mot vatten och ljus horisont."
@@ -68,11 +68,11 @@ sections:
         alt: Fotografi av Karin Walde.
         caption: ""
       - src: om-mig/verk13.png
-        alt: Fotografi av Karin Walde.
-        caption: ""
+        alt: Karin Waldes vävrum.
+        caption: "Ateljén i mitt hem i Näsbypark. Här gör jag grafik och bildvävar."
       - src: om-mig/verk14.png
-        alt: Fotografi av Karin Walde.
-        caption: ""
+        alt: Plasthandskar i Karin Waldes ateljé.
+        caption: "Ett konstnärshem är inget vanligt hem."
 
 ---
 
