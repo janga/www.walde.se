@@ -86,7 +86,7 @@ Ateljé och showroom i Näsbypark, Täby
 
 ## Min konst
 
-Här visas ett urval av Karin Waldes konst. Under varje bild i galleriet visas den extrainformation som angetts: titel, år, teknik och mått. Ytterligare information kan visas, men helst ska allt få plats på en rad.
+Här visas ett urval av min konst.
 
 ## Om mig
 
