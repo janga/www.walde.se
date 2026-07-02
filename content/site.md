@@ -7,7 +7,7 @@ sections:
     gallery:
       - src: karin-walde/karin-walde.png
         alt: Fotografi av Karin Walde
-        caption: ""
+        caption: "Saknar bilden där Karin får Täby Kommuns kulturpris"
       - src: karin-walde/tva-fossiler.jpg
         alt: ""
         caption: "Två grafiska blad med motiv av fossiler från Gotland."
@@ -64,15 +64,15 @@ sections:
   - id: om-mig
     title: Om mig
     gallery:
-      - src: om-mig/verk12.png
-        alt: Fotografi av Karin Walde.
-        caption: ""
       - src: om-mig/verk13.png
         alt: Karin Waldes vävrum.
         caption: "Ateljén i mitt hem i Näsbypark. Här gör jag grafik och bildvävar."
       - src: om-mig/verk14.png
         alt: Plasthandskar i Karin Waldes ateljé.
         caption: "Ett konstnärshem är inget vanligt hem."
+      - src: om-mig/verk12.png
+        alt: Fotografi av Karin Walde.
+        caption: ""
 
 ---
 
@@ -82,7 +82,7 @@ sections:
 Ateljé och showroom i Näsbypark, Täby
 
 
-[0730-577 855](tel:+46730577855) [karin@walde.se](mailto:karin@walde.se)
+[0730-577 855](tel:+46730577855), [karin@walde.se](mailto:karin@walde.se)
 
 ## Min konst
 
@@ -90,4 +90,4 @@ Här visas ett urval av min konst.
 
 ## Om mig
 
-[0730-577 855](tel:+46730577855) [karin@walde.se](mailto:karin@walde.se)
+[0730-577 855](tel:+46730577855), [karin@walde.se](mailto:karin@walde.se)
