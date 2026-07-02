@@ -95,6 +95,10 @@ Bildflödet skapar WebP-varianter i `public/bilder/generated/` för visning på
 sidan. Katalogen är build-output och versionshanteras inte. Klick på en bild går
 till den största genererade WebP-varianten.
 
+Bildflödet är inkrementellt. `src/data/generated-images.json` sparar en hash för
+varje källbild, så oförändrade bilder återanvänder redan genererade
+WebP-varianter. Endast nya, ändrade eller saknade bildvarianter byggs om.
+
 Bildflödet validerar också att varje bildreferens i `content/site.md` är en
 unik, relativ sökväg till en befintlig `.jpg`, `.jpeg` eller `.png` under
 `content/`.

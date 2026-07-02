@@ -1,5 +1,6 @@
 import { execFile } from 'node:child_process';
-import { mkdir, readFile, rm, stat, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { mkdir, readdir, readFile, rm, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { promisify } from 'node:util';
 
@@ -68,6 +69,7 @@ const getImageMagick = async () => {
 const toPublicPath = (filePath) => filePath.split(path.sep).join('/');
 const getPublicPath = (filePath) => `/${toPublicPath(path.relative(publicDir, filePath))}`;
 const getContentPath = (filePath) => toPublicPath(path.relative(contentDir, filePath));
+const getFilePathFromPublicPath = (publicPath) => path.join(publicDir, publicPath.replace(/^\//, ''));
 
 const getGeneratedPath = (sourcePath, width) => {
 	const parsed = path.parse(path.relative(contentDir, sourcePath));
@@ -149,40 +151,149 @@ const convert = async (sourcePath, outputPath, width) => {
 	await imageMagick.convert(sourcePath, outputPath, width);
 };
 
+const getSourceHash = async (sourcePath) => {
+	const file = await readFile(sourcePath);
+	return createHash('sha256').update(file).digest('hex');
+};
+
+const getVariantWidths = ({ width }) => {
+	const variantWidths = widths.filter((candidateWidth) => candidateWidth <= width);
+
+	if (!variantWidths.includes(width)) {
+		variantWidths.push(width);
+	}
+
+	return variantWidths;
+};
+
+const getVariants = (sourcePath, variantWidths) => variantWidths.map((width) => ({
+	src: getPublicPath(getGeneratedPath(sourcePath, width)),
+	width,
+}));
+
+const readManifest = async () => {
+	try {
+		return JSON.parse(await readFile(manifestPath, 'utf8'));
+	} catch (error) {
+		if (error?.code === 'ENOENT') {
+			return {};
+		}
+
+		throw error;
+	}
+};
+
+const fileExists = async (filePath) => {
+	const fileStat = await stat(filePath).catch(() => null);
+	return fileStat?.isFile() ?? false;
+};
+
+const hasGeneratedVariants = async (variants) => {
+	for (const variant of variants) {
+		if (!(await fileExists(getFilePathFromPublicPath(variant.src)))) {
+			return false;
+		}
+	}
+
+	return true;
+};
+
+const getReusableEntry = async (sourcePath, previousEntry, sourceHash) => {
+	if (
+		previousEntry?.sourceHash !== sourceHash
+		|| !Number.isFinite(previousEntry?.width)
+		|| !Number.isFinite(previousEntry?.height)
+	) {
+		return null;
+	}
+
+	const variants = getVariants(sourcePath, getVariantWidths(previousEntry));
+
+	if (!(await hasGeneratedVariants(variants))) {
+		return null;
+	}
+
+	return {
+		sourceHash,
+		width: previousEntry.width,
+		height: previousEntry.height,
+		variants,
+	};
+};
+
+const listGeneratedFiles = async (directory) => {
+	const entries = await readdir(directory, { withFileTypes: true }).catch((error) => {
+		if (error?.code === 'ENOENT') {
+			return [];
+		}
+
+		throw error;
+	});
+	const files = [];
+
+	for (const entry of entries) {
+		const entryPath = path.join(directory, entry.name);
+
+		if (entry.isDirectory()) {
+			files.push(...await listGeneratedFiles(entryPath));
+		} else if (entry.isFile()) {
+			files.push(entryPath);
+		}
+	}
+
+	return files;
+};
+
+const removeUnreferencedGeneratedFiles = async (manifest) => {
+	const expectedFiles = new Set(
+		Object.values(manifest)
+			.flatMap((entry) => entry.variants ?? [])
+			.map((variant) => getFilePathFromPublicPath(variant.src)),
+	);
+	const generatedFiles = await listGeneratedFiles(generatedDir);
+
+	for (const generatedFile of generatedFiles) {
+		if (!expectedFiles.has(generatedFile)) {
+			await rm(generatedFile, { force: true });
+		}
+	}
+};
+
 const imageMagick = await getImageMagick();
 
-await rm(generatedDir, { recursive: true, force: true });
 await rm(originalDir, { recursive: true, force: true });
 await mkdir(generatedDir, { recursive: true });
 
 const sources = await getReferencedSources();
+const previousManifest = await readManifest();
 const manifest = {};
 
 for (const sourcePath of sources) {
-	const dimensions = await identify(sourcePath);
-	const variantWidths = widths.filter((width) => width <= dimensions.width);
+	const contentPath = getContentPath(sourcePath);
+	const sourceHash = await getSourceHash(sourcePath);
+	const reusableEntry = await getReusableEntry(sourcePath, previousManifest[contentPath], sourceHash);
 
-	if (!variantWidths.includes(dimensions.width)) {
-		variantWidths.push(dimensions.width);
+	if (reusableEntry) {
+		manifest[contentPath] = reusableEntry;
+		continue;
 	}
 
-	const variants = [];
-
+	const dimensions = await identify(sourcePath);
+	const variantWidths = getVariantWidths(dimensions);
+	const variants = getVariants(sourcePath, variantWidths);
 	for (const width of variantWidths) {
 		const outputPath = getGeneratedPath(sourcePath, width);
 		await convert(sourcePath, outputPath, width);
-		variants.push({
-			src: getPublicPath(outputPath),
-			width,
-		});
 	}
 
-	manifest[getContentPath(sourcePath)] = {
+	manifest[contentPath] = {
+		sourceHash,
 		width: dimensions.width,
 		height: dimensions.height,
 		variants,
 	};
 }
 
+await removeUnreferencedGeneratedFiles(manifest);
 await mkdir(path.dirname(manifestPath), { recursive: true });
 await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);

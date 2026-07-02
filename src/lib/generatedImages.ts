@@ -1,6 +1,7 @@
 import generatedImages from '../data/generated-images.json';
 
 type GeneratedImage = {
+	sourceHash?: string;
 	width: number;
 	height: number;
 	variants: Array<{
