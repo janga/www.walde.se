@@ -13,7 +13,7 @@ sections:
         caption: "Två grafiska blad med motiv av fossiler från Gotland."
       - src: karin-walde/lysande-rondell.png
         alt: ""
-        caption: "Runmotiv i ljus vid Roslags Näsby trafikplats, Täby."
+        caption: "Offentlig utsmyckning: De två rondellerna med runmotiv vid motorvägen i Roslags Näsby, Täby."
       - src: karin-walde/verk10.png
         alt: Konstverk av Karin Walde.
         caption: "Separatutställning på Karby gård, Täby."
