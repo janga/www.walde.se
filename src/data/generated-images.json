@@ -168,63 +168,6 @@
       }
     ]
   },
-  "min-konst/verk04.png": {
-    "width": 830,
-    "height": 646,
-    "originalSrc": "/bilder/original/min-konst/verk04.png",
-    "variants": [
-      {
-        "src": "/bilder/generated/min-konst/verk04-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/min-konst/verk04-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/bilder/generated/min-konst/verk04-830.webp",
-        "width": 830
-      }
-    ]
-  },
-  "min-konst/verk05.png": {
-    "width": 746,
-    "height": 746,
-    "originalSrc": "/bilder/original/min-konst/verk05.png",
-    "variants": [
-      {
-        "src": "/bilder/generated/min-konst/verk05-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/min-konst/verk05-746.webp",
-        "width": 746
-      }
-    ]
-  },
-  "min-konst/verk06.png": {
-    "width": 1156,
-    "height": 644,
-    "originalSrc": "/bilder/original/min-konst/verk06.png",
-    "variants": [
-      {
-        "src": "/bilder/generated/min-konst/verk06-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/min-konst/verk06-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/bilder/generated/min-konst/verk06-1080.webp",
-        "width": 1080
-      },
-      {
-        "src": "/bilder/generated/min-konst/verk06-1156.webp",
-        "width": 1156
-      }
-    ]
-  },
   "min-konst/verk07.png": {
     "width": 1108,
     "height": 1104,
@@ -283,33 +226,6 @@
       {
         "src": "/bilder/generated/min-konst/verk09-646.webp",
         "width": 646
-      }
-    ]
-  },
-  "min-konst/verk11.png": {
-    "width": 1470,
-    "height": 1106,
-    "originalSrc": "/bilder/original/min-konst/verk11.png",
-    "variants": [
-      {
-        "src": "/bilder/generated/min-konst/verk11-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/min-konst/verk11-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/bilder/generated/min-konst/verk11-1080.webp",
-        "width": 1080
-      },
-      {
-        "src": "/bilder/generated/min-konst/verk11-1440.webp",
-        "width": 1440
-      },
-      {
-        "src": "/bilder/generated/min-konst/verk11-1470.webp",
-        "width": 1470
       }
     ]
   },
@@ -436,6 +352,90 @@
       {
         "src": "/bilder/generated/om-mig/verk14-1202.webp",
         "width": 1202
+      }
+    ]
+  },
+  "rundellerna/verk04.png": {
+    "width": 830,
+    "height": 646,
+    "originalSrc": "/bilder/original/rundellerna/verk04.png",
+    "variants": [
+      {
+        "src": "/bilder/generated/rundellerna/verk04-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/rundellerna/verk04-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/rundellerna/verk04-830.webp",
+        "width": 830
+      }
+    ]
+  },
+  "rundellerna/verk05.png": {
+    "width": 746,
+    "height": 746,
+    "originalSrc": "/bilder/original/rundellerna/verk05.png",
+    "variants": [
+      {
+        "src": "/bilder/generated/rundellerna/verk05-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/rundellerna/verk05-746.webp",
+        "width": 746
+      }
+    ]
+  },
+  "rundellerna/verk06.png": {
+    "width": 1156,
+    "height": 644,
+    "originalSrc": "/bilder/original/rundellerna/verk06.png",
+    "variants": [
+      {
+        "src": "/bilder/generated/rundellerna/verk06-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/rundellerna/verk06-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/rundellerna/verk06-1080.webp",
+        "width": 1080
+      },
+      {
+        "src": "/bilder/generated/rundellerna/verk06-1156.webp",
+        "width": 1156
+      }
+    ]
+  },
+  "rundellerna/verk11.png": {
+    "width": 1470,
+    "height": 1106,
+    "originalSrc": "/bilder/original/rundellerna/verk11.png",
+    "variants": [
+      {
+        "src": "/bilder/generated/rundellerna/verk11-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/rundellerna/verk11-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/rundellerna/verk11-1080.webp",
+        "width": 1080
+      },
+      {
+        "src": "/bilder/generated/rundellerna/verk11-1440.webp",
+        "width": 1440
+      },
+      {
+        "src": "/bilder/generated/rundellerna/verk11-1470.webp",
+        "width": 1470
       }
     ]
   }

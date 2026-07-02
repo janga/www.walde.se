@@ -18,6 +18,22 @@ sections:
         alt: Konstverk av Karin Walde.
         caption: "Separatutställning på Karby gård, Täby."
 
+  - id: rundellerna
+    title: Rundellerna
+    gallery:
+      - src: rundellerna/verk04.png
+        alt: Konstverk av Karin Walde.
+        caption: "Runmotiv på corténstål vid Roslags Näsby trafikplats, Täby."
+      - src: rundellerna/verk05.png
+        alt: Konstverk av Karin Walde.
+        caption: "Runsten i rondellgestaltningen vid Roslags Näsby trafikplats, Täby."
+      - src: rundellerna/verk06.png
+        alt: Konstverk av Karin Walde.
+        caption: "Belyst runmotiv i rondellgestaltningen vid Roslags Näsby trafikplats, Täby."
+      - src: rundellerna/verk11.png
+        alt: Konstverk av Karin Walde.
+        caption: "Runristad sten med ormform i landskapet."
+
   - id: min-konst
     title: Min konst
     gallery:
@@ -39,18 +55,6 @@ sections:
       - src: min-konst/verk09.png
         alt: Konstverk av Karin Walde.
         caption: "Avlång textilform med skugga."
-      - src: min-konst/verk04.png
-        alt: Konstverk av Karin Walde.
-        caption: "Runmotiv på corténstål vid Roslags Näsby trafikplats, Täby."
-      - src: min-konst/verk05.png
-        alt: Konstverk av Karin Walde.
-        caption: "Runsten i rondellgestaltningen vid Roslags Näsby trafikplats, Täby."
-      - src: min-konst/verk06.png
-        alt: Konstverk av Karin Walde.
-        caption: "Belyst runmotiv i rondellgestaltningen vid Roslags Näsby trafikplats, Täby."
-      - src: min-konst/verk11.png
-        alt: Konstverk av Karin Walde.
-        caption: "Runristad sten med ormform i landskapet."
       - src: min-konst/verk15.png
         alt: Konstverk av Karin Walde.
         caption: "Båtstäv mot vatten och ljus horisont."
@@ -83,6 +87,16 @@ Ateljé och showroom i Näsbypark, Täby
 
 [karin@walde.se](mailto:karin@walde.se)
 [0730-577 855](tel:+46730577855)
+
+## Rundellerna
+
+Mina rundeller vid Roslags-Näsby
+
+När jag var barn cyklade jag varje dag förbi runhällen vid Roslags-Näsby. Den gjorde starkt intryck på mig redan då. Många år senare fick jag möjlighet att återvända till samma plats – nu med två rondeller som låter Täbys vikingatid möta dagens trafik.
+
+I den ena rondellen står kopior av fyra runstenar som en gång funnits i Täby men sedan försvunnit. I den andra löper en 55 meter lång ring av corténstål med namn på människor som faktiskt levde här för tusen år sedan.
+
+En detalj jag tycker om är att flera av namnen är kvinnonamn. Det påminner om att det inte bara var män som reste ut i världen. De gav sig av utan karta, kompass eller GPS – medan vi andra sitter i bilar och klagar på trafiken.
 
 ## Min konst
 
