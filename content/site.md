@@ -32,7 +32,7 @@ sections:
         caption: "Belyst runmotiv i rondellgestaltningen vid Roslags Näsby trafikplats, Täby."
       - src: rundellerna/verk11.png
         alt: Konstverk av Karin Walde.
-        caption: "Runristad sten med ormform i landskapet."
+        caption: "Kopia av en av de försvunna runstenarna i rondellgestaltningen."
 
   - id: min-konst
     title: Min konst
