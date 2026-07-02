@@ -1,6 +1,8 @@
 {
   "karin-walde/karin-dokumenterar-runmotiv.jpg": {
     "sourceHash": "8821c9204668decb85e74930bd2cedbee15ec44a742eb3f419014b2bea656ae7",
+    "metadataVersion": 1,
+    "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
     "width": 4032,
     "height": 3024,
     "variants": [
@@ -28,6 +30,8 @@
   },
   "karin-walde/karin-walde.jpg": {
     "sourceHash": "99d094d632fee831a2055cbf688af9c311a418642ca3ae8bbfd8398333eacc08",
+    "metadataVersion": 1,
+    "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
     "width": 4032,
     "height": 3024,
     "variants": [
@@ -55,6 +59,8 @@
   },
   "karin-walde/lysande-rondell.png": {
     "sourceHash": "ac72d0663c5bc88a1e23b14757e63477a2b45cd474c418173a0411aa52ae72b4",
+    "metadataVersion": 1,
+    "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
     "width": 1466,
     "height": 572,
     "variants": [
@@ -82,6 +88,8 @@
   },
   "karin-walde/tva-fossiler.jpg": {
     "sourceHash": "08da69355cd095c06880238dfc71cd711f2438af6e1f0582442ef4ff98d0cf23",
+    "metadataVersion": 1,
+    "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
     "width": 2109,
     "height": 1098,
     "variants": [
@@ -109,6 +117,8 @@
   },
   "karin-walde/verk10.png": {
     "sourceHash": "0aff175a8d11b09480c9eea30d963002f1abee71c21b33485c945caf8b6b1296",
+    "metadataVersion": 1,
+    "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
     "width": 1474,
     "height": 712,
     "variants": [
@@ -136,6 +146,8 @@
   },
   "min-konst/verk02.png": {
     "sourceHash": "ea630b046cd22aa6edd590118e933aac11224be5daf7d236250bf49097bb0088",
+    "metadataVersion": 1,
+    "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
     "width": 1002,
     "height": 1004,
     "variants": [
@@ -155,6 +167,8 @@
   },
   "min-konst/verk03.png": {
     "sourceHash": "bf1684c06171798de11c1bcc9a951552d689538bbd34ef292c9bac4baa95f59e",
+    "metadataVersion": 1,
+    "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
     "width": 694,
     "height": 1062,
     "variants": [
@@ -170,6 +184,8 @@
   },
   "min-konst/verk07.png": {
     "sourceHash": "23b3372d978261e34b8ba4a36bc7852f3d6134f89c7af6badbff04780398f5be",
+    "metadataVersion": 1,
+    "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
     "width": 1108,
     "height": 1104,
     "variants": [
@@ -193,6 +209,8 @@
   },
   "min-konst/verk08.png": {
     "sourceHash": "9752026b0b53399900651823a49509db1cdf877b93d23ca1ea958162125499dd",
+    "metadataVersion": 1,
+    "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
     "width": 1100,
     "height": 1104,
     "variants": [
@@ -216,6 +234,8 @@
   },
   "min-konst/verk09.png": {
     "sourceHash": "ec63e4b473043db2f5f10323957c77469a078baf09d529cf6936e6d7775e396f",
+    "metadataVersion": 1,
+    "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
     "width": 646,
     "height": 1108,
     "variants": [
@@ -231,6 +251,8 @@
   },
   "min-konst/verk15.png": {
     "sourceHash": "b3d5a2b37d0f16bfdbe5a593406a39b51722064793685ef675ab88ddf4aaa8ca",
+    "metadataVersion": 1,
+    "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
     "width": 660,
     "height": 1104,
     "variants": [
@@ -246,6 +268,8 @@
   },
   "min-konst/verk16.png": {
     "sourceHash": "1540f526383c65066fadc97c96e7d9afedcc32daa184ff76a5d2a8b602b16a72",
+    "metadataVersion": 1,
+    "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
     "width": 740,
     "height": 1104,
     "variants": [
@@ -261,6 +285,8 @@
   },
   "min-konst/verk17.png": {
     "sourceHash": "f8f9351645269584130b750d8e75657aa18bd2ba6b8a98f525e48f0af3e4ebfa",
+    "metadataVersion": 1,
+    "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
     "width": 776,
     "height": 1104,
     "variants": [
@@ -280,6 +306,8 @@
   },
   "om-mig/karin-i-bat.jpg": {
     "sourceHash": "3ed43ae791a331de45117428cc892d5f6f24c8679b75befaeafdace76a67d16f",
+    "metadataVersion": 1,
+    "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
     "width": 3024,
     "height": 4032,
     "variants": [
@@ -307,6 +335,8 @@
   },
   "om-mig/karin-utomhus.jpg": {
     "sourceHash": "aa0c7d1c3672e9f665d5693c2cd268b8695f3954bd7a63f4c0eb1731e5f79e49",
+    "metadataVersion": 1,
+    "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
     "width": 3024,
     "height": 4032,
     "variants": [
@@ -334,6 +364,8 @@
   },
   "om-mig/verk12.png": {
     "sourceHash": "effbd3ad1c51e665935630f4bd3d76b95a06a625430c622fa690340a7cfb448a",
+    "metadataVersion": 1,
+    "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
     "width": 1470,
     "height": 1106,
     "variants": [
@@ -361,6 +393,8 @@
   },
   "om-mig/verk13.png": {
     "sourceHash": "c79439451a5418227626c81497182f9c8a5a99af81103a011689f560145ad31b",
+    "metadataVersion": 1,
+    "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
     "width": 1472,
     "height": 986,
     "variants": [
@@ -388,6 +422,8 @@
   },
   "om-mig/verk14.png": {
     "sourceHash": "27b4bffd59c5ecb9e3f2991e732f316c13f4450ca5d72450a00cb88bf0e6fbc8",
+    "metadataVersion": 1,
+    "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
     "width": 1202,
     "height": 1102,
     "variants": [
@@ -411,6 +447,8 @@
   },
   "runskriftsrondellerna/verk04.png": {
     "sourceHash": "6dbf88973763b4f584d80d2d970804523ede719da58dad47831efc58b957ab2d",
+    "metadataVersion": 1,
+    "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
     "width": 830,
     "height": 646,
     "variants": [
@@ -430,6 +468,8 @@
   },
   "runskriftsrondellerna/verk05.png": {
     "sourceHash": "f6d4fe4a472d65866e13b850faaa45d77cf9b92e91f6244823e848fbb12838d0",
+    "metadataVersion": 1,
+    "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
     "width": 746,
     "height": 746,
     "variants": [
@@ -445,6 +485,8 @@
   },
   "runskriftsrondellerna/verk06.png": {
     "sourceHash": "d918d1ac971f7a7a027da9b93b4b892d1a15697a9d5b4b37a0551c1e4103a52d",
+    "metadataVersion": 1,
+    "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
     "width": 1156,
     "height": 644,
     "variants": [
@@ -468,6 +510,8 @@
   },
   "runskriftsrondellerna/verk11.png": {
     "sourceHash": "5f0a8ce5d1fa580cf0e0aa27abba80c40d1320341f180b3e9e1126e5a32d0e69",
+    "metadataVersion": 1,
+    "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
     "width": 1470,
     "height": 1106,
     "variants": [

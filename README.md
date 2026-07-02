@@ -44,6 +44,7 @@ src/
 `content/site.md` använder frontmatter. Varje sektion definieras i `sections`:
 
 ```yaml
+copyrightOwner: Karin Walde
 sections:
   - id: min-konst
     title: Min konst
@@ -60,6 +61,7 @@ Frontmatter styr sektionernas ordning och gallerimetadata. Den
 löpande texten skrivs som vanlig Markdown i samma fil under `##`-rubriker som
 matchar sektionernas `id` eller `title`:
 
+`copyrightOwner` används för upphovsrättsmetadata i genererade bildfiler.
 Bildtext anges med det valfria fältet `caption`. `src` och `alt` ska finnas
 för varje bild.
 
@@ -94,6 +96,10 @@ kräver ImageMagick, antingen kommandot `magick` eller de äldre kommandona
 Bildflödet skapar WebP-varianter i `public/bilder/generated/` för visning på
 sidan. Katalogen är build-output och versionshanteras inte. Klick på en bild går
 till den största genererade WebP-varianten.
+
+De genererade WebP-filerna får en liten XMP-profil med upphovsrättsmetadata
+från `copyrightOwner`, till exempel "Copyright Karin Walde. All rights
+reserved.".
 
 Bildflödet är inkrementellt. `src/data/generated-images.json` sparar en hash för
 varje källbild, så oförändrade bilder återanvänder redan genererade

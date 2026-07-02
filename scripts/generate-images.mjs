@@ -1,6 +1,7 @@
 import { execFile } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { mkdir, readdir, readFile, rm, stat, writeFile } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { promisify } from 'node:util';
 
@@ -13,6 +14,8 @@ const generatedDir = path.join(publicDir, 'bilder', 'generated');
 const originalDir = path.join(publicDir, 'bilder', 'original');
 const manifestPath = path.join(root, 'src', 'data', 'generated-images.json');
 const siteContentPath = path.join(contentDir, 'site.md');
+const imageRightsProfilePath = path.join(tmpdir(), 'karin-walde-image-rights.xmp');
+const imageMetadataVersion = 1;
 const widths = [480, 768, 1080, 1440];
 const supportedExtensions = new Set(['.jpg', '.jpeg', '.png']);
 
@@ -40,6 +43,8 @@ const getImageMagick = async () => {
 				'-resize',
 				`${width}x`,
 				'-strip',
+				'-profile',
+				imageRightsProfilePath,
 				'-quality',
 				'82',
 				outputPath,
@@ -56,6 +61,8 @@ const getImageMagick = async () => {
 				'-resize',
 				`${width}x`,
 				'-strip',
+				'-profile',
+				imageRightsProfilePath,
 				'-quality',
 				'82',
 				outputPath,
@@ -80,8 +87,32 @@ const fail = (message) => {
 	throw new Error(message);
 };
 
+const getSiteContent = () => readFile(siteContentPath, 'utf8');
+
+const getFrontmatter = (siteContent) => {
+	const match = siteContent.match(/^---\n([\s\S]*?)\n---/);
+
+	if (!match) {
+		fail('content/site.md saknar frontmatter.');
+	}
+
+	return match[1];
+};
+
+const getCopyrightOwner = async () => {
+	const frontmatter = getFrontmatter(await getSiteContent());
+	const match = frontmatter.match(/^copyrightOwner:\s*(?:"([^"]+)"|'([^']+)'|(.+))\s*$/m);
+	const copyrightOwner = (match?.[1] ?? match?.[2] ?? match?.[3] ?? '').trim();
+
+	if (!copyrightOwner) {
+		fail('content/site.md måste ange copyrightOwner i frontmatter.');
+	}
+
+	return copyrightOwner;
+};
+
 const getReferencedImages = async () => {
-	const siteContent = await readFile(siteContentPath, 'utf8');
+	const siteContent = await getSiteContent();
 	const references = [];
 	const srcPattern = /^\s+-?\s*src:\s+["']?([^"'\n]+)["']?\s*$/gm;
 
@@ -151,10 +182,44 @@ const convert = async (sourcePath, outputPath, width) => {
 	await imageMagick.convert(sourcePath, outputPath, width);
 };
 
+const getHash = (value) => createHash('sha256').update(value).digest('hex');
+
 const getSourceHash = async (sourcePath) => {
 	const file = await readFile(sourcePath);
-	return createHash('sha256').update(file).digest('hex');
+	return getHash(file);
 };
+
+const escapeXml = (value) => value
+	.replaceAll('&', '&amp;')
+	.replaceAll('<', '&lt;')
+	.replaceAll('>', '&gt;')
+	.replaceAll('"', '&quot;')
+	.replaceAll("'", '&apos;');
+
+const getCopyrightNotice = (copyrightOwner) => `Copyright ${copyrightOwner}. All rights reserved.`;
+
+const getImageRightsXmp = (copyrightOwner) => {
+	const escapedOwner = escapeXml(copyrightOwner);
+	const escapedNotice = escapeXml(getCopyrightNotice(copyrightOwner));
+
+	return `<?xpacket begin="" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/">
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<rdf:Description rdf:about="" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">
+<dc:creator><rdf:Seq><rdf:li>${escapedOwner}</rdf:li></rdf:Seq></dc:creator>
+<dc:rights><rdf:Alt><rdf:li xml:lang="x-default">${escapedNotice}</rdf:li></rdf:Alt></dc:rights>
+<xmpRights:Marked>True</xmpRights:Marked>
+</rdf:Description>
+</rdf:RDF>
+</x:xmpmeta>
+<?xpacket end="w"?>`;
+};
+
+const getImageMetadataHash = (copyrightOwner) => getHash([
+	imageMetadataVersion,
+	copyrightOwner,
+	getCopyrightNotice(copyrightOwner),
+].join('\n'));
 
 const getVariantWidths = ({ width }) => {
 	const variantWidths = widths.filter((candidateWidth) => candidateWidth <= width);
@@ -198,9 +263,11 @@ const hasGeneratedVariants = async (variants) => {
 	return true;
 };
 
-const getReusableEntry = async (sourcePath, previousEntry, sourceHash) => {
+const getReusableEntry = async (sourcePath, previousEntry, sourceHash, metadataHash) => {
 	if (
 		previousEntry?.sourceHash !== sourceHash
+		|| previousEntry?.metadataVersion !== imageMetadataVersion
+		|| previousEntry?.metadataHash !== metadataHash
 		|| !Number.isFinite(previousEntry?.width)
 		|| !Number.isFinite(previousEntry?.height)
 	) {
@@ -215,6 +282,8 @@ const getReusableEntry = async (sourcePath, previousEntry, sourceHash) => {
 
 	return {
 		sourceHash,
+		metadataVersion: imageMetadataVersion,
+		metadataHash,
 		width: previousEntry.width,
 		height: previousEntry.height,
 		variants,
@@ -263,6 +332,9 @@ const imageMagick = await getImageMagick();
 
 await rm(originalDir, { recursive: true, force: true });
 await mkdir(generatedDir, { recursive: true });
+const copyrightOwner = await getCopyrightOwner();
+const metadataHash = getImageMetadataHash(copyrightOwner);
+await writeFile(imageRightsProfilePath, getImageRightsXmp(copyrightOwner));
 
 const sources = await getReferencedSources();
 const previousManifest = await readManifest();
@@ -271,7 +343,7 @@ const manifest = {};
 for (const sourcePath of sources) {
 	const contentPath = getContentPath(sourcePath);
 	const sourceHash = await getSourceHash(sourcePath);
-	const reusableEntry = await getReusableEntry(sourcePath, previousManifest[contentPath], sourceHash);
+	const reusableEntry = await getReusableEntry(sourcePath, previousManifest[contentPath], sourceHash, metadataHash);
 
 	if (reusableEntry) {
 		manifest[contentPath] = reusableEntry;
@@ -288,6 +360,8 @@ for (const sourcePath of sources) {
 
 	manifest[contentPath] = {
 		sourceHash,
+		metadataVersion: imageMetadataVersion,
+		metadataHash,
 		width: dimensions.width,
 		height: dimensions.height,
 		variants,

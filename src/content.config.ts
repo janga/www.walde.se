@@ -15,6 +15,7 @@ const site = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),
+		copyrightOwner: z.string().min(1),
 		sections: z.array(
 			z.object({
 				id: z.string().regex(/^[a-z0-9-]+$/),
