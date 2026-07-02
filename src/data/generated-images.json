@@ -445,7 +445,7 @@
       }
     ]
   },
-  "runskriftsrondellerna/verk04.png": {
+  "rundellerna/verk04.png": {
     "sourceHash": "6dbf88973763b4f584d80d2d970804523ede719da58dad47831efc58b957ab2d",
     "metadataVersion": 1,
     "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
@@ -453,20 +453,20 @@
     "height": 646,
     "variants": [
       {
-        "src": "/bilder/generated/runskriftsrondellerna/verk04-480.webp",
+        "src": "/bilder/generated/rundellerna/verk04-480.webp",
         "width": 480
       },
       {
-        "src": "/bilder/generated/runskriftsrondellerna/verk04-768.webp",
+        "src": "/bilder/generated/rundellerna/verk04-768.webp",
         "width": 768
       },
       {
-        "src": "/bilder/generated/runskriftsrondellerna/verk04-830.webp",
+        "src": "/bilder/generated/rundellerna/verk04-830.webp",
         "width": 830
       }
     ]
   },
-  "runskriftsrondellerna/verk05.png": {
+  "rundellerna/verk05.png": {
     "sourceHash": "f6d4fe4a472d65866e13b850faaa45d77cf9b92e91f6244823e848fbb12838d0",
     "metadataVersion": 1,
     "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
@@ -474,16 +474,16 @@
     "height": 746,
     "variants": [
       {
-        "src": "/bilder/generated/runskriftsrondellerna/verk05-480.webp",
+        "src": "/bilder/generated/rundellerna/verk05-480.webp",
         "width": 480
       },
       {
-        "src": "/bilder/generated/runskriftsrondellerna/verk05-746.webp",
+        "src": "/bilder/generated/rundellerna/verk05-746.webp",
         "width": 746
       }
     ]
   },
-  "runskriftsrondellerna/verk06.png": {
+  "rundellerna/verk06.png": {
     "sourceHash": "d918d1ac971f7a7a027da9b93b4b892d1a15697a9d5b4b37a0551c1e4103a52d",
     "metadataVersion": 1,
     "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
@@ -491,24 +491,24 @@
     "height": 644,
     "variants": [
       {
-        "src": "/bilder/generated/runskriftsrondellerna/verk06-480.webp",
+        "src": "/bilder/generated/rundellerna/verk06-480.webp",
         "width": 480
       },
       {
-        "src": "/bilder/generated/runskriftsrondellerna/verk06-768.webp",
+        "src": "/bilder/generated/rundellerna/verk06-768.webp",
         "width": 768
       },
       {
-        "src": "/bilder/generated/runskriftsrondellerna/verk06-1080.webp",
+        "src": "/bilder/generated/rundellerna/verk06-1080.webp",
         "width": 1080
       },
       {
-        "src": "/bilder/generated/runskriftsrondellerna/verk06-1156.webp",
+        "src": "/bilder/generated/rundellerna/verk06-1156.webp",
         "width": 1156
       }
     ]
   },
-  "runskriftsrondellerna/verk11.png": {
+  "rundellerna/verk11.png": {
     "sourceHash": "5f0a8ce5d1fa580cf0e0aa27abba80c40d1320341f180b3e9e1126e5a32d0e69",
     "metadataVersion": 1,
     "metadataHash": "6c2646b989e10c10a4d525b3ee53fc6c9ec927a7d24f76bba38739d2484ffe72",
@@ -516,23 +516,23 @@
     "height": 1106,
     "variants": [
       {
-        "src": "/bilder/generated/runskriftsrondellerna/verk11-480.webp",
+        "src": "/bilder/generated/rundellerna/verk11-480.webp",
         "width": 480
       },
       {
-        "src": "/bilder/generated/runskriftsrondellerna/verk11-768.webp",
+        "src": "/bilder/generated/rundellerna/verk11-768.webp",
         "width": 768
       },
       {
-        "src": "/bilder/generated/runskriftsrondellerna/verk11-1080.webp",
+        "src": "/bilder/generated/rundellerna/verk11-1080.webp",
         "width": 1080
       },
       {
-        "src": "/bilder/generated/runskriftsrondellerna/verk11-1440.webp",
+        "src": "/bilder/generated/rundellerna/verk11-1440.webp",
         "width": 1440
       },
       {
-        "src": "/bilder/generated/runskriftsrondellerna/verk11-1470.webp",
+        "src": "/bilder/generated/rundellerna/verk11-1470.webp",
         "width": 1470
       }
     ]

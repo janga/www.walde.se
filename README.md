@@ -129,8 +129,9 @@ sektioner på samma sida:
 
 ```text
 /#karin-walde
+/#rundellerna
 /#min-konst
-/#cv
+/#om-mig
 ```
 
 Det finns inte längre separata Astro-routes för gallerier eller sidor.

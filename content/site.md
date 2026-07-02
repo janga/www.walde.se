@@ -19,22 +19,22 @@ sections:
         alt: Konstverk av Karin Walde.
         caption: "Bildväv och objekt. Separatutställning på Karby gård, Täby."
 
-  - id: runskriftsrondellerna
-    title: Runskriftsrondellerna
+  - id: rundellerna
+    title: Rundellerna
     gallery:
-      - src: runskriftsrondellerna/verk04.png
+      - src: rundellerna/verk04.png
         alt: Konstverk av Karin Walde.
         caption: "Runmotiv på corténstål vid Roslags Näsby trafikplats, Täby."
       - src: karin-walde/karin-dokumenterar-runmotiv.jpg
         alt: Karin Walde dokumenterar ett runmotiv på corténstål.
         caption: "Karin dokumenterar arbetet med runmotiv på corténstål."
-      - src: runskriftsrondellerna/verk05.png
+      - src: rundellerna/verk05.png
         alt: Konstverk av Karin Walde.
         caption: "Runsten i rondellgestaltningen vid Roslags Näsby trafikplats, Täby."
-      - src: runskriftsrondellerna/verk06.png
+      - src: rundellerna/verk06.png
         alt: Konstverk av Karin Walde.
         caption: "Belyst runmotiv i rondellgestaltningen vid Roslags Näsby trafikplats, Täby."
-      - src: runskriftsrondellerna/verk11.png
+      - src: rundellerna/verk11.png
         alt: Konstverk av Karin Walde.
         caption: "Kopia av en av de försvunna runstenarna i rondellgestaltningen."
 
@@ -85,9 +85,6 @@ sections:
         alt: Fotografi av Karin Walde.
         caption: ""
 
-  - id: cv
-    title: CV
-
 ---
 
 ## Karin Walde 
@@ -98,7 +95,7 @@ Ateljé och showroom i Näsbypark, Täby
 [karin@walde.se](mailto:karin@walde.se)
 [0730-577 855](tel:+46730577855)
 
-## Runskriftsrondellerna
+## Rundellerna
 
 2023 invigdes de två stora rondeller i Roslags Näsby, Täby, som jag har formgivit och som har fått mycket uppmärksamhet.
 
@@ -113,11 +110,6 @@ En detalj jag tycker om är att flera av namnen är kvinnonamn. Det påminner om
 Ett urval av min konst. Välkommen att kontakta mig för att se mer på utställningar eller i min ateljé med showroom.
 
 ## Om mig
-
-[karin@walde.se](mailto:karin@walde.se)
-[0730-577 855](tel:+46730577855)
-
-## CV
 
 Född 1941 i Jokkmokk, sedan 1946 bosatt i Täby.
 
@@ -165,3 +157,6 @@ Mottagare av Täby kommuns kulturstipendium 2002.
 - Näsby slott i Täby
 - Skaraborgs läns
 - Västernorrlands landsting
+
+[karin@walde.se](mailto:karin@walde.se)
+[0730-577 855](tel:+46730577855)
