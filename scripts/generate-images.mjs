@@ -1,5 +1,5 @@
 import { execFile } from 'node:child_process';
-import { copyFile, mkdir, readFile, rm, stat, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, rm, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { promisify } from 'node:util';
 
@@ -73,8 +73,6 @@ const getGeneratedPath = (sourcePath, width) => {
 	const parsed = path.parse(path.relative(contentDir, sourcePath));
 	return path.join(generatedDir, parsed.dir, `${parsed.name}-${width}.webp`);
 };
-
-const getOriginalPath = (sourcePath) => path.join(originalDir, path.relative(contentDir, sourcePath));
 
 const fail = (message) => {
 	throw new Error(message);
@@ -156,18 +154,13 @@ const imageMagick = await getImageMagick();
 await rm(generatedDir, { recursive: true, force: true });
 await rm(originalDir, { recursive: true, force: true });
 await mkdir(generatedDir, { recursive: true });
-await mkdir(originalDir, { recursive: true });
 
 const sources = await getReferencedSources();
 const manifest = {};
 
 for (const sourcePath of sources) {
 	const dimensions = await identify(sourcePath);
-	const originalPath = getOriginalPath(sourcePath);
 	const variantWidths = widths.filter((width) => width <= dimensions.width);
-
-	await mkdir(path.dirname(originalPath), { recursive: true });
-	await copyFile(sourcePath, originalPath);
 
 	if (!variantWidths.includes(dimensions.width)) {
 		variantWidths.push(dimensions.width);
@@ -187,7 +180,6 @@ for (const sourcePath of sources) {
 	manifest[getContentPath(sourcePath)] = {
 		width: dimensions.width,
 		height: dimensions.height,
-		originalSrc: getPublicPath(originalPath),
 		variants,
 	};
 }

@@ -2,7 +2,6 @@
   "karin-walde/karin-dokumenterar-runmotiv.jpg": {
     "width": 4032,
     "height": 3024,
-    "originalSrc": "/bilder/original/karin-walde/karin-dokumenterar-runmotiv.jpg",
     "variants": [
       {
         "src": "/bilder/generated/karin-walde/karin-dokumenterar-runmotiv-480.webp",
@@ -29,7 +28,6 @@
   "karin-walde/karin-walde.jpg": {
     "width": 4032,
     "height": 3024,
-    "originalSrc": "/bilder/original/karin-walde/karin-walde.jpg",
     "variants": [
       {
         "src": "/bilder/generated/karin-walde/karin-walde-480.webp",
@@ -56,7 +54,6 @@
   "karin-walde/lysande-rondell.png": {
     "width": 1466,
     "height": 572,
-    "originalSrc": "/bilder/original/karin-walde/lysande-rondell.png",
     "variants": [
       {
         "src": "/bilder/generated/karin-walde/lysande-rondell-480.webp",
@@ -83,7 +80,6 @@
   "karin-walde/tva-fossiler.jpg": {
     "width": 2109,
     "height": 1098,
-    "originalSrc": "/bilder/original/karin-walde/tva-fossiler.jpg",
     "variants": [
       {
         "src": "/bilder/generated/karin-walde/tva-fossiler-480.webp",
@@ -110,7 +106,6 @@
   "karin-walde/verk10.png": {
     "width": 1474,
     "height": 712,
-    "originalSrc": "/bilder/original/karin-walde/verk10.png",
     "variants": [
       {
         "src": "/bilder/generated/karin-walde/verk10-480.webp",
@@ -137,7 +132,6 @@
   "min-konst/verk02.png": {
     "width": 1002,
     "height": 1004,
-    "originalSrc": "/bilder/original/min-konst/verk02.png",
     "variants": [
       {
         "src": "/bilder/generated/min-konst/verk02-480.webp",
@@ -156,7 +150,6 @@
   "min-konst/verk03.png": {
     "width": 694,
     "height": 1062,
-    "originalSrc": "/bilder/original/min-konst/verk03.png",
     "variants": [
       {
         "src": "/bilder/generated/min-konst/verk03-480.webp",
@@ -171,7 +164,6 @@
   "min-konst/verk07.png": {
     "width": 1108,
     "height": 1104,
-    "originalSrc": "/bilder/original/min-konst/verk07.png",
     "variants": [
       {
         "src": "/bilder/generated/min-konst/verk07-480.webp",
@@ -194,7 +186,6 @@
   "min-konst/verk08.png": {
     "width": 1100,
     "height": 1104,
-    "originalSrc": "/bilder/original/min-konst/verk08.png",
     "variants": [
       {
         "src": "/bilder/generated/min-konst/verk08-480.webp",
@@ -217,7 +208,6 @@
   "min-konst/verk09.png": {
     "width": 646,
     "height": 1108,
-    "originalSrc": "/bilder/original/min-konst/verk09.png",
     "variants": [
       {
         "src": "/bilder/generated/min-konst/verk09-480.webp",
@@ -232,7 +222,6 @@
   "min-konst/verk15.png": {
     "width": 660,
     "height": 1104,
-    "originalSrc": "/bilder/original/min-konst/verk15.png",
     "variants": [
       {
         "src": "/bilder/generated/min-konst/verk15-480.webp",
@@ -247,7 +236,6 @@
   "min-konst/verk16.png": {
     "width": 740,
     "height": 1104,
-    "originalSrc": "/bilder/original/min-konst/verk16.png",
     "variants": [
       {
         "src": "/bilder/generated/min-konst/verk16-480.webp",
@@ -262,7 +250,6 @@
   "min-konst/verk17.png": {
     "width": 776,
     "height": 1104,
-    "originalSrc": "/bilder/original/min-konst/verk17.png",
     "variants": [
       {
         "src": "/bilder/generated/min-konst/verk17-480.webp",
@@ -281,7 +268,6 @@
   "om-mig/karin-i-bat.jpg": {
     "width": 3024,
     "height": 4032,
-    "originalSrc": "/bilder/original/om-mig/karin-i-bat.jpg",
     "variants": [
       {
         "src": "/bilder/generated/om-mig/karin-i-bat-480.webp",
@@ -308,7 +294,6 @@
   "om-mig/karin-utomhus.jpg": {
     "width": 3024,
     "height": 4032,
-    "originalSrc": "/bilder/original/om-mig/karin-utomhus.jpg",
     "variants": [
       {
         "src": "/bilder/generated/om-mig/karin-utomhus-480.webp",
@@ -335,7 +320,6 @@
   "om-mig/verk12.png": {
     "width": 1470,
     "height": 1106,
-    "originalSrc": "/bilder/original/om-mig/verk12.png",
     "variants": [
       {
         "src": "/bilder/generated/om-mig/verk12-480.webp",
@@ -362,7 +346,6 @@
   "om-mig/verk13.png": {
     "width": 1472,
     "height": 986,
-    "originalSrc": "/bilder/original/om-mig/verk13.png",
     "variants": [
       {
         "src": "/bilder/generated/om-mig/verk13-480.webp",
@@ -389,7 +372,6 @@
   "om-mig/verk14.png": {
     "width": 1202,
     "height": 1102,
-    "originalSrc": "/bilder/original/om-mig/verk14.png",
     "variants": [
       {
         "src": "/bilder/generated/om-mig/verk14-480.webp",
@@ -412,7 +394,6 @@
   "rundellerna/verk04.png": {
     "width": 830,
     "height": 646,
-    "originalSrc": "/bilder/original/rundellerna/verk04.png",
     "variants": [
       {
         "src": "/bilder/generated/rundellerna/verk04-480.webp",
@@ -431,7 +412,6 @@
   "rundellerna/verk05.png": {
     "width": 746,
     "height": 746,
-    "originalSrc": "/bilder/original/rundellerna/verk05.png",
     "variants": [
       {
         "src": "/bilder/generated/rundellerna/verk05-480.webp",
@@ -446,7 +426,6 @@
   "rundellerna/verk06.png": {
     "width": 1156,
     "height": 644,
-    "originalSrc": "/bilder/original/rundellerna/verk06.png",
     "variants": [
       {
         "src": "/bilder/generated/rundellerna/verk06-480.webp",
@@ -469,7 +448,6 @@
   "rundellerna/verk11.png": {
     "width": 1470,
     "height": 1106,
-    "originalSrc": "/bilder/original/rundellerna/verk11.png",
     "variants": [
       {
         "src": "/bilder/generated/rundellerna/verk11-480.webp",

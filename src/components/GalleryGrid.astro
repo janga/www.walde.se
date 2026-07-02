@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import { getImageAttributes, getOriginalImageSrc } from '../lib/generatedImages';
+import { getImageAttributes, getLinkedImageSrc } from '../lib/generatedImages';
 
 type SiteSection = CollectionEntry<'site'>['data']['sections'][number];
 type GalleryImage = SiteSection['gallery'][number];
@@ -17,7 +17,7 @@ const { title, images } = Astro.props;
 	{images.map((image) => (
 		<article class="gallery-item">
 			<a
-				href={getOriginalImageSrc(image.src)}
+				href={getLinkedImageSrc(image.src)}
 				class="gallery-image-link"
 			>
 				<img

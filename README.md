@@ -30,8 +30,7 @@ content/
 └── min-konst/                      # Källbilder för galleriet Min konst
 public/bilder/
 ├── CNAME                           # Testdomän för GitHub Pages
-├── generated/                      # Genererade WebP-varianter, versionshanteras inte
-└── original/                       # Originalkopior från bildflödet, versionshanteras inte
+└── generated/                      # Genererade WebP-varianter, versionshanteras inte
 src/
 ├── layouts/BaseLayout.astro        # Projektgemensam HTML och metadata
 ├── pages/index.astro               # Renderar hela sajten från content/site.md
@@ -92,9 +91,9 @@ bytts ut. `npm run build` kör bildgenereringen automatiskt. Bildgenereringen
 kräver ImageMagick, antingen kommandot `magick` eller de äldre kommandona
 `identify` och `convert`.
 
-Bildflödet kopierar original till `public/bilder/original/` för vanliga
-bildlänkar och skapar WebP-varianter i `public/bilder/generated/` för visning på
-sidan. Dessa två kataloger är build-output och versionshanteras inte.
+Bildflödet skapar WebP-varianter i `public/bilder/generated/` för visning på
+sidan. Katalogen är build-output och versionshanteras inte. Klick på en bild går
+till den största genererade WebP-varianten.
 
 Bildflödet validerar också att varje bildreferens i `content/site.md` är en
 unik, relativ sökväg till en befintlig `.jpg`, `.jpeg` eller `.png` under
