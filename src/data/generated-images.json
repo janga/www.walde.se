@@ -391,82 +391,82 @@
       }
     ]
   },
-  "rundellerna/verk04.png": {
+  "runskriftsrondellerna/verk04.png": {
     "width": 830,
     "height": 646,
     "variants": [
       {
-        "src": "/bilder/generated/rundellerna/verk04-480.webp",
+        "src": "/bilder/generated/runskriftsrondellerna/verk04-480.webp",
         "width": 480
       },
       {
-        "src": "/bilder/generated/rundellerna/verk04-768.webp",
+        "src": "/bilder/generated/runskriftsrondellerna/verk04-768.webp",
         "width": 768
       },
       {
-        "src": "/bilder/generated/rundellerna/verk04-830.webp",
+        "src": "/bilder/generated/runskriftsrondellerna/verk04-830.webp",
         "width": 830
       }
     ]
   },
-  "rundellerna/verk05.png": {
+  "runskriftsrondellerna/verk05.png": {
     "width": 746,
     "height": 746,
     "variants": [
       {
-        "src": "/bilder/generated/rundellerna/verk05-480.webp",
+        "src": "/bilder/generated/runskriftsrondellerna/verk05-480.webp",
         "width": 480
       },
       {
-        "src": "/bilder/generated/rundellerna/verk05-746.webp",
+        "src": "/bilder/generated/runskriftsrondellerna/verk05-746.webp",
         "width": 746
       }
     ]
   },
-  "rundellerna/verk06.png": {
+  "runskriftsrondellerna/verk06.png": {
     "width": 1156,
     "height": 644,
     "variants": [
       {
-        "src": "/bilder/generated/rundellerna/verk06-480.webp",
+        "src": "/bilder/generated/runskriftsrondellerna/verk06-480.webp",
         "width": 480
       },
       {
-        "src": "/bilder/generated/rundellerna/verk06-768.webp",
+        "src": "/bilder/generated/runskriftsrondellerna/verk06-768.webp",
         "width": 768
       },
       {
-        "src": "/bilder/generated/rundellerna/verk06-1080.webp",
+        "src": "/bilder/generated/runskriftsrondellerna/verk06-1080.webp",
         "width": 1080
       },
       {
-        "src": "/bilder/generated/rundellerna/verk06-1156.webp",
+        "src": "/bilder/generated/runskriftsrondellerna/verk06-1156.webp",
         "width": 1156
       }
     ]
   },
-  "rundellerna/verk11.png": {
+  "runskriftsrondellerna/verk11.png": {
     "width": 1470,
     "height": 1106,
     "variants": [
       {
-        "src": "/bilder/generated/rundellerna/verk11-480.webp",
+        "src": "/bilder/generated/runskriftsrondellerna/verk11-480.webp",
         "width": 480
       },
       {
-        "src": "/bilder/generated/rundellerna/verk11-768.webp",
+        "src": "/bilder/generated/runskriftsrondellerna/verk11-768.webp",
         "width": 768
       },
       {
-        "src": "/bilder/generated/rundellerna/verk11-1080.webp",
+        "src": "/bilder/generated/runskriftsrondellerna/verk11-1080.webp",
         "width": 1080
       },
       {
-        "src": "/bilder/generated/rundellerna/verk11-1440.webp",
+        "src": "/bilder/generated/runskriftsrondellerna/verk11-1440.webp",
         "width": 1440
       },
       {
-        "src": "/bilder/generated/rundellerna/verk11-1470.webp",
+        "src": "/bilder/generated/runskriftsrondellerna/verk11-1470.webp",
         "width": 1470
       }
     ]

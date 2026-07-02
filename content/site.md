@@ -18,22 +18,22 @@ sections:
         alt: Konstverk av Karin Walde.
         caption: "Bildväv och objekt. Separatutställning på Karby gård, Täby."
 
-  - id: rundellerna
-    title: Rundellerna
+  - id: runskriftsrondellerna
+    title: Runskriftsrondellerna
     gallery:
-      - src: rundellerna/verk04.png
+      - src: runskriftsrondellerna/verk04.png
         alt: Konstverk av Karin Walde.
         caption: "Runmotiv på corténstål vid Roslags Näsby trafikplats, Täby."
       - src: karin-walde/karin-dokumenterar-runmotiv.jpg
         alt: Karin Walde dokumenterar ett runmotiv på corténstål.
         caption: "Karin dokumenterar arbetet med runmotiv på corténstål."
-      - src: rundellerna/verk05.png
+      - src: runskriftsrondellerna/verk05.png
         alt: Konstverk av Karin Walde.
         caption: "Runsten i rondellgestaltningen vid Roslags Näsby trafikplats, Täby."
-      - src: rundellerna/verk06.png
+      - src: runskriftsrondellerna/verk06.png
         alt: Konstverk av Karin Walde.
         caption: "Belyst runmotiv i rondellgestaltningen vid Roslags Näsby trafikplats, Täby."
-      - src: rundellerna/verk11.png
+      - src: runskriftsrondellerna/verk11.png
         alt: Konstverk av Karin Walde.
         caption: "Kopia av en av de försvunna runstenarna i rondellgestaltningen."
 
