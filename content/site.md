@@ -81,13 +81,14 @@ sections:
 #### Grafik – Bildväv – Offentlig utsmyckning – Fiber art – Akvarell – Objekt
 Ateljé och showroom i Näsbypark, Täby
 
-
-[0730-577 855](tel:+46730577855), [karin@walde.se](mailto:karin@walde.se)
+[karin@walde.se](mailto:karin@walde.se)
+[0730-577 855](tel:+46730577855)
 
 ## Min konst
 
-Här visas ett urval av min konst.
+Ett urval av min konst.
 
 ## Om mig
 
-[0730-577 855](tel:+46730577855), [karin@walde.se](mailto:karin@walde.se)
+[karin@walde.se](mailto:karin@walde.se)
+[0730-577 855](tel:+46730577855)
