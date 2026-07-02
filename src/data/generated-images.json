@@ -1,8 +1,8 @@
 {
-  "karin-walde/karin-walde.png": {
-    "width": 1596,
-    "height": 1070,
-    "originalSrc": "/bilder/original/karin-walde/karin-walde.png",
+  "karin-walde/karin-walde.jpg": {
+    "width": 4032,
+    "height": 3024,
+    "originalSrc": "/bilder/original/karin-walde/karin-walde.jpg",
     "variants": [
       {
         "src": "/bilder/generated/karin-walde/karin-walde-480.webp",
@@ -21,8 +21,8 @@
         "width": 1440
       },
       {
-        "src": "/bilder/generated/karin-walde/karin-walde-1596.webp",
-        "width": 1596
+        "src": "/bilder/generated/karin-walde/karin-walde-4032.webp",
+        "width": 4032
       }
     ]
   },
@@ -278,6 +278,60 @@
       }
     ]
   },
+  "om-mig/karin-i-bat.jpg": {
+    "width": 3024,
+    "height": 4032,
+    "originalSrc": "/bilder/original/om-mig/karin-i-bat.jpg",
+    "variants": [
+      {
+        "src": "/bilder/generated/om-mig/karin-i-bat-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/om-mig/karin-i-bat-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/om-mig/karin-i-bat-1080.webp",
+        "width": 1080
+      },
+      {
+        "src": "/bilder/generated/om-mig/karin-i-bat-1440.webp",
+        "width": 1440
+      },
+      {
+        "src": "/bilder/generated/om-mig/karin-i-bat-3024.webp",
+        "width": 3024
+      }
+    ]
+  },
+  "om-mig/karin-utomhus.jpg": {
+    "width": 3024,
+    "height": 4032,
+    "originalSrc": "/bilder/original/om-mig/karin-utomhus.jpg",
+    "variants": [
+      {
+        "src": "/bilder/generated/om-mig/karin-utomhus-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/om-mig/karin-utomhus-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/om-mig/karin-utomhus-1080.webp",
+        "width": 1080
+      },
+      {
+        "src": "/bilder/generated/om-mig/karin-utomhus-1440.webp",
+        "width": 1440
+      },
+      {
+        "src": "/bilder/generated/om-mig/karin-utomhus-3024.webp",
+        "width": 3024
+      }
+    ]
+  },
   "om-mig/verk12.png": {
     "width": 1470,
     "height": 1106,
@@ -352,6 +406,33 @@
       {
         "src": "/bilder/generated/om-mig/verk14-1202.webp",
         "width": 1202
+      }
+    ]
+  },
+  "rundellerna/karin-dokumenterar-runmotiv.jpg": {
+    "width": 4032,
+    "height": 3024,
+    "originalSrc": "/bilder/original/rundellerna/karin-dokumenterar-runmotiv.jpg",
+    "variants": [
+      {
+        "src": "/bilder/generated/rundellerna/karin-dokumenterar-runmotiv-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/rundellerna/karin-dokumenterar-runmotiv-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/rundellerna/karin-dokumenterar-runmotiv-1080.webp",
+        "width": 1080
+      },
+      {
+        "src": "/bilder/generated/rundellerna/karin-dokumenterar-runmotiv-1440.webp",
+        "width": 1440
+      },
+      {
+        "src": "/bilder/generated/rundellerna/karin-dokumenterar-runmotiv-4032.webp",
+        "width": 4032
       }
     ]
   },

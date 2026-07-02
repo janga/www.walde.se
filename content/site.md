@@ -5,9 +5,9 @@ sections:
   - id: karin-walde
     title: Karin Walde
     gallery:
-      - src: karin-walde/karin-walde.png
+      - src: karin-walde/karin-walde.jpg
         alt: Fotografi av Karin Walde
-        caption: "Saknar bilden där Karin får Täby Kommuns kulturpris"
+        caption: "Fick Täby kommuns kulturpris för min konst 2021."
       - src: karin-walde/tva-fossiler.jpg
         alt: ""
         caption: "Två grafiska blad med motiv av fossiler från Gotland."
@@ -24,6 +24,9 @@ sections:
       - src: rundellerna/verk04.png
         alt: Konstverk av Karin Walde.
         caption: "Runmotiv på corténstål vid Roslags Näsby trafikplats, Täby."
+      - src: rundellerna/karin-dokumenterar-runmotiv.jpg
+        alt: Karin Walde dokumenterar ett runmotiv på corténstål.
+        caption: "Karin dokumenterar arbetet med runmotiv på corténstål."
       - src: rundellerna/verk05.png
         alt: Konstverk av Karin Walde.
         caption: "Runsten i rondellgestaltningen vid Roslags Näsby trafikplats, Täby."
@@ -74,6 +77,12 @@ sections:
       - src: om-mig/verk14.png
         alt: Plasthandskar i Karin Waldes ateljé.
         caption: "Ett konstnärshem är inget vanligt hem."
+      - src: om-mig/karin-utomhus.jpg
+        alt: Fotografi av Karin Walde utomhus.
+        caption: "Karin Walde utomhus i sommarljus."
+      - src: om-mig/karin-i-bat.jpg
+        alt: Fotografi av Karin Walde i en båt.
+        caption: "Karin Walde i båten på sjön."
       - src: om-mig/verk12.png
         alt: Fotografi av Karin Walde.
         caption: ""
