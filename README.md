@@ -30,8 +30,8 @@ content/
 └── min-konst/                      # Källbilder för galleriet Min konst
 public/bilder/
 ├── CNAME                           # Testdomän för GitHub Pages
-├── generated/                      # Genererade WebP-varianter
-└── original/                       # Originalkopior som publiceras av bildflödet
+├── generated/                      # Genererade WebP-varianter, versionshanteras inte
+└── original/                       # Originalkopior från bildflödet, versionshanteras inte
 src/
 ├── layouts/BaseLayout.astro        # Projektgemensam HTML och metadata
 ├── pages/index.astro               # Renderar hela sajten från content/site.md
@@ -94,7 +94,7 @@ kräver ImageMagick, antingen kommandot `magick` eller de äldre kommandona
 
 Bildflödet kopierar original till `public/bilder/original/` för vanliga
 bildlänkar och skapar WebP-varianter i `public/bilder/generated/` för visning på
-sidan.
+sidan. Dessa två kataloger är build-output och versionshanteras inte.
 
 Bildflödet validerar också att varje bildreferens i `content/site.md` är en
 unik, relativ sökväg till en befintlig `.jpg`, `.jpeg` eller `.png` under

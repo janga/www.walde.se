@@ -1,5 +1,10 @@
 # build output
 dist/
+
+# generated image output
+public/bilder/generated/
+public/bilder/original/
+
 # generated types
 .astro/
 
