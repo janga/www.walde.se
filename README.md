@@ -96,6 +96,10 @@ Bildflödet kopierar original till `public/bilder/original/` för vanliga
 bildlänkar och skapar WebP-varianter i `public/bilder/generated/` för visning på
 sidan.
 
+Bildflödet validerar också att varje bildreferens i `content/site.md` är en
+unik, relativ sökväg till en befintlig `.jpg`, `.jpeg` eller `.png` under
+`content/`.
+
 ## Presentation
 
 Navigationen ligger sticky överst på sidan. Aktiv sektion markeras endast genom

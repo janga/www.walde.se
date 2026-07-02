@@ -1,5 +1,5 @@
 import { execFile } from 'node:child_process';
-import { copyFile, mkdir, readFile, rm, writeFile } from 'node:fs/promises';
+import { copyFile, mkdir, readFile, rm, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { promisify } from 'node:util';
 
@@ -65,8 +65,9 @@ const getImageMagick = async () => {
 	throw new Error('ImageMagick saknas. Installera antingen kommandot "magick" eller "identify" och "convert".');
 };
 
-const getPublicPath = (filePath) => `/${path.relative(publicDir, filePath).split(path.sep).join('/')}`;
-const getContentPath = (filePath) => path.relative(contentDir, filePath).split(path.sep).join('/');
+const toPublicPath = (filePath) => filePath.split(path.sep).join('/');
+const getPublicPath = (filePath) => `/${toPublicPath(path.relative(publicDir, filePath))}`;
+const getContentPath = (filePath) => toPublicPath(path.relative(contentDir, filePath));
 
 const getGeneratedPath = (sourcePath, width) => {
 	const parsed = path.parse(path.relative(contentDir, sourcePath));
@@ -75,19 +76,68 @@ const getGeneratedPath = (sourcePath, width) => {
 
 const getOriginalPath = (sourcePath) => path.join(originalDir, path.relative(contentDir, sourcePath));
 
-const getReferencedSources = async () => {
+const fail = (message) => {
+	throw new Error(message);
+};
+
+const getReferencedImages = async () => {
 	const siteContent = await readFile(siteContentPath, 'utf8');
-	const sources = new Set();
+	const references = [];
 	const srcPattern = /^\s+-?\s*src:\s+["']?([^"'\n]+)["']?\s*$/gm;
 
 	for (const match of siteContent.matchAll(srcPattern)) {
 		const source = match[1].trim();
-		if (!source.startsWith('/') && supportedExtensions.has(path.extname(source).toLowerCase())) {
-			sources.add(path.join(contentDir, source));
-		}
+		const line = siteContent.slice(0, match.index).split('\n').length;
+		references.push({ source, line });
 	}
 
-	return Array.from(sources).sort();
+	return references;
+};
+
+const getContentSourcePath = ({ source, line }) => {
+	if (source.startsWith('/')) {
+		fail(`Bildreferensen på rad ${line} måste vara relativ till content/: ${source}`);
+	}
+
+	const extension = path.extname(source).toLowerCase();
+	if (!supportedExtensions.has(extension)) {
+		fail(`Bildreferensen på rad ${line} har en filtyp som inte stöds: ${source}`);
+	}
+
+	const normalizedSource = path.normalize(source);
+	const sourcePath = path.resolve(contentDir, normalizedSource);
+	const relativePath = path.relative(contentDir, sourcePath);
+
+	if (relativePath.startsWith('..') || path.isAbsolute(relativePath)) {
+		fail(`Bildreferensen på rad ${line} pekar utanför content/: ${source}`);
+	}
+
+	return sourcePath;
+};
+
+const getReferencedSources = async () => {
+	const references = await getReferencedImages();
+	const seen = new Map();
+	const sources = [];
+
+	for (const reference of references) {
+		const sourcePath = getContentSourcePath(reference);
+		const contentPath = getContentPath(sourcePath);
+
+		if (seen.has(contentPath)) {
+			fail(`Bildreferensen ${contentPath} förekommer både på rad ${seen.get(contentPath)} och ${reference.line}.`);
+		}
+
+		const fileStat = await stat(sourcePath).catch(() => null);
+		if (!fileStat?.isFile()) {
+			fail(`Bildfilen som anges på rad ${reference.line} finns inte: content/${contentPath}`);
+		}
+
+		seen.set(contentPath, reference.line);
+		sources.push(sourcePath);
+	}
+
+	return sources.sort();
 };
 
 const identify = async (sourcePath) => {
