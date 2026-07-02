@@ -1,4 +1,31 @@
 {
+  "karin-walde/karin-dokumenterar-runmotiv.jpg": {
+    "width": 4032,
+    "height": 3024,
+    "originalSrc": "/bilder/original/karin-walde/karin-dokumenterar-runmotiv.jpg",
+    "variants": [
+      {
+        "src": "/bilder/generated/karin-walde/karin-dokumenterar-runmotiv-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/karin-walde/karin-dokumenterar-runmotiv-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/karin-walde/karin-dokumenterar-runmotiv-1080.webp",
+        "width": 1080
+      },
+      {
+        "src": "/bilder/generated/karin-walde/karin-dokumenterar-runmotiv-1440.webp",
+        "width": 1440
+      },
+      {
+        "src": "/bilder/generated/karin-walde/karin-dokumenterar-runmotiv-4032.webp",
+        "width": 4032
+      }
+    ]
+  },
   "karin-walde/karin-walde.jpg": {
     "width": 4032,
     "height": 3024,
@@ -104,33 +131,6 @@
       {
         "src": "/bilder/generated/karin-walde/verk10-1474.webp",
         "width": 1474
-      }
-    ]
-  },
-  "min-konst/verk01.jpg": {
-    "width": 1890,
-    "height": 1063,
-    "originalSrc": "/bilder/original/min-konst/verk01.jpg",
-    "variants": [
-      {
-        "src": "/bilder/generated/min-konst/verk01-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/min-konst/verk01-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/bilder/generated/min-konst/verk01-1080.webp",
-        "width": 1080
-      },
-      {
-        "src": "/bilder/generated/min-konst/verk01-1440.webp",
-        "width": 1440
-      },
-      {
-        "src": "/bilder/generated/min-konst/verk01-1890.webp",
-        "width": 1890
       }
     ]
   },
@@ -406,33 +406,6 @@
       {
         "src": "/bilder/generated/om-mig/verk14-1202.webp",
         "width": 1202
-      }
-    ]
-  },
-  "rundellerna/karin-dokumenterar-runmotiv.jpg": {
-    "width": 4032,
-    "height": 3024,
-    "originalSrc": "/bilder/original/rundellerna/karin-dokumenterar-runmotiv.jpg",
-    "variants": [
-      {
-        "src": "/bilder/generated/rundellerna/karin-dokumenterar-runmotiv-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/rundellerna/karin-dokumenterar-runmotiv-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/bilder/generated/rundellerna/karin-dokumenterar-runmotiv-1080.webp",
-        "width": 1080
-      },
-      {
-        "src": "/bilder/generated/rundellerna/karin-dokumenterar-runmotiv-1440.webp",
-        "width": 1440
-      },
-      {
-        "src": "/bilder/generated/rundellerna/karin-dokumenterar-runmotiv-4032.webp",
-        "width": 4032
       }
     ]
   },

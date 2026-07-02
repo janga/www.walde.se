@@ -10,13 +10,13 @@ sections:
         caption: "Fick Täby kommuns kulturpris för min konst 2021."
       - src: karin-walde/tva-fossiler.jpg
         alt: ""
-        caption: "Två grafiska blad med motiv av fossiler från Gotland."
+        caption: "Två grafiska blad med fossiler från Gotland som motiv."
       - src: karin-walde/lysande-rondell.png
         alt: ""
         caption: "Offentlig utsmyckning: De två rondellerna med runmotiv vid motorvägen i Roslags Näsby, Täby."
       - src: karin-walde/verk10.png
         alt: Konstverk av Karin Walde.
-        caption: "Separatutställning på Karby gård, Täby."
+        caption: "Bildväv och objekt. Separatutställning på Karby gård, Täby."
 
   - id: rundellerna
     title: Rundellerna
@@ -24,7 +24,7 @@ sections:
       - src: rundellerna/verk04.png
         alt: Konstverk av Karin Walde.
         caption: "Runmotiv på corténstål vid Roslags Näsby trafikplats, Täby."
-      - src: rundellerna/karin-dokumenterar-runmotiv.jpg
+      - src: karin-walde/karin-dokumenterar-runmotiv.jpg
         alt: Karin Walde dokumenterar ett runmotiv på corténstål.
         caption: "Karin dokumenterar arbetet med runmotiv på corténstål."
       - src: rundellerna/verk05.png
@@ -40,9 +40,6 @@ sections:
   - id: min-konst
     title: Min konst
     gallery:
-      - src: min-konst/verk01.jpg
-        alt: Konstverk av Karin Walde, Penningby collage.
-        caption: "Penningby slott, collage med exteriör, valv och modell."
       - src: min-konst/verk02.png
         alt: Konstverk av Karin Walde.
         caption: "Tre organiska former i blågröna toner."
@@ -97,19 +94,19 @@ Ateljé och showroom i Näsbypark, Täby
 [karin@walde.se](mailto:karin@walde.se)
 [0730-577 855](tel:+46730577855)
 
-## Rundellerna
+## Runskriftsrondellerna
 
-Mina rundeller vid Roslags-Näsby
+2023 invigdes de två stora rondeller i Roslags Näsby, Täby, som jag har formgivit och som har fått mycket uppmärksamhet.
 
-När jag var barn cyklade jag varje dag förbi runhällen vid Roslags-Näsby. Den gjorde starkt intryck på mig redan då. Många år senare fick jag möjlighet att återvända till samma plats – nu med två rondeller som låter Täbys vikingatid möta dagens trafik.
+När jag var barn cyklade jag varje dag förbi runhällen vid Roslags Näsby. Den gjorde starkt intryck på mig redan då. Många år senare fick jag möjlighet att återvända till samma plats – nu med två rondeller som låter Täbys vikingatid möta dagens trafik.
 
 I den ena rondellen står kopior av fyra runstenar som en gång funnits i Täby men sedan försvunnit. I den andra löper en 55 meter lång ring av corténstål med namn på människor som faktiskt levde här för tusen år sedan.
 
-En detalj jag tycker om är att flera av namnen är kvinnonamn. Det påminner om att det inte bara var män som reste ut i världen. De gav sig av utan karta, kompass eller GPS – medan vi andra sitter i bilar och klagar på trafiken.
+En detalj jag tycker om är att flera av namnen är kvinnonamn. Det påminner om att det inte bara var män som reste ut i världen. De gav sig av utan karta, kompass eller gps – medan vi andra sitter i bilar och klagar på trafiken.
 
 ## Min konst
 
-Ett urval av min konst.
+Ett urval av min konst. Välkommen att kontakta mig för att se mer på utställningar eller i min ateljé med showroom.
 
 ## Om mig
 
