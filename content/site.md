@@ -37,30 +37,30 @@ sections:
   - id: min-konst
     title: Min konst
     gallery:
+      - src: min-konst/verk17.png
+        alt: Konstverk av Karin Walde.
+        caption: "Grafiskt blad."
+      - src: min-konst/verk09.png
+        alt: Konstverk av Karin Walde.
+        caption: "Objekt av kopparnät och pappersmassa."
       - src: min-konst/verk02.png
         alt: Konstverk av Karin Walde.
         caption: "Grafiskt blad med Gotlandsfossil."
+      - src: min-konst/verk08.png
+        alt: Konstverk av Karin Walde.
+        caption: "Grafiskt blad av fossil."
+      - src: min-konst/verk15.png
+        alt: Konstverk av Karin Walde.
+        caption: "Litografi."
+      - src: min-konst/verk07.png
+        alt: Konstverk av Karin Walde.
+        caption: "Grafiskt blad av fossil."
       - src: min-konst/verk03.png
         alt: Konstverk av Karin Walde.
         caption: "Litografi, del av en serie om tre."
       - src: min-konst/verk16.png
         alt: Konstverk av Karin Walde.
         caption: "Litografi, del av en serie om tre."
-      - src: min-konst/verk07.png
-        alt: Konstverk av Karin Walde.
-        caption: "Grafiskt blad av fossil."
-      - src: min-konst/verk08.png
-        alt: Konstverk av Karin Walde.
-        caption: "Grafiskt blad av fossil."
-      - src: min-konst/verk09.png
-        alt: Konstverk av Karin Walde.
-        caption: "Objekt av kopparnät och pappersmassa, inspirerat av en sköld."
-      - src: min-konst/verk15.png
-        alt: Konstverk av Karin Walde.
-        caption: "Litografi. Båtstäv mot vatten och ljus horisont."
-      - src: min-konst/verk17.png
-        alt: Konstverk av Karin Walde.
-        caption: "Grafiskt blad."
 
   - id: om-mig
     title: Om mig
@@ -80,9 +80,9 @@ sections:
 
 ---
 ## Karin Walde 
-#### Grafik&nbsp;/&nbsp;Bildväv&nbsp;/&nbsp;Offentlig utsmyckning&nbsp;/&nbsp;Fiber art&nbsp;/&nbsp;Akvarell&nbsp;/&nbsp;Objekt
-Ateljé och showroom i Näsbypark, Täby
+**Grafik&nbsp;/&nbsp;Bildväv&nbsp;/&nbsp;Offentlig utsmyckning&nbsp;/&nbsp;Fiber art&nbsp;/&nbsp;Akvarell&nbsp;/&nbsp;Objekt**
 
+Ateljé och showroom i Näsbypark, Täby
 [karin@walde.se](mailto:karin@walde.se)
 [0730-577 855](tel:+46730577855)
 ## Runrondellerna
@@ -97,16 +97,20 @@ En detalj jag tycker om är att flera av namnen är kvinnonamn. Det påminner om
 
 I den andra rondellen står fyra runstenar. De är nygjorda kopior av runstenar som man vet har funnits i Täby, men sedan försvunnit.
 ## Min konst
-Ett urval av min konst. Välkommen att kontakta mig för att se mer på utställningar eller i min ateljé med showroom.
+Ett urval av min konst. Välkommen att kontakta mig för att se mer på utställningar, eller i min ateljé med showroom. [karin@walde.se](mailto:karin@walde.se)
+[0730-577 855](tel:+46730577855)
 ## Om mig
 Född 1941 i Jokkmokk, sedan 1946 bosatt i Täby.
 
 Medlem i KRO och Föreningen Täby Konstnärer.
 
 Mottagare av Täby kommuns kulturstipendium 2002.
+
+Fick Täby kommuns kulturpris 2021!
+
 ### Utbildning
 - Akvarellmåleri: professor Arne Isacson
-- Bildvävning: HV
+- Bildvävning: HV, Handarbetets Vänner
 - Digital bildbehandling: Högskolan i Jönköping
 - Grafik: Gerlesborgsskolan, Ölands folkhögskola, Wiks folkhögskola
 - Konstnärlig handpapperstillverkning: Iggesunds pappersbruk
@@ -129,11 +133,12 @@ Mottagare av Täby kommuns kulturstipendium 2002.
 - Två rondeller, Roslags Näsby trafikplats, Täby
 ### Inköp
 - Danderyds sjukhus andaktsrum
-- Stadt Reinbek i Tyskland
+- Stadt Reinbek, Tyskland
 - Nissaströms kursgård
 - Täby församling
 - Näsby slott i Täby
 - Skaraborgs läns
 - Västernorrlands landsting
+
 [karin@walde.se](mailto:karin@walde.se)
 [0730-577 855](tel:+46730577855)
