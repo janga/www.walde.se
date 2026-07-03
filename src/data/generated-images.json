@@ -391,35 +391,6 @@
       }
     ]
   },
-  "om-mig/verk12.png": {
-    "sourceHash": "7f7e83440701705cf5e56120a2ccd3c23a34181cc7bb772007cbf51563ad7ca2",
-    "metadataVersion": 2,
-    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
-    "width": 1470,
-    "height": 1106,
-    "variants": [
-      {
-        "src": "/bilder/generated/om-mig/verk12-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/om-mig/verk12-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/bilder/generated/om-mig/verk12-1080.webp",
-        "width": 1080
-      },
-      {
-        "src": "/bilder/generated/om-mig/verk12-1440.webp",
-        "width": 1440
-      },
-      {
-        "src": "/bilder/generated/om-mig/verk12-1470.webp",
-        "width": 1470
-      }
-    ]
-  },
   "om-mig/verk14.png": {
     "sourceHash": "cbb74f026b5b21b4671a4220c478eeb37f04472044bc4d81527b027d355065c3",
     "metadataVersion": 2,
@@ -499,6 +470,35 @@
       },
       {
         "src": "/bilder/generated/runrondellerna/verk11-1470.webp",
+        "width": 1470
+      }
+    ]
+  },
+  "runrondellerna/verk12.png": {
+    "sourceHash": "7f7e83440701705cf5e56120a2ccd3c23a34181cc7bb772007cbf51563ad7ca2",
+    "metadataVersion": 2,
+    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
+    "width": 1470,
+    "height": 1106,
+    "variants": [
+      {
+        "src": "/bilder/generated/runrondellerna/verk12-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/runrondellerna/verk12-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/runrondellerna/verk12-1080.webp",
+        "width": 1080
+      },
+      {
+        "src": "/bilder/generated/runrondellerna/verk12-1440.webp",
+        "width": 1440
+      },
+      {
+        "src": "/bilder/generated/runrondellerna/verk12-1470.webp",
         "width": 1470
       }
     ]

@@ -20,13 +20,14 @@ sections:
         caption: "Bildväv och objekt. Separatutställning på Karby gård, Täby."
       - src: karin-walde/karin-i-bat.jpg
         alt: Fotografi av Karin Walde i en båt.
-        caption: "Allt kan bli konst! Gäddnate har blad med vackra mönster."
+        caption: "Allt kan bli konst! Vattenväxter har blad med vackra mönster."
       - src: karin-walde/karin-dokumenterar-runmotiv.jpg
         alt: Karin Walde dokumenterar ett runmotiv på corténstål.
-        caption: "Överallt ser jag vackra mönster, även i masonitskivor! Kan det här bli ett grafiskt blad?"
+        caption: "Överallt ser jag spännande detaljer, även i masonitskivor! Kan det här bli ett grafiskt blad?"
       - src: karin-walde/verk13.png
         alt: Karin Waldes vävrum.
         caption: "Ateljén i mitt hem i Näsbypark. Här gör jag grafik och bildvävar."
+  
   - id: runrondellerna
     title: Runrondellerna
     gallery:
@@ -36,7 +37,10 @@ sections:
       - src: runrondellerna/verk11.png
         alt: Konstverk av Karin Walde.
         caption: "En av runstenarna som försvunnit – och återuppstått."
-
+      - src: runrondellerna/verk12.png
+        alt: Fotografi av Karin Walde.
+        caption: "Förlaga i miniformat till det 55 meter långa konstverket i rondellen."
+        
   - id: min-konst
     title: Min konst
     gallery:
@@ -73,11 +77,7 @@ sections:
         caption: "Ett konstnärshem är inget vanligt hem."
       - src: om-mig/karin-utomhus.jpg
         alt: Fotografi av Karin Walde utomhus.
-        caption: "Karin Walde utomhus i sommarljus."
-      - src: om-mig/verk12.png
-        alt: Fotografi av Karin Walde.
         caption: ""
-
 ---
 ## Karin Walde 
 **Grafik&nbsp;/&nbsp;Bildväv&nbsp;/&nbsp;Offentlig utsmyckning&nbsp;/&nbsp;Fiber art&nbsp;/&nbsp;Akvarell&nbsp;/&nbsp;Objekt**
