@@ -28,6 +28,35 @@
       }
     ]
   },
+  "karin-walde/karin-i-bat.jpg": {
+    "sourceHash": "dc7e3d65083635f8fa033aa8fc3a83e29631a16c0959f6875499882d2f382e97",
+    "metadataVersion": 2,
+    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
+    "width": 3024,
+    "height": 4032,
+    "variants": [
+      {
+        "src": "/bilder/generated/karin-walde/karin-i-bat-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/karin-walde/karin-i-bat-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/karin-walde/karin-i-bat-1080.webp",
+        "width": 1080
+      },
+      {
+        "src": "/bilder/generated/karin-walde/karin-i-bat-1440.webp",
+        "width": 1440
+      },
+      {
+        "src": "/bilder/generated/karin-walde/karin-i-bat-3024.webp",
+        "width": 3024
+      }
+    ]
+  },
   "karin-walde/karin-walde.jpg": {
     "sourceHash": "82322ad0a2b2bd63da8a83b5d8005bb1f3cfd2e2d7a438a9eae27ba53b9da710",
     "metadataVersion": 2,
@@ -304,35 +333,6 @@
       }
     ]
   },
-  "om-mig/karin-i-bat.jpg": {
-    "sourceHash": "dc7e3d65083635f8fa033aa8fc3a83e29631a16c0959f6875499882d2f382e97",
-    "metadataVersion": 2,
-    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
-    "width": 3024,
-    "height": 4032,
-    "variants": [
-      {
-        "src": "/bilder/generated/om-mig/karin-i-bat-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/om-mig/karin-i-bat-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/bilder/generated/om-mig/karin-i-bat-1080.webp",
-        "width": 1080
-      },
-      {
-        "src": "/bilder/generated/om-mig/karin-i-bat-1440.webp",
-        "width": 1440
-      },
-      {
-        "src": "/bilder/generated/om-mig/karin-i-bat-3024.webp",
-        "width": 3024
-      }
-    ]
-  },
   "om-mig/karin-utomhus.jpg": {
     "sourceHash": "cedd5583245c1c1f69975b9a8060c1c7116efa7abc14eb8ed4794cfa3f49e46c",
     "metadataVersion": 2,
@@ -442,23 +442,6 @@
       {
         "src": "/bilder/generated/om-mig/verk14-1202.webp",
         "width": 1202
-      }
-    ]
-  },
-  "rundellerna/verk05.png": {
-    "sourceHash": "3bca94fe7435a0a0942c9404fe6a4f1a2f02f03447313c5c9b62c6b899473ba7",
-    "metadataVersion": 2,
-    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
-    "width": 746,
-    "height": 746,
-    "variants": [
-      {
-        "src": "/bilder/generated/rundellerna/verk05-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/rundellerna/verk05-746.webp",
-        "width": 746
       }
     ]
   },

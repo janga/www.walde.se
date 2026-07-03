@@ -18,49 +18,49 @@ sections:
       - src: karin-walde/verk10.png
         alt: Konstverk av Karin Walde.
         caption: "Bildväv och objekt. Separatutställning på Karby gård, Täby."
+      - src: karin-walde/karin-i-bat.jpg
+        alt: Fotografi av Karin Walde i en båt.
+        caption: "Allt kan bli konst! Gäddnate har blad med vackra mönster."
       - src: karin-walde/karin-dokumenterar-runmotiv.jpg
         alt: Karin Walde dokumenterar ett runmotiv på corténstål.
-        caption: "Överallt ser jag vackra mönster, även i masonitskivor! Kanske blir det ett grafiskt blad?"
+        caption: "Överallt ser jag vackra mönster, även i masonitskivor! Kan det här bli ett grafiskt blad?"
   - id: rundellerna
     title: Runskriftsrondellerna
     gallery:
-      - src: rundellerna/verk05.png
-        alt: Konstverk av Karin Walde.
-        caption: "Runsten i rondellgestaltningen vid Roslags Näsby trafikplats, Täby."
       - src: rundellerna/verk06.jpg
         alt: Konstverk av Karin Walde.
-        caption: "Belyst runmotiv i rondellgestaltningen vid Roslags Näsby trafikplats, Täby."
+        caption: "Våra vikingatida grannar! Belysta namn vid Roslags Näsby trafikplats, Täby."
       - src: rundellerna/verk11.png
         alt: Konstverk av Karin Walde.
-        caption: "Kopia av en av de försvunna runstenarna i rondellgestaltningen."
+        caption: "En av runstenarna som försvunnit – och återuppstått."
 
   - id: min-konst
     title: Min konst
     gallery:
       - src: min-konst/verk02.png
         alt: Konstverk av Karin Walde.
-        caption: "Tre organiska former i blågröna toner."
+        caption: "Grafiskt blad med Gotlandsfossil."
       - src: min-konst/verk03.png
         alt: Konstverk av Karin Walde.
-        caption: "Druvklasar och blad i mjuka gröna toner."
-      - src: min-konst/verk07.png
-        alt: Konstverk av Karin Walde.
-        caption: "Blå spiralform mot ljus, skimrande bakgrund."
-      - src: min-konst/verk08.png
-        alt: Konstverk av Karin Walde.
-        caption: "Fossilform i blått och orange."
-      - src: min-konst/verk09.png
-        alt: Konstverk av Karin Walde.
-        caption: "Avlång textilform med skugga."
-      - src: min-konst/verk15.png
-        alt: Konstverk av Karin Walde.
-        caption: "Båtstäv mot vatten och ljus horisont."
+        caption: "Litografi, del av en serie om tre."
       - src: min-konst/verk16.png
         alt: Konstverk av Karin Walde.
-        caption: "Trädform i grönt och varmt orange."
+        caption: "Litografi, del av en serie om tre."
+      - src: min-konst/verk07.png
+        alt: Konstverk av Karin Walde.
+        caption: "Grafiskt blad av fossil."
+      - src: min-konst/verk08.png
+        alt: Konstverk av Karin Walde.
+        caption: "Grafiskt blad av fossil."
+      - src: min-konst/verk09.png
+        alt: Konstverk av Karin Walde.
+        caption: "Objekt av kopparnät och pappersmassa, inspirerat av en sköld."
+      - src: min-konst/verk15.png
+        alt: Konstverk av Karin Walde.
+        caption: "Litografi. Båtstäv mot vatten och ljus horisont."
       - src: min-konst/verk17.png
         alt: Konstverk av Karin Walde.
-        caption: "Genomlyst blad mot blågrå bakgrund."
+        caption: "Grafiskt blad."
 
   - id: om-mig
     title: Om mig
@@ -74,9 +74,6 @@ sections:
       - src: om-mig/karin-utomhus.jpg
         alt: Fotografi av Karin Walde utomhus.
         caption: "Karin Walde utomhus i sommarljus."
-      - src: om-mig/karin-i-bat.jpg
-        alt: Fotografi av Karin Walde i en båt.
-        caption: "Karin Walde i båten på sjön."
       - src: om-mig/verk12.png
         alt: Fotografi av Karin Walde.
         caption: ""
@@ -90,7 +87,7 @@ Ateljé och showroom i Näsbypark, Täby
 [0730-577 855](tel:+46730577855)
 ## Runskriftsrondellerna
 
-2023 invigdes de två stora rondeller i Roslags Näsby, Täby, som jag har formgivit och som har fått mycket uppmärksamhet.
+2023 invigdes de två stora rondellerna i Roslags Näsby, Täby, som jag har formgivit och som har fått mycket uppmärksamhet.
 
 När jag var barn cyklade jag varje dag förbi runhällen vid Roslags Näsby. Den gjorde starkt intryck på mig redan då. Många år senare fick jag möjlighet att återvända till samma plats – nu med två rondeller som låter Täbys vikingatid möta dagens trafik.
 
