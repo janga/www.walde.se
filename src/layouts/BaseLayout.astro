@@ -15,6 +15,11 @@ const {
 const documentTitle = title === siteName || title.toLowerCase() === 'hem'
 	? siteName
 	: `${title} – ${siteName}`;
+const buildTime = new Intl.DateTimeFormat('sv-SE', {
+	dateStyle: 'short',
+	timeStyle: 'short',
+	timeZone: 'Europe/Stockholm',
+}).format(new Date());
 ---
 
 <!doctype html>
@@ -34,7 +39,7 @@ const documentTitle = title === siteName || title.toLowerCase() === 'hem'
 		<footer class="site-footer" aria-label="Copyright">
 			<p>
 				© Karin Walde. Bilder, konstverk och texter får inte användas utan tillstånd.
-				<span lang="en">Images, artworks and texts may not be used without permission.</span>
+				<span>Byggd {buildTime}</span>
 			</p>
 		</footer>
 	</body>

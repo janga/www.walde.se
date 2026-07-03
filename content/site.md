@@ -14,24 +14,20 @@ sections:
         caption: "Två grafiska blad med fossiler från Gotland som motiv."
       - src: karin-walde/lysande-rondell.png
         alt: ""
-        caption: "Offentlig utsmyckning: De två rondellerna med runmotiv vid motorvägen i Roslags Näsby, Täby."
+        caption: "Offentlig utsmyckning: De två rondellerna med runmotiv vid E18 i Roslags Näsby, Täby."
       - src: karin-walde/verk10.png
         alt: Konstverk av Karin Walde.
         caption: "Bildväv och objekt. Separatutställning på Karby gård, Täby."
-
-  - id: rundellerna
-    title: Rundellerna
-    gallery:
-      - src: rundellerna/verk04.png
-        alt: Konstverk av Karin Walde.
-        caption: "Runmotiv på corténstål vid Roslags Näsby trafikplats, Täby."
       - src: karin-walde/karin-dokumenterar-runmotiv.jpg
         alt: Karin Walde dokumenterar ett runmotiv på corténstål.
-        caption: "Karin dokumenterar arbetet med runmotiv på corténstål."
+        caption: "Överallt ser jag vackra mönster, även i masonitskivor! Kanske blir det ett grafiskt blad?"
+  - id: rundellerna
+    title: Runskriftsrondellerna
+    gallery:
       - src: rundellerna/verk05.png
         alt: Konstverk av Karin Walde.
         caption: "Runsten i rondellgestaltningen vid Roslags Näsby trafikplats, Täby."
-      - src: rundellerna/verk06.png
+      - src: rundellerna/verk06.jpg
         alt: Konstverk av Karin Walde.
         caption: "Belyst runmotiv i rondellgestaltningen vid Roslags Näsby trafikplats, Täby."
       - src: rundellerna/verk11.png
@@ -86,48 +82,39 @@ sections:
         caption: ""
 
 ---
-
 ## Karin Walde 
-
-#### Grafik – Bildväv – Offentlig utsmyckning – Fiber art – Akvarell – Objekt
+#### Grafik&nbsp;/&nbsp;Bildväv&nbsp;/&nbsp;Offentlig utsmyckning&nbsp;/&nbsp;Fiber art&nbsp;/&nbsp;Akvarell&nbsp;/&nbsp;Objekt
 Ateljé och showroom i Näsbypark, Täby
 
 [karin@walde.se](mailto:karin@walde.se)
 [0730-577 855](tel:+46730577855)
-
-## Rundellerna
+## Runskriftsrondellerna
 
 2023 invigdes de två stora rondeller i Roslags Näsby, Täby, som jag har formgivit och som har fått mycket uppmärksamhet.
 
 När jag var barn cyklade jag varje dag förbi runhällen vid Roslags Näsby. Den gjorde starkt intryck på mig redan då. Många år senare fick jag möjlighet att återvända till samma plats – nu med två rondeller som låter Täbys vikingatid möta dagens trafik.
 
-I den ena rondellen står kopior av fyra runstenar som en gång funnits i Täby men sedan försvunnit. I den andra löper en 55 meter lång ring av corténstål med namn på människor som faktiskt levde här för tusen år sedan.
+I den ena rondellen löper en 55 meter lång ring av corténstål med namn på människor som faktiskt levde här för tusen år sedan. "Jarlabanke är det första namnet man ser när man kommer från motorvägen. Han säger hej när man kommer till Täby, och Estrid säger hej då när man lämnar."
 
-En detalj jag tycker om är att flera av namnen är kvinnonamn. Det påminner om att det inte bara var män som reste ut i världen. De gav sig av utan karta, kompass eller gps – medan vi andra sitter i bilar och klagar på trafiken.
+En detalj jag tycker om är att flera av namnen är kvinnonamn. Det påminner om att det inte bara var män som reste ut i världen. De gav sig av utan karta, kompass eller gps – medan vi andra sitter i bilar och klagar på trafiken. 
 
+I den andra rondellen står fyra runstenar. De är nygjorda kopior av runstenar som man vet har funnits i Täby, men sedan försvunnit.
 ## Min konst
-
 Ett urval av min konst. Välkommen att kontakta mig för att se mer på utställningar eller i min ateljé med showroom.
-
 ## Om mig
-
 Född 1941 i Jokkmokk, sedan 1946 bosatt i Täby.
 
 Medlem i KRO och Föreningen Täby Konstnärer.
 
 Mottagare av Täby kommuns kulturstipendium 2002.
-
 ### Utbildning
-
 - Akvarellmåleri: professor Arne Isacson
 - Bildvävning: HV
 - Digital bildbehandling: Högskolan i Jönköping
 - Grafik: Gerlesborgsskolan, Ölands folkhögskola, Wiks folkhögskola
 - Konstnärlig handpapperstillverkning: Iggesunds pappersbruk
 - Serigrafi: Konstfacks sommarkurs
-
 ### Separatutställningar i urval
-
 - Kuben, Täby torg 2018
 - Engelbrektskyrkan, Stockholm 2017
 - Karby Gård Konstcentrum, Täby 2011
@@ -137,19 +124,13 @@ Mottagare av Täby kommuns kulturstipendium 2002.
 - Takstens museigård, Gotland 1997
 - Schloss Reinbek (Hamburg), Tyskland 1995
 - Gamla Rådhuset, Södertälje 1994
-
 ### Utsmyckningar (altartavlor)
-
 - Stavsnäs missionshus, Värmdö
 - Danderyds sjukhus, doprummet
 - Näsbyparks kyrka, Täby
-
 ### Gestaltning
-
 - Två rondeller, Roslags Näsby trafikplats, Täby
-
 ### Inköp
-
 - Danderyds sjukhus andaktsrum
 - Stadt Reinbek i Tyskland
 - Nissaströms kursgård
@@ -157,6 +138,5 @@ Mottagare av Täby kommuns kulturstipendium 2002.
 - Näsby slott i Täby
 - Skaraborgs läns
 - Västernorrlands landsting
-
 [karin@walde.se](mailto:karin@walde.se)
 [0730-577 855](tel:+46730577855)

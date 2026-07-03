@@ -29,7 +29,7 @@
     ]
   },
   "karin-walde/karin-walde.jpg": {
-    "sourceHash": "2bcd43257f63003bbe5d06e5f90e605517a54a1f25d443ba28e2fa47f9fa5919",
+    "sourceHash": "82322ad0a2b2bd63da8a83b5d8005bb1f3cfd2e2d7a438a9eae27ba53b9da710",
     "metadataVersion": 2,
     "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
     "width": 4032,
@@ -445,27 +445,6 @@
       }
     ]
   },
-  "rundellerna/verk04.png": {
-    "sourceHash": "433c4d561be9ca2bc09f80f1f1df5c68e02c5530603519ea903086619c543c0a",
-    "metadataVersion": 2,
-    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
-    "width": 830,
-    "height": 646,
-    "variants": [
-      {
-        "src": "/bilder/generated/rundellerna/verk04-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/rundellerna/verk04-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/bilder/generated/rundellerna/verk04-830.webp",
-        "width": 830
-      }
-    ]
-  },
   "rundellerna/verk05.png": {
     "sourceHash": "3bca94fe7435a0a0942c9404fe6a4f1a2f02f03447313c5c9b62c6b899473ba7",
     "metadataVersion": 2,
@@ -483,12 +462,12 @@
       }
     ]
   },
-  "rundellerna/verk06.png": {
-    "sourceHash": "66158f8a607861a4a333dfb89de05ec12320d5fc601775b7e2be01f767972d29",
+  "rundellerna/verk06.jpg": {
+    "sourceHash": "3e44b9de1aebb544f35833fccae0c0a5cd27567ce75862694899c542f8c17709",
     "metadataVersion": 2,
-    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
-    "width": 1156,
-    "height": 644,
+    "metadataHash": "19f569d5cf0b6cd9600a79b89f5c1b8ad9d5c48c52318bf49ee8d062a474c6f4",
+    "width": 1466,
+    "height": 572,
     "variants": [
       {
         "src": "/bilder/generated/rundellerna/verk06-480.webp",
@@ -503,8 +482,12 @@
         "width": 1080
       },
       {
-        "src": "/bilder/generated/rundellerna/verk06-1156.webp",
-        "width": 1156
+        "src": "/bilder/generated/rundellerna/verk06-1440.webp",
+        "width": 1440
+      },
+      {
+        "src": "/bilder/generated/rundellerna/verk06-1466.webp",
+        "width": 1466
       }
     ]
   },
