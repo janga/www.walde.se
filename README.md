@@ -28,7 +28,7 @@ npm run astro -- dev stop
 content/
 ├── site.md                         # Alla sektioner, texter, bildreferenser och gallerimetadata
 ├── karin-walde/                    # Källbilder för galleriet Karin Walde
-├── rundellerna/                    # Källbilder för galleriet Rundellerna
+├── runrondellerna/                 # Källbilder för galleriet Runrondellerna
 ├── min-konst/                      # Källbilder för galleriet Min konst
 └── om-mig/                         # Källbilder för galleriet Om mig
 public/bilder/
@@ -68,7 +68,7 @@ matchar sektionernas `id` eller `title`:
 Bildtext anges med det valfria fältet `caption`. `src` och `alt` ska finnas
 för varje bild.
 
-Nuvarande publika sektioner är Karin Walde, Rundellerna, Min konst och Om mig.
+Nuvarande publika sektioner är Karin Walde, Runrondellerna, Min konst och Om mig.
 CV-informationen ligger som löpande Markdown-text under `## Om mig`, före
 kontaktuppgifterna, och är inte en separat sektion.
 
@@ -91,7 +91,7 @@ Bilder ska ligga i katalogen för den sektion de hör till under `content/`:
 
 ```text
 content/karin-walde/
-content/rundellerna/
+content/runrondellerna/
 content/min-konst/
 content/om-mig/
 ```
@@ -168,7 +168,7 @@ sektioner på samma sida:
 
 ```text
 /#karin-walde
-/#rundellerna
+/#runrondellerna
 /#min-konst
 /#om-mig
 ```

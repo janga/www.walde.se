@@ -445,7 +445,7 @@
       }
     ]
   },
-  "rundellerna/verk06.jpg": {
+  "runrondellerna/verk06.jpg": {
     "sourceHash": "3e44b9de1aebb544f35833fccae0c0a5cd27567ce75862694899c542f8c17709",
     "metadataVersion": 2,
     "metadataHash": "19f569d5cf0b6cd9600a79b89f5c1b8ad9d5c48c52318bf49ee8d062a474c6f4",
@@ -453,28 +453,28 @@
     "height": 572,
     "variants": [
       {
-        "src": "/bilder/generated/rundellerna/verk06-480.webp",
+        "src": "/bilder/generated/runrondellerna/verk06-480.webp",
         "width": 480
       },
       {
-        "src": "/bilder/generated/rundellerna/verk06-768.webp",
+        "src": "/bilder/generated/runrondellerna/verk06-768.webp",
         "width": 768
       },
       {
-        "src": "/bilder/generated/rundellerna/verk06-1080.webp",
+        "src": "/bilder/generated/runrondellerna/verk06-1080.webp",
         "width": 1080
       },
       {
-        "src": "/bilder/generated/rundellerna/verk06-1440.webp",
+        "src": "/bilder/generated/runrondellerna/verk06-1440.webp",
         "width": 1440
       },
       {
-        "src": "/bilder/generated/rundellerna/verk06-1466.webp",
+        "src": "/bilder/generated/runrondellerna/verk06-1466.webp",
         "width": 1466
       }
     ]
   },
-  "rundellerna/verk11.png": {
+  "runrondellerna/verk11.png": {
     "sourceHash": "320eb6ba4d867d391b1294ada89bd618ccbfa18396eb4963a3cb9e22a79c5f97",
     "metadataVersion": 2,
     "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
@@ -482,23 +482,23 @@
     "height": 1106,
     "variants": [
       {
-        "src": "/bilder/generated/rundellerna/verk11-480.webp",
+        "src": "/bilder/generated/runrondellerna/verk11-480.webp",
         "width": 480
       },
       {
-        "src": "/bilder/generated/rundellerna/verk11-768.webp",
+        "src": "/bilder/generated/runrondellerna/verk11-768.webp",
         "width": 768
       },
       {
-        "src": "/bilder/generated/rundellerna/verk11-1080.webp",
+        "src": "/bilder/generated/runrondellerna/verk11-1080.webp",
         "width": 1080
       },
       {
-        "src": "/bilder/generated/rundellerna/verk11-1440.webp",
+        "src": "/bilder/generated/runrondellerna/verk11-1440.webp",
         "width": 1440
       },
       {
-        "src": "/bilder/generated/rundellerna/verk11-1470.webp",
+        "src": "/bilder/generated/runrondellerna/verk11-1470.webp",
         "width": 1470
       }
     ]

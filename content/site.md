@@ -24,13 +24,13 @@ sections:
       - src: karin-walde/karin-dokumenterar-runmotiv.jpg
         alt: Karin Walde dokumenterar ett runmotiv på corténstål.
         caption: "Överallt ser jag vackra mönster, även i masonitskivor! Kan det här bli ett grafiskt blad?"
-  - id: rundellerna
-    title: Runskriftsrondellerna
+  - id: runrondellerna
+    title: Runrondellerna
     gallery:
-      - src: rundellerna/verk06.jpg
+      - src: runrondellerna/verk06.jpg
         alt: Konstverk av Karin Walde.
         caption: "Våra vikingatida grannar! Belysta namn vid Roslags Näsby trafikplats, Täby."
-      - src: rundellerna/verk11.png
+      - src: runrondellerna/verk11.png
         alt: Konstverk av Karin Walde.
         caption: "En av runstenarna som försvunnit – och återuppstått."
 
@@ -85,7 +85,7 @@ Ateljé och showroom i Näsbypark, Täby
 
 [karin@walde.se](mailto:karin@walde.se)
 [0730-577 855](tel:+46730577855)
-## Runskriftsrondellerna
+## Runrondellerna
 
 2023 invigdes de två stora rondellerna i Roslags Näsby, Täby, som jag har formgivit och som har fått mycket uppmärksamhet.
 
