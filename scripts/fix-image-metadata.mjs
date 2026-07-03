@@ -9,7 +9,6 @@ const root = process.cwd();
 const contentDir = path.join(root, 'content');
 const siteContentPath = path.join(contentDir, 'site.md');
 const supportedExtensions = new Set(['.jpg', '.jpeg', '.png']);
-const creatorTags = ['Artist', 'Creator', 'By-line'];
 const metadataTags = [
 	'-Artist',
 	'-Creator',
@@ -21,6 +20,7 @@ const metadataTags = [
 	'-Marked',
 	'-Owner',
 ];
+const metadataFieldNames = metadataTags.map((tag) => tag.slice(1));
 
 const run = async (command, args) => {
 	const { stdout } = await execFileAsync(command, args, { maxBuffer: 1024 * 1024 * 10 });
@@ -78,7 +78,7 @@ const readMetadata = async (imagePath) => {
 	return JSON.parse(output)[0] ?? {};
 };
 
-const hasCreatorMetadata = (metadata) => creatorTags.some((tag) => {
+const hasAnyManagedMetadata = (metadata) => metadataFieldNames.some((tag) => {
 	const value = metadata[tag];
 	return typeof value === 'string' ? value.trim() : Boolean(value);
 });
@@ -120,7 +120,7 @@ for (const imagePath of images) {
 
 	const metadata = await readMetadata(imagePath);
 
-	if (hasCreatorMetadata(metadata)) {
+	if (hasAnyManagedMetadata(metadata)) {
 		skipped += 1;
 		continue;
 	}

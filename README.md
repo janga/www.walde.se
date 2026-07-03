@@ -106,10 +106,22 @@ Bildflödet skapar WebP-varianter i `public/bilder/generated/` för visning på
 sidan. Katalogen är build-output och versionshanteras inte. Klick på en bild går
 till den största genererade WebP-varianten.
 
+### Metadata
+
 Originalbilder kan märkas med `npm run metadata:fix`. Scriptet läser
 `copyrightOwner` från `content/site.md`, kontrollerar källbilderna under
 `content/` och skriver enkel upphovsrättsmetadata endast till bilder som saknar
-creator/artist-metadata. Bilder som redan har sådan metadata lämnas oförändrade.
+något av metadatafälten nedan. Om något av fälten redan har ett värde lämnas
+bilden helt oförändrad.
+
+Fälten som skrivs när metadata saknas är:
+
+```text
+Artist / Creator / By-line: Karin Walde
+Copyright / Rights / CopyrightNotice: Copyright Karin Walde. All rights reserved.
+Credit / Owner: Karin Walde
+Marked: True
+```
 
 De genererade WebP-filerna får metadata genom att bildflödet kopierar de
 vanliga metadatafälten från källbilden efter optimering. `npm run build`
@@ -118,9 +130,19 @@ refereras i `content/site.md` har creator/artist-metadata. Om en ny bild saknar
 metadata ska `npm run metadata:fix` köras och den uppdaterade källbilden
 committas.
 
+Rekommenderat arbetsflöde när nya bilder läggs till:
+
+```sh
+npm run metadata:fix
+npm run build
+git add content/ content/site.md src/data/generated-images.json
+git commit -m "Add gallery images"
+```
+
 Bildflödet är inkrementellt. `src/data/generated-images.json` sparar en hash för
-varje källbild, så oförändrade bilder återanvänder redan genererade
-WebP-varianter. Endast nya, ändrade eller saknade bildvarianter byggs om.
+varje källbild och en hash för de metadatafält som kopieras till WebP. Oförändrade
+bilder återanvänder redan genererade WebP-varianter. Endast nya, ändrade eller
+saknade bildvarianter byggs om.
 
 Bildflödet validerar också att varje bildreferens i `content/site.md` är en
 unik, relativ sökväg till en befintlig `.jpg`, `.jpeg` eller `.png` under
