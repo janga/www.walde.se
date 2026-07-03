@@ -7,6 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "metadata:fix": "node scripts/fix-image-metadata.mjs",
     "images": "node scripts/generate-images.mjs",
     "build": "npm run images && astro build",
     "preview": "astro preview",

@@ -13,6 +13,7 @@ content/site.md
 
 ```sh
 npm install
+npm run metadata:fix
 npm run images
 npm run build
 npm run astro -- dev --background
@@ -27,7 +28,9 @@ npm run astro -- dev stop
 content/
 ├── site.md                         # Alla sektioner, texter, bildreferenser och gallerimetadata
 ├── karin-walde/                    # Källbilder för galleriet Karin Walde
-└── min-konst/                      # Källbilder för galleriet Min konst
+├── rundellerna/                    # Källbilder för galleriet Rundellerna
+├── min-konst/                      # Källbilder för galleriet Min konst
+└── om-mig/                         # Källbilder för galleriet Om mig
 public/bilder/
 ├── CNAME                           # Testdomän för GitHub Pages
 └── generated/                      # Genererade WebP-varianter, versionshanteras inte
@@ -65,6 +68,10 @@ matchar sektionernas `id` eller `title`:
 Bildtext anges med det valfria fältet `caption`. `src` och `alt` ska finnas
 för varje bild.
 
+Nuvarande publika sektioner är Karin Walde, Rundellerna, Min konst och Om mig.
+CV-informationen ligger som löpande Markdown-text under `## Om mig`, före
+kontaktuppgifterna, och är inte en separat sektion.
+
 ```md
 ## Min konst
 
@@ -84,22 +91,32 @@ Bilder ska ligga i katalogen för den sektion de hör till under `content/`:
 
 ```text
 content/karin-walde/
+content/rundellerna/
 content/min-konst/
+content/om-mig/
 ```
 
 Bildreferens i `content/site.md` ska vara relativ till `content/`, till exempel
 `min-konst/verk.jpg`. Kör `npm run images` efter att bilder lagts till eller
 bytts ut. `npm run build` kör bildgenereringen automatiskt. Bildgenereringen
 kräver ImageMagick, antingen kommandot `magick` eller de äldre kommandona
-`identify` och `convert`.
+`identify` och `convert`, samt `exiftool` för metadatahantering.
 
 Bildflödet skapar WebP-varianter i `public/bilder/generated/` för visning på
 sidan. Katalogen är build-output och versionshanteras inte. Klick på en bild går
 till den största genererade WebP-varianten.
 
-De genererade WebP-filerna får en liten XMP-profil med upphovsrättsmetadata
-från `copyrightOwner`, till exempel "Copyright Karin Walde. All rights
-reserved.".
+Originalbilder kan märkas med `npm run metadata:fix`. Scriptet läser
+`copyrightOwner` från `content/site.md`, kontrollerar källbilderna under
+`content/` och skriver enkel upphovsrättsmetadata endast till bilder som saknar
+creator/artist-metadata. Bilder som redan har sådan metadata lämnas oförändrade.
+
+De genererade WebP-filerna får metadata genom att bildflödet kopierar de
+vanliga metadatafälten från källbilden efter optimering. `npm run build`
+ändrar aldrig originalbilderna, men builden kräver att varje källbild som
+refereras i `content/site.md` har creator/artist-metadata. Om en ny bild saknar
+metadata ska `npm run metadata:fix` köras och den uppdaterade källbilden
+committas.
 
 Bildflödet är inkrementellt. `src/data/generated-images.json` sparar en hash för
 varje källbild, så oförändrade bilder återanvänder redan genererade
@@ -139,8 +156,8 @@ Det finns inte längre separata Astro-routes för gallerier eller sidor.
 ## Publicering
 
 GitHub Pages ska använda GitHub Actions som källa. Workflow-filen
-`.github/workflows/deploy.yml` kör `npm ci`, `npm run build` och publicerar
-Astros genererade `dist/`-katalog.
+`.github/workflows/deploy.yml` installerar ImageMagick och exiftool, kör
+`npm ci`, `npm run build` och publicerar Astros genererade `dist/`-katalog.
 
 Testdomänen för GitHub Pages anges i `public/CNAME` och kopieras till `dist/`
 vid build.

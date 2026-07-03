@@ -32,8 +32,8 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Install ImageMagick
-        run: sudo apt-get update && sudo apt-get install -y imagemagick
+      - name: Install image tools
+        run: sudo apt-get update && sudo apt-get install -y imagemagick libimage-exiftool-perl
 
       - name: Install dependencies
         run: npm ci

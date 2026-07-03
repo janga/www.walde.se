@@ -1,7 +1,6 @@
 import { execFile } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { mkdir, readdir, readFile, rm, stat, writeFile } from 'node:fs/promises';
-import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { promisify } from 'node:util';
 
@@ -14,10 +13,33 @@ const generatedDir = path.join(publicDir, 'bilder', 'generated');
 const originalDir = path.join(publicDir, 'bilder', 'original');
 const manifestPath = path.join(root, 'src', 'data', 'generated-images.json');
 const siteContentPath = path.join(contentDir, 'site.md');
-const imageRightsProfilePath = path.join(tmpdir(), 'karin-walde-image-rights.xmp');
-const imageMetadataVersion = 1;
+const imageMetadataVersion = 2;
 const widths = [480, 768, 1080, 1440];
 const supportedExtensions = new Set(['.jpg', '.jpeg', '.png']);
+const creatorTags = ['Artist', 'Creator', 'By-line'];
+const metadataReadTags = [
+	'-Artist',
+	'-Creator',
+	'-By-line',
+	'-Copyright',
+	'-Rights',
+	'-CopyrightNotice',
+	'-Credit',
+	'-Marked',
+	'-Owner',
+];
+const metadataCopyTags = [
+	'-XMP-dc:Creator',
+	'-XMP-dc:Rights',
+	'-XMP-xmpRights:Marked',
+	'-XMP-xmpRights:Owner',
+	'-XMP-photoshop:Credit',
+	'-IPTC:By-line',
+	'-IPTC:CopyrightNotice',
+	'-IPTC:Credit',
+	'-EXIF:Artist',
+	'-EXIF:Copyright',
+];
 
 const run = async (command, args) => {
 	const { stdout } = await execFileAsync(command, args, { maxBuffer: 1024 * 1024 * 10 });
@@ -43,8 +65,6 @@ const getImageMagick = async () => {
 				'-resize',
 				`${width}x`,
 				'-strip',
-				'-profile',
-				imageRightsProfilePath,
 				'-quality',
 				'82',
 				outputPath,
@@ -61,8 +81,6 @@ const getImageMagick = async () => {
 				'-resize',
 				`${width}x`,
 				'-strip',
-				'-profile',
-				imageRightsProfilePath,
 				'-quality',
 				'82',
 				outputPath,
@@ -71,6 +89,23 @@ const getImageMagick = async () => {
 	}
 
 	throw new Error('ImageMagick saknas. Installera antingen kommandot "magick" eller "identify" och "convert".');
+};
+
+const getExifTool = async () => {
+	if (await canRun('exiftool', ['-ver'])) {
+		return {
+			read: (sourcePath) => run('exiftool', ['-json', ...metadataReadTags, sourcePath]),
+			copy: (sourcePath, outputPath) => run('exiftool', [
+				'-overwrite_original',
+				'-TagsFromFile',
+				sourcePath,
+				...metadataCopyTags,
+				outputPath,
+			]),
+		};
+	}
+
+	throw new Error('exiftool saknas. Installera exiftool eller kör GitHub Actions-flödet som installerar det.');
 };
 
 const toPublicPath = (filePath) => filePath.split(path.sep).join('/');
@@ -88,28 +123,6 @@ const fail = (message) => {
 };
 
 const getSiteContent = () => readFile(siteContentPath, 'utf8');
-
-const getFrontmatter = (siteContent) => {
-	const match = siteContent.match(/^---\n([\s\S]*?)\n---/);
-
-	if (!match) {
-		fail('content/site.md saknar frontmatter.');
-	}
-
-	return match[1];
-};
-
-const getCopyrightOwner = async () => {
-	const frontmatter = getFrontmatter(await getSiteContent());
-	const match = frontmatter.match(/^copyrightOwner:\s*(?:"([^"]+)"|'([^']+)'|(.+))\s*$/m);
-	const copyrightOwner = (match?.[1] ?? match?.[2] ?? match?.[3] ?? '').trim();
-
-	if (!copyrightOwner) {
-		fail('content/site.md måste ange copyrightOwner i frontmatter.');
-	}
-
-	return copyrightOwner;
-};
 
 const getReferencedImages = async () => {
 	const siteContent = await getSiteContent();
@@ -180,6 +193,7 @@ const identify = async (sourcePath) => {
 const convert = async (sourcePath, outputPath, width) => {
 	await mkdir(path.dirname(outputPath), { recursive: true });
 	await imageMagick.convert(sourcePath, outputPath, width);
+	await exifTool.copy(sourcePath, outputPath);
 };
 
 const getHash = (value) => createHash('sha256').update(value).digest('hex');
@@ -189,37 +203,30 @@ const getSourceHash = async (sourcePath) => {
 	return getHash(file);
 };
 
-const escapeXml = (value) => value
-	.replaceAll('&', '&amp;')
-	.replaceAll('<', '&lt;')
-	.replaceAll('>', '&gt;')
-	.replaceAll('"', '&quot;')
-	.replaceAll("'", '&apos;');
-
-const getCopyrightNotice = (copyrightOwner) => `Copyright ${copyrightOwner}. All rights reserved.`;
-
-const getImageRightsXmp = (copyrightOwner) => {
-	const escapedOwner = escapeXml(copyrightOwner);
-	const escapedNotice = escapeXml(getCopyrightNotice(copyrightOwner));
-
-	return `<?xpacket begin="" id="W5M0MpCehiHzreSzNTczkc9d"?>
-<x:xmpmeta xmlns:x="adobe:ns:meta/">
-<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-<rdf:Description rdf:about="" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:xmpRights="http://ns.adobe.com/xap/1.0/rights/">
-<dc:creator><rdf:Seq><rdf:li>${escapedOwner}</rdf:li></rdf:Seq></dc:creator>
-<dc:rights><rdf:Alt><rdf:li xml:lang="x-default">${escapedNotice}</rdf:li></rdf:Alt></dc:rights>
-<xmpRights:Marked>True</xmpRights:Marked>
-</rdf:Description>
-</rdf:RDF>
-</x:xmpmeta>
-<?xpacket end="w"?>`;
+const readMetadata = async (sourcePath) => {
+	const output = await exifTool.read(sourcePath);
+	return JSON.parse(output)[0] ?? {};
 };
 
-const getImageMetadataHash = (copyrightOwner) => getHash([
-	imageMetadataVersion,
-	copyrightOwner,
-	getCopyrightNotice(copyrightOwner),
-].join('\n'));
+const hasCreatorMetadata = (metadata) => creatorTags.some((tag) => {
+	const value = metadata[tag];
+	return typeof value === 'string' ? value.trim() : Boolean(value);
+});
+
+const getImageMetadataHash = (metadata) => getHash(JSON.stringify(
+	Object.fromEntries(metadataReadTags.map((tag) => {
+		const key = tag.slice(1);
+		return [key, metadata[key] ?? null];
+	})),
+));
+
+const validateSourceMetadata = (sourcePath, metadata) => {
+	if (hasCreatorMetadata(metadata)) {
+		return;
+	}
+
+	fail(`Bildfilen saknar creator/artist-metadata: content/${getContentPath(sourcePath)}. Kör npm run metadata:fix och committa den uppdaterade bilden.`);
+};
 
 const getVariantWidths = ({ width }) => {
 	const variantWidths = widths.filter((candidateWidth) => candidateWidth <= width);
@@ -329,12 +336,10 @@ const removeUnreferencedGeneratedFiles = async (manifest) => {
 };
 
 const imageMagick = await getImageMagick();
+const exifTool = await getExifTool();
 
 await rm(originalDir, { recursive: true, force: true });
 await mkdir(generatedDir, { recursive: true });
-const copyrightOwner = await getCopyrightOwner();
-const metadataHash = getImageMetadataHash(copyrightOwner);
-await writeFile(imageRightsProfilePath, getImageRightsXmp(copyrightOwner));
 
 const sources = await getReferencedSources();
 const previousManifest = await readManifest();
@@ -343,6 +348,9 @@ const manifest = {};
 for (const sourcePath of sources) {
 	const contentPath = getContentPath(sourcePath);
 	const sourceHash = await getSourceHash(sourcePath);
+	const sourceMetadata = await readMetadata(sourcePath);
+	validateSourceMetadata(sourcePath, sourceMetadata);
+	const metadataHash = getImageMetadataHash(sourceMetadata);
 	const reusableEntry = await getReusableEntry(sourcePath, previousManifest[contentPath], sourceHash, metadataHash);
 
 	if (reusableEntry) {
