@@ -24,6 +24,9 @@ sections:
       - src: karin-walde/karin-dokumenterar-runmotiv.jpg
         alt: Karin Walde dokumenterar ett runmotiv på corténstål.
         caption: "Överallt ser jag vackra mönster, även i masonitskivor! Kan det här bli ett grafiskt blad?"
+      - src: karin-walde/verk13.png
+        alt: Karin Waldes vävrum.
+        caption: "Ateljén i mitt hem i Näsbypark. Här gör jag grafik och bildvävar."
   - id: runrondellerna
     title: Runrondellerna
     gallery:
@@ -65,9 +68,6 @@ sections:
   - id: om-mig
     title: Om mig
     gallery:
-      - src: om-mig/verk13.png
-        alt: Karin Waldes vävrum.
-        caption: "Ateljén i mitt hem i Näsbypark. Här gör jag grafik och bildvävar."
       - src: om-mig/verk14.png
         alt: Plasthandskar i Karin Waldes ateljé.
         caption: "Ett konstnärshem är inget vanligt hem."
@@ -106,7 +106,7 @@ Medlem i KRO och Föreningen Täby Konstnärer.
 
 Mottagare av Täby kommuns kulturstipendium 2002.
 
-Fick Täby kommuns kulturpris 2021!
+Fick Täby kommuns kulturpris 2021.
 
 ### Utbildning
 - Akvarellmåleri: professor Arne Isacson

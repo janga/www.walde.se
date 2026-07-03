@@ -173,6 +173,35 @@
       }
     ]
   },
+  "karin-walde/verk13.png": {
+    "sourceHash": "9b369b415758b5ef2a8932f663296ef4aa18f6a80bba08c15d31224324db7f51",
+    "metadataVersion": 2,
+    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
+    "width": 1472,
+    "height": 986,
+    "variants": [
+      {
+        "src": "/bilder/generated/karin-walde/verk13-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/karin-walde/verk13-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/karin-walde/verk13-1080.webp",
+        "width": 1080
+      },
+      {
+        "src": "/bilder/generated/karin-walde/verk13-1440.webp",
+        "width": 1440
+      },
+      {
+        "src": "/bilder/generated/karin-walde/verk13-1472.webp",
+        "width": 1472
+      }
+    ]
+  },
   "min-konst/verk02.png": {
     "sourceHash": "300941651a9fcea6e8aceb559299e9b67a7fec737c5af53561fceece8d396c89",
     "metadataVersion": 2,
@@ -388,35 +417,6 @@
       {
         "src": "/bilder/generated/om-mig/verk12-1470.webp",
         "width": 1470
-      }
-    ]
-  },
-  "om-mig/verk13.png": {
-    "sourceHash": "9b369b415758b5ef2a8932f663296ef4aa18f6a80bba08c15d31224324db7f51",
-    "metadataVersion": 2,
-    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
-    "width": 1472,
-    "height": 986,
-    "variants": [
-      {
-        "src": "/bilder/generated/om-mig/verk13-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/om-mig/verk13-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/bilder/generated/om-mig/verk13-1080.webp",
-        "width": 1080
-      },
-      {
-        "src": "/bilder/generated/om-mig/verk13-1440.webp",
-        "width": 1440
-      },
-      {
-        "src": "/bilder/generated/om-mig/verk13-1472.webp",
-        "width": 1472
       }
     ]
   },
