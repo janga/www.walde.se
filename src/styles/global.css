@@ -325,15 +325,10 @@ h1 {
 	}
 
 	.section-nav ul {
-		justify-content: flex-start;
+		justify-content: center;
 		gap: 0 1.55rem;
-		overflow-x: auto;
 		padding: 0 1rem;
-		scrollbar-width: none;
-	}
-
-	.section-nav ul::-webkit-scrollbar {
-		display: none;
+		text-align: center;
 	}
 
 	.section-nav li + li::before {
