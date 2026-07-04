@@ -368,6 +368,10 @@ h2 {
 		line-height: 1.72;
 	}
 
+	.site-section-primary h1 {
+		font-size: clamp(1.9rem, 8vw, 3.2rem);
+	}
+
 	.section-markdown {
 		text-align: left;
 	}
