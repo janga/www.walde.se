@@ -104,7 +104,7 @@ for (const section of frontmatterSections) {
 
 		const imagePath = imageIndex.get(imageName);
 		if (!imagePath) {
-			fail(`Image "${imageName}" referenced in section "${section.id}" does not exist under content/.`);
+			fail(`Image "${imageName}" referenced in section "${section.id}" does not exist anywhere under content/.`);
 			hasProblem = true;
 			continue;
 		}
@@ -134,7 +134,7 @@ if (hasProblem) process.exit(process.exitCode ?? 1);
 
 if (shouldCheck) {
 	if (!hasOrderMismatch && imageMoves.length === 0) {
-		console.log('content/site.md: section order and gallery image locations match frontmatter.');
+		console.log('No problems detected. content/site.md: section order and gallery image locations match frontmatter.');
 	}
 	process.exit(process.exitCode ?? 0);
 }

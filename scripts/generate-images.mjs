@@ -157,7 +157,7 @@ const getContentSourcePath = ({ image, line }, imageIndex) => {
 	const sourcePath = imageIndex.get(image);
 
 	if (!sourcePath) {
-		fail(`Image file does not exist in content/: ${image}`);
+		fail(`Image file "${image}" does not exist anywhere under content/.`);
 	}
 
 	return sourcePath;

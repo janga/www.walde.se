@@ -38,7 +38,7 @@ sections:
       - image: verk12.png
         alt: Fotografi av Karin Walde.
         caption: "Förlaga i miniformat till det 55 meter långa konstverket i rondellen."
-        
+  
   - id: min-konst
     gallery:
       - image: verk17.png
@@ -74,6 +74,7 @@ sections:
       - image: karin-utomhus.jpg
         alt: Fotografi av Karin Walde utomhus.
         caption: ""
+
 
 ---
 ## Karin Walde {#karin-walde}
