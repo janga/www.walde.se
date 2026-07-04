@@ -17,11 +17,11 @@ const { title, images } = Astro.props;
 	{images.map((image) => (
 		<article class="gallery-item">
 			<a
-				href={getLinkedImageSrc(image.src)}
+				href={getLinkedImageSrc(image.image)}
 				class="gallery-image-link"
 			>
 				<img
-					{...getImageAttributes(image.src, '(max-width: 700px) 100vw, 900px')}
+					{...getImageAttributes(image.image, '(max-width: 700px) 100vw, 900px')}
 					alt={image.alt}
 					loading="lazy"
 				/>

@@ -5,12 +5,12 @@
   "engines": {
     "node": ">=22.12.0"
   },
-	"scripts": {
-		"dev": "astro dev",
-		"content:check": "node scripts/sync-content-sections.mjs --check",
-		"content:sync": "node scripts/sync-content-sections.mjs --write",
-		"metadata:fix": "node scripts/fix-image-metadata.mjs",
-		"images": "node scripts/generate-images.mjs",
+  "scripts": {
+    "dev": "astro dev",
+    "content:check": "node scripts/sync-content-sections.mjs --check",
+    "content:sync": "node scripts/sync-content-sections.mjs --write",
+    "metadata:fix": "node scripts/fix-image-metadata.mjs",
+    "images": "node scripts/generate-images.mjs",
     "build": "npm run images && astro build",
     "preview": "astro preview",
     "astro": "astro"

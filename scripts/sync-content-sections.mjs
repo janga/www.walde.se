@@ -1,7 +1,13 @@
-import { readFile, writeFile } from 'node:fs/promises';
+import { mkdir, rename, stat, writeFile } from 'node:fs/promises';
 import { createInterface } from 'node:readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
 import path from 'node:path';
+import {
+	getBodySections,
+	getFrontmatterSections,
+	getImageIndex,
+	readSiteFile,
+} from './lib/site-content.mjs';
 
 const root = process.cwd();
 const sitePath = path.join(root, 'content', 'site.md');
@@ -9,68 +15,10 @@ const args = new Set(process.argv.slice(2));
 const shouldWrite = args.has('--write');
 const shouldCheck = args.has('--check') || !shouldWrite;
 const skipPrompt = args.has('--yes');
-const h2Regex = /^##\s+.*$/gm;
-const explicitHeadingIdRegex = /\s*\{#([a-z0-9-]+)\}\s*$/;
 
 const fail = (message) => {
 	console.error(message);
 	process.exitCode = 1;
-};
-
-const splitSiteFile = (source) => {
-	const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
-
-	if (!match) {
-		throw new Error('content/site.md is missing frontmatter delimited by ---.');
-	}
-
-	return {
-		frontmatter: match[0],
-		body: source.slice(match[0].length),
-	};
-};
-
-const getFrontmatterSectionIds = (frontmatter) => {
-	const ids = [];
-	const lines = frontmatter.split(/\r?\n/);
-	let inSections = false;
-
-	for (const line of lines) {
-		if (/^sections:\s*$/.test(line)) {
-			inSections = true;
-			continue;
-		}
-
-		if (!inSections) continue;
-		if (/^[a-zA-Z0-9_-]+:/.test(line)) break;
-
-		const match = line.match(/^\s{2}-\s+id:\s*([a-z0-9-]+)\s*$/);
-		if (match) ids.push(match[1]);
-	}
-
-	return ids;
-};
-
-const getHeadingId = (heading) => heading.match(explicitHeadingIdRegex)?.[1];
-
-const getBodySections = (body) => {
-	const matches = Array.from(body.matchAll(h2Regex));
-	const prelude = matches.length > 0 ? body.slice(0, matches[0].index) : body;
-	const sections = [];
-
-	for (let index = 0; index < matches.length; index += 1) {
-		const match = matches[index];
-		const start = match.index ?? 0;
-		const next = matches[index + 1];
-		const end = next?.index ?? body.length;
-		const text = body.slice(start, end).trimEnd();
-		const heading = match[0];
-		const id = getHeadingId(heading);
-
-		sections.push({ id, heading, text });
-	}
-
-	return { prelude, sections };
 };
 
 const promptForWrite = async () => {
@@ -78,18 +26,21 @@ const promptForWrite = async () => {
 	if (!process.stdin.isTTY) return false;
 
 	const rl = createInterface({ input, output });
-	const answer = await rl.question('This will rewrite the Markdown sections in content/site.md. Continue? [y/N] ');
+	const answer = await rl.question('This will rewrite Markdown sections in content/site.md and move gallery image files if needed. Continue? [y/N] ');
 	rl.close();
 
 	return answer.trim().toLowerCase() === 'y';
 };
 
-const source = await readFile(sitePath, 'utf8');
-const { frontmatter, body } = splitSiteFile(source);
-const frontmatterIds = getFrontmatterSectionIds(frontmatter);
+const { frontmatter, body } = await readSiteFile(sitePath);
+const frontmatterSections = getFrontmatterSections(frontmatter);
+const frontmatterIds = frontmatterSections.map((section) => section.id);
 const { prelude, sections } = getBodySections(body);
 const sectionsById = new Map();
 const extraSections = [];
+const imageIndex = await getImageIndex(path.join(root, 'content'), fail);
+const imageMoves = [];
+const referencedImages = new Map();
 let hasProblem = false;
 
 for (const section of sections) {
@@ -135,17 +86,61 @@ if (hasOrderMismatch) {
 	console.warn('Markdown section order differs from frontmatter.');
 }
 
+for (const section of frontmatterSections) {
+	for (const imageName of section.images) {
+		if (imageName.includes('/') || imageName.includes('\\')) {
+			fail(`Image reference "${imageName}" in section "${section.id}" must be a filename without a directory.`);
+			hasProblem = true;
+			continue;
+		}
+
+		if (referencedImages.has(imageName)) {
+			fail(`Image "${imageName}" is referenced more than once, in sections "${referencedImages.get(imageName)}" and "${section.id}".`);
+			hasProblem = true;
+			continue;
+		}
+
+		referencedImages.set(imageName, section.id);
+
+		const imagePath = imageIndex.get(imageName);
+		if (!imagePath) {
+			fail(`Image "${imageName}" referenced in section "${section.id}" does not exist under content/.`);
+			hasProblem = true;
+			continue;
+		}
+
+		const currentDirectory = path.basename(path.dirname(imagePath));
+		if (currentDirectory !== section.id) {
+			const targetPath = path.join(root, 'content', section.id, imageName);
+			const targetExists = await stat(targetPath).then((entry) => entry.isFile()).catch(() => false);
+
+			if (targetExists) {
+				fail(`Cannot move image "${imageName}" to content/${section.id}/ because the target file already exists.`);
+				hasProblem = true;
+				continue;
+			}
+
+			imageMoves.push({ imageName, from: imagePath, to: targetPath, sectionId: section.id });
+
+			if (!shouldWrite) {
+				fail(`Image "${imageName}" is used in section "${section.id}" but is located in content/${currentDirectory}/. Run npm run content:sync to move it.`);
+				hasProblem = true;
+			}
+		}
+	}
+}
+
 if (hasProblem) process.exit(process.exitCode ?? 1);
 
 if (shouldCheck) {
-	if (!hasOrderMismatch) {
-		console.log('content/site.md: section order matches frontmatter.');
+	if (!hasOrderMismatch && imageMoves.length === 0) {
+		console.log('content/site.md: section order and gallery image locations match frontmatter.');
 	}
 	process.exit(process.exitCode ?? 0);
 }
 
-if (!hasOrderMismatch) {
-	console.log('content/site.md: no reordering needed.');
+if (!hasOrderMismatch && imageMoves.length === 0) {
+	console.log('content/site.md: no sync needed.');
 	process.exit(0);
 }
 
@@ -157,5 +152,13 @@ if (!canWrite) {
 }
 
 const nextBody = `${prelude}${orderedSections.map((section) => section.text).join('\n')}\n`;
-await writeFile(sitePath, `${frontmatter}${nextBody}`);
-console.log('content/site.md: Markdown sections were sorted according to frontmatter.');
+if (hasOrderMismatch) {
+	await writeFile(sitePath, `${frontmatter}${nextBody}`);
+	console.log('content/site.md: Markdown sections were sorted according to frontmatter.');
+}
+
+for (const move of imageMoves) {
+	await mkdir(path.dirname(move.to), { recursive: true });
+	await rename(move.from, move.to);
+	console.log(`Moved image "${move.imageName}" to content/${move.sectionId}/.`);
+}

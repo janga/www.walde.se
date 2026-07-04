@@ -3,6 +3,12 @@ import { createHash } from 'node:crypto';
 import { mkdir, readdir, readFile, rm, stat, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { promisify } from 'node:util';
+import {
+	getFrontmatterSections,
+	getImageIndex,
+	readSiteFile,
+	supportedImageExtensions,
+} from './lib/site-content.mjs';
 
 const execFileAsync = promisify(execFile);
 
@@ -15,7 +21,6 @@ const manifestPath = path.join(root, 'src', 'data', 'generated-images.json');
 const siteContentPath = path.join(contentDir, 'site.md');
 const imageMetadataVersion = 2;
 const widths = [480, 768, 1080, 1440];
-const supportedExtensions = new Set(['.jpg', '.jpeg', '.png']);
 const creatorTags = ['Artist', 'Creator', 'By-line'];
 const metadataReadTags = [
 	'-Artist',
@@ -122,38 +127,37 @@ const fail = (message) => {
 	throw new Error(message);
 };
 
-const getSiteContent = () => readFile(siteContentPath, 'utf8');
-
 const getReferencedImages = async () => {
-	const siteContent = await getSiteContent();
+	const { frontmatter } = await readSiteFile(siteContentPath);
+	const sections = getFrontmatterSections(frontmatter);
 	const references = [];
-	const srcPattern = /^\s+-?\s*src:\s+["']?([^"'\n]+)["']?\s*$/gm;
 
-	for (const match of siteContent.matchAll(srcPattern)) {
-		const source = match[1].trim();
-		const line = siteContent.slice(0, match.index).split('\n').length;
-		references.push({ source, line });
+	for (const section of sections) {
+		for (const image of section.images) {
+			references.push({
+				image,
+				sectionId: section.id,
+			});
+		}
 	}
 
 	return references;
 };
 
-const getContentSourcePath = ({ source, line }) => {
-	if (source.startsWith('/')) {
-		fail(`Image reference on line ${line} must be relative to content/: ${source}`);
+const getContentSourcePath = ({ image, line }, imageIndex) => {
+	if (image.includes('/') || image.includes('\\') || image.startsWith('/')) {
+		fail(`Image reference must be a filename without a directory: ${image}`);
 	}
 
-	const extension = path.extname(source).toLowerCase();
-	if (!supportedExtensions.has(extension)) {
-		fail(`Image reference on line ${line} uses an unsupported file type: ${source}`);
+	const extension = path.extname(image).toLowerCase();
+	if (!supportedImageExtensions.has(extension)) {
+		fail(`Image reference uses an unsupported file type: ${image}`);
 	}
 
-	const normalizedSource = path.normalize(source);
-	const sourcePath = path.resolve(contentDir, normalizedSource);
-	const relativePath = path.relative(contentDir, sourcePath);
+	const sourcePath = imageIndex.get(image);
 
-	if (relativePath.startsWith('..') || path.isAbsolute(relativePath)) {
-		fail(`Image reference on line ${line} points outside content/: ${source}`);
+	if (!sourcePath) {
+		fail(`Image file does not exist in content/: ${image}`);
 	}
 
 	return sourcePath;
@@ -161,23 +165,30 @@ const getContentSourcePath = ({ source, line }) => {
 
 const getReferencedSources = async () => {
 	const references = await getReferencedImages();
+	const imageIndex = await getImageIndex(contentDir, fail);
 	const seen = new Map();
 	const sources = [];
 
 	for (const reference of references) {
-		const sourcePath = getContentSourcePath(reference);
+		const sourcePath = getContentSourcePath(reference, imageIndex);
 		const contentPath = getContentPath(sourcePath);
+		const imageName = path.basename(sourcePath);
 
-		if (seen.has(contentPath)) {
-			fail(`Image reference ${contentPath} appears on both line ${seen.get(contentPath)} and line ${reference.line}.`);
+		if (seen.has(imageName)) {
+			fail(`Image reference ${imageName} appears on both line ${seen.get(imageName)} and line ${reference.line}.`);
 		}
 
 		const fileStat = await stat(sourcePath).catch(() => null);
 		if (!fileStat?.isFile()) {
-			fail(`Image file referenced on line ${reference.line} does not exist: content/${contentPath}`);
+			fail(`Image file does not exist: content/${contentPath}`);
 		}
 
-		seen.set(contentPath, reference.line);
+		const currentDirectory = path.basename(path.dirname(sourcePath));
+		if (reference.sectionId && currentDirectory !== reference.sectionId) {
+			fail(`Image "${imageName}" is used in section "${reference.sectionId}" but is located in content/${currentDirectory}/. Run npm run content:sync to move it.`);
+		}
+
+		seen.set(imageName, reference.line);
 		sources.push(sourcePath);
 	}
 
@@ -347,14 +358,15 @@ const manifest = {};
 
 for (const sourcePath of sources) {
 	const contentPath = getContentPath(sourcePath);
+	const imageName = path.basename(sourcePath);
 	const sourceHash = await getSourceHash(sourcePath);
 	const sourceMetadata = await readMetadata(sourcePath);
 	validateSourceMetadata(sourcePath, sourceMetadata);
 	const metadataHash = getImageMetadataHash(sourceMetadata);
-	const reusableEntry = await getReusableEntry(sourcePath, previousManifest[contentPath], sourceHash, metadataHash);
+	const reusableEntry = await getReusableEntry(sourcePath, previousManifest[imageName], sourceHash, metadataHash);
 
 	if (reusableEntry) {
-		manifest[contentPath] = reusableEntry;
+		manifest[imageName] = reusableEntry;
 		continue;
 	}
 
@@ -366,7 +378,7 @@ for (const sourcePath of sources) {
 		await convert(sourcePath, outputPath, width);
 	}
 
-	manifest[contentPath] = {
+	manifest[imageName] = {
 		sourceHash,
 		metadataVersion: imageMetadataVersion,
 		metadataHash,

@@ -5,73 +5,73 @@ copyrightOwner: Karin Walde
 sections:
   - id: karin-walde
     gallery:
-      - src: karin-walde/karin-walde.jpg
+      - image: karin-walde.jpg
         alt: Fotografi av Karin Walde
         caption: "Fick Täby kommuns kulturpris för min konst 2021."
-      - src: karin-walde/tva-fossiler.jpg
+      - image: tva-fossiler.jpg
         alt: ""
         caption: "Två grafiska blad med fossiler från Gotland som motiv."
-      - src: karin-walde/lysande-rondell.png
+      - image: lysande-rondell.png
         alt: ""
         caption: "Offentlig utsmyckning: De två rondellerna med runmotiv vid E18 i Roslags Näsby, Täby."
-      - src: karin-walde/verk10.png
+      - image: verk10.png
         alt: Konstverk av Karin Walde.
         caption: "Bildväv och objekt. Separatutställning på Karby gård, Täby."
-      - src: karin-walde/karin-i-bat.jpg
+      - image: karin-i-bat.jpg
         alt: Fotografi av Karin Walde i en båt.
         caption: "Allt kan bli konst! Vattenväxter har blad med vackra mönster."
-      - src: karin-walde/karin-dokumenterar-runmotiv.jpg
+      - image: karin-dokumenterar-runmotiv.jpg
         alt: Karin Walde dokumenterar ett runmotiv på corténstål.
         caption: "Överallt ser jag spännande detaljer, även i masonitskivor! Kan det här bli ett grafiskt blad?"
-      - src: karin-walde/verk13.png
+      - image: verk13.png
         alt: Karin Waldes vävrum.
         caption: "Ateljén i mitt hem i Näsbypark. Här gör jag grafik och bildvävar."
   
   - id: runrondellerna
     gallery:
-      - src: runrondellerna/verk06.jpg
+      - image: verk06.jpg
         alt: Konstverk av Karin Walde.
         caption: "Våra vikingatida grannar! Belysta namn vid Roslags Näsby trafikplats, Täby."
-      - src: runrondellerna/verk11.png
+      - image: verk11.png
         alt: Konstverk av Karin Walde.
         caption: "En av runstenarna som försvunnit – och återuppstått."
-      - src: runrondellerna/verk12.png
+      - image: verk12.png
         alt: Fotografi av Karin Walde.
         caption: "Förlaga i miniformat till det 55 meter långa konstverket i rondellen."
         
   - id: min-konst
     gallery:
-      - src: min-konst/verk17.png
+      - image: verk17.png
         alt: Konstverk av Karin Walde.
         caption: "Grafiskt blad."
-      - src: min-konst/verk09.png
+      - image: verk09.png
         alt: Konstverk av Karin Walde.
         caption: "Objekt av kopparnät och pappersmassa."
-      - src: min-konst/verk02.png
+      - image: verk02.png
         alt: Konstverk av Karin Walde.
         caption: "Grafiskt blad med Gotlandsfossil."
-      - src: min-konst/verk08.png
+      - image: verk08.png
         alt: Konstverk av Karin Walde.
         caption: "Grafiskt blad av fossil."
-      - src: min-konst/verk15.png
+      - image: verk15.png
         alt: Konstverk av Karin Walde.
         caption: "Litografi."
-      - src: min-konst/verk07.png
+      - image: verk07.png
         alt: Konstverk av Karin Walde.
         caption: "Grafiskt blad av fossil."
-      - src: min-konst/verk03.png
+      - image: verk03.png
         alt: Konstverk av Karin Walde.
         caption: "Litografi, del av en serie om tre."
-      - src: min-konst/verk16.png
+      - image: verk16.png
         alt: Konstverk av Karin Walde.
         caption: "Litografi, del av en serie om tre."
 
   - id: om-mig
     gallery:
-      - src: om-mig/verk14.png
+      - image: verk14.png
         alt: Plasthandskar i Karin Waldes ateljé.
         caption: "Ett konstnärshem är inget vanligt hem."
-      - src: om-mig/karin-utomhus.jpg
+      - image: karin-utomhus.jpg
         alt: Fotografi av Karin Walde utomhus.
         caption: ""
 

@@ -54,7 +54,7 @@ sections:
   - id: om-mig
   - id: min-konst
     gallery:
-      - src: min-konst/verk.jpg
+      - image: verk.jpg
         alt: Beskrivande alt-text.
         caption: Bildtext.
 ```
@@ -69,8 +69,8 @@ skrivs som vanlig Markdown i samma fil under `##`-rubriker med explicit
 sektions-id:
 
 `copyrightOwner` används för upphovsrättsmetadata i genererade bildfiler.
-Bildtext anges med det valfria fältet `caption`. `src` och `alt` ska finnas
-för varje bild i ett galleri.
+Bildtext anges med det valfria fältet `caption`. `image` och `alt` ska finnas
+för varje bild i ett galleri. `image` är ett globalt unikt filnamn utan katalog.
 
 Nuvarande publika sektioner är Karin Walde, Runrondellerna, Min konst och Om mig.
 CV-informationen ligger som löpande Markdown-text under `## Om mig`, före
@@ -89,9 +89,10 @@ Inledande text.
 
 Builden varnar om Markdown-sektionernas ordning skiljer sig från ordningen i
 frontmatter, men skriver inte om `content/site.md`. Kör `npm run content:check`
-för att kontrollera ordningen utan att ändra filen. Kör `npm run content:sync`
-för att sortera Markdown-sektionerna efter frontmatter; kommandot frågar innan
-det skriver om filen.
+för att kontrollera ordning och bildplacering utan att ändra filer. Kör
+`npm run content:sync` för att sortera Markdown-sektionerna efter frontmatter
+och flytta galleribilder till rätt sektionskatalog; kommandot frågar innan det
+skriver om eller flyttar filer.
 
 Alla bilder som visas på sidan ska ligga i en sektions `gallery`.
 
@@ -106,11 +107,15 @@ content/min-konst/
 content/om-mig/
 ```
 
-Bildreferens i `content/site.md` ska vara relativ till `content/`, till exempel
-`min-konst/verk.jpg`. Kör `npm run images` efter att bilder lagts till eller
-bytts ut. `npm run build` kör bildgenereringen automatiskt. Bildgenereringen
-kräver ImageMagick, antingen kommandot `magick` eller de äldre kommandona
-`identify` och `convert`, samt `exiftool` för metadatahantering.
+Bildreferens i `content/site.md` ska vara ett filnamn utan katalog, till exempel
+`image: verk.jpg`. Varje bildfilnamn under `content/` måste vara globalt unikt.
+Katalogen ska motsvara sektionens `id`; en bild som visas i `min-konst` ska
+alltså ligga i `content/min-konst/`. Kör `npm run content:sync` om en bildrad
+har flyttats till en annan sektion i frontmatter. Kör `npm run images` efter
+att bilder lagts till eller bytts ut. `npm run build` kör bildgenereringen
+automatiskt. Bildgenereringen kräver ImageMagick, antingen kommandot `magick`
+eller de äldre kommandona `identify` och `convert`, samt `exiftool` för
+metadatahantering.
 
 Bildflödet skapar WebP-varianter i `public/bilder/generated/` för visning på
 sidan. Katalogen är build-output och versionshanteras inte. Klick på en bild går
@@ -155,8 +160,8 @@ bilder återanvänder redan genererade WebP-varianter. Endast nya, ändrade elle
 saknade bildvarianter byggs om.
 
 Bildflödet validerar också att varje bildreferens i `content/site.md` är en
-unik, relativ sökväg till en befintlig `.jpg`, `.jpeg` eller `.png` under
-`content/`.
+unik filnamnsreferens till en befintlig `.jpg`, `.jpeg` eller `.png` under
+`content/`, och att bilden ligger i katalogen för den sektion där den används.
 
 ## Presentation
 
