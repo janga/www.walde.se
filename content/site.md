@@ -5,12 +5,12 @@ copyrightOwner: Karin Walde
 sections:
   - id: karin-walde
     gallery:
-      - image: karin-walde.jpg
-        alt: Fotografi av Karin Walde
-        caption: "Fick Täby kommuns kulturpris för min konst 2021."
       - image: tva-fossiler.jpg
         alt: ""
         caption: "Två grafiska blad med fossiler från Gotland som motiv."
+      - image: karin-walde.jpg
+        alt: Fotografi av Karin Walde
+        caption: "Fick Täby kommuns kulturpris för min konst 2021."
       - image: lysande-rondell.png
         alt: ""
         caption: "Offentlig utsmyckning: De två rondellerna med runmotiv vid E18 i Roslags Näsby, Täby."
@@ -135,7 +135,7 @@ Fick Täby kommuns kulturpris 2021.
 - Nissaströms kursgård
 - Täby församling
 - Näsby slott i Täby
-- Skaraborgs läns landsting
+- Skaraborgs läns landsting 
 - Västernorrlands landsting
 
 [karin@walde.se](mailto:karin@walde.se)
