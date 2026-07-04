@@ -7,15 +7,21 @@ type ResolvedSection = SiteSection & { title: string; contentHtml: string };
 
 interface Props {
 	section: ResolvedSection;
+	headingLevel: 1 | 2;
 }
 
-const { section } = Astro.props;
+const { section, headingLevel } = Astro.props;
+const HeadingTag = headingLevel === 1 ? 'h1' : 'h2';
 ---
 
-<section id={section.id} class="site-section" data-section-title={section.title}>
+<section
+	id={section.id}
+	class:list={['site-section', { 'site-section-primary': headingLevel === 1 }]}
+	data-section-title={section.title}
+>
 	<div class="section-card">
 		<header class="section-header">
-			<h1>{section.title}</h1>
+			<HeadingTag>{section.title}</HeadingTag>
 		</header>
 
 		<div class="section-body">

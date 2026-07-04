@@ -135,7 +135,7 @@ Fick Täby kommuns kulturpris 2021.
 - Nissaströms kursgård
 - Täby församling
 - Näsby slott i Täby
-- Skaraborgs läns
+- Skaraborgs läns landsting
 - Västernorrlands landsting
 
 [karin@walde.se](mailto:karin@walde.se)

@@ -20,8 +20,8 @@ const resolvedSections = getSectionsContent(siteHtml, sections);
 	<SiteNavigation sections={resolvedSections} />
 
 	<main id="main-content" class="site-content">
-		{resolvedSections.map((section) => (
-			<SiteSection section={section} />
+		{resolvedSections.map((section, index) => (
+			<SiteSection section={section} headingLevel={index === 0 ? 1 : 2} />
 		))}
 	</main>
 </BaseLayout>
