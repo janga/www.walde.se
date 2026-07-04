@@ -11,6 +11,17 @@ astro dev --background
 Manage the background server with `astro dev stop`, `astro dev status`, and
 `astro dev logs`.
 
+## Workflow
+
+- Keep changes small and focused.
+- Prefer editing `content/site.md` for content and gallery changes.
+- Run `npm run content:check` after section-order or image-placement changes.
+- Run `npm run build` after content, layout, or image changes.
+- Run `npm run metadata:fix` only when new source images need copyright metadata.
+- Commit before pushing.
+- Do not create branches unless the user asks for one.
+- Do not push uncommitted changes.
+
 ## Documentation
 
 Full documentation: https://docs.astro.build
