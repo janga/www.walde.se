@@ -88,7 +88,7 @@ const getImageMagick = async () => {
 		};
 	}
 
-	throw new Error('ImageMagick saknas. Installera antingen kommandot "magick" eller "identify" och "convert".');
+	throw new Error('ImageMagick is missing. Install either the "magick" command or both "identify" and "convert".');
 };
 
 const getExifTool = async () => {
@@ -105,7 +105,7 @@ const getExifTool = async () => {
 		};
 	}
 
-	throw new Error('exiftool saknas. Installera exiftool eller kör GitHub Actions-flödet som installerar det.');
+	throw new Error('exiftool is missing. Install exiftool or use the GitHub Actions workflow that installs it.');
 };
 
 const toPublicPath = (filePath) => filePath.split(path.sep).join('/');
@@ -140,12 +140,12 @@ const getReferencedImages = async () => {
 
 const getContentSourcePath = ({ source, line }) => {
 	if (source.startsWith('/')) {
-		fail(`Bildreferensen på rad ${line} måste vara relativ till content/: ${source}`);
+		fail(`Image reference on line ${line} must be relative to content/: ${source}`);
 	}
 
 	const extension = path.extname(source).toLowerCase();
 	if (!supportedExtensions.has(extension)) {
-		fail(`Bildreferensen på rad ${line} har en filtyp som inte stöds: ${source}`);
+		fail(`Image reference on line ${line} uses an unsupported file type: ${source}`);
 	}
 
 	const normalizedSource = path.normalize(source);
@@ -153,7 +153,7 @@ const getContentSourcePath = ({ source, line }) => {
 	const relativePath = path.relative(contentDir, sourcePath);
 
 	if (relativePath.startsWith('..') || path.isAbsolute(relativePath)) {
-		fail(`Bildreferensen på rad ${line} pekar utanför content/: ${source}`);
+		fail(`Image reference on line ${line} points outside content/: ${source}`);
 	}
 
 	return sourcePath;
@@ -169,12 +169,12 @@ const getReferencedSources = async () => {
 		const contentPath = getContentPath(sourcePath);
 
 		if (seen.has(contentPath)) {
-			fail(`Bildreferensen ${contentPath} förekommer både på rad ${seen.get(contentPath)} och ${reference.line}.`);
+			fail(`Image reference ${contentPath} appears on both line ${seen.get(contentPath)} and line ${reference.line}.`);
 		}
 
 		const fileStat = await stat(sourcePath).catch(() => null);
 		if (!fileStat?.isFile()) {
-			fail(`Bildfilen som anges på rad ${reference.line} finns inte: content/${contentPath}`);
+			fail(`Image file referenced on line ${reference.line} does not exist: content/${contentPath}`);
 		}
 
 		seen.set(contentPath, reference.line);
@@ -225,7 +225,7 @@ const validateSourceMetadata = (sourcePath, metadata) => {
 		return;
 	}
 
-	fail(`Bildfilen saknar creator/artist-metadata: content/${getContentPath(sourcePath)}. Kör npm run metadata:fix och committa den uppdaterade bilden.`);
+	fail(`Image file is missing creator/artist metadata: content/${getContentPath(sourcePath)}. Run npm run metadata:fix and commit the updated image.`);
 };
 
 const getVariantWidths = ({ width }) => {

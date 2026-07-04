@@ -13,6 +13,8 @@ content/site.md
 
 ```sh
 npm install
+npm run content:check
+npm run content:sync
 npm run metadata:fix
 npm run images
 npm run build
@@ -49,31 +51,33 @@ src/
 ```yaml
 copyrightOwner: Karin Walde
 sections:
+  - id: om-mig
   - id: min-konst
-    title: Min konst
     gallery:
       - src: min-konst/verk.jpg
         alt: Beskrivande alt-text.
         caption: Bildtext.
 ```
 
-`id` används som ankare i navigationen. Exempel: `id: min-konst` ger länken
-`#min-konst`.
+`id` är sektionens stabila tekniska nyckel och används som ankare i
+navigationen. Exempel: `id: min-konst` ger länken `#min-konst`.
 
-Frontmatter styr sektionernas ordning och gallerimetadata. Den
-löpande texten skrivs som vanlig Markdown i samma fil under `##`-rubriker som
-matchar sektionernas `id` eller `title`:
+Frontmatter styr vilka sektioner som visas, deras ordning och eventuell
+gallerimetadata. `gallery` kan utelämnas för sektioner utan bilder. Det
+synliga sektionsnamnet finns bara i Markdown-rubriken. Den löpande texten
+skrivs som vanlig Markdown i samma fil under `##`-rubriker med explicit
+sektions-id:
 
 `copyrightOwner` används för upphovsrättsmetadata i genererade bildfiler.
 Bildtext anges med det valfria fältet `caption`. `src` och `alt` ska finnas
-för varje bild.
+för varje bild i ett galleri.
 
 Nuvarande publika sektioner är Karin Walde, Runrondellerna, Min konst och Om mig.
 CV-informationen ligger som löpande Markdown-text under `## Om mig`, före
 kontaktuppgifterna, och är inte en separat sektion.
 
 ```md
-## Min konst
+## Min konst {#min-konst}
 
 Inledande text.
 
@@ -82,6 +86,12 @@ Inledande text.
 - Punktlista
 - Fler punkter
 ```
+
+Builden varnar om Markdown-sektionernas ordning skiljer sig från ordningen i
+frontmatter, men skriver inte om `content/site.md`. Kör `npm run content:check`
+för att kontrollera ordningen utan att ändra filen. Kör `npm run content:sync`
+för att sortera Markdown-sektionerna efter frontmatter; kommandot frågar innan
+det skriver om filen.
 
 Alla bilder som visas på sidan ska ligga i en sektions `gallery`.
 

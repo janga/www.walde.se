@@ -19,8 +19,7 @@ const site = defineCollection({
 		sections: z.array(
 			z.object({
 				id: z.string().regex(/^[a-z0-9-]+$/),
-				title: z.string(),
-				gallery: z.array(galleryImage).default([]),
+				gallery: z.array(galleryImage).optional().default([]),
 			}),
 		).min(1),
 	}),

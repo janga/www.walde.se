@@ -2,9 +2,10 @@
 import type { CollectionEntry } from 'astro:content';
 
 type SiteSection = CollectionEntry<'site'>['data']['sections'][number];
+type ResolvedSection = SiteSection & { title: string };
 
 interface Props {
-	sections: SiteSection[];
+	sections: ResolvedSection[];
 }
 
 const { sections } = Astro.props;

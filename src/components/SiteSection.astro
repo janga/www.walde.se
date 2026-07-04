@@ -3,13 +3,13 @@ import type { CollectionEntry } from 'astro:content';
 import GalleryGrid from './GalleryGrid.astro';
 
 type SiteSection = CollectionEntry<'site'>['data']['sections'][number];
+type ResolvedSection = SiteSection & { title: string; contentHtml: string };
 
 interface Props {
-	section: SiteSection;
-	contentHtml: string;
+	section: ResolvedSection;
 }
 
-const { section, contentHtml } = Astro.props;
+const { section } = Astro.props;
 ---
 
 <section id={section.id} class="site-section" data-section-title={section.title}>
@@ -19,7 +19,7 @@ const { section, contentHtml } = Astro.props;
 		</header>
 
 		<div class="section-body">
-			{contentHtml && <div class="section-markdown" set:html={contentHtml} />}
+			{section.contentHtml && <div class="section-markdown" set:html={section.contentHtml} />}
 
 			{section.gallery.length > 0 && (
 				<GalleryGrid title={section.title} images={section.gallery} />

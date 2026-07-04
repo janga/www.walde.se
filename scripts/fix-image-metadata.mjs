@@ -35,7 +35,7 @@ const getFrontmatter = (siteContent) => {
 	const match = siteContent.match(/^---\n([\s\S]*?)\n---/);
 
 	if (!match) {
-		fail('content/site.md saknar frontmatter.');
+		fail('content/site.md is missing frontmatter.');
 	}
 
 	return match[1];
@@ -47,7 +47,7 @@ const getCopyrightOwner = async () => {
 	const copyrightOwner = (match?.[1] ?? match?.[2] ?? match?.[3] ?? '').trim();
 
 	if (!copyrightOwner) {
-		fail('content/site.md måste ange copyrightOwner i frontmatter.');
+		fail('content/site.md must define copyrightOwner in frontmatter.');
 	}
 
 	return copyrightOwner;
@@ -103,7 +103,7 @@ const writeMetadata = async (imagePath, copyrightOwner) => {
 };
 
 await run('exiftool', ['-ver']).catch(() => {
-	fail('exiftool saknas. Installera exiftool innan metadata kan skrivas till originalbilder.');
+	fail('exiftool is missing. Install exiftool before writing metadata to source images.');
 });
 
 const copyrightOwner = await getCopyrightOwner();
@@ -129,4 +129,4 @@ for (const imagePath of images) {
 	updated += 1;
 }
 
-console.log(`Metadata klar: ${updated} uppdaterade, ${skipped} lämnade oförändrade.`);
+console.log(`Metadata complete: ${updated} updated, ${skipped} left unchanged.`);

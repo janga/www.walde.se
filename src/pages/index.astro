@@ -3,25 +3,25 @@ import { getCollection } from 'astro:content';
 import SiteNavigation from '../components/SiteNavigation.astro';
 import SiteSection from '../components/SiteSection.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getSectionHtml } from '../lib/sectionContent';
+import { getSectionsContent } from '../lib/sectionContent';
 
 const [site] = await getCollection('site');
 
 if (!site) {
-	throw new Error('Innehållsfilen content/site.md saknas.');
+	throw new Error('Content file content/site.md is missing.');
 }
 
 const sections = site.data.sections;
 const siteHtml = site.rendered?.html ?? '';
-const sectionHtml = getSectionHtml(siteHtml, sections);
+const resolvedSections = getSectionsContent(siteHtml, sections);
 ---
 
 <BaseLayout title={site.data.title} description={site.data.description}>
-	<SiteNavigation sections={sections} />
+	<SiteNavigation sections={resolvedSections} />
 
 	<main id="main-content" class="site-content">
-		{sections.map((section) => (
-			<SiteSection section={section} contentHtml={sectionHtml[section.id] ?? ''} />
+		{resolvedSections.map((section) => (
+			<SiteSection section={section} />
 		))}
 	</main>
 </BaseLayout>
