@@ -1,4 +1,62 @@
 {
+  "karin-dokumenterar-runmotiv.jpg": {
+    "sourceHash": "18392de551dcb2c7f31b9efdb79dd613e17943a8e509a1300d06b4599f7e0417",
+    "metadataVersion": 2,
+    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
+    "width": 4032,
+    "height": 3024,
+    "variants": [
+      {
+        "src": "/bilder/generated/karin-walde/karin-dokumenterar-runmotiv-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/karin-walde/karin-dokumenterar-runmotiv-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/karin-walde/karin-dokumenterar-runmotiv-1080.webp",
+        "width": 1080
+      },
+      {
+        "src": "/bilder/generated/karin-walde/karin-dokumenterar-runmotiv-1440.webp",
+        "width": 1440
+      },
+      {
+        "src": "/bilder/generated/karin-walde/karin-dokumenterar-runmotiv-4032.webp",
+        "width": 4032
+      }
+    ]
+  },
+  "karin-i-bat.jpg": {
+    "sourceHash": "dc7e3d65083635f8fa033aa8fc3a83e29631a16c0959f6875499882d2f382e97",
+    "metadataVersion": 2,
+    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
+    "width": 3024,
+    "height": 4032,
+    "variants": [
+      {
+        "src": "/bilder/generated/karin-walde/karin-i-bat-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/karin-walde/karin-i-bat-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/karin-walde/karin-i-bat-1080.webp",
+        "width": 1080
+      },
+      {
+        "src": "/bilder/generated/karin-walde/karin-i-bat-1440.webp",
+        "width": 1440
+      },
+      {
+        "src": "/bilder/generated/karin-walde/karin-i-bat-3024.webp",
+        "width": 3024
+      }
+    ]
+  },
   "karin-walde.jpg": {
     "sourceHash": "82322ad0a2b2bd63da8a83b5d8005bb1f3cfd2e2d7a438a9eae27ba53b9da710",
     "metadataVersion": 2,
@@ -301,64 +359,6 @@
       {
         "src": "/bilder/generated/min-konst/verk17-776.webp",
         "width": 776
-      }
-    ]
-  },
-  "karin-dokumenterar-runmotiv.jpg": {
-    "sourceHash": "18392de551dcb2c7f31b9efdb79dd613e17943a8e509a1300d06b4599f7e0417",
-    "metadataVersion": 2,
-    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
-    "width": 4032,
-    "height": 3024,
-    "variants": [
-      {
-        "src": "/bilder/generated/om-mig/karin-dokumenterar-runmotiv-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/om-mig/karin-dokumenterar-runmotiv-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/bilder/generated/om-mig/karin-dokumenterar-runmotiv-1080.webp",
-        "width": 1080
-      },
-      {
-        "src": "/bilder/generated/om-mig/karin-dokumenterar-runmotiv-1440.webp",
-        "width": 1440
-      },
-      {
-        "src": "/bilder/generated/om-mig/karin-dokumenterar-runmotiv-4032.webp",
-        "width": 4032
-      }
-    ]
-  },
-  "karin-i-bat.jpg": {
-    "sourceHash": "dc7e3d65083635f8fa033aa8fc3a83e29631a16c0959f6875499882d2f382e97",
-    "metadataVersion": 2,
-    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
-    "width": 3024,
-    "height": 4032,
-    "variants": [
-      {
-        "src": "/bilder/generated/om-mig/karin-i-bat-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/om-mig/karin-i-bat-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/bilder/generated/om-mig/karin-i-bat-1080.webp",
-        "width": 1080
-      },
-      {
-        "src": "/bilder/generated/om-mig/karin-i-bat-1440.webp",
-        "width": 1440
-      },
-      {
-        "src": "/bilder/generated/om-mig/karin-i-bat-3024.webp",
-        "width": 3024
       }
     ]
   },
