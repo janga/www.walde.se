@@ -82,7 +82,7 @@ sections:
 
 Ateljé och showroom i Näsbypark, Täby
 [karin@walde.se](mailto:karin@walde.se)
-[0730-577 855](tel:+46730577855)
+0730-577 855
 ## Runrondellerna {#runrondellerna}
 
 2023 invigdes de två stora rondellerna i Roslags Näsby, Täby, som jag har formgivit och som har fått mycket uppmärksamhet.
@@ -96,7 +96,7 @@ En detalj jag tycker om är att flera av namnen är kvinnonamn. Det påminner om
 I den andra rondellen står fyra runstenar. De är nygjorda kopior av runstenar som man vet har funnits i Täby, men sedan försvunnit.
 ## Min konst {#min-konst}
 Ett urval av min konst. Välkommen att kontakta mig för att se mer på utställningar, eller i min ateljé med showroom. [karin@walde.se](mailto:karin@walde.se)
-[0730-577 855](tel:+46730577855)
+0730-577 855
 ## Om mig {#om-mig}
 Född 1941 i Jokkmokk, sedan 1946 bosatt i Täby.
 
@@ -139,4 +139,4 @@ Fick Täby kommuns kulturpris 2021.
 - Västernorrlands landsting
 
 [karin@walde.se](mailto:karin@walde.se)
-[0730-577 855](tel:+46730577855)
+0730-577 855
