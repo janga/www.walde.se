@@ -6,73 +6,73 @@ sections:
   - id: karin-walde
     gallery:
       - image: tva-fossiler.jpg
-        alt: ""
+        alt: "Två fossilmotiv sida vid sida: blå spiral i kallt ljus och rosa skiva mot orange."
         caption: "Två grafiska blad med fossiler från Gotland som motiv."
       - image: karin-walde.jpg
-        alt: Fotografi av Karin Walde
+        alt: "Karin Walde står i grönska med blombukett och håller Täby kommuns kulturpris i handen."
         caption: "Fick Täby kommuns kulturpris för min konst 2021."
       - image: lysande-rondell.png
-        alt: ""
-        caption: "Offentlig utsmyckning: De två rondellerna med runmotiv vid E18 i Roslags Näsby, Täby."
+        alt: "Nattbild av 55 meter lång corténstålring i rondell, med violett lysande runnamn längs hela formen."
+        caption: "Offentlig utsmyckning: En av de två rondellerna med runmotiv vid E18 i Roslags Näsby, Täby."
       - image: verk10.png
-        alt: Konstverk av Karin Walde.
+        alt: "Utställningsrum med textila verk: mörk lodrät väv, vit spetsform på brun fond, ovalt väggobjekt och smal svart skulptur."
         caption: "Bildväv och objekt. Separatutställning på Karby gård, Täby."
       - image: karin-i-bat.jpg
-        alt: Fotografi av Karin Walde i en båt.
+        alt: "Karin Walde sitter barfota i en liten båt; vattenväxter ligger i fören och skog speglas bakom."
         caption: "Allt kan bli konst! Vattenväxter har blad med vackra mönster."
       - image: karin-dokumenterar-runmotiv.jpg
-        alt: Karin Walde dokumenterar ett runmotiv på corténstål.
+        alt: "Karin Walde fotograferar en rostbrun masonitskiva där mörka spår och ljusa fläckar ger inspiration till konst."
         caption: "Överallt ser jag spännande detaljer, även i masonitskivor! Kan det här bli ett grafiskt blad?"
       - image: verk13.png
-        alt: Karin Waldes vävrum.
+        alt: "Kompakt vävateljé med färgstarka garnspolar, arbetsbord, symaskin och fönsterljus över taken."
         caption: "Ateljén i mitt hem i Näsbypark. Här gör jag grafik och bildvävar."
   
   - id: runrondellerna
     gallery:
       - image: verk06.jpg
-        alt: Konstverk av Karin Walde.
+        alt: "Mörk trafikplats på natten där violetta runnamn lyser längs en låg corténring."
         caption: "Våra vikingatida grannar! Belysta namn vid Roslags Näsby trafikplats, Täby."
       - image: verk11.png
-        alt: Konstverk av Karin Walde.
+        alt: "Grov grå sten med röd runorm som slingrar sig i en stor åtta över ytan."
         caption: "En av runstenarna som försvunnit – och återuppstått."
       - image: verk12.png
-        alt: Fotografi av Karin Walde.
+        alt: "Karin Walde håller en vit modellring med röda runtecken framför hyllor med burkar och böcker."
         caption: "Förlaga i miniformat till det 55 meter långa konstverket i rondellen."
   
   - id: min-konst
     gallery:
       - image: verk17.png
-        alt: Konstverk av Karin Walde.
+        alt: "Genomlyst blad i orange linjer mot blågrå fond, med en vit ljusstrimma utmed ena sidan."
         caption: "Grafiskt blad."
       - image: verk09.png
-        alt: Konstverk av Karin Walde.
+        alt: "Smalt svart nätobjekt med ljus mitt, spetsiga ändar och mjuk skugga på väggen."
         caption: "Objekt av kopparnät och pappersmassa."
       - image: verk02.png
-        alt: Konstverk av Karin Walde.
+        alt: "Tre blågröna korallformer med radiella fåror, svävande mot ljus vattenliknande bakgrund."
         caption: "Grafiskt blad med Gotlandsfossil."
       - image: verk08.png
-        alt: Konstverk av Karin Walde.
+        alt: "Rosa fossilskiva med mörkt radiellt centrum, omgiven av glödande orange och blå kornighet."
         caption: "Grafiskt blad av fossil."
       - image: verk15.png
-        alt: Konstverk av Karin Walde.
+        alt: "Roddbåt sedd framifrån inifrån båten, lågt mot horisont, vatten och nästan tom himmel."
         caption: "Litografi."
       - image: verk07.png
-        alt: Konstverk av Karin Walde.
+        alt: "Blå spiralformad fossil med mörk kärna, inbäddad i ljusa fibrer och skimrande yta."
         caption: "Grafiskt blad av fossil."
       - image: verk03.png
-        alt: Konstverk av Karin Walde.
+        alt: "Mjukt upplysta druvklasar i violett och gult bland bleka blad mot grön fond."
         caption: "Litografi, del av en serie om tre."
       - image: verk16.png
-        alt: Konstverk av Karin Walde.
+        alt: "Böjd trädliknande form med ljusa lövkronor mot grön fond och varm orange mark."
         caption: "Litografi, del av en serie om tre."
 
   - id: om-mig
     gallery:
       - image: verk14.png
-        alt: Plasthandskar i Karin Waldes ateljé.
+        alt: "Färgfläckiga plasthandskar i vitt, grönt, blått och svart upphängda på lina i ateljén."
         caption: "Ett konstnärshem är inget vanligt hem."
       - image: karin-utomhus.jpg
-        alt: Fotografi av Karin Walde utomhus.
+        alt: "Närporträtt av Karin Walde i röd blus, leende i mjukt sommarljus med grön bakgrund."
         caption: ""
 
 
