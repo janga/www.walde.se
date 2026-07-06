@@ -13,10 +13,16 @@ sections:
         caption: "Fick Täby kommuns kulturpris för min konst 2021."
       - image: lysande-rondell.png
         alt: ""
-        caption: "Offentlig utsmyckning: De ena av två rondeller med runmotiv vid E18 i Roslags Näsby, Täby."
+        caption: "Offentlig utsmyckning: De två rondellerna med runmotiv vid E18 i Roslags Näsby, Täby."
       - image: verk10.png
         alt: Konstverk av Karin Walde.
         caption: "Bildväv och objekt. Separatutställning på Karby gård, Täby."
+      - image: karin-i-bat.jpg
+        alt: Fotografi av Karin Walde i en båt.
+        caption: "Allt kan bli konst! Vattenväxter har blad med vackra mönster."
+      - image: karin-dokumenterar-runmotiv.jpg
+        alt: Karin Walde dokumenterar ett runmotiv på corténstål.
+        caption: "Överallt ser jag spännande detaljer, även i masonitskivor! Kan det här bli ett grafiskt blad?"
       - image: verk13.png
         alt: Karin Waldes vävrum.
         caption: "Ateljén i mitt hem i Näsbypark. Här gör jag grafik och bildvävar."
@@ -68,12 +74,7 @@ sections:
       - image: karin-utomhus.jpg
         alt: Fotografi av Karin Walde utomhus.
         caption: ""
-      - image: karin-i-bat.jpg
-        alt: Fotografi av Karin Walde i en båt.
-        caption: "Allt kan bli konst! Vattenväxter har blad med vackra mönster."
-      - image: karin-dokumenterar-runmotiv.jpg
-        alt: Karin Walde dokumenterar ett runmotiv på corténstål.
-        caption: "Överallt ser jag spännande detaljer, även i masonitskivor! Kan det här bli ett grafiskt blad?"
+
 
 ---
 ## Karin Walde {#karin-walde}
