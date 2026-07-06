@@ -126,9 +126,10 @@ a {
 	padding: 1.05rem 0 0.95rem;
 	color: var(--color-muted);
 	font-size: 0.76rem;
-	font-weight: 600;
+	font-weight: 500;
 	letter-spacing: 0.12em;
 	line-height: 1;
+	opacity: 0.76;
 	text-decoration: none;
 	text-transform: uppercase;
 }
@@ -136,6 +137,11 @@ a {
 .section-nav a:hover,
 .section-nav a[aria-current='true'] {
 	color: var(--color-text);
+	opacity: 1;
+}
+
+.section-nav a[aria-current='true'] {
+	font-weight: 800;
 }
 
 .site-content {
