@@ -20,9 +20,6 @@ sections:
       - image: karin-i-bat.jpg
         alt: "Karin Walde sitter barfota i en liten båt; vattenväxter ligger i fören och skog speglas bakom."
         caption: "Allt kan bli konst! Vattenväxter har blad med vackra mönster."
-      - image: karin-dokumenterar-runmotiv.jpg
-        alt: "Karin Walde fotograferar en rostbrun masonitskiva där mörka spår och ljusa fläckar ger inspiration till konst."
-        caption: "Överallt ser jag spännande detaljer, även i masonitskivor! Kan det här bli ett grafiskt blad?"
       - image: verk13.png
         alt: "Kompakt vävateljé med färgstarka garnspolar, arbetsbord, symaskin och fönsterljus över taken."
         caption: "Ateljén i mitt hem i Näsbypark. Här gör jag grafik och bildvävar."
