@@ -32,6 +32,14 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      - name: Restore generated image cache
+        uses: actions/cache@v4
+        with:
+          path: public/bilder/generated
+          key: generated-images-${{ runner.os }}-${{ hashFiles('content/site.md', 'content/**/*.jpg', 'content/**/*.jpeg', 'content/**/*.png', 'scripts/generate-images.mjs', 'scripts/lib/**/*.mjs', 'src/data/generated-images.json') }}
+          restore-keys: |
+            generated-images-${{ runner.os }}-
+
       - name: Install image tools
         run: sudo apt-get update && sudo apt-get install -y imagemagick libimage-exiftool-perl
 
