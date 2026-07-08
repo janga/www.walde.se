@@ -15,12 +15,37 @@ Manage the background server with `astro dev stop`, `astro dev status`, and
 
 - Keep changes small and focused.
 - Prefer editing `content/site.md` for content and gallery changes.
-- Run `npm run content:check` after section-order or image-placement changes.
-- Run `npm run build` after content, layout, or image changes.
+- Run `npm run content:check` before `npm run build` for content or image
+  changes. This catches cheap content, filename, reference, and placement
+  problems before WebP generation starts.
 - Run `npm run metadata:fix` only when new source images need copyright metadata.
+- Run `npm run build` after content, layout, or image changes, but only after
+  `npm run content:check` has passed.
+- Before committing, run `git status --short` and make sure untracked files are
+  intentional.
 - Commit before pushing.
 - Do not create branches unless the user asks for one.
 - Do not push uncommitted changes.
+
+## Validation Order
+
+For content or image changes, use this order:
+
+1. Run `npm run content:check`.
+   - It validates section order, image references, duplicate image names, image
+     directories, and lists images under `content/` that are not mounted because
+     they are not referenced from `content/site.md`.
+   - Fix these issues before running `npm run build`.
+2. Run `npm run metadata:fix` only when new source images are added or when the
+   build reports missing creator/artist metadata.
+   - Commit source images that were updated by metadata fixing.
+3. Run `npm run build`.
+   - This generates WebP variants and can update `src/data/generated-images.json`.
+4. Review `git status --short`.
+   - Include referenced new source images.
+   - Include `content/site.md`.
+   - Include `src/data/generated-images.json` when image generation changed it.
+   - Do not commit unreferenced images unless the user explicitly asks for them.
 
 ## Documentation
 

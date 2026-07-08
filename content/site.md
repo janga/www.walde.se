@@ -80,6 +80,9 @@ sections:
       - image: img-6207.jpeg
         alt: ""
         caption: "img-6207.jpeg"
+      - image: img-6214.jpeg
+        alt: "Färgkartor med blå, gröna, röda och gula remsor, med en färgfläckig arbetsrock hängd framför."
+        caption: "img-6214.jpeg"
       - image: koppartrad.jpeg
         alt: ""
         caption: "koppartrad.jpeg"

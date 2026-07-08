@@ -420,6 +420,35 @@
       }
     ]
   },
+  "img-6214.jpeg": {
+    "sourceHash": "8fcc06548abacb44ecd4fee06ab7ee767df93d995dc8bbf0b3b9a9a30ad9f13a",
+    "metadataVersion": 2,
+    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
+    "width": 4032,
+    "height": 3024,
+    "variants": [
+      {
+        "src": "/bilder/generated/om-mig/img-6214-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/om-mig/img-6214-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/om-mig/img-6214-1080.webp",
+        "width": 1080
+      },
+      {
+        "src": "/bilder/generated/om-mig/img-6214-1440.webp",
+        "width": 1440
+      },
+      {
+        "src": "/bilder/generated/om-mig/img-6214-4032.webp",
+        "width": 4032
+      }
+    ]
+  },
   "karin-utomhus.jpg": {
     "sourceHash": "cedd5583245c1c1f69975b9a8060c1c7116efa7abc14eb8ed4794cfa3f49e46c",
     "metadataVersion": 2,
