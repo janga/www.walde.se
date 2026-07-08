@@ -21,7 +21,11 @@ const resolvedSections = getSectionsContent(siteHtml, sections);
 
 	<main id="main-content" class="site-content">
 		{resolvedSections.map((section, index) => (
-			<SiteSection section={section} headingLevel={index === 0 ? 1 : 2} />
+			<SiteSection
+				section={section}
+				headingLevel={index === 0 ? 1 : 2}
+				priorityGalleryImage={index === 0}
+			/>
 		))}
 	</main>
 </BaseLayout>

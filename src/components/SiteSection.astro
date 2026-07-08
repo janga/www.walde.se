@@ -8,9 +8,10 @@ type ResolvedSection = SiteSection & { title: string; contentHtml: string };
 interface Props {
 	section: ResolvedSection;
 	headingLevel: 1 | 2;
+	priorityGalleryImage?: boolean;
 }
 
-const { section, headingLevel } = Astro.props;
+const { section, headingLevel, priorityGalleryImage = false } = Astro.props;
 const HeadingTag = headingLevel === 1 ? 'h1' : 'h2';
 ---
 
@@ -28,7 +29,11 @@ const HeadingTag = headingLevel === 1 ? 'h1' : 'h2';
 			{section.contentHtml && <div class="section-markdown" set:html={section.contentHtml} />}
 
 			{section.gallery.length > 0 && (
-				<GalleryGrid title={section.title} images={section.gallery} />
+				<GalleryGrid
+					title={section.title}
+					images={section.gallery}
+					priorityFirstImage={priorityGalleryImage}
+				/>
 			)}
 		</div>
 	</div>

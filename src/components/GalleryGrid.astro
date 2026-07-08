@@ -8,13 +8,17 @@ type GalleryImage = SiteSection['gallery'][number];
 interface Props {
 	title: string;
 	images: GalleryImage[];
+	priorityFirstImage?: boolean;
 }
 
-const { title, images } = Astro.props;
+const { title, images, priorityFirstImage = false } = Astro.props;
 ---
 
 <div class="gallery" aria-label={`Galleri: ${title}`}>
-	{images.map((image) => (
+	{images.map((image, index) => {
+		const isPriority = priorityFirstImage && index === 0;
+
+		return (
 		<article class="gallery-item">
 			<a
 				href={getLinkedImageSrc(image.image)}
@@ -23,7 +27,9 @@ const { title, images } = Astro.props;
 				<img
 					{...getImageAttributes(image.image, '(max-width: 700px) 100vw, 900px')}
 					alt={image.alt}
-					loading="lazy"
+					decoding="async"
+					fetchpriority={isPriority ? 'high' : 'low'}
+					loading={isPriority ? 'eager' : 'lazy'}
 				/>
 			</a>
 			{image.caption && (
@@ -34,5 +40,6 @@ const { title, images } = Astro.props;
 				</div>
 			)}
 		</article>
-	))}
+		);
+	})}
 </div>
