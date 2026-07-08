@@ -20,7 +20,7 @@ const originalDir = path.join(publicDir, 'bilder', 'original');
 const manifestPath = path.join(root, 'src', 'data', 'generated-images.json');
 const siteContentPath = path.join(contentDir, 'site.md');
 const imageMetadataVersion = 2;
-const widths = [480, 768, 1080, 1440];
+const widths = [480, 768, 1080, 1440, 1920];
 const creatorTags = ['Artist', 'Creator', 'By-line'];
 const metadataReadTags = [
 	'-Artist',

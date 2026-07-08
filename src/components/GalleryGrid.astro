@@ -12,6 +12,7 @@ interface Props {
 }
 
 const { title, images, priorityFirstImage = false } = Astro.props;
+const galleryImageSizes = '(max-width: 700px) calc(100vw - 2rem), 880px';
 ---
 
 <div class="gallery" aria-label={`Galleri: ${title}`}>
@@ -25,7 +26,7 @@ const { title, images, priorityFirstImage = false } = Astro.props;
 				class="gallery-image-link"
 			>
 				<img
-					{...getImageAttributes(image.image, '(max-width: 700px) 100vw, 900px')}
+					{...getImageAttributes(image.image, galleryImageSizes)}
 					alt={image.alt}
 					decoding="async"
 					fetchpriority={isPriority ? 'high' : 'low'}
