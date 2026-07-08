@@ -26,6 +26,12 @@ sections:
   
   - id: runrondellerna
     gallery:
+      - image: verk04.png
+        alt: ""
+        caption: "verk04.png"
+      - image: verk05.png
+        alt: ""
+        caption: "verk05.png"
       - image: verk06.jpg
         alt: "Mörk trafikplats på natten där violetta runnamn lyser längs en låg corténring."
         caption: "Våra vikingatida grannar! Belysta namn vid Roslags Näsby trafikplats, Täby."
@@ -38,6 +44,9 @@ sections:
   
   - id: min-konst
     gallery:
+      - image: verk01.jpg
+        alt: ""
+        caption: "verk01.jpg"
       - image: verk17.png
         alt: "Genomlyst blad i orange linjer mot blågrå fond, med en vit ljusstrimma utmed ena sidan."
         caption: "Grafiskt blad."
@@ -65,6 +74,24 @@ sections:
 
   - id: om-mig
     gallery:
+      - image: mitt-hem.jpeg
+        alt: ""
+        caption: "mitt-hem.jpeg"
+      - image: img-6207.jpeg
+        alt: ""
+        caption: "img-6207.jpeg"
+      - image: koppartrad.jpeg
+        alt: ""
+        caption: "koppartrad.jpeg"
+      - image: trad.jpeg
+        alt: ""
+        caption: "trad.jpeg"
+      - image: grafiska-blad.jpeg
+        alt: ""
+        caption: "grafiska-blad.jpeg"
+      - image: vav.jpeg
+        alt: ""
+        caption: "vav.jpeg"
       - image: verk14.png
         alt: "Färgfläckiga plasthandskar i vitt, grönt, blått och svart upphängda på lina i ateljén."
         caption: "Ett konstnärshem är inget vanligt hem."

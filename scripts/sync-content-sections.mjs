@@ -7,6 +7,7 @@ import {
 	getFrontmatterSections,
 	getImageIndex,
 	readSiteFile,
+	toPosixPath,
 } from './lib/site-content.mjs';
 
 const root = process.cwd();
@@ -36,12 +37,30 @@ const { frontmatter, body } = await readSiteFile(sitePath);
 const frontmatterSections = getFrontmatterSections(frontmatter);
 const frontmatterIds = frontmatterSections.map((section) => section.id);
 const { prelude, sections } = getBodySections(body);
+const contentDir = path.join(root, 'content');
 const sectionsById = new Map();
 const extraSections = [];
-const imageIndex = await getImageIndex(path.join(root, 'content'), fail);
+const imageIndex = await getImageIndex(contentDir, fail);
 const imageMoves = [];
 const referencedImages = new Map();
 let hasProblem = false;
+
+const hasBlockingProblem = () => hasProblem || (process.exitCode ?? 0) !== 0;
+
+const getUnreferencedImages = () => Array.from(imageIndex.entries())
+	.filter(([imageName]) => !referencedImages.has(imageName))
+	.map(([, imagePath]) => `content/${toPosixPath(path.relative(contentDir, imagePath))}`)
+	.sort((left, right) => left.localeCompare(right, 'sv'));
+
+const printUnreferencedImages = () => {
+	const unreferencedImages = getUnreferencedImages();
+	if (unreferencedImages.length === 0) return;
+
+	console.warn('Images under content/ that are not referenced in content/site.md and will not be mounted on the site:');
+	for (const imagePath of unreferencedImages) {
+		console.warn(`- ${imagePath}`);
+	}
+};
 
 for (const section of sections) {
 	if (!section.id) {
@@ -130,12 +149,16 @@ for (const section of frontmatterSections) {
 	}
 }
 
-if (hasProblem) process.exit(process.exitCode ?? 1);
+if (hasBlockingProblem()) {
+	printUnreferencedImages();
+	process.exit(process.exitCode ?? 1);
+}
 
 if (shouldCheck) {
 	if (!hasOrderMismatch && imageMoves.length === 0) {
 		console.log('No problems detected. content/site.md: section order and gallery image locations match frontmatter.');
 	}
+	printUnreferencedImages();
 	process.exit(process.exitCode ?? 0);
 }
 

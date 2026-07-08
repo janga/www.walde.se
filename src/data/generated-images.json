@@ -173,6 +173,35 @@
       }
     ]
   },
+  "verk01.jpg": {
+    "sourceHash": "59fc8e9569b34b352b2c53fc50d585f463573565011d81ddde14653d7197c2ea",
+    "metadataVersion": 2,
+    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
+    "width": 1890,
+    "height": 1063,
+    "variants": [
+      {
+        "src": "/bilder/generated/min-konst/verk01-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/min-konst/verk01-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/min-konst/verk01-1080.webp",
+        "width": 1080
+      },
+      {
+        "src": "/bilder/generated/min-konst/verk01-1440.webp",
+        "width": 1440
+      },
+      {
+        "src": "/bilder/generated/min-konst/verk01-1890.webp",
+        "width": 1890
+      }
+    ]
+  },
   "verk02.png": {
     "sourceHash": "300941651a9fcea6e8aceb559299e9b67a7fec737c5af53561fceece8d396c89",
     "metadataVersion": 2,
@@ -333,6 +362,64 @@
       }
     ]
   },
+  "grafiska-blad.jpeg": {
+    "sourceHash": "7bc2573e4429d23caf6dbceec9d774a452b50c9961d404ffcdc8c62895ebee90",
+    "metadataVersion": 2,
+    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
+    "width": 5712,
+    "height": 4284,
+    "variants": [
+      {
+        "src": "/bilder/generated/om-mig/grafiska-blad-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/om-mig/grafiska-blad-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/om-mig/grafiska-blad-1080.webp",
+        "width": 1080
+      },
+      {
+        "src": "/bilder/generated/om-mig/grafiska-blad-1440.webp",
+        "width": 1440
+      },
+      {
+        "src": "/bilder/generated/om-mig/grafiska-blad-5712.webp",
+        "width": 5712
+      }
+    ]
+  },
+  "img-6207.jpeg": {
+    "sourceHash": "9fc73c9878810ca274af87e0409f76add2fd922d67f6157f3e4106ac1692996f",
+    "metadataVersion": 2,
+    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
+    "width": 5712,
+    "height": 4284,
+    "variants": [
+      {
+        "src": "/bilder/generated/om-mig/img-6207-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/om-mig/img-6207-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/om-mig/img-6207-1080.webp",
+        "width": 1080
+      },
+      {
+        "src": "/bilder/generated/om-mig/img-6207-1440.webp",
+        "width": 1440
+      },
+      {
+        "src": "/bilder/generated/om-mig/img-6207-5712.webp",
+        "width": 5712
+      }
+    ]
+  },
   "karin-utomhus.jpg": {
     "sourceHash": "cedd5583245c1c1f69975b9a8060c1c7116efa7abc14eb8ed4794cfa3f49e46c",
     "metadataVersion": 2,
@@ -362,6 +449,122 @@
       }
     ]
   },
+  "koppartrad.jpeg": {
+    "sourceHash": "e1e13fcb37387c6f59471f74533e76ebd98ebcb8a8b01236e9416223994361b6",
+    "metadataVersion": 2,
+    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
+    "width": 4032,
+    "height": 3024,
+    "variants": [
+      {
+        "src": "/bilder/generated/om-mig/koppartrad-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/om-mig/koppartrad-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/om-mig/koppartrad-1080.webp",
+        "width": 1080
+      },
+      {
+        "src": "/bilder/generated/om-mig/koppartrad-1440.webp",
+        "width": 1440
+      },
+      {
+        "src": "/bilder/generated/om-mig/koppartrad-4032.webp",
+        "width": 4032
+      }
+    ]
+  },
+  "mitt-hem.jpeg": {
+    "sourceHash": "27c605d109648a761638c1cda34821265635ac8d681a7cd6607a2b2e420a7e93",
+    "metadataVersion": 2,
+    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
+    "width": 4032,
+    "height": 3024,
+    "variants": [
+      {
+        "src": "/bilder/generated/om-mig/mitt-hem-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/om-mig/mitt-hem-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/om-mig/mitt-hem-1080.webp",
+        "width": 1080
+      },
+      {
+        "src": "/bilder/generated/om-mig/mitt-hem-1440.webp",
+        "width": 1440
+      },
+      {
+        "src": "/bilder/generated/om-mig/mitt-hem-4032.webp",
+        "width": 4032
+      }
+    ]
+  },
+  "trad.jpeg": {
+    "sourceHash": "ef94f7107e31989acd6bf0f4a5190d6593b7469599fee8a98141f7b2ca94d8ed",
+    "metadataVersion": 2,
+    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
+    "width": 4032,
+    "height": 3024,
+    "variants": [
+      {
+        "src": "/bilder/generated/om-mig/trad-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/om-mig/trad-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/om-mig/trad-1080.webp",
+        "width": 1080
+      },
+      {
+        "src": "/bilder/generated/om-mig/trad-1440.webp",
+        "width": 1440
+      },
+      {
+        "src": "/bilder/generated/om-mig/trad-4032.webp",
+        "width": 4032
+      }
+    ]
+  },
+  "vav.jpeg": {
+    "sourceHash": "36dfaaf7b974f0485a834205f41c8f96e5215c11d5201a8bce5a313fb11821d8",
+    "metadataVersion": 2,
+    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
+    "width": 4032,
+    "height": 3024,
+    "variants": [
+      {
+        "src": "/bilder/generated/om-mig/vav-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/om-mig/vav-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/om-mig/vav-1080.webp",
+        "width": 1080
+      },
+      {
+        "src": "/bilder/generated/om-mig/vav-1440.webp",
+        "width": 1440
+      },
+      {
+        "src": "/bilder/generated/om-mig/vav-4032.webp",
+        "width": 4032
+      }
+    ]
+  },
   "verk14.png": {
     "sourceHash": "cbb74f026b5b21b4671a4220c478eeb37f04472044bc4d81527b027d355065c3",
     "metadataVersion": 2,
@@ -384,6 +587,44 @@
       {
         "src": "/bilder/generated/om-mig/verk14-1202.webp",
         "width": 1202
+      }
+    ]
+  },
+  "verk04.png": {
+    "sourceHash": "433c4d561be9ca2bc09f80f1f1df5c68e02c5530603519ea903086619c543c0a",
+    "metadataVersion": 2,
+    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
+    "width": 830,
+    "height": 646,
+    "variants": [
+      {
+        "src": "/bilder/generated/runrondellerna/verk04-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/runrondellerna/verk04-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/runrondellerna/verk04-830.webp",
+        "width": 830
+      }
+    ]
+  },
+  "verk05.png": {
+    "sourceHash": "3bca94fe7435a0a0942c9404fe6a4f1a2f02f03447313c5c9b62c6b899473ba7",
+    "metadataVersion": 2,
+    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
+    "width": 746,
+    "height": 746,
+    "variants": [
+      {
+        "src": "/bilder/generated/runrondellerna/verk05-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/runrondellerna/verk05-746.webp",
+        "width": 746
       }
     ]
   },
