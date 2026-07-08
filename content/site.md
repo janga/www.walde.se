@@ -70,6 +70,7 @@ sections:
         caption: "Litografi, del av en serie om tre."
 
   - id: om-mig
+  - id: mitt-hem
     gallery:
       - image: mitt-hem.jpeg
         alt: ""
@@ -161,6 +162,8 @@ Fick Täby kommuns kulturpris 2021.
 - Näsby slott i Täby
 - Skaraborgs läns landsting 
 - Västernorrlands landsting
+
+## Mitt hem {mitt-hem}
 
 [karin@walde.se](mailto:karin@walde.se)
 0730-577 855
