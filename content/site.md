@@ -44,9 +44,6 @@ sections:
   
   - id: min-konst
     gallery:
-      - image: verk01.jpg
-        alt: ""
-        caption: "verk01.jpg"
       - image: verk17.png
         alt: "Genomlyst blad i orange linjer mot blågrå fond, med en vit ljusstrimma utmed ena sidan."
         caption: "Grafiskt blad."
