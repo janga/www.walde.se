@@ -4,7 +4,29 @@ Underlag: PageSpeed Insights PDF för `https://www.walde.se/` och aktuell
 implementation i repo:t. Fokus är mobile och desktop utan att lösningen ska
 vara "färre bilder".
 
+## Aktuell status
+
+Genomfört:
+
+- Aktiv markering i sticky-menyn påverkar inte längre layouten.
+- Galleribilder får explicit `aspect-ratio` från bildmanifestet.
+- Första galleribilden i första sektionen prioriteras som LCP-kandidat.
+- Övriga galleribilder lazy-loadas och får `decoding="async"`.
+- Galleriets `sizes` matchar mobilmarginal och desktopbredd bättre.
+- Display-`srcset` begränsas till högst 1920 px, medan klicklänken går till
+  största genererade WebP.
+- GitHub Actions cachar `public/bilder/generated/` mellan deployer.
+
+Medvetna beslut:
+
+- CDN införs inte i nuläget.
+- AVIF införs inte i nuläget.
+- WebP-kvalitet ligger kvar på 82 tills en visuell jämförelse mot lägre kvalitet
+  eventuellt görs.
+
 ## 1. Minska layout shift på mobil
+
+Status: genomfört.
 
 Lighthouse-rapporten visar hög `CLS` på mobil. Det bör åtgärdas först eftersom
 det drar ned performance-betyget kraftigt även när sidan i övrigt laddar
@@ -27,6 +49,8 @@ Verifiering:
 
 ## 2. Prioritera första synliga bilden
 
+Status: genomfört.
+
 Första bilden i första sektionen är en trolig LCP-kandidat men renderas idag
 som lazy-loaded bild.
 
@@ -43,6 +67,8 @@ Verifiering:
 - Kör PageSpeed och kontrollera `LCP discovery` och `Largest Contentful Paint`.
 
 ## 3. Begränsa bildvarianter för visning
+
+Status: genomfört.
 
 Sidan länkar korrekt till stora bildfiler, men själva visningsbildens fallback
 `src` pekar ofta på största genererade varianten. Det gör HTML:en mindre
@@ -64,6 +90,9 @@ Verifiering:
 
 ## 4. Utred GitHub Pages cachebegränsning
 
+Status: delvis åtgärdat för buildtid med GitHub Actions-cache. HTTP-cache för
+besökare är kvar som GitHub Pages-begränsning eftersom CDN inte införs.
+
 Live headers visar `cache-control: max-age=600` även för CSS och WebP-bilder.
 Detta är normalt för GitHub Pages och kan ge Lighthouse-anmärkningar på cache.
 
@@ -82,6 +111,8 @@ Verifiering:
 
 ## 5. Överväg AVIF som senare steg
 
+Status: ej planerat i nuläget.
+
 AVIF kan minska bildstorlek, men är mer invasivt än att justera nuvarande WebP-
 flöde. För konstbilder bör färg och detaljering kontrolleras visuellt.
 
@@ -97,6 +128,9 @@ Verifiering:
 - Kontrollera filstorlekar och browserns valda format.
 
 ## 6. Överväg renderoptimering för lång enkel sida
+
+Status: kvar som möjlig senare åtgärd om mätningar visar renderkostnad eller
+DOM-storlek som faktisk flaskhals.
 
 Sajten är en enda lång sida. Om renderkostnad eller DOM-storlek fortsätter att
 pekas ut kan sektioner optimeras utan att ta bort innehåll.

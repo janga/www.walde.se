@@ -41,7 +41,7 @@ src/
 ├── pages/index.astro               # Renderar hela sajten från content/site.md
 ├── styles/global.css               # Layout, sticky navigation och responsiv design
 └── content.config.ts               # Validerar content/site.md
-.github/workflows/deploy.yml        # Bygger och publicerar dist/ till GitHub Pages
+.github/workflows/deploy.yml        # Bygger, cachar bildvarianter och publicerar dist/ till GitHub Pages
 ```
 
 ## Innehållsmodell
@@ -120,7 +120,13 @@ eller de äldre kommandona `identify` och `convert`, samt `exiftool` för
 metadatahantering.
 
 Bildflödet skapar WebP-varianter i `public/bilder/generated/` för visning på
-sidan. Katalogen är build-output och versionshanteras inte. Klick på en bild går
+sidan. Katalogen är build-output och versionshanteras inte. Vanliga
+visningsvarianter skapas i bredderna 480, 768, 1080, 1440 och 1920 px när
+källbilden är tillräckligt stor. Bildflödet skapar också en största variant som
+motsvarar källbildens bredd när den är större än standardbredderna.
+
+Själva gallerivisningen använder ett begränsat responsivt `srcset` på upp till
+1920 px och en fallback-`src` kring 1440 px. Klick på en bild går fortfarande
 till den största genererade WebP-varianten.
 
 ### Metadata
@@ -161,6 +167,10 @@ varje källbild och en hash för de metadatafält som kopieras till WebP. Oför�
 bilder återanvänder redan genererade WebP-varianter. Endast nya, ändrade eller
 saknade bildvarianter byggs om.
 
+GitHub Actions-workflowet cachar `public/bilder/generated/` mellan deployer.
+Vid cacheträff kan GitHub återanvända genererade WebP-varianter. Vid cachemiss
+byggs bilderna om från källbilderna under `content/`.
+
 Bildflödet validerar också att varje bildreferens i `content/site.md` är en
 unik filnamnsreferens till en befintlig `.jpg`, `.jpeg` eller `.png` under
 `content/`, och att bilden ligger i katalogen för den sektion där den används.
@@ -174,6 +184,11 @@ rad under navigationen som upprepar aktuell sektions namn.
 Galleribilder visas stora direkt på sidan, inte som thumbnails. Bilderna ska
 inte beskäras. Höga bilder begränsas med CSS så att de ryms bättre inom
 viewporten även i den vanliga gallerivisningen.
+
+Första galleribilden i första sektionen prioriteras som trolig LCP-bild med
+`loading="eager"` och `fetchpriority="high"`. Övriga galleribilder lazy-loadas.
+Alla galleribilder får responsiva bildattribut och explicit `aspect-ratio` från
+bildmanifestet för att minska layout shift.
 
 Bildtext visas lågmält under bilden när `caption` är ifyllt. Klick på bilden
 går till bildfilen.
@@ -195,8 +210,9 @@ Det finns inte längre separata Astro-routes för gallerier eller sidor.
 ## Publicering
 
 GitHub Pages ska använda GitHub Actions som källa. Workflow-filen
-`.github/workflows/deploy.yml` installerar ImageMagick och exiftool, kör
-`npm ci`, `npm run build` och publicerar Astros genererade `dist/`-katalog.
+`.github/workflows/deploy.yml` installerar ImageMagick och exiftool, återställer
+cache för genererade WebP-varianter, kör `npm ci`, `npm run build` och
+publicerar Astros genererade `dist/`-katalog.
 
 Testdomänen för GitHub Pages anges i `public/CNAME` och kopieras till `dist/`
 vid build.
