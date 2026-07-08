@@ -34,6 +34,7 @@ export const getImageAttributes = (src: string, sizes: string) => {
 		src: largestVariant?.src ?? src,
 		srcset: image.variants.map((variant) => `${variant.src} ${variant.width}w`).join(', '),
 		sizes,
+		style: `aspect-ratio: ${image.width} / ${image.height};`,
 		width: image.width,
 		height: image.height,
 	};
