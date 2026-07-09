@@ -26,6 +26,9 @@ Manage the background server with `astro dev stop`, `astro dev status`, and
 - Commit before pushing.
 - Do not create branches unless the user asks for one.
 - Do not push uncommitted changes.
+- After pushing to `main`, check the latest GitHub Pages workflow with
+  `gh run list --repo janga/www.walde.se --branch main --limit 3`. If the
+  latest run failed, inspect it with `gh run view <run-id> --log-failed`.
 
 ## Validation Order
 
@@ -46,6 +49,17 @@ For content or image changes, use this order:
    - Include `content/site.md`.
    - Include `src/data/generated-images.json` when image generation changed it.
    - Do not commit unreferenced images unless the user explicitly asks for them.
+
+When adding, renaming, or moving sections, make sure these three things match
+exactly:
+
+- The frontmatter section `id`.
+- The Markdown level 2 heading id, written as `## Section title {#section-id}`.
+- The source image directory under `content/<section-id>/`.
+
+If a gallery row is moved to another section in frontmatter, run
+`npm run content:sync` before building so the corresponding image files move to
+the matching section directory.
 
 ## Documentation
 
@@ -84,3 +98,10 @@ Consult these guides before working on related tasks:
   placement without changing files.
 - Run `npm run content:sync` to sort Markdown sections according to frontmatter
   and move gallery images into matching section directories.
+
+## Layout and Navigation
+
+- The sticky navigation uses root `scroll-padding-top` to compensate for the
+  fixed header area. Do not add section-level `scroll-margin-top` unless you are
+  deliberately testing anchor offsets; combining both can make section links
+  stop too early and show the previous section above the target heading.
