@@ -22,7 +22,9 @@ URL in the browser. Manage the background server with `npm run dev:stop`,
 - Run `npm run metadata:fix` only when new source images need copyright metadata.
 - Run `npm run build` after content, layout, or image changes.
 - Run `npm run test:navigation` after sticky navigation, anchor offset, or
-  scroll behavior changes.
+  scroll behavior changes. If Playwright reports a missing Chromium browser,
+  run `npx playwright install chromium` once. In sandboxed Codex sessions, this
+  test may need escalation to launch Chromium.
 - Use `npm run deploy -- "Commit message"` for a conservative local deploy
   from `main`: it runs the build, reviews `git status --short`, commits only
   allowed site/content changes, pushes `main`, and checks the GitHub Pages

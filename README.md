@@ -13,6 +13,7 @@ content/site.md
 
 ```sh
 npm install
+npx playwright install chromium
 npm run content:check
 npm run content:sync
 npm run metadata:fix
@@ -28,6 +29,9 @@ npm run dev:stop
 
 `npm run build` kör hela lokala byggkedjan: först `content:check`, sedan
 bildgenerering och till sist `astro build`.
+
+Kör `npx playwright install chromium` en gång efter installation av
+beroenden, eller när Playwright rapporterar att Chromium saknas.
 
 `npm run test:navigation` startar den lokala Astro-servern med `dev:local` om
 den inte redan kör och testar sticky-navigationens ankarlänkar i mobil- och
