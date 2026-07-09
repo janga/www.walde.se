@@ -133,9 +133,11 @@ const getReferencedImages = async () => {
 	const references = [];
 
 	for (const section of sections) {
-		for (const image of section.images) {
+		const imageReferences = section.imageReferences ?? section.images.map((image) => ({ image }));
+		for (const { image, line } of imageReferences) {
 			references.push({
 				image,
+				line,
 				sectionId: section.id,
 			});
 		}
@@ -175,7 +177,8 @@ const getReferencedSources = async () => {
 		const imageName = path.basename(sourcePath);
 
 		if (seen.has(imageName)) {
-			fail(`Image reference ${imageName} appears on both line ${seen.get(imageName)} and line ${reference.line}.`);
+			const firstReference = seen.get(imageName);
+			fail(`Image reference "${imageName}" appears more than once in content/site.md, on lines ${firstReference.line} and ${reference.line}.`);
 		}
 
 		const fileStat = await stat(sourcePath).catch(() => null);
@@ -188,7 +191,7 @@ const getReferencedSources = async () => {
 			fail(`Image "${imageName}" is used in section "${reference.sectionId}" but is located in content/${currentDirectory}/. Run npm run content:sync to move it.`);
 		}
 
-		seen.set(imageName, reference.line);
+		seen.set(imageName, reference);
 		sources.push(sourcePath);
 	}
 

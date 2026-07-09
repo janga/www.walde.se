@@ -2,25 +2,25 @@
 
 Before changing this project, read `README.md`.
 
-When starting the dev server, use background mode:
+When starting the dev server, use the local wrapper:
 
 ```sh
-astro dev --background
+npm run dev:local
 ```
 
-Manage the background server with `astro dev stop`, `astro dev status`, and
-`astro dev logs`.
+It starts Astro in background mode at `http://localhost:4321/` and opens that
+URL in the browser. Manage the background server with `npm run dev:stop`,
+`npm run dev:status`, and `npm run dev:logs`.
 
 ## Workflow
 
 - Keep changes small and focused.
 - Prefer editing `content/site.md` for content and gallery changes.
-- Run `npm run content:check` before `npm run build` for content or image
-  changes. This catches cheap content, filename, reference, and placement
-  problems before WebP generation starts.
+- Run `npm run content:check` before `npm run build` when you want a cheap
+  preflight for content or image changes. `npm run build` also runs this check
+  automatically before WebP generation starts.
 - Run `npm run metadata:fix` only when new source images need copyright metadata.
-- Run `npm run build` after content, layout, or image changes, but only after
-  `npm run content:check` has passed.
+- Run `npm run build` after content, layout, or image changes.
 - Before committing, run `git status --short` and make sure untracked files are
   intentional.
 - Commit before pushing.
@@ -39,6 +39,8 @@ For content or image changes, use this order:
      directories, and lists images under `content/` that are not mounted because
      they are not referenced from `content/site.md`.
    - Fix these issues before running `npm run build`.
+   - `npm run build` also runs this check automatically, but the separate
+     command is faster when you only need content validation.
 2. Run `npm run metadata:fix` only when new source images are added or when the
    build reports missing creator/artist metadata.
    - Commit source images that were updated by metadata fixing.

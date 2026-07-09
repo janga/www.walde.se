@@ -18,11 +18,19 @@ npm run content:sync
 npm run metadata:fix
 npm run images
 npm run build
-npm run astro -- dev --background
-npm run astro -- dev status
-npm run astro -- dev logs
-npm run astro -- dev stop
+npm run dev:local
+npm run dev:status
+npm run dev:logs
+npm run dev:stop
 ```
+
+`npm run build` kör hela lokala byggkedjan: först `content:check`, sedan
+bildgenerering och till sist `astro build`.
+
+För lokal testning i webbläsare används `npm run dev:local`. Kommandot startar
+Astros dev-server i bakgrunden på `http://localhost:4321/` och öppnar samma URL
+i webbläsaren. Servern hanteras med `npm run dev:status`,
+`npm run dev:logs`, `npm run dev:logs -- --follow` och `npm run dev:stop`.
 
 ## Struktur
 

@@ -30,7 +30,7 @@ export const getFrontmatterSections = (frontmatter) => {
 	let inSections = false;
 	let currentSection = null;
 
-	for (const line of lines) {
+	for (const [index, line] of lines.entries()) {
 		if (/^sections:\s*$/.test(line)) {
 			inSections = true;
 			continue;
@@ -41,14 +41,16 @@ export const getFrontmatterSections = (frontmatter) => {
 
 		const sectionMatch = line.match(/^\s{2}-\s+id:\s*([a-z0-9-]+)\s*$/);
 		if (sectionMatch) {
-			currentSection = { id: sectionMatch[1], images: [] };
+			currentSection = { id: sectionMatch[1], images: [], imageReferences: [] };
 			sections.push(currentSection);
 			continue;
 		}
 
 		const imageMatch = line.match(/^\s{6}-\s+image:\s*["']?([^"'\n]+)["']?\s*$/);
 		if (imageMatch && currentSection) {
-			currentSection.images.push(imageMatch[1].trim());
+			const image = imageMatch[1].trim();
+			currentSection.images.push(image);
+			currentSection.imageReferences.push({ image, line: index + 1 });
 		}
 	}
 
