@@ -33,9 +33,10 @@
 	--space-section-to-section: clamp(2.55rem, 4.2vw, 3.9rem);
 
 	--content-gutter: clamp(1.25rem, 4vw, 3rem);
+	--site-top-anchor-offset: 4.5rem;
 	color-scheme: light;
 	scroll-behavior: smooth;
-	scroll-padding-top: 4.5rem;
+	scroll-padding-top: var(--site-top-anchor-offset);
 }
 
 html {
@@ -347,7 +348,7 @@ h2 {
 		--space-gallery-item: 2.75rem;
 		--space-section-to-section: 2.25rem;
 		--content-gutter: 1rem;
-		scroll-padding-top: 3.75rem;
+		--site-top-anchor-offset: 6.25rem;
 	}
 
 	.section-nav ul {

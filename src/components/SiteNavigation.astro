@@ -28,8 +28,16 @@ const { sections } = Astro.props;
 </header>
 
 <script>
+	const siteTop = document.querySelector('.site-top');
 	const sections = Array.from(document.querySelectorAll('.site-section'));
 	const links = Array.from(document.querySelectorAll('.section-nav a'));
+
+	const setAnchorOffset = () => {
+		if (!(siteTop instanceof HTMLElement)) return;
+
+		const offset = Math.ceil(siteTop.getBoundingClientRect().height + 14);
+		document.documentElement.style.setProperty('--site-top-anchor-offset', `${offset}px`);
+	};
 
 	const setActiveSection = (section) => {
 		if (!section) return;
@@ -61,4 +69,12 @@ const { sections } = Astro.props;
 	);
 
 	sections.forEach((section) => observer.observe(section));
+
+	setAnchorOffset();
+
+	if (siteTop instanceof HTMLElement && 'ResizeObserver' in window) {
+		new ResizeObserver(setAnchorOffset).observe(siteTop);
+	} else {
+		window.addEventListener('resize', setAnchorOffset);
+	}
 </script>
