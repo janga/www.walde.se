@@ -16,6 +16,7 @@
     "metadata:fix": "node scripts/fix-image-metadata.mjs",
     "images": "node scripts/generate-images.mjs",
     "build": "npm run content:check && npm run images && astro build",
+    "deploy": "node scripts/deploy-site.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },

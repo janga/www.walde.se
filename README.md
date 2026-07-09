@@ -18,6 +18,7 @@ npm run content:sync
 npm run metadata:fix
 npm run images
 npm run build
+npm run deploy -- "Publiceringsmeddelande"
 npm run dev:local
 npm run dev:status
 npm run dev:logs
@@ -26,6 +27,15 @@ npm run dev:stop
 
 `npm run build` kör hela lokala byggkedjan: först `content:check`, sedan
 bildgenerering och till sist `astro build`.
+
+`npm run deploy -- "Publiceringsmeddelande"` kör en konservativ lokal
+publicering från `main`: kommandot kräver ett commitmeddelande, kör
+`npm run build`, visar `git status --short`, stage:ar bara tillåtna
+sajt-/innehållsfiler, committar, pushar till `main` och kontrollerar senaste
+GitHub Pages-workflowet. Nya otrackade filer accepteras automatiskt bara när de
+är refererade galleribilder i rätt `content/<section-id>/`-katalog. Redan
+versionshanterade filer under `content/` kan committas även när de inte är
+refererade i galleriet. Kommandot kör inte `npm run metadata:fix`.
 
 För lokal testning i webbläsare används `npm run dev:local`. Kommandot startar
 Astros dev-server i bakgrunden på `http://localhost:4321/` och öppnar samma URL
@@ -221,6 +231,13 @@ GitHub Pages ska använda GitHub Actions som källa. Workflow-filen
 `.github/workflows/deploy.yml` installerar ImageMagick och exiftool, återställer
 cache för genererade WebP-varianter, kör `npm ci`, `npm run build` och
 publicerar Astros genererade `dist/`-katalog.
+
+Publicera lokala ändringar med `npm run deploy -- "Publiceringsmeddelande"`.
+Scriptet vägrar köra utanför `main`, vägrar om det saknas ändringar att
+committa, vägrar oväntade otrackade filer, pushar inte förrän committen är
+skapad och kontrollerar därefter GitHub Pages-körningarna med `gh run list`.
+Om senaste Pages-körningen har misslyckats hämtas felloggarna med
+`gh run view <run-id> --log-failed`.
 
 Testdomänen för GitHub Pages anges i `public/CNAME` och kopieras till `dist/`
 vid build.

@@ -21,6 +21,13 @@ URL in the browser. Manage the background server with `npm run dev:stop`,
   automatically before WebP generation starts.
 - Run `npm run metadata:fix` only when new source images need copyright metadata.
 - Run `npm run build` after content, layout, or image changes.
+- Use `npm run deploy -- "Commit message"` for a conservative local deploy
+  from `main`: it runs the build, reviews `git status --short`, commits only
+  allowed site/content changes, pushes `main`, and checks the GitHub Pages
+  workflow. Tracked files under `content/` are allowed even when currently
+  unreferenced; new untracked files are allowed only when they are referenced
+  gallery images in the matching section directory. It does not run
+  `npm run metadata:fix`.
 - Before committing, run `git status --short` and make sure untracked files are
   intentional.
 - Commit before pushing.
