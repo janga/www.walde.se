@@ -25,6 +25,9 @@ URL in the browser. Manage the background server with `npm run dev:stop`,
   scroll behavior changes. If Playwright reports a missing Chromium browser,
   run `npx playwright install chromium` once. In sandboxed Codex sessions, this
   test may need escalation to launch Chromium.
+- Use `npm run test:navigation:stress` when investigating intermittent anchor
+  navigation races. Set `NAVIGATION_STRESS_RUNS=<count>` to adjust how many
+  repeated mobile click rounds it runs.
 - Use `npm run deploy -- "Commit message"` for a conservative local deploy
   from `main`: it runs the build, reviews `git status --short`, commits only
   allowed site/content changes, pushes `main`, and checks the GitHub Pages

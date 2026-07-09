@@ -9,6 +9,8 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const url = 'http://localhost:4321/';
 const probeUrls = [url, 'http://127.0.0.1:4321/', 'http://[::1]:4321/'];
 const npmBin = process.platform === 'win32' ? 'npm.cmd' : 'npm';
+const testTargets = process.argv.slice(2);
+const playwrightTargets = testTargets.length > 0 ? testTargets : ['tests/navigation.spec.ts'];
 
 const sleep = (milliseconds) => new Promise((resolve) => {
 	setTimeout(resolve, milliseconds);
@@ -101,7 +103,7 @@ let startedServer = false;
 
 try {
 	startedServer = await ensureServer();
-	await runInherit(npmBin, ['exec', '--', 'playwright', 'test', 'tests/navigation.spec.ts'], {
+	await runInherit(npmBin, ['exec', '--', 'playwright', 'test', ...playwrightTargets], {
 		env: {
 			...process.env,
 			PLAYWRIGHT_BASE_URL: url,

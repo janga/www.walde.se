@@ -20,6 +20,7 @@ npm run metadata:fix
 npm run images
 npm run build
 npm run test:navigation
+npm run test:navigation:stress
 npm run deploy -- "Publiceringsmeddelande"
 npm run dev:local
 npm run dev:status
@@ -37,6 +38,15 @@ beroenden, eller när Playwright rapporterar att Chromium saknas.
 den inte redan kör och testar sticky-navigationens ankarlänkar i mobil- och
 desktopviewport med Playwright. Testet kontrollerar också att hash-länkarna
 fortfarande fungerar utan JavaScript.
+
+`npm run test:navigation:stress` kör ett längre mobiltest som upprepar klick på
+alla navigationslänkar och laddar direkta hash-URL:er, samtidigt som
+viewport-höjden varieras. Använd kommandot nedan för fler klickrundor när ett
+intermittent ankarlänksfel ska jagas:
+
+```sh
+NAVIGATION_STRESS_RUNS=100 npm run test:navigation:stress
+```
 
 `npm run deploy -- "Publiceringsmeddelande"` kör en konservativ lokal
 publicering från `main`: kommandot kräver ett commitmeddelande, kör

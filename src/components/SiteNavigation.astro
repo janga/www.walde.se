@@ -31,12 +31,22 @@ const { sections } = Astro.props;
 	const siteTop = document.querySelector('.site-top');
 	const sections = Array.from(document.querySelectorAll('.site-section'));
 	const links = Array.from(document.querySelectorAll('.section-nav a'));
+	const anchorPadding = 14;
+	const anchorCorrectionDelays = [120, 320, 700, 1_200, 2_000];
+	let recentAnchorSection = null;
+	let correctAnchorUntil = 0;
 
 	const setAnchorOffset = () => {
 		if (!(siteTop instanceof HTMLElement)) return;
 
-		const offset = Math.ceil(siteTop.getBoundingClientRect().height + 14);
+		const offset = Math.ceil(siteTop.getBoundingClientRect().height + anchorPadding);
 		document.documentElement.style.setProperty('--site-top-anchor-offset', `${offset}px`);
+		return offset;
+	};
+
+	const getSectionFromHash = (hash) => {
+		const id = hash.replace(/^#/, '');
+		return sections.find((section) => section.id === id);
 	};
 
 	const setActiveSection = (section) => {
@@ -50,6 +60,53 @@ const { sections } = Astro.props;
 				link.removeAttribute('aria-current');
 			}
 		});
+	};
+
+	const scrollToSection = (section, { behavior = 'smooth', updateHash = false } = {}) => {
+		if (!(section instanceof HTMLElement)) return;
+
+		const offset = setAnchorOffset();
+		if (!offset) return;
+
+		const top = Math.max(0, section.getBoundingClientRect().top + window.scrollY - offset);
+		window.scrollTo({ top, behavior });
+
+		if (updateHash) {
+			const hash = `#${section.id}`;
+			if (window.location.hash !== hash) {
+				window.history.pushState(null, '', hash);
+			}
+		}
+
+		setActiveSection(section);
+	};
+
+	const trackRecentAnchor = (section) => {
+		recentAnchorSection = section;
+		correctAnchorUntil = performance.now() + 2_700;
+
+		anchorCorrectionDelays.forEach((delay) => {
+			window.setTimeout(() => requestAnimationFrame(correctRecentAnchor), delay);
+		});
+	};
+
+	const correctRecentAnchor = () => {
+		if (!(recentAnchorSection instanceof HTMLElement)) return;
+		if (performance.now() > correctAnchorUntil) return;
+		if (window.location.hash !== `#${recentAnchorSection.id}`) return;
+
+		const heading = recentAnchorSection.querySelector('h1, h2');
+		if (!(siteTop instanceof HTMLElement) || !(heading instanceof HTMLElement)) return;
+
+		const hiddenBehindHeader = heading.getBoundingClientRect().top < siteTop.getBoundingClientRect().bottom - 1;
+		if (hiddenBehindHeader) {
+			scrollToSection(recentAnchorSection, { behavior: 'auto' });
+		}
+	};
+
+	const updateAnchorOffset = () => {
+		setAnchorOffset();
+		requestAnimationFrame(correctRecentAnchor);
 	};
 
 	const observer = new IntersectionObserver(
@@ -70,11 +127,32 @@ const { sections } = Astro.props;
 
 	sections.forEach((section) => observer.observe(section));
 
-	setAnchorOffset();
+	links.forEach((link) => {
+		link.addEventListener('click', (event) => {
+			const section = getSectionFromHash(link.hash);
+			if (!(section instanceof HTMLElement)) return;
+
+			event.preventDefault();
+			trackRecentAnchor(section);
+			scrollToSection(section, { updateHash: true });
+		});
+	});
+
+	const initialSection = getSectionFromHash(window.location.hash);
+	if (initialSection instanceof HTMLElement) {
+		trackRecentAnchor(initialSection);
+		requestAnimationFrame(correctRecentAnchor);
+	}
+
+	updateAnchorOffset();
 
 	if (siteTop instanceof HTMLElement && 'ResizeObserver' in window) {
-		new ResizeObserver(setAnchorOffset).observe(siteTop);
-	} else {
-		window.addEventListener('resize', setAnchorOffset);
+		new ResizeObserver(updateAnchorOffset).observe(siteTop);
+	}
+
+	window.addEventListener('resize', updateAnchorOffset);
+
+	if (window.visualViewport) {
+		window.visualViewport.addEventListener('resize', updateAnchorOffset);
 	}
 </script>
