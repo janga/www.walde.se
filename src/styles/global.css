@@ -189,7 +189,6 @@ a {
 
 .site-section {
 	padding: 0;
-	scroll-margin-top: 5rem;
 }
 
 .site-section + .site-section {
@@ -375,10 +374,6 @@ h2 {
 
 	.site-footer {
 		width: min(calc(100% - 2rem), 34rem);
-	}
-
-	.site-section {
-		scroll-margin-top: 4rem;
 	}
 
 	.site-section + .site-section {
