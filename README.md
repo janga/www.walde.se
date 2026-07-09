@@ -18,6 +18,7 @@ npm run content:sync
 npm run metadata:fix
 npm run images
 npm run build
+npm run test:navigation
 npm run deploy -- "Publiceringsmeddelande"
 npm run dev:local
 npm run dev:status
@@ -27,6 +28,11 @@ npm run dev:stop
 
 `npm run build` kör hela lokala byggkedjan: först `content:check`, sedan
 bildgenerering och till sist `astro build`.
+
+`npm run test:navigation` startar den lokala Astro-servern med `dev:local` om
+den inte redan kör och testar sticky-navigationens ankarlänkar i mobil- och
+desktopviewport med Playwright. Testet kontrollerar också att hash-länkarna
+fortfarande fungerar utan JavaScript.
 
 `npm run deploy -- "Publiceringsmeddelande"` kör en konservativ lokal
 publicering från `main`: kommandot kräver ett commitmeddelande, kör

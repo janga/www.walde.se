@@ -17,10 +17,14 @@
     "images": "node scripts/generate-images.mjs",
     "build": "npm run content:check && npm run images && astro build",
     "deploy": "node scripts/deploy-site.mjs",
+    "test:navigation": "node scripts/test-navigation.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "astro": "^7.0.2"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.1"
   }
 }

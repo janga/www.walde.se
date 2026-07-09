@@ -21,6 +21,8 @@ URL in the browser. Manage the background server with `npm run dev:stop`,
   automatically before WebP generation starts.
 - Run `npm run metadata:fix` only when new source images need copyright metadata.
 - Run `npm run build` after content, layout, or image changes.
+- Run `npm run test:navigation` after sticky navigation, anchor offset, or
+  scroll behavior changes.
 - Use `npm run deploy -- "Commit message"` for a conservative local deploy
   from `main`: it runs the build, reviews `git status --short`, commits only
   allowed site/content changes, pushes `main`, and checks the GitHub Pages
