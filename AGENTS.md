@@ -121,3 +121,7 @@ Consult these guides before working on related tasks:
   fixed header area. Do not add section-level `scroll-margin-top` unless you are
   deliberately testing anchor offsets; combining both can make section links
   stop too early and show the previous section above the target heading.
+- Section navigation must remain progressive enhancement: keep real
+  `href="#section-id"` links so anchors work without JavaScript. JavaScript may
+  intercept nav clicks to measure the sticky header and scroll precisely, but it
+  should not be the only way navigation works.
