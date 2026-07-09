@@ -38,8 +38,8 @@ const measureAnchor = async (page, sectionId: string): Promise<AnchorMeasurement
 	};
 }, sectionId);
 
-const openSite = async (page) => {
-	await page.goto('/', { waitUntil: 'domcontentloaded' });
+const openSite = async (page, path = '/') => {
+	await page.goto(path, { waitUntil: 'domcontentloaded' });
 	await page.locator('.section-nav a').first().waitFor();
 	await page.waitForLoadState('networkidle').catch(() => {});
 };
@@ -83,6 +83,21 @@ for (const scenario of [
 			for (const target of await getNavTargets(page)) {
 				const sectionId = target.hash.slice(1);
 				await page.locator(`.section-nav a[href="${target.hash}"]`).click();
+				await waitForAnchorPosition(page, sectionId);
+
+				const measurement = await measureAnchor(page, sectionId);
+				expect(measurement.hash, target.label).toBe(target.hash);
+				expect(measurement.gap, target.label).toBeGreaterThanOrEqual(-1);
+				expect(measurement.gap, target.label).toBeLessThanOrEqual(maximumAnchorGap);
+			}
+		});
+
+		test('positions direct hash links below the sticky navigation', async ({ page }) => {
+			await openSite(page);
+
+			for (const target of await getNavTargets(page)) {
+				const sectionId = target.hash.slice(1);
+				await openSite(page, `/${target.hash}`);
 				await waitForAnchorPosition(page, sectionId);
 
 				const measurement = await measureAnchor(page, sectionId);

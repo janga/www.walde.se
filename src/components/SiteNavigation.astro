@@ -98,8 +98,12 @@ const { sections } = Astro.props;
 		const heading = recentAnchorSection.querySelector('h1, h2');
 		if (!(siteTop instanceof HTMLElement) || !(heading instanceof HTMLElement)) return;
 
-		const hiddenBehindHeader = heading.getBoundingClientRect().top < siteTop.getBoundingClientRect().bottom - 1;
-		if (hiddenBehindHeader) {
+		const headerBottom = siteTop.getBoundingClientRect().bottom;
+		const headingTop = heading.getBoundingClientRect().top;
+		const hiddenBehindHeader = headingTop < headerBottom - 1;
+		const missedAnchorScroll = headingTop > headerBottom + 160;
+
+		if (hiddenBehindHeader || missedAnchorScroll) {
 			scrollToSection(recentAnchorSection, { behavior: 'auto' });
 		}
 	};
@@ -141,7 +145,7 @@ const { sections } = Astro.props;
 	const initialSection = getSectionFromHash(window.location.hash);
 	if (initialSection instanceof HTMLElement) {
 		trackRecentAnchor(initialSection);
-		requestAnimationFrame(correctRecentAnchor);
+		requestAnimationFrame(() => scrollToSection(initialSection, { behavior: 'auto' }));
 	}
 
 	updateAnchorOffset();
