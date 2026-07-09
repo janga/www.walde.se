@@ -163,7 +163,7 @@ Fick Täby kommuns kulturpris 2021.
 - Skaraborgs läns landsting 
 - Västernorrlands landsting
 
-## Mitt hem {mitt-hem}
+## Mitt hem {#mitt-hem}
 
 [karin@walde.se](mailto:karin@walde.se)
 0730-577 855
