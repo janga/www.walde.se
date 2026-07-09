@@ -35,6 +35,7 @@ const { sections } = Astro.props;
 	const anchorCorrectionDelays = [120, 320, 700, 1_200, 2_000];
 	let recentAnchorSection = null;
 	let correctAnchorUntil = 0;
+	let missedAnchorCorrectionStartsAt = 0;
 
 	const setAnchorOffset = () => {
 		if (!(siteTop instanceof HTMLElement)) return;
@@ -62,7 +63,7 @@ const { sections } = Astro.props;
 		});
 	};
 
-	const scrollToSection = (section, { behavior = 'smooth', updateHash = false } = {}) => {
+	const scrollToSection = (section, { behavior = 'smooth' } = {}) => {
 		if (!(section instanceof HTMLElement)) return;
 
 		const offset = setAnchorOffset();
@@ -71,19 +72,13 @@ const { sections } = Astro.props;
 		const top = Math.max(0, section.getBoundingClientRect().top + window.scrollY - offset);
 		window.scrollTo({ top, behavior });
 
-		if (updateHash) {
-			const hash = `#${section.id}`;
-			if (window.location.hash !== hash) {
-				window.history.pushState(null, '', hash);
-			}
-		}
-
 		setActiveSection(section);
 	};
 
-	const trackRecentAnchor = (section) => {
+	const trackRecentAnchor = (section, { missedAnchorDelay = 1_200 } = {}) => {
 		recentAnchorSection = section;
 		correctAnchorUntil = performance.now() + 2_700;
+		missedAnchorCorrectionStartsAt = performance.now() + missedAnchorDelay;
 
 		anchorCorrectionDelays.forEach((delay) => {
 			window.setTimeout(() => requestAnimationFrame(correctRecentAnchor), delay);
@@ -101,7 +96,8 @@ const { sections } = Astro.props;
 		const headerBottom = siteTop.getBoundingClientRect().bottom;
 		const headingTop = heading.getBoundingClientRect().top;
 		const hiddenBehindHeader = headingTop < headerBottom - 1;
-		const missedAnchorScroll = headingTop > headerBottom + 160;
+		const canCorrectMissedAnchor = performance.now() >= missedAnchorCorrectionStartsAt;
+		const missedAnchorScroll = canCorrectMissedAnchor && headingTop > headerBottom + 160;
 
 		if (hiddenBehindHeader || missedAnchorScroll) {
 			scrollToSection(recentAnchorSection, { behavior: 'auto' });
@@ -132,20 +128,32 @@ const { sections } = Astro.props;
 	sections.forEach((section) => observer.observe(section));
 
 	links.forEach((link) => {
-		link.addEventListener('click', (event) => {
+		link.addEventListener('click', () => {
 			const section = getSectionFromHash(link.hash);
 			if (!(section instanceof HTMLElement)) return;
 
-			event.preventDefault();
 			trackRecentAnchor(section);
-			scrollToSection(section, { updateHash: true });
+			setActiveSection(section);
 		});
 	});
 
+	const trackCurrentHashAnchor = ({ scrollImmediately = false } = {}) => {
+		const section = getSectionFromHash(window.location.hash);
+		if (!(section instanceof HTMLElement)) return;
+
+		trackRecentAnchor(section, { missedAnchorDelay: scrollImmediately ? 0 : 1_200 });
+
+		if (scrollImmediately) {
+			requestAnimationFrame(() => scrollToSection(section, { behavior: 'auto' }));
+			return;
+		}
+
+		requestAnimationFrame(correctRecentAnchor);
+	};
+
 	const initialSection = getSectionFromHash(window.location.hash);
 	if (initialSection instanceof HTMLElement) {
-		trackRecentAnchor(initialSection);
-		requestAnimationFrame(() => scrollToSection(initialSection, { behavior: 'auto' }));
+		trackCurrentHashAnchor({ scrollImmediately: true });
 	}
 
 	updateAnchorOffset();
@@ -155,6 +163,8 @@ const { sections } = Astro.props;
 	}
 
 	window.addEventListener('resize', updateAnchorOffset);
+	window.addEventListener('hashchange', () => trackCurrentHashAnchor());
+	window.addEventListener('scrollend', () => requestAnimationFrame(correctRecentAnchor));
 
 	if (window.visualViewport) {
 		window.visualViewport.addEventListener('resize', updateAnchorOffset);

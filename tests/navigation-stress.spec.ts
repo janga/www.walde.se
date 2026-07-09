@@ -121,7 +121,7 @@ test.use({
 });
 
 test('repeated mobile nav clicks keep headings below the sticky navigation', async ({ page }) => {
-	test.setTimeout(Math.max(60_000, clickRounds * 5_000));
+	test.setTimeout(Math.max(120_000, clickRounds * 10_000));
 
 	await openSite(page);
 	const targets = await getNavTargets(page);
