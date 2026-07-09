@@ -185,35 +185,6 @@
       }
     ]
   },
-  "verk01.jpg": {
-    "sourceHash": "59fc8e9569b34b352b2c53fc50d585f463573565011d81ddde14653d7197c2ea",
-    "metadataVersion": 2,
-    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
-    "width": 1890,
-    "height": 1063,
-    "variants": [
-      {
-        "src": "/bilder/generated/min-konst/verk01-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/min-konst/verk01-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/bilder/generated/min-konst/verk01-1080.webp",
-        "width": 1080
-      },
-      {
-        "src": "/bilder/generated/min-konst/verk01-1440.webp",
-        "width": 1440
-      },
-      {
-        "src": "/bilder/generated/min-konst/verk01-1890.webp",
-        "width": 1890
-      }
-    ]
-  },
   "verk02.png": {
     "sourceHash": "300941651a9fcea6e8aceb559299e9b67a7fec737c5af53561fceece8d396c89",
     "metadataVersion": 2,
