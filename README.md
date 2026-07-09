@@ -222,8 +222,10 @@ rad under navigationen som upprepar aktuell sektions namn.
 Navigationslänkarna är vanliga hash-länkar, till exempel `#om-mig`, så de
 fungerar även utan JavaScript. När JavaScript finns fångas klick på
 navigationslänkarna och sidan scrollar med en uppmätt offset för den sticky
-navigationen. En kortlivad korrigering efter klick hanterar mobila
-viewportförändringar, till exempel när webbläsarens adressfält ändrar höjd.
+navigationen. Direkta hash-URL:er, till exempel `/#min-konst`, korrigeras
+också efter sidladdning om webbläsarens första ankarscroll hamnar fel. En
+kortlivad korrigering efter klick hanterar mobila viewportförändringar, till
+exempel när webbläsarens adressfält ändrar höjd.
 
 Galleribilder visas stora direkt på sidan, inte som thumbnails. Bilderna ska
 inte beskäras. Höga bilder begränsas med CSS så att de ryms bättre inom

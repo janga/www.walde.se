@@ -123,5 +123,6 @@ Consult these guides before working on related tasks:
   stop too early and show the previous section above the target heading.
 - Section navigation must remain progressive enhancement: keep real
   `href="#section-id"` links so anchors work without JavaScript. JavaScript may
-  intercept nav clicks to measure the sticky header and scroll precisely, but it
-  should not be the only way navigation works.
+  intercept nav clicks and correct direct hash URL loads to measure the sticky
+  header and scroll precisely, but it should not be the only way navigation
+  works.
