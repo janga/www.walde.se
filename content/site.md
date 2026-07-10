@@ -6,7 +6,7 @@ sections:
   - id: karin-walde
     gallery:
       - image: tva-fossiler.jpg
-        alt: "Två fossilmotiv sida vid sida: blå spiral i kallt ljus och rosa skiva mot orange."
+        alt: "Två grafiska blad med inspiration från gotländska fossil."
         caption: "Två grafiska blad med fossil från Gotland som motiv."
       - image: karin-walde.jpg
         alt: "Karin Walde står i grönska med blombukett och håller Täby kommuns kulturpris i handen."
@@ -49,10 +49,10 @@ sections:
         caption: "Grafiskt blad med Gotlandsfossil."
       - image: vav.jpeg
         alt: ""
-        caption: "vav.jpeg"
+        caption: "Bildväv i tre delar"
       - image: img-6207.jpeg
         alt: ""
-        caption: "img-6207.jpeg"
+        caption: "Grafik i litet format."
       - image: verk08.png
         alt: "Rosa fossilskiva med mörkt radiellt centrum, omgiven av glödande orange och blå kornighet."
         caption: "Grafiskt blad av fossil."
@@ -74,19 +74,19 @@ sections:
     gallery:
       - image: mitt-hem.jpeg
         alt: ""
-        caption: "mitt-hem.jpeg"
+        caption: "Ett konstnärshem är inget vanligt hem."
       - image: img-6214.jpeg
         alt: "Färgkartor med blå, gröna, röda och gula remsor, med en färgfläckig arbetsrock hängd framför."
-        caption: "img-6214.jpeg"
+        caption: ""
       - image: koppartrad.jpeg
         alt: ""
-        caption: "koppartrad.jpeg"
+        caption: ""
       - image: trad.jpeg
         alt: ""
-        caption: "trad.jpeg"
+        caption: ""
       - image: verk14.png
         alt: "Färgfläckiga plasthandskar i vitt, grönt, blått och svart upphängda på lina i ateljén."
-        caption: "Ett konstnärshem är inget vanligt hem."
+        caption: ""
       - image: karin-utomhus.jpg
         alt: "Närporträtt av Karin Walde i röd blus, leende i mjukt sommarljus med grön bakgrund."
         caption: ""
@@ -94,7 +94,8 @@ sections:
 
 ---
 ## Karin Walde {#karin-walde}
-**Grafik&nbsp;/&nbsp;Bildväv&nbsp;/&nbsp;Offentlig utsmyckning&nbsp;/&nbsp;Fiber art&nbsp;/&nbsp;Akvarell&nbsp;/&nbsp;Objekt**
+
+**Grafik&nbsp;/&nbsp;Fiber Art&nbsp;/&nbsp;Offentlig utsmyckning&nbsp;/&nbsp;Objekt&nbsp;/&nbsp;Akvarell**
 
 Ateljé och utställning i mitt hem i Näsbypark, Täby
 [karin@walde.se](mailto:karin@walde.se)
@@ -111,7 +112,7 @@ En detalj jag tycker om är att flera av namnen är kvinnonamn. Det påminner om
 
 I den andra rondellen står fyra runstenar. De är nygjorda kopior av runstenar som man vet har funnits i Täby, men sedan försvunnit.
 ## Min konst {#min-konst}
-Ett urval av min konst. Välkommen att kontakta mig för att se mer på utställningar, eller i min ateljé med showroom. [karin@walde.se](mailto:karin@walde.se)
+Ett urval av min konst. Välkommen att kontakta mig för att se mer på utställningar eller i min ateljé. [karin@walde.se](mailto:karin@walde.se)
 0730-577 855
 ## Om mig {#om-mig}
 Född 1941 i Jokkmokk, sedan 1946 bosatt i Täby.
