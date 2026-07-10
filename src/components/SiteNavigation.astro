@@ -34,8 +34,9 @@ const { sections } = Astro.props;
 	const anchorPadding = 14;
 	const anchorCorrectionDelays = [120, 320, 700, 1_200, 2_000];
 	const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-	const minimumScrollDuration = 520;
-	const maximumScrollDuration = 1_100;
+	const minimumScrollDuration = 460;
+	const maximumScrollDuration = 1_050;
+	const scrollDurationPerPixel = 0.22;
 	const scrollInterruptEvents = ['wheel', 'touchstart'];
 	const scrollInterruptKeys = new Set(['ArrowDown', 'ArrowUp', 'End', 'Home', 'PageDown', 'PageUp', ' ']);
 	let activeScrollAnimation = null;
@@ -110,7 +111,10 @@ const { sections } = Astro.props;
 
 		if (reduceMotionQuery.matches || distancePx < 2) return 0;
 
-		return Math.min(maximumScrollDuration, Math.max(minimumScrollDuration, distancePx * 0.16));
+		return Math.min(
+			maximumScrollDuration,
+			Math.max(minimumScrollDuration, distancePx * scrollDurationPerPixel),
+		);
 	};
 
 	const easeInOutCubic = (progress) => (
