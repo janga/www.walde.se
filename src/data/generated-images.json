@@ -1,34 +1,34 @@
 {
-  "karin-i-bat.jpg": {
-    "sourceHash": "dc7e3d65083635f8fa033aa8fc3a83e29631a16c0959f6875499882d2f382e97",
+  "grafiska-blad.jpeg": {
+    "sourceHash": "7bc2573e4429d23caf6dbceec9d774a452b50c9961d404ffcdc8c62895ebee90",
     "metadataVersion": 2,
     "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
-    "width": 3024,
-    "height": 4032,
+    "width": 5712,
+    "height": 4284,
     "variants": [
       {
-        "src": "/bilder/generated/karin-walde/karin-i-bat-480.webp",
+        "src": "/bilder/generated/karin-walde/grafiska-blad-480.webp",
         "width": 480
       },
       {
-        "src": "/bilder/generated/karin-walde/karin-i-bat-768.webp",
+        "src": "/bilder/generated/karin-walde/grafiska-blad-768.webp",
         "width": 768
       },
       {
-        "src": "/bilder/generated/karin-walde/karin-i-bat-1080.webp",
+        "src": "/bilder/generated/karin-walde/grafiska-blad-1080.webp",
         "width": 1080
       },
       {
-        "src": "/bilder/generated/karin-walde/karin-i-bat-1440.webp",
+        "src": "/bilder/generated/karin-walde/grafiska-blad-1440.webp",
         "width": 1440
       },
       {
-        "src": "/bilder/generated/karin-walde/karin-i-bat-1920.webp",
+        "src": "/bilder/generated/karin-walde/grafiska-blad-1920.webp",
         "width": 1920
       },
       {
-        "src": "/bilder/generated/karin-walde/karin-i-bat-3024.webp",
-        "width": 3024
+        "src": "/bilder/generated/karin-walde/grafiska-blad-5712.webp",
+        "width": 5712
       }
     ]
   },
@@ -182,6 +182,72 @@
       {
         "src": "/bilder/generated/karin-walde/verk13-1472.webp",
         "width": 1472
+      }
+    ]
+  },
+  "img-6207.jpeg": {
+    "sourceHash": "9fc73c9878810ca274af87e0409f76add2fd922d67f6157f3e4106ac1692996f",
+    "metadataVersion": 2,
+    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
+    "width": 5712,
+    "height": 4284,
+    "variants": [
+      {
+        "src": "/bilder/generated/min-konst/img-6207-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/min-konst/img-6207-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/min-konst/img-6207-1080.webp",
+        "width": 1080
+      },
+      {
+        "src": "/bilder/generated/min-konst/img-6207-1440.webp",
+        "width": 1440
+      },
+      {
+        "src": "/bilder/generated/min-konst/img-6207-1920.webp",
+        "width": 1920
+      },
+      {
+        "src": "/bilder/generated/min-konst/img-6207-5712.webp",
+        "width": 5712
+      }
+    ]
+  },
+  "vav.jpeg": {
+    "sourceHash": "36dfaaf7b974f0485a834205f41c8f96e5215c11d5201a8bce5a313fb11821d8",
+    "metadataVersion": 2,
+    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
+    "width": 4032,
+    "height": 3024,
+    "variants": [
+      {
+        "src": "/bilder/generated/min-konst/vav-480.webp",
+        "width": 480
+      },
+      {
+        "src": "/bilder/generated/min-konst/vav-768.webp",
+        "width": 768
+      },
+      {
+        "src": "/bilder/generated/min-konst/vav-1080.webp",
+        "width": 1080
+      },
+      {
+        "src": "/bilder/generated/min-konst/vav-1440.webp",
+        "width": 1440
+      },
+      {
+        "src": "/bilder/generated/min-konst/vav-1920.webp",
+        "width": 1920
+      },
+      {
+        "src": "/bilder/generated/min-konst/vav-4032.webp",
+        "width": 4032
       }
     ]
   },
@@ -342,72 +408,6 @@
       {
         "src": "/bilder/generated/min-konst/verk17-776.webp",
         "width": 776
-      }
-    ]
-  },
-  "grafiska-blad.jpeg": {
-    "sourceHash": "7bc2573e4429d23caf6dbceec9d774a452b50c9961d404ffcdc8c62895ebee90",
-    "metadataVersion": 2,
-    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
-    "width": 5712,
-    "height": 4284,
-    "variants": [
-      {
-        "src": "/bilder/generated/mitt-hem/grafiska-blad-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/mitt-hem/grafiska-blad-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/bilder/generated/mitt-hem/grafiska-blad-1080.webp",
-        "width": 1080
-      },
-      {
-        "src": "/bilder/generated/mitt-hem/grafiska-blad-1440.webp",
-        "width": 1440
-      },
-      {
-        "src": "/bilder/generated/mitt-hem/grafiska-blad-1920.webp",
-        "width": 1920
-      },
-      {
-        "src": "/bilder/generated/mitt-hem/grafiska-blad-5712.webp",
-        "width": 5712
-      }
-    ]
-  },
-  "img-6207.jpeg": {
-    "sourceHash": "9fc73c9878810ca274af87e0409f76add2fd922d67f6157f3e4106ac1692996f",
-    "metadataVersion": 2,
-    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
-    "width": 5712,
-    "height": 4284,
-    "variants": [
-      {
-        "src": "/bilder/generated/mitt-hem/img-6207-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/mitt-hem/img-6207-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/bilder/generated/mitt-hem/img-6207-1080.webp",
-        "width": 1080
-      },
-      {
-        "src": "/bilder/generated/mitt-hem/img-6207-1440.webp",
-        "width": 1440
-      },
-      {
-        "src": "/bilder/generated/mitt-hem/img-6207-1920.webp",
-        "width": 1920
-      },
-      {
-        "src": "/bilder/generated/mitt-hem/img-6207-5712.webp",
-        "width": 5712
       }
     ]
   },
@@ -576,39 +576,6 @@
       }
     ]
   },
-  "vav.jpeg": {
-    "sourceHash": "36dfaaf7b974f0485a834205f41c8f96e5215c11d5201a8bce5a313fb11821d8",
-    "metadataVersion": 2,
-    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
-    "width": 4032,
-    "height": 3024,
-    "variants": [
-      {
-        "src": "/bilder/generated/mitt-hem/vav-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/mitt-hem/vav-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/bilder/generated/mitt-hem/vav-1080.webp",
-        "width": 1080
-      },
-      {
-        "src": "/bilder/generated/mitt-hem/vav-1440.webp",
-        "width": 1440
-      },
-      {
-        "src": "/bilder/generated/mitt-hem/vav-1920.webp",
-        "width": 1920
-      },
-      {
-        "src": "/bilder/generated/mitt-hem/vav-4032.webp",
-        "width": 4032
-      }
-    ]
-  },
   "verk14.png": {
     "sourceHash": "cbb74f026b5b21b4671a4220c478eeb37f04472044bc4d81527b027d355065c3",
     "metadataVersion": 2,
@@ -631,44 +598,6 @@
       {
         "src": "/bilder/generated/mitt-hem/verk14-1202.webp",
         "width": 1202
-      }
-    ]
-  },
-  "verk04.png": {
-    "sourceHash": "433c4d561be9ca2bc09f80f1f1df5c68e02c5530603519ea903086619c543c0a",
-    "metadataVersion": 2,
-    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
-    "width": 830,
-    "height": 646,
-    "variants": [
-      {
-        "src": "/bilder/generated/runrondellerna/verk04-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/runrondellerna/verk04-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/bilder/generated/runrondellerna/verk04-830.webp",
-        "width": 830
-      }
-    ]
-  },
-  "verk05.png": {
-    "sourceHash": "3bca94fe7435a0a0942c9404fe6a4f1a2f02f03447313c5c9b62c6b899473ba7",
-    "metadataVersion": 2,
-    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
-    "width": 746,
-    "height": 746,
-    "variants": [
-      {
-        "src": "/bilder/generated/runrondellerna/verk05-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/runrondellerna/verk05-746.webp",
-        "width": 746
       }
     ]
   },

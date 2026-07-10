@@ -7,37 +7,31 @@ sections:
     gallery:
       - image: tva-fossiler.jpg
         alt: "Två fossilmotiv sida vid sida: blå spiral i kallt ljus och rosa skiva mot orange."
-        caption: "Två grafiska blad med fossiler från Gotland som motiv."
+        caption: "Två grafiska blad med fossil från Gotland som motiv."
       - image: karin-walde.jpg
         alt: "Karin Walde står i grönska med blombukett och håller Täby kommuns kulturpris i handen."
-        caption: "Fick Täby kommuns kulturpris för min konst 2021."
+        caption: "Jag fick Täby kommuns kulturpris för min konst 2021."
       - image: lysande-rondell.png
         alt: "Nattbild av 55 meter lång corténstålring i rondell, med violett lysande runnamn längs hela formen."
         caption: "Offentlig utsmyckning: En av de två rondellerna med runmotiv vid E18 i Roslags Näsby, Täby."
+      - image: grafiska-blad.jpeg
+        alt: ""
+        caption: "grafiska-blad.jpeg"
       - image: verk10.png
         alt: "Utställningsrum med textila verk: mörk lodrät väv, vit spetsform på brun fond, ovalt väggobjekt och smal svart skulptur."
         caption: "Bildväv och objekt. Separatutställning på Karby gård, Täby."
-      - image: karin-i-bat.jpg
-        alt: "Karin Walde sitter barfota i en liten båt; vattenväxter ligger i fören och skog speglas bakom."
-        caption: "Allt kan bli konst! Vattenväxter har blad med vackra mönster."
       - image: verk13.png
         alt: "Kompakt vävateljé med färgstarka garnspolar, arbetsbord, symaskin och fönsterljus över taken."
         caption: "Ateljén i mitt hem i Näsbypark. Här gör jag grafik och bildvävar."
   
   - id: runrondellerna
     gallery:
-      - image: verk04.png
-        alt: ""
-        caption: "verk04.png"
-      - image: verk05.png
-        alt: ""
-        caption: "verk05.png"
-      - image: verk06.jpg
-        alt: "Mörk trafikplats på natten där violetta runnamn lyser längs en låg corténring."
-        caption: "Våra vikingatida grannar! Belysta namn vid Roslags Näsby trafikplats, Täby."
       - image: verk11.png
         alt: "Grov grå sten med röd runorm som slingrar sig i en stor åtta över ytan."
         caption: "En av runstenarna som försvunnit – och återuppstått."
+      - image: verk06.jpg
+        alt: "Mörk trafikplats på natten där violetta runnamn lyser längs en låg corténring."
+        caption: "Våra vikingatida grannar! Belysta namn vid Roslags Näsby trafikplats, Täby."
       - image: verk12.png
         alt: "Karin Walde håller en vit modellring med röda runtecken framför hyllor med burkar och böcker."
         caption: "Förlaga i miniformat till det 55 meter långa konstverket i rondellen."
@@ -53,6 +47,12 @@ sections:
       - image: verk02.png
         alt: "Tre blågröna korallformer med radiella fåror, svävande mot ljus vattenliknande bakgrund."
         caption: "Grafiskt blad med Gotlandsfossil."
+      - image: vav.jpeg
+        alt: ""
+        caption: "vav.jpeg"
+      - image: img-6207.jpeg
+        alt: ""
+        caption: "img-6207.jpeg"
       - image: verk08.png
         alt: "Rosa fossilskiva med mörkt radiellt centrum, omgiven av glödande orange och blå kornighet."
         caption: "Grafiskt blad av fossil."
@@ -75,9 +75,6 @@ sections:
       - image: mitt-hem.jpeg
         alt: ""
         caption: "mitt-hem.jpeg"
-      - image: img-6207.jpeg
-        alt: ""
-        caption: "img-6207.jpeg"
       - image: img-6214.jpeg
         alt: "Färgkartor med blå, gröna, röda och gula remsor, med en färgfläckig arbetsrock hängd framför."
         caption: "img-6214.jpeg"
@@ -87,12 +84,6 @@ sections:
       - image: trad.jpeg
         alt: ""
         caption: "trad.jpeg"
-      - image: grafiska-blad.jpeg
-        alt: ""
-        caption: "grafiska-blad.jpeg"
-      - image: vav.jpeg
-        alt: ""
-        caption: "vav.jpeg"
       - image: verk14.png
         alt: "Färgfläckiga plasthandskar i vitt, grönt, blått och svart upphängda på lina i ateljén."
         caption: "Ett konstnärshem är inget vanligt hem."
@@ -105,7 +96,7 @@ sections:
 ## Karin Walde {#karin-walde}
 **Grafik&nbsp;/&nbsp;Bildväv&nbsp;/&nbsp;Offentlig utsmyckning&nbsp;/&nbsp;Fiber art&nbsp;/&nbsp;Akvarell&nbsp;/&nbsp;Objekt**
 
-Ateljé och showroom i Näsbypark, Täby
+Ateljé och utställning i mitt hem i Näsbypark, Täby
 [karin@walde.se](mailto:karin@walde.se)
 0730-577 855
 ## Runrondellerna {#runrondellerna}
