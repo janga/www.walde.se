@@ -220,11 +220,14 @@ att länken i navigationen visas med vit text. Det ska inte finnas någon separa
 rad under navigationen som upprepar aktuell sektions namn.
 
 Navigationslänkarna är vanliga hash-länkar, till exempel `#om-mig`, så de
-fungerar även utan JavaScript. När JavaScript finns får webbläsaren fortfarande
-sköta den vanliga hash-scrollen vid klick, men sidan mäter sticky-navigationen
-och korrigerar positionen om scrollen hamnar fel. Direkta hash-URL:er, till
-exempel `/#min-konst`, korrigeras också efter sidladdning om webbläsarens första
-ankarscroll hamnar fel. En kortlivad korrigering efter klick hanterar mobila
+fungerar även utan JavaScript. När JavaScript finns tar sidan över klick på
+navigationslänkarna och kör en kontrollerad `requestAnimationFrame`-scroll så
+att animationens längd blir jämnare mellan webbläsare. Sidan mäter
+sticky-navigationen och använder samma offset för att placera rubriken under
+navigationslisten. Animationen avbryts om användaren själv börjar scrolla och
+respekterar `prefers-reduced-motion`. Direkta hash-URL:er, till exempel
+`/#min-konst`, korrigeras efter sidladdning om webbläsarens första ankarscroll
+hamnar fel. En kortlivad korrigering efter klick hanterar mobila
 viewportförändringar, till exempel när webbläsarens adressfält ändrar höjd.
 
 Galleribilder visas stora direkt på sidan, inte som thumbnails. Bilderna ska

@@ -33,6 +33,12 @@ const { sections } = Astro.props;
 	const links = Array.from(document.querySelectorAll('.section-nav a'));
 	const anchorPadding = 14;
 	const anchorCorrectionDelays = [120, 320, 700, 1_200, 2_000];
+	const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+	const minimumScrollDuration = 520;
+	const maximumScrollDuration = 1_100;
+	const scrollInterruptEvents = ['wheel', 'touchstart'];
+	const scrollInterruptKeys = new Set(['ArrowDown', 'ArrowUp', 'End', 'Home', 'PageDown', 'PageUp', ' ']);
+	let activeScrollAnimation = null;
 	let recentAnchorSection = null;
 	let correctAnchorUntil = 0;
 	let missedAnchorCorrectionStartsAt = 0;
@@ -50,6 +56,23 @@ const { sections } = Astro.props;
 		return sections.find((section) => section.id === id);
 	};
 
+	const clearRecentAnchor = () => {
+		recentAnchorSection = null;
+		correctAnchorUntil = 0;
+		missedAnchorCorrectionStartsAt = 0;
+	};
+
+	const cancelActiveScroll = ({ clearAnchor = false } = {}) => {
+		if (activeScrollAnimation) {
+			activeScrollAnimation.cancel();
+			activeScrollAnimation = null;
+		}
+
+		if (clearAnchor) {
+			clearRecentAnchor();
+		}
+	};
+
 	const setActiveSection = (section) => {
 		if (!section) return;
 
@@ -63,16 +86,131 @@ const { sections } = Astro.props;
 		});
 	};
 
-	const scrollToSection = (section, { behavior = 'smooth' } = {}) => {
+	const getSectionScrollTop = (section) => {
 		if (!(section instanceof HTMLElement)) return;
 
 		const offset = setAnchorOffset();
 		if (!offset) return;
 
-		const top = Math.max(0, section.getBoundingClientRect().top + window.scrollY - offset);
-		window.scrollTo({ top, behavior });
+		return Math.max(0, section.getBoundingClientRect().top + window.scrollY - offset);
+	};
+
+	const jumpTo = (top) => {
+		cancelActiveScroll();
+
+		const root = document.documentElement;
+		const previousScrollBehavior = root.style.scrollBehavior;
+		root.style.scrollBehavior = 'auto';
+		window.scrollTo(0, top);
+		root.style.scrollBehavior = previousScrollBehavior;
+	};
+
+	const getScrollDuration = (distance) => {
+		const distancePx = Math.abs(distance);
+
+		if (reduceMotionQuery.matches || distancePx < 2) return 0;
+
+		return Math.min(maximumScrollDuration, Math.max(minimumScrollDuration, distancePx * 0.16));
+	};
+
+	const easeInOutCubic = (progress) => (
+		progress < 0.5
+			? 4 * progress * progress * progress
+			: 1 - Math.pow(-2 * progress + 2, 3) / 2
+	);
+
+	const animateScrollTo = (top, { duration = getScrollDuration(top - window.scrollY) } = {}) => {
+		cancelActiveScroll();
+
+		const startY = window.scrollY;
+		const distance = top - startY;
+		const scrollDuration = duration ?? getScrollDuration(distance);
+
+		if (scrollDuration <= 0) {
+			jumpTo(top);
+			return 0;
+		}
+
+		const root = document.documentElement;
+		const previousScrollBehavior = root.style.scrollBehavior;
+		const startedAt = performance.now();
+		let frameId = 0;
+
+		const state = {
+			cancel: () => {},
+		};
+
+		const cleanup = () => {
+			scrollInterruptEvents.forEach((eventName) => {
+				window.removeEventListener(eventName, interruptScroll);
+			});
+			window.removeEventListener('keydown', interruptScrollKey);
+			root.style.scrollBehavior = previousScrollBehavior;
+
+			if (activeScrollAnimation === state) {
+				activeScrollAnimation = null;
+			}
+		};
+
+		const cancel = ({ clearAnchor = true } = {}) => {
+			if (frameId) {
+				cancelAnimationFrame(frameId);
+			}
+
+			cleanup();
+
+			if (clearAnchor) {
+				clearRecentAnchor();
+			}
+		};
+
+		const interruptScroll = () => cancel({ clearAnchor: true });
+		const interruptScrollKey = (event) => {
+			if (scrollInterruptKeys.has(event.key)) {
+				interruptScroll();
+			}
+		};
+
+		const step = (now) => {
+			const elapsed = now - startedAt;
+			const progress = Math.min(1, elapsed / scrollDuration);
+			const nextY = startY + distance * easeInOutCubic(progress);
+
+			window.scrollTo(0, nextY);
+
+			if (progress >= 1) {
+				window.scrollTo(0, top);
+				cleanup();
+				requestAnimationFrame(correctRecentAnchor);
+				return;
+			}
+
+			frameId = requestAnimationFrame(step);
+		};
+
+		state.cancel = cancel;
+		activeScrollAnimation = state;
+		root.style.scrollBehavior = 'auto';
+		scrollInterruptEvents.forEach((eventName) => {
+			window.addEventListener(eventName, interruptScroll, { passive: true });
+		});
+		window.addEventListener('keydown', interruptScrollKey);
+		frameId = requestAnimationFrame(step);
+
+		return scrollDuration;
+	};
+
+	const scrollToSection = (section, { behavior = 'smooth', duration } = {}) => {
+		const top = getSectionScrollTop(section);
+		if (top === undefined) return 0;
+
+		const scrollDuration = behavior === 'smooth'
+			? animateScrollTo(top, { duration })
+			: (jumpTo(top), 0);
 
 		setActiveSection(section);
+
+		return scrollDuration;
 	};
 
 	const trackRecentAnchor = (section, { missedAnchorDelay = 1_200 } = {}) => {
@@ -86,6 +224,7 @@ const { sections } = Astro.props;
 	};
 
 	const correctRecentAnchor = () => {
+		if (activeScrollAnimation) return;
 		if (!(recentAnchorSection instanceof HTMLElement)) return;
 		if (performance.now() > correctAnchorUntil) return;
 		if (window.location.hash !== `#${recentAnchorSection.id}`) return;
@@ -128,12 +267,26 @@ const { sections } = Astro.props;
 	sections.forEach((section) => observer.observe(section));
 
 	links.forEach((link) => {
-		link.addEventListener('click', () => {
+		link.addEventListener('click', (event) => {
 			const section = getSectionFromHash(link.hash);
 			if (!(section instanceof HTMLElement)) return;
 
-			trackRecentAnchor(section);
+			const top = getSectionScrollTop(section);
+			if (top === undefined) return;
+
+			event.preventDefault();
+
+			const targetHash = `#${section.id}`;
+			const duration = getScrollDuration(top - window.scrollY);
+
+			trackRecentAnchor(section, { missedAnchorDelay: duration + 350 });
 			setActiveSection(section);
+
+			if (window.location.hash !== targetHash) {
+				history.pushState(null, '', targetHash);
+			}
+
+			scrollToSection(section, { behavior: 'smooth', duration });
 		});
 	});
 
@@ -164,6 +317,7 @@ const { sections } = Astro.props;
 
 	window.addEventListener('resize', updateAnchorOffset);
 	window.addEventListener('hashchange', () => trackCurrentHashAnchor());
+	window.addEventListener('popstate', () => trackCurrentHashAnchor());
 	window.addEventListener('scrollend', () => requestAnimationFrame(correctRecentAnchor));
 
 	if (window.visualViewport) {

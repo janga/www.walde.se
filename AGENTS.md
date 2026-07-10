@@ -122,7 +122,8 @@ Consult these guides before working on related tasks:
   deliberately testing anchor offsets; combining both can make section links
   stop too early and show the previous section above the target heading.
 - Section navigation must remain progressive enhancement: keep real
-  `href="#section-id"` links so anchors work without JavaScript. JavaScript may
-  measure the sticky header and correct nav clicks or direct hash URL loads when
-  the browser lands in the wrong place, but it should not be the only way
-  navigation works. Prefer native browser hash scrolling for ordinary clicks.
+  `href="#section-id"` links so anchors work without JavaScript. With
+  JavaScript, ordinary nav clicks use a controlled `requestAnimationFrame`
+  scroll for consistent animation across browsers. JavaScript may measure the
+  sticky header and correct nav clicks or direct hash URL loads when the browser
+  lands in the wrong place, but it should not be the only way navigation works.
