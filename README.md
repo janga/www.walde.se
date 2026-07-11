@@ -19,6 +19,7 @@ npm run content:sync
 npm run metadata:fix
 npm run images
 npm run build
+npm run test:content-check
 npm run test:navigation
 npm run test:navigation:stress
 npm run deploy -- "Publiceringsmeddelande"
@@ -38,6 +39,11 @@ beroenden, eller när Playwright rapporterar att Chromium saknas.
 den inte redan kör och testar sticky-navigationens ankarlänkar i mobil- och
 desktopviewport med Playwright. Testet kontrollerar också att hash-länkarna
 fortfarande fungerar utan JavaScript.
+
+`npm run test:content-check` kör ett fristående regressionstest för
+`content:check` och `content:sync` mot temporära fixtures. Det körs inte av
+builden, men är användbart när scripts för contentvalidering eller bildflytt
+ändras.
 
 `npm run test:navigation:stress` kör ett längre mobiltest som upprepar klick på
 alla navigationslänkar och laddar direkta hash-URL:er, samtidigt som

@@ -28,6 +28,9 @@ URL in the browser. Manage the background server with `npm run dev:stop`,
 - Use `npm run test:navigation:stress` when investigating intermittent anchor
   navigation races. Set `NAVIGATION_STRESS_RUNS=<count>` to adjust how many
   repeated mobile click rounds it runs.
+- Run `npm run test:content-check` after changing content validation or
+  `content:sync` behavior. It is a standalone regression test and is not part
+  of the regular build.
 - Use `npm run deploy -- "Commit message"` for a conservative local deploy
   from `main`: it runs the build, reviews `git status --short`, commits only
   allowed site/content changes, pushes `main`, and checks the GitHub Pages

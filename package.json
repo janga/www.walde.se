@@ -17,6 +17,7 @@
     "images": "node scripts/generate-images.mjs",
     "build": "npm run content:check && npm run images && astro build",
     "deploy": "node scripts/deploy-site.mjs",
+    "test:content-check": "node scripts/test-content-check.mjs",
     "test:navigation": "node scripts/test-navigation.mjs",
     "test:navigation:stress": "node scripts/test-navigation.mjs tests/navigation-stress.spec.ts",
     "preview": "astro preview",

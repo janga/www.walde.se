@@ -1,0 +1,160 @@
+import assert from 'node:assert/strict';
+import { access, mkdir, mkdtemp, rm, writeFile } from 'node:fs/promises';
+import { spawnSync } from 'node:child_process';
+import { tmpdir } from 'node:os';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const contentScript = path.join(repoRoot, 'scripts', 'sync-content-sections.mjs');
+const tests = [];
+
+const test = (name, run) => {
+	tests.push({ name, run });
+};
+
+const fileExists = async (filePath) => access(filePath).then(() => true, () => false);
+
+const runContentScript = (root, args) => spawnSync(process.execPath, [contentScript, ...args], {
+	cwd: root,
+	encoding: 'utf8',
+});
+
+const getOutput = (result) => `${result.stdout}${result.stderr}`;
+
+const writeFixtureFile = async (root, relativePath, contents = 'fixture image') => {
+	const filePath = path.join(root, relativePath);
+	await mkdir(path.dirname(filePath), { recursive: true });
+	await writeFile(filePath, contents);
+};
+
+const withTempProject = async ({ site, files }, run) => {
+	const root = await mkdtemp(path.join(tmpdir(), 'walde-content-check-'));
+
+	try {
+		await writeFixtureFile(root, 'content/site.md', site);
+
+		for (const file of files) {
+			await writeFixtureFile(root, file);
+		}
+
+		await run(root);
+	} finally {
+		await rm(root, { force: true, recursive: true });
+	}
+};
+
+const brokenSite = `---
+copyrightOwner: Test Owner
+sections:
+  - id: karin-walde
+    gallery:
+      - image: karin.jpg
+  - id: min-konst
+    gallery:
+      - image: vav.jpeg
+      - image: missing.jpeg
+      - image: duplicate.jpg
+      - image: duplicate.jpg
+  - id: mitt-hem
+    gallery:
+      - image: home.jpg
+
+---
+## Karin Walde {#karin-walde}
+Text.
+## Min konst {#min-konst}
+Text.
+## Extra {#extra}
+Text.
+## Mitt hem {#mitt-hem}
+Text.
+`;
+
+test('content:check groups section issues, global issues, and unreferenced images', async () => {
+	await withTempProject({
+		site: brokenSite,
+		files: [
+			'content/karin-walde/karin.jpg',
+			'content/karin-walde/unreferenced.jpg',
+			'content/min-konst/duplicate.jpg',
+			'content/mitt-hem/home.jpg',
+			'content/mitt-hem/vav.jpeg',
+		],
+	}, async (root) => {
+		const result = runContentScript(root, ['--check']);
+		const output = getOutput(result);
+
+		assert.equal(result.status, 1, output);
+		assert.match(output, /^Content check failed\./m);
+		assert.match(output, /Section and Gallery Issues\n\n\[min-konst\]\n  Errors:/);
+		assert.match(output, /Image "vav\.jpeg" is used here but is located in content\/mitt-hem\/\./);
+		assert.match(output, /Image "missing\.jpeg" does not exist anywhere under content\/\./);
+		assert.match(output, /Image "duplicate\.jpg" is referenced more than once in this section\./);
+		assert.match(output, /\[extra\]\n  Warnings:/);
+		assert.match(output, /Global Content Issues\n\nWarnings:\n- Markdown section order differs from frontmatter\./);
+		assert.match(output, /Unreferenced Images\nThese files are kept in content\/ but are not mounted on the site:/);
+		assert.match(output, /content\/karin-walde\/unreferenced\.jpg/);
+	});
+});
+
+const movableSite = `---
+copyrightOwner: Test Owner
+sections:
+  - id: min-konst
+    gallery:
+      - image: move-me.jpg
+  - id: mitt-hem
+    gallery:
+      - image: home.jpg
+
+---
+## Min konst {#min-konst}
+Text.
+## Mitt hem {#mitt-hem}
+Text.
+`;
+
+test('content:sync moves referenced images and keeps unreferenced images in place', async () => {
+	await withTempProject({
+		site: movableSite,
+		files: [
+			'content/mitt-hem/home.jpg',
+			'content/mitt-hem/move-me.jpg',
+			'content/mitt-hem/unreferenced.jpg',
+		],
+	}, async (root) => {
+		const syncResult = runContentScript(root, ['--write', '--yes']);
+		const syncOutput = getOutput(syncResult);
+
+		assert.equal(syncResult.status, 0, syncOutput);
+		assert.match(syncOutput, /Moved image "move-me\.jpg" to content\/min-konst\/\./);
+		assert.equal(await fileExists(path.join(root, 'content/min-konst/move-me.jpg')), true);
+		assert.equal(await fileExists(path.join(root, 'content/mitt-hem/move-me.jpg')), false);
+		assert.equal(await fileExists(path.join(root, 'content/mitt-hem/unreferenced.jpg')), true);
+
+		const checkResult = runContentScript(root, ['--check']);
+		const checkOutput = getOutput(checkResult);
+
+		assert.equal(checkResult.status, 0, checkOutput);
+		assert.match(checkOutput, /Content check passed\./);
+		assert.match(checkOutput, /content\/mitt-hem\/unreferenced\.jpg/);
+	});
+});
+
+let failed = 0;
+
+for (const { name, run } of tests) {
+	try {
+		await run();
+		console.log(`ok - ${name}`);
+	} catch (error) {
+		failed += 1;
+		console.error(`not ok - ${name}`);
+		console.error(error);
+	}
+}
+
+if (failed > 0) {
+	process.exit(1);
+}
