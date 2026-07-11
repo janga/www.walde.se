@@ -16,7 +16,7 @@ sections:
         caption: "Offentlig utsmyckning: En av de två rondellerna med runmotiv vid E18 i Roslags Näsby, Täby."
       - image: grafiska-blad.jpeg
         alt: ""
-        caption: "Grafiska blad"
+        caption: "Grafiska blad."
       - image: verk10.png
         alt: "Utställningsrum med textila verk: mörk lodrät väv, vit spetsform på brun fond, ovalt väggobjekt och smal svart skulptur."
         caption: "Bildväv och objekt. Separatutställning på Karby gård, Täby."
