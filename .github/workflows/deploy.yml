@@ -24,16 +24,16 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 24
           cache: npm
 
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
 
       - name: Restore generated image cache
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: public/bilder/generated
           key: generated-images-${{ runner.os }}-${{ hashFiles('content/site.md', 'content/**/*.jpg', 'content/**/*.jpeg', 'content/**/*.png', 'scripts/generate-images.mjs', 'scripts/lib/**/*.mjs', 'src/data/generated-images.json') }}
@@ -50,7 +50,7 @@ jobs:
         run: npm run build
 
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v5
         with:
           path: dist
 
@@ -64,4 +64,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
