@@ -128,8 +128,9 @@ Inledande text.
 Builden varnar om Markdown-sektionernas ordning skiljer sig från ordningen i
 frontmatter, men skriver inte om `content/site.md`. Kör `npm run content:check`
 för att kontrollera ordning och bildplacering utan att ändra filer. Kommandot
-visar också bildfiler under `content/` som inte refereras från `content/site.md`
-och därför inte monteras på sajten. Kör
+skriver en grupperad rapport där sektions- och gallerifel visas under respektive
+sektion, globala contentproblem visas separat och bildfiler under `content/` som
+inte refereras från `content/site.md` visas under `Unreferenced Images`. Kör
 `npm run content:sync` för att sortera Markdown-sektionerna efter frontmatter
 och flytta galleribilder till rätt sektionskatalog; kommandot frågar innan det
 skriver om eller flyttar filer.
