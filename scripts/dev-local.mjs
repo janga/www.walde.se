@@ -198,7 +198,7 @@ const stopServer = async ({ quiet = false } = {}) => {
 	}
 };
 
-const startServer = async () => {
+const startServer = async ({ open = true } = {}) => {
 	await stopServer({ quiet: true });
 
 	const existingPids = await getPortPids();
@@ -211,10 +211,14 @@ const startServer = async () => {
 
 	const startedPids = await getPortPids();
 	await writeState(startedPids[0] ?? null);
-	await openBrowser();
+	if (open) {
+		await openBrowser();
+	} else {
+		console.log(`Browser open skipped. Open ${url}`);
+	}
 
 	console.log(`Astro dev server is running at ${url}`);
-	console.log('Manage it with npm run dev:status, npm run dev:logs, and npm run dev:stop.');
+	console.log('Manage it with npm run dev:status, npm run dev:logs, npm run dev:restart, and npm run dev:stop.');
 };
 
 const showStatus = async () => {
@@ -269,11 +273,13 @@ const showLogs = async () => {
 };
 
 if (command === 'start') {
-	await startServer();
+	await startServer({ open: !skipOpen });
 } else if (command === 'status') {
 	await showStatus();
 } else if (command === 'logs') {
 	await showLogs();
+} else if (command === 'restart') {
+	await startServer({ open: false });
 } else if (command === 'stop') {
 	await stopServer();
 } else {

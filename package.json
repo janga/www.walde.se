@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "node scripts/dev-local.mjs",
     "dev:local": "node scripts/dev-local.mjs",
+    "dev:restart": "node scripts/dev-local.mjs restart",
     "dev:status": "node scripts/dev-local.mjs status",
     "dev:logs": "node scripts/dev-local.mjs logs",
     "dev:stop": "node scripts/dev-local.mjs stop",
@@ -16,6 +17,7 @@
     "metadata:fix": "node scripts/fix-image-metadata.mjs",
     "images": "node scripts/generate-images.mjs",
     "build": "npm run content:check && npm run images && astro build",
+    "build:local": "npm run build && npm run dev:restart",
     "deploy": "node scripts/deploy-site.mjs",
     "test:content-check": "node scripts/test-content-check.mjs",
     "test:navigation": "node scripts/test-navigation.mjs",

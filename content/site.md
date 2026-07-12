@@ -62,13 +62,6 @@ sections:
       - image: verk07.png
         alt: "Blå spiralformad fossil med mörk kärna, inbäddad i ljusa fibrer och skimrande yta."
         caption: "Grafiskt blad av fossil."
-      - image: verk03.png
-        alt: "Mjukt upplysta druvklasar i violett och gult bland bleka blad mot grön fond."
-        caption: "Litografi, del av en serie om tre."
-      - image: verk16.png
-        alt: "Böjd trädliknande form med ljusa lövkronor mot grön fond och varm orange mark."
-        caption: "Litografi, del av en serie om tre."
-
   - id: om-mig
   - id: mitt-hem
     gallery:

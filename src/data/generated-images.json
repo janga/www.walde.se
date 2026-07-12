@@ -272,23 +272,6 @@
       }
     ]
   },
-  "verk03.png": {
-    "sourceHash": "089e41ff47d0669acdc503aaec5f27ea42c4acfd6d7fa2f75b5821b3ac70efef",
-    "metadataVersion": 2,
-    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
-    "width": 694,
-    "height": 1062,
-    "variants": [
-      {
-        "src": "/bilder/generated/min-konst/verk03-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/min-konst/verk03-694.webp",
-        "width": 694
-      }
-    ]
-  },
   "verk07.png": {
     "sourceHash": "3c720b9d5d2ad9c3eeb7e6b846b89a7ef7b75d6a2699c1ca27718243457bd2b0",
     "metadataVersion": 2,
@@ -370,23 +353,6 @@
       {
         "src": "/bilder/generated/min-konst/verk15-660.webp",
         "width": 660
-      }
-    ]
-  },
-  "verk16.png": {
-    "sourceHash": "6f11e8d3df18f4028dee9082535b61084c28d05abbdeae73445d31c0c705ac9f",
-    "metadataVersion": 2,
-    "metadataHash": "c60c0b7414760bff0223ff49daa49fb3addc9c7d451d0ed64d5acf7d5c6aa9ff",
-    "width": 740,
-    "height": 1104,
-    "variants": [
-      {
-        "src": "/bilder/generated/min-konst/verk16-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/bilder/generated/min-konst/verk16-740.webp",
-        "width": 740
       }
     ]
   },

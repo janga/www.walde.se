@@ -10,7 +10,7 @@ npm run dev:local
 
 It starts Astro in background mode at `http://localhost:4321/` and opens that
 URL in the browser. Manage the background server with `npm run dev:stop`,
-`npm run dev:status`, and `npm run dev:logs`.
+`npm run dev:restart`, `npm run dev:status`, and `npm run dev:logs`.
 
 ## Workflow
 
@@ -21,6 +21,8 @@ URL in the browser. Manage the background server with `npm run dev:stop`,
   automatically before WebP generation starts.
 - Run `npm run metadata:fix` only when new source images need copyright metadata.
 - Run `npm run build` after content, layout, or image changes.
+- Use `npm run build:local` when you want a local build followed by a dev-server
+  restart so Astro reads the current `content/site.md` content store.
 - Run `npm run test:navigation` after sticky navigation, anchor offset, or
   scroll behavior changes. If Playwright reports a missing Chromium browser,
   run `npx playwright install chromium` once. In sandboxed Codex sessions, this

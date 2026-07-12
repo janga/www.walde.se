@@ -19,11 +19,13 @@ npm run content:sync
 npm run metadata:fix
 npm run images
 npm run build
+npm run build:local
 npm run test:content-check
 npm run test:navigation
 npm run test:navigation:stress
 npm run deploy -- "Publiceringsmeddelande"
 npm run dev:local
+npm run dev:restart
 npm run dev:status
 npm run dev:logs
 npm run dev:stop
@@ -31,6 +33,11 @@ npm run dev:stop
 
 `npm run build` kör hela lokala byggkedjan: först `content:check`, sedan
 bildgenerering och till sist `astro build`.
+
+`npm run build:local` kör samma build och startar sedan om den lokala
+Astro-devservern utan att öppna ett nytt webbläsarfönster. Använd det när
+ändringar i `content/site.md`, särskilt frontmatter eller gallerier, ska synas
+i en redan öppen lokal sida och dev-serverns content-store kan behöva läsas om.
 
 Kör `npx playwright install chromium` en gång efter installation av
 beroenden, eller när Playwright rapporterar att Chromium saknas.
@@ -66,7 +73,9 @@ refererade i galleriet. Kommandot kör inte `npm run metadata:fix`.
 För lokal testning i webbläsare används `npm run dev:local`. Kommandot startar
 Astros dev-server i bakgrunden på `http://localhost:4321/` och öppnar samma URL
 i webbläsaren. Servern hanteras med `npm run dev:status`,
-`npm run dev:logs`, `npm run dev:logs -- --follow` och `npm run dev:stop`.
+`npm run dev:logs`, `npm run dev:logs -- --follow`, `npm run dev:restart` och
+`npm run dev:stop`. `npm run dev:restart` startar om servern utan att öppna ett
+nytt webbläsarfönster.
 
 ## Struktur
 
