@@ -3,6 +3,7 @@ import { expect, test } from '@playwright/test';
 const mobileViewport = { width: 393, height: 852 };
 const desktopViewport = { width: 1280, height: 900 };
 const maximumAnchorGap = 80;
+const maximumAnchorWait = 7_000;
 
 type AnchorMeasurement = {
 	hash: string;
@@ -62,7 +63,7 @@ const waitForAnchorPosition = async (page, sectionId: string) => {
 			return window.location.hash === `#${id}` && gap >= -1 && gap <= maximumGap;
 		},
 		{ id: sectionId, maximumGap: maximumAnchorGap },
-		{ timeout: 4_000 },
+		{ timeout: maximumAnchorWait },
 	);
 };
 

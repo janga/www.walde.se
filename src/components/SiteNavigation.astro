@@ -87,6 +87,12 @@ const { sections } = Astro.props;
 		});
 	};
 
+	const setHash = (targetHash) => {
+		if (window.location.hash !== targetHash) {
+			history.pushState(null, '', targetHash);
+		}
+	};
+
 	const getSectionScrollTop = (section) => {
 		if (!(section instanceof HTMLElement)) return;
 
@@ -109,7 +115,7 @@ const { sections } = Astro.props;
 	const getScrollDuration = (distance) => {
 		const distancePx = Math.abs(distance);
 
-		if (reduceMotionQuery.matches || distancePx < 2) return 0;
+		if (reduceMotionQuery.matches || distancePx < anchorPadding) return 0;
 
 		return Math.min(
 			maximumScrollDuration,
@@ -123,7 +129,10 @@ const { sections } = Astro.props;
 			: 1 - Math.pow(-2 * progress + 2, 3) / 2
 	);
 
-	const animateScrollTo = (top, { duration = getScrollDuration(top - window.scrollY) } = {}) => {
+	const animateScrollTo = (
+		top,
+		{ duration = getScrollDuration(top - window.scrollY), onComplete } = {},
+	) => {
 		cancelActiveScroll();
 
 		const startY = window.scrollY;
@@ -132,6 +141,7 @@ const { sections } = Astro.props;
 
 		if (scrollDuration <= 0) {
 			jumpTo(top);
+			onComplete?.();
 			return 0;
 		}
 
@@ -185,6 +195,7 @@ const { sections } = Astro.props;
 			if (progress >= 1) {
 				window.scrollTo(0, top);
 				cleanup();
+				onComplete?.();
 				requestAnimationFrame(correctRecentAnchor);
 				return;
 			}
@@ -204,13 +215,13 @@ const { sections } = Astro.props;
 		return scrollDuration;
 	};
 
-	const scrollToSection = (section, { behavior = 'smooth', duration } = {}) => {
+	const scrollToSection = (section, { behavior = 'smooth', duration, onComplete } = {}) => {
 		const top = getSectionScrollTop(section);
 		if (top === undefined) return 0;
 
 		const scrollDuration = behavior === 'smooth'
-			? animateScrollTo(top, { duration })
-			: (jumpTo(top), 0);
+			? animateScrollTo(top, { duration, onComplete })
+			: (jumpTo(top), onComplete?.(), 0);
 
 		setActiveSection(section);
 
@@ -218,9 +229,11 @@ const { sections } = Astro.props;
 	};
 
 	const trackRecentAnchor = (section, { missedAnchorDelay = 1_200 } = {}) => {
+		const now = performance.now();
+
 		recentAnchorSection = section;
-		correctAnchorUntil = performance.now() + 2_700;
-		missedAnchorCorrectionStartsAt = performance.now() + missedAnchorDelay;
+		correctAnchorUntil = now + Math.max(2_700, missedAnchorDelay + 1_500);
+		missedAnchorCorrectionStartsAt = now + missedAnchorDelay;
 
 		anchorCorrectionDelays.forEach((delay) => {
 			window.setTimeout(() => requestAnimationFrame(correctRecentAnchor), delay);
@@ -286,11 +299,11 @@ const { sections } = Astro.props;
 			trackRecentAnchor(section, { missedAnchorDelay: duration + 350 });
 			setActiveSection(section);
 
-			if (window.location.hash !== targetHash) {
-				history.pushState(null, '', targetHash);
-			}
-
-			scrollToSection(section, { behavior: 'smooth', duration });
+			scrollToSection(section, {
+				behavior: 'smooth',
+				duration,
+				onComplete: () => setHash(targetHash),
+			});
 		});
 	});
 

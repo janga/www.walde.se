@@ -23,6 +23,7 @@ npm run build:local
 npm run test:content-check
 npm run test:navigation
 npm run test:navigation:stress
+npm run test:navigation:preview
 npm run deploy -- "Publiceringsmeddelande"
 npm run dev:local
 npm run dev:restart
@@ -59,6 +60,16 @@ intermittent ankarlänksfel ska jagas:
 
 ```sh
 NAVIGATION_STRESS_RUNS=100 npm run test:navigation:stress
+```
+
+`npm run test:navigation:preview` kör ett produktionslikt ankartest: först
+`npm run build`, sedan `astro preview` på `http://localhost:4322/`, och därefter
+upprepade sticky-nav-klick i mobil- och desktopviewportar. Testet mäter att
+rätt sektionsrubrik landar direkt under sticky-navigationen och skriver ut
+positionsdata om en klicksekvens hamnar fel. Öka antalet rundor med:
+
+```sh
+NAVIGATION_PREVIEW_ROUNDS=10 npm run test:navigation:preview
 ```
 
 `npm run deploy -- "Publiceringsmeddelande"` kör en konservativ lokal

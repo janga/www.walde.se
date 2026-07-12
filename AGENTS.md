@@ -30,6 +30,10 @@ URL in the browser. Manage the background server with `npm run dev:stop`,
 - Use `npm run test:navigation:stress` when investigating intermittent anchor
   navigation races. Set `NAVIGATION_STRESS_RUNS=<count>` to adjust how many
   repeated mobile click rounds it runs.
+- Use `npm run test:navigation:preview` when sticky navigation needs a
+  production-like anchor test. It builds the site, serves `dist/` through Astro
+  preview, and repeats sticky-nav clicks in mobile and desktop viewports. Set
+  `NAVIGATION_PREVIEW_ROUNDS=<count>` to increase repetitions.
 - Run `npm run test:content-check` after changing content validation or
   `content:sync` behavior. It is a standalone regression test and is not part
   of the regular build.

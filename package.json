@@ -22,6 +22,7 @@
     "test:content-check": "node scripts/test-content-check.mjs",
     "test:navigation": "node scripts/test-navigation.mjs",
     "test:navigation:stress": "node scripts/test-navigation.mjs tests/navigation-stress.spec.ts",
+    "test:navigation:preview": "node scripts/test-navigation-preview.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
