@@ -88,9 +88,11 @@ sections:
 ---
 ## Karin Walde {#karin-walde}
 
-**Grafik&nbsp;/&nbsp;Fiber Art&nbsp;/&nbsp;Offentlig utsmyckning&nbsp;/&nbsp;Objekt&nbsp;/&nbsp;Akvarell**
 
-Ateljé och utställning i mitt hem i Näsbypark, Täby
+Ateljé och utställning i Näsbypark, Täby. 
+
+Grafik, fiber art, offentlig utsmyckning, objekt och akvarell.
+
 [karin@walde.se](mailto:karin@walde.se)
 0730-577 855
 ## Runrondellerna {#runrondellerna}
