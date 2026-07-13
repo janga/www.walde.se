@@ -4,6 +4,7 @@ const mobileViewport = { width: 393, height: 852 };
 const desktopViewport = { width: 1280, height: 900 };
 const maximumAnchorGap = 80;
 const maximumAnchorWait = 7_000;
+const minimumFullscreenSafeTextTop = 24;
 
 type AnchorMeasurement = {
 	hash: string;
@@ -67,6 +68,28 @@ const waitForAnchorPosition = async (page, sectionId: string) => {
 	);
 };
 
+const measureNavTextHitTargets = async (page) => page.locator('.section-nav a').evaluateAll((links) => (
+	links.map((link) => {
+		const textRange = document.createRange();
+		textRange.selectNodeContents(link);
+		const textRect = textRange.getBoundingClientRect();
+		textRange.detach();
+
+		const x = textRect.left + textRect.width / 2;
+		const y = textRect.top + textRect.height / 2;
+		const hitElement = document.elementFromPoint(x, y);
+
+		return {
+			href: link.getAttribute('href'),
+			label: link.textContent?.trim(),
+			textTop: textRect.top,
+			hitHref: hitElement instanceof HTMLAnchorElement
+				? hitElement.getAttribute('href')
+				: hitElement?.closest('a')?.getAttribute('href'),
+		};
+	})
+));
+
 for (const scenario of [
 	{ name: 'mobile', viewport: mobileViewport, isMobile: true, hasTouch: true },
 	{ name: 'desktop', viewport: desktopViewport, isMobile: false, hasTouch: false },
@@ -109,6 +132,23 @@ for (const scenario of [
 		});
 	});
 }
+
+test.describe('desktop navigation hit targets', () => {
+	test.use({
+		hasTouch: false,
+		isMobile: false,
+		viewport: desktopViewport,
+	});
+
+	test('keeps labels below the top fullscreen browser chrome risk area', async ({ page }) => {
+		await openSite(page);
+
+		for (const target of await measureNavTextHitTargets(page)) {
+			expect(target.textTop, target.label).toBeGreaterThanOrEqual(minimumFullscreenSafeTextTop);
+			expect(target.hitHref, target.label).toBe(target.href);
+		}
+	});
+});
 
 test.describe('section navigation without JavaScript', () => {
 	test.use({
