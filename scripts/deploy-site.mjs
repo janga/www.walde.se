@@ -17,7 +17,8 @@ const repo = 'janga/www.walde.se';
 const pagesWorkflow = 'Deploy to GitHub Pages';
 const npmBin = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 const args = process.argv.slice(2);
-const commitMessage = args.join(' ').trim();
+const mode = args[0] === 'commit' ? 'commit' : 'deploy';
+const modeArgs = mode === 'commit' ? args.slice(1) : args;
 const allowedExactPaths = new Set([
 	'astro.config.mjs',
 	'package-lock.json',
@@ -29,9 +30,24 @@ const allowedExactPaths = new Set([
 	'public/sitemap.xml',
 	'tsconfig.json',
 ]);
-const failedConclusions = new Set(['failure', 'startup_failure', 'timed_out']);
+const failedConclusions = new Set(['action_required', 'cancelled', 'failure', 'startup_failure', 'timed_out']);
 
-const usage = 'Usage: npm run deploy -- "Commit message"';
+const deployUsage = [
+	'Usage: npm run deploy',
+	'',
+	'Publishes an already committed main branch: builds, verifies a clean worktree,',
+	'pushes main when local main is ahead of origin/main, and checks GitHub Pages.',
+	'If local main already matches origin/main, it skips push and checks Pages.',
+	'',
+	'For the old build-and-commit convenience flow, use:',
+	'npm run deploy:commit -- "Commit message"',
+].join('\n');
+const deployCommitUsage = [
+	'Usage: npm run deploy:commit -- "Commit message"',
+	'',
+	'Builds, stages only allowed site/content changes, commits, pushes main,',
+	'and checks GitHub Pages. Does not run npm run metadata:fix.',
+].join('\n');
 
 const fail = (message) => {
 	console.error(message);
@@ -180,13 +196,56 @@ const assertDeployableStatus = async (entries, expectedImagePaths) => {
 
 const getStagePaths = (entries) => [...new Set(entries.flatMap(getEntryPaths))].sort();
 
-const assertCleanWorktree = async () => {
+const assertCleanWorktree = async (message) => {
 	const entries = await getStatusEntries();
 
 	if (entries.length > 0) {
 		await printStatusShort();
-		fail('Refusing to push: uncommitted changes remain after commit.');
+		fail(message);
 	}
+};
+
+const fetchRemoteMain = async () => {
+	await runInherit('git', ['fetch', 'origin']);
+};
+
+const getRemoteRelation = async () => {
+	const output = (await runCapture('git', [
+		'rev-list',
+		'--left-right',
+		'--count',
+		`origin/${branch}...HEAD`,
+	])).trim();
+	const [behind, ahead] = output.split(/\s+/).map(Number);
+
+	if (!Number.isInteger(behind) || !Number.isInteger(ahead)) {
+		fail(`Could not compare HEAD with origin/${branch}.`);
+	}
+
+	return { ahead, behind };
+};
+
+const plural = (count, word) => `${count} ${word}${count === 1 ? '' : 's'}`;
+
+const assertPushableBranch = async () => {
+	const relation = await getRemoteRelation();
+
+	if (relation.behind > 0 && relation.ahead > 0) {
+		fail([
+			`Refusing to deploy: local ${branch} and origin/${branch} have diverged.`,
+			`Local ${branch} is ${plural(relation.ahead, 'commit')} ahead and ${plural(relation.behind, 'commit')} behind origin/${branch}.`,
+			'Reconcile the branches before deploying.',
+		].join('\n'));
+	}
+
+	if (relation.behind > 0) {
+		fail([
+			`Refusing to deploy: local ${branch} is ${plural(relation.behind, 'commit')} behind origin/${branch}.`,
+			'Pull or rebase before deploying.',
+		].join('\n'));
+	}
+
+	return relation;
 };
 
 const getLatestPagesRun = async () => {
@@ -209,29 +268,7 @@ const getLatestPagesRun = async () => {
 	return runs[0] ?? null;
 };
 
-if (args.includes('--help') || args.includes('-h')) {
-	console.log(usage);
-	process.exit(0);
-}
-
-if (!commitMessage) {
-	fail(`Commit message is required.\n${usage}`);
-}
-
-try {
-	await assertMainBranch();
-	await runInherit(npmBin, ['run', 'build']);
-	await printStatusShort();
-
-	const entries = await getStatusEntries();
-	const expectedImagePaths = await getExpectedImagePaths();
-	await assertDeployableStatus(entries, expectedImagePaths);
-
-	const stagePaths = getStagePaths(entries);
-	await runInherit('git', ['add', '--', ...stagePaths]);
-	await runInherit('git', ['commit', '-m', commitMessage]);
-	await assertCleanWorktree();
-	await runInherit('git', ['push', 'origin', branch]);
+const checkPagesWorkflow = async () => {
 	await runInherit('gh', ['run', 'list', '--repo', repo, '--branch', branch, '--limit', '3']);
 
 	const latestRun = await getLatestPagesRun();
@@ -247,6 +284,75 @@ try {
 	}
 
 	console.log(`${pagesWorkflow} latest run: ${latestRun.status}${latestRun.conclusion ? `/${latestRun.conclusion}` : ''}`);
+};
+
+const deployCommittedMain = async () => {
+	if (modeArgs.length > 0) {
+		fail([
+			'npm run deploy no longer accepts a commit message.',
+			'Commit your changes first, then run npm run deploy.',
+			'Use npm run deploy:commit -- "Commit message" for the old build-and-commit convenience flow.',
+		].join('\n'));
+	}
+
+	await assertMainBranch();
+	await assertCleanWorktree('Refusing to deploy: commit or discard local changes before deploying.');
+	await fetchRemoteMain();
+	await assertPushableBranch();
+	await runInherit(npmBin, ['run', 'build']);
+	await printStatusShort();
+	await assertCleanWorktree('Refusing to deploy: npm run build produced uncommitted changes. Commit them before deploying.');
+	await fetchRemoteMain();
+
+	const relation = await assertPushableBranch();
+
+	if (relation.ahead > 0) {
+		await runInherit('git', ['push', 'origin', branch]);
+	} else {
+		console.log(`Local ${branch} matches origin/${branch}; nothing to push.`);
+	}
+
+	await checkPagesWorkflow();
+};
+
+const deployWithCommit = async () => {
+	const commitMessage = modeArgs.join(' ').trim();
+
+	if (!commitMessage) {
+		fail(`Commit message is required.\n${deployCommitUsage}`);
+	}
+
+	await assertMainBranch();
+	await fetchRemoteMain();
+	await assertPushableBranch();
+	await runInherit(npmBin, ['run', 'build']);
+	await printStatusShort();
+
+	const entries = await getStatusEntries();
+	const expectedImagePaths = await getExpectedImagePaths();
+	await assertDeployableStatus(entries, expectedImagePaths);
+
+	const stagePaths = getStagePaths(entries);
+	await runInherit('git', ['add', '--', ...stagePaths]);
+	await runInherit('git', ['commit', '-m', commitMessage]);
+	await assertCleanWorktree('Refusing to push: uncommitted changes remain after commit.');
+	await fetchRemoteMain();
+	await assertPushableBranch();
+	await runInherit('git', ['push', 'origin', branch]);
+	await checkPagesWorkflow();
+};
+
+if (modeArgs.includes('--help') || modeArgs.includes('-h')) {
+	console.log(mode === 'commit' ? deployCommitUsage : deployUsage);
+	process.exit(0);
+}
+
+try {
+	if (mode === 'commit') {
+		await deployWithCommit();
+	} else {
+		await deployCommittedMain();
+	}
 } catch (error) {
 	console.error(error.message);
 	process.exit(1);

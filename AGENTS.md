@@ -37,13 +37,14 @@ URL in the browser. Manage the background server with `npm run dev:stop`,
 - Run `npm run test:content-check` after changing content validation or
   `content:sync` behavior. It is a standalone regression test and is not part
   of the regular build.
-- Use `npm run deploy -- "Commit message"` for a conservative local deploy
-  from `main`: it runs the build, reviews `git status --short`, commits only
-  allowed site/content changes, pushes `main`, and checks the GitHub Pages
-  workflow. Tracked files under `content/` are allowed even when currently
-  unreferenced; new untracked files are allowed only when they are referenced
-  gallery images in the matching section directory. It does not run
-  `npm run metadata:fix`.
+- Use `npm run deploy` to publish an already committed `main`: it runs the
+  build, verifies the worktree is clean, pushes only when local `main` is ahead
+  of `origin/main`, and checks the GitHub Pages workflow. It refuses to deploy
+  if local `main` is behind or has diverged from `origin/main`, and it does not
+  run `npm run metadata:fix`.
+- Use `npm run deploy:commit -- "Commit message"` only when the old
+  build-and-commit convenience flow is explicitly wanted. It commits only
+  allowed site/content changes before pushing.
 - After pushing to `main`, prefer `npm run deploy:watch` to monitor the GitHub
   Pages workflow for the current local commit. It prints elapsed time while
   polling and, on failure, prints run/job IDs, URLs, failed steps, and a failed

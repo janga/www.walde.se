@@ -19,6 +19,7 @@
     "build": "npm run content:check && npm run images && astro build",
     "build:local": "npm run build && npm run dev:restart",
     "deploy": "node scripts/deploy-site.mjs",
+    "deploy:commit": "node scripts/deploy-site.mjs commit",
     "deploy:watch": "node scripts/watch-pages-deploy.mjs",
     "test:content-check": "node scripts/test-content-check.mjs",
     "test:navigation": "node scripts/test-navigation.mjs",
