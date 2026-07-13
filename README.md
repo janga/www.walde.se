@@ -25,6 +25,7 @@ npm run test:navigation
 npm run test:navigation:stress
 npm run test:navigation:preview
 npm run deploy -- "Publiceringsmeddelande"
+npm run deploy:watch
 npm run dev:local
 npm run dev:restart
 npm run dev:status
@@ -80,6 +81,19 @@ GitHub Pages-workflowet. Nya otrackade filer accepteras automatiskt bara när de
 är refererade galleribilder i rätt `content/<section-id>/`-katalog. Redan
 versionshanterade filer under `content/` kan committas även när de inte är
 refererade i galleriet. Kommandot kör inte `npm run metadata:fix`.
+
+`npm run deploy:watch` används efter en push för att följa GitHub Pages-
+workflowet för den aktuella lokala committen. Scriptet pollar GitHub Actions,
+skriver löpande ut förfluten tid, run-id och status, och avslutar med felkod om
+workflowet misslyckas eller tar för lång tid. Vid fel skriver det ut run-URL,
+Actions-URL, branch, commit-SHA, job-id, job-URL:er, felande steg och ett utdrag
+ur `gh run view <run-id> --log-failed`. Standardvärdena är repo
+`janga/www.walde.se`, workflow `Deploy to GitHub Pages`, branch `main`, 10
+sekunders pollintervall och 15 minuters timeout. Exempel:
+
+```sh
+npm run deploy:watch -- --timeout 20m --interval 5s
+```
 
 För lokal testning i webbläsare används `npm run dev:local`. Kommandot startar
 Astros dev-server i bakgrunden på `http://localhost:4321/` och öppnar samma URL
@@ -296,6 +310,10 @@ committa, vägrar oväntade otrackade filer, pushar inte förrän committen är
 skapad och kontrollerar därefter GitHub Pages-körningarna med `gh run list`.
 Om senaste Pages-körningen har misslyckats hämtas felloggarna med
 `gh run view <run-id> --log-failed`.
+
+Efter en manuell push kan `npm run deploy:watch` användas för att vänta in
+Pages-workflowet för aktuell lokal `HEAD`. Det undviker att ett äldre workflow
+råkar tolkas som resultatet av den senaste pushen.
 
 Testdomänen för GitHub Pages anges i `public/CNAME` och kopieras till `dist/`
 vid build.

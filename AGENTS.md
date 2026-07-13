@@ -44,12 +44,17 @@ URL in the browser. Manage the background server with `npm run dev:stop`,
   unreferenced; new untracked files are allowed only when they are referenced
   gallery images in the matching section directory. It does not run
   `npm run metadata:fix`.
+- After pushing to `main`, prefer `npm run deploy:watch` to monitor the GitHub
+  Pages workflow for the current local commit. It prints elapsed time while
+  polling and, on failure, prints run/job IDs, URLs, failed steps, and a failed
+  log excerpt.
 - Before committing, run `git status --short` and make sure untracked files are
   intentional.
 - Commit before pushing.
 - Do not create branches unless the user asks for one.
 - Do not push uncommitted changes.
 - After pushing to `main`, check the latest GitHub Pages workflow with
+  `npm run deploy:watch`, or with
   `gh run list --repo janga/www.walde.se --branch main --limit 3`. If the
   latest run failed, inspect it with `gh run view <run-id> --log-failed`.
 
