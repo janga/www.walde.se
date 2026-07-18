@@ -9,6 +9,7 @@ import {
 	readSiteFile,
 	supportedImageExtensions,
 } from './lib/site-content.mjs';
+import projectConfig from './lib/project-config.mjs';
 
 const execFileAsync = promisify(execFile);
 
@@ -235,11 +236,15 @@ const getImageMetadataHash = (metadata) => getHash(JSON.stringify(
 ));
 
 const validateSourceMetadata = (sourcePath, metadata) => {
+	if (!projectConfig.images.requireCopyrightMetadata) {
+		return;
+	}
+
 	if (hasCreatorMetadata(metadata)) {
 		return;
 	}
 
-	fail(`Image file is missing creator/artist metadata: content/${getContentPath(sourcePath)}. Run npm run metadata:fix and commit the updated image.`);
+	fail(`Image file is missing creator/artist metadata: content/${getContentPath(sourcePath)}. Run npm run metadata:fix and commit the updated image, or set images.requireCopyrightMetadata to false in site.config.mjs for this site.`);
 };
 
 const getVariantWidths = ({ width }) => {

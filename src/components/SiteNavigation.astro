@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import projectConfig from '../../scripts/lib/project-config.mjs';
 
 type SiteSection = CollectionEntry<'site'>['data']['sections'][number];
 type ResolvedSection = SiteSection & { title: string };
@@ -9,11 +10,12 @@ interface Props {
 }
 
 const { sections } = Astro.props;
+const smoothScrollConfig = projectConfig.navigation.smoothScroll;
 ---
 
 <a class="skip-link" href="#main-content">Hoppa till innehåll</a>
 
-<header class="site-top">
+<header class="site-top" data-smooth-scroll={JSON.stringify(smoothScrollConfig)}>
 	<nav class="section-nav" aria-label="Sektioner">
 		<ul>
 			{sections.map((section, index) => (
@@ -31,13 +33,14 @@ const { sections } = Astro.props;
 	const siteTop = document.querySelector('.site-top');
 	const sections = Array.from(document.querySelectorAll('.site-section'));
 	const links = Array.from(document.querySelectorAll('.section-nav a'));
+	const smoothScrollConfig = JSON.parse(siteTop?.getAttribute('data-smooth-scroll') ?? '{}');
 	const anchorPadding = 14;
 	const maximumAnchorGap = 80;
 	const anchorCorrectionDelays = [120, 320, 700, 1_000, 2_000];
 	const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-	const minimumScrollDuration = 2_000;
-	const maximumScrollDuration = 4_000;
-	const scrollDurationPerPixel = 0.22;
+	const minimumScrollDuration = smoothScrollConfig.minimumDurationMs;
+	const maximumScrollDuration = smoothScrollConfig.maximumDurationMs;
+	const scrollDurationPerPixel = smoothScrollConfig.durationPerPixelMs;
 	const scrollInterruptEvents = ['wheel', 'touchstart'];
 	const scrollInterruptKeys = new Set(['ArrowDown', 'ArrowUp', 'End', 'Home', 'PageDown', 'PageUp', ' ']);
 	let activeScrollAnimation = null;
@@ -116,7 +119,7 @@ const { sections } = Astro.props;
 	const getScrollDuration = (distance) => {
 		const distancePx = Math.abs(distance);
 
-		if (reduceMotionQuery.matches || distancePx < anchorPadding) return 0;
+		if (!smoothScrollConfig.enabled || reduceMotionQuery.matches || distancePx < anchorPadding) return 0;
 
 		return Math.min(
 			maximumScrollDuration,
