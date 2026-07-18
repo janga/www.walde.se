@@ -2,17 +2,18 @@ import { execFile } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
+import { projectConfig } from './lib/project-config.mjs';
 
 const execFileAsync = promisify(execFile);
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const defaultRepo = 'janga/www.walde.se';
-const defaultWorkflow = 'Deploy to GitHub Pages';
-const defaultBranch = 'main';
-const defaultSiteUrl = 'https://www.walde.se/';
-const defaultPollIntervalMs = 10_000;
-const defaultTimeoutMs = 15 * 60_000;
-const defaultRunLimit = 10;
+const defaultRepo = projectConfig.github.repo;
+const defaultWorkflow = projectConfig.github.pagesWorkflow;
+const defaultBranch = projectConfig.github.branch;
+const defaultSiteUrl = projectConfig.site.url;
+const defaultPollIntervalMs = projectConfig.deploy.watch.intervalMs;
+const defaultTimeoutMs = projectConfig.deploy.watch.timeoutMs;
+const defaultRunLimit = projectConfig.deploy.watch.runLimit;
 const runListFields = [
 	'conclusion',
 	'createdAt',

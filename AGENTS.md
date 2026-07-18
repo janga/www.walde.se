@@ -16,6 +16,8 @@ URL in the browser. Manage the background server with `npm run dev:stop`,
 
 - Keep changes small and focused.
 - Prefer editing `content/site.md` for content and gallery changes.
+- Keep technical project settings in `site.config.mjs`; do not hardcode the
+  public URL, GitHub repo, deploy branch, or Pages workflow name in scripts.
 - Run `npm run content:check` before `npm run build` when you want a cheap
   preflight for content or image changes. `npm run build` also runs this check
   automatically before WebP generation starts.

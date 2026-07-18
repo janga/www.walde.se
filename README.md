@@ -17,6 +17,10 @@ GitHub Pages, and optionally monitor the Pages workflow until it completes.
 site. `AGENTS.md` contains additional operating rules for Codex and other coding
 agents.
 
+Technical project settings live in `site.config.mjs`. Editable site content,
+section definitions, gallery references, alt text, and captions live in
+`content/site.md`.
+
 ## Recommended Workflow
 
 For ordinary content, layout, or image work, use this flow:
@@ -103,6 +107,29 @@ npm run build:local
 
 `build:local` runs the same build as `npm run build` and then restarts the local
 dev server without opening a new browser window.
+
+## Project Configuration
+
+Keep technical project configuration in `site.config.mjs`, not in
+`content/site.md`. The content file should stay editorial: titles, sections,
+Markdown body text, gallery rows, image filenames, alt text, and captions.
+
+`site.config.mjs` currently defines:
+
+- `site.url`: the public canonical URL used by the layout and deploy monitor.
+- `github.repo`: the GitHub repository used by deploy and workflow monitoring.
+- `github.branch`: the deploy branch.
+- `github.pagesWorkflow`: the GitHub Actions workflow name to monitor.
+- `deploy.watch`: default poll interval, timeout, and recent-run scan limit for
+  `npm run deploy:watch`.
+
+When preparing a reusable starter or engine repository, treat `site.config.mjs`
+as a per-site file. The reusable code should read from it instead of hardcoding
+repository names, branches, workflow names, or public URLs.
+
+The files `public/CNAME`, `public/robots.txt`, and `public/sitemap.xml` are
+still site-specific static files. If the public URL or custom domain changes,
+update those files together with `site.config.mjs`.
 
 ## Editing Content
 
@@ -311,14 +338,14 @@ npm run deploy
 
 The deploy script is intentionally conservative. It:
 
-- Requires the current git branch to be `main`.
+- Requires the current git branch to match `github.branch` in `site.config.mjs`.
 - Runs `npm run build`.
 - Verifies that the worktree is clean before pushing.
-- Pushes to `main` when local `main` is ahead of `origin/main`.
-- Skips push when local `main` already matches `origin/main`.
-- Refuses to deploy when local `main` is behind or has diverged from
-  `origin/main`.
-- Checks the latest GitHub Pages workflow.
+- Pushes when the local deploy branch is ahead of `origin/<branch>`.
+- Skips push when the local deploy branch already matches `origin/<branch>`.
+- Refuses to deploy when the local deploy branch is behind or has diverged from
+  `origin/<branch>`.
+- Checks the GitHub Pages workflow configured in `site.config.mjs`.
 - Fetches failed logs when the latest Pages run has failed.
 
 The deploy script does not create commits, push uncommitted changes, or run
@@ -355,12 +382,16 @@ mistaking an older workflow run for the result of the latest push. It prints
 elapsed time, run id, run URL, status, branch, commit SHA, and the public site
 URL.
 
+By default, `deploy:watch` reads the GitHub repository, branch, workflow name,
+public site URL, poll interval, timeout, and run scan limit from
+`site.config.mjs`. Command-line options can override those defaults for one run.
+
 On failure, timeout, cancellation, or another non-success conclusion, it prints
 a compact failure summary with run and job ids, URLs, failed steps, and an
 excerpt from:
 
 ```sh
-gh run view <run-id> --repo janga/www.walde.se --log-failed
+gh run view RUN_ID --repo OWNER/REPO --log-failed
 ```
 
 Common options:
@@ -464,9 +495,11 @@ npm run deploy:watch
 Or inspect manually:
 
 ```sh
-gh run list --repo janga/www.walde.se --branch main --limit 3
-gh run view <run-id> --repo janga/www.walde.se --log-failed
+gh run list --repo OWNER/REPO --branch BRANCH --limit 3
+gh run view RUN_ID --repo OWNER/REPO --log-failed
 ```
+
+Use `github.repo` for `OWNER/REPO` and `github.branch` for `BRANCH`.
 
 ### Deploy refuses a dirty worktree
 
@@ -545,6 +578,7 @@ build.
 ## Repository Structure
 
 ```text
+site.config.mjs                    # Technical project config for URL, repo, deploy branch, workflow
 content/
 |-- site.md                         # Sections, text, image references, gallery metadata
 `-- <section-id>/                   # Source images for each section, for example work/

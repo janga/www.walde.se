@@ -1,4 +1,5 @@
 ---
+import projectConfig from '../../scripts/lib/project-config.mjs';
 import '../styles/global.css';
 
 interface Props {
@@ -15,6 +16,7 @@ const {
 const documentTitle = title === siteName || title.toLowerCase() === 'hem'
 	? siteName
 	: `${title} – ${siteName}`;
+const canonicalUrl = projectConfig.site.url;
 const buildTime = new Intl.DateTimeFormat('sv-SE', {
 	dateStyle: 'short',
 	timeStyle: 'short',
@@ -29,7 +31,7 @@ const buildTime = new Intl.DateTimeFormat('sv-SE', {
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content={description} />
 		<meta name="theme-color" content="#000000" />
-		<link rel="canonical" href="https://www.walde.se/" />
+		<link rel="canonical" href={canonicalUrl} />
 		<meta name="generator" content={Astro.generator} />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />

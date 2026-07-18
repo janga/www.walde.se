@@ -8,13 +8,14 @@ import {
 	supportedImageExtensions,
 	toPosixPath,
 } from './lib/site-content.mjs';
+import { projectConfig } from './lib/project-config.mjs';
 
 const execFileAsync = promisify(execFile);
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const branch = 'main';
-const repo = 'janga/www.walde.se';
-const pagesWorkflow = 'Deploy to GitHub Pages';
+const branch = projectConfig.github.branch;
+const repo = projectConfig.github.repo;
+const pagesWorkflow = projectConfig.github.pagesWorkflow;
 const npmBin = process.platform === 'win32' ? 'npm.cmd' : 'npm';
 const args = process.argv.slice(2);
 const mode = args[0] === 'commit' ? 'commit' : 'deploy';
@@ -28,6 +29,7 @@ const allowedExactPaths = new Set([
 	'public/favicon.svg',
 	'public/robots.txt',
 	'public/sitemap.xml',
+	'site.config.mjs',
 	'tsconfig.json',
 ]);
 const failedConclusions = new Set(['action_required', 'cancelled', 'failure', 'startup_failure', 'timed_out']);
@@ -35,9 +37,9 @@ const failedConclusions = new Set(['action_required', 'cancelled', 'failure', 's
 const deployUsage = [
 	'Usage: npm run deploy',
 	'',
-	'Publishes an already committed main branch: builds, verifies a clean worktree,',
-	'pushes main when local main is ahead of origin/main, and checks GitHub Pages.',
-	'If local main already matches origin/main, it skips push and checks Pages.',
+	`Publishes an already committed ${branch} branch: builds, verifies a clean worktree,`,
+	`pushes ${branch} when local ${branch} is ahead of origin/${branch}, and checks GitHub Pages.`,
+	`If local ${branch} already matches origin/${branch}, it skips push and checks Pages.`,
 	'',
 	'For the old build-and-commit convenience flow, use:',
 	'npm run deploy:commit -- "Commit message"',
@@ -45,7 +47,7 @@ const deployUsage = [
 const deployCommitUsage = [
 	'Usage: npm run deploy:commit -- "Commit message"',
 	'',
-	'Builds, stages only allowed site/content changes, commits, pushes main,',
+	`Builds, stages only allowed site/content changes, commits, pushes ${branch},`,
 	'and checks GitHub Pages. Does not run npm run metadata:fix.',
 ].join('\n');
 
@@ -279,7 +281,7 @@ const checkPagesWorkflow = async () => {
 
 	if (failedConclusions.has(latestRun.conclusion)) {
 		console.error(`${pagesWorkflow} run ${latestRun.databaseId} failed. Inspecting failed logs.`);
-		await runInherit('gh', ['run', 'view', String(latestRun.databaseId), '--log-failed']);
+		await runInherit('gh', ['run', 'view', String(latestRun.databaseId), '--repo', repo, '--log-failed']);
 		process.exit(1);
 	}
 
