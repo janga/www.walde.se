@@ -130,6 +130,30 @@ for (const scenario of [
 				expect(measurement.gap, target.label).toBeLessThanOrEqual(maximumAnchorGap);
 			}
 		});
+
+		test('keeps the target aligned when layout above it changes during smooth scroll', async ({ page }) => {
+			await openSite(page);
+
+			await page.evaluate(() => {
+				window.setTimeout(() => {
+					const target = document.querySelector('#min-konst');
+					const spacer = document.createElement('div');
+
+					spacer.id = 'scroll-shift-probe';
+					spacer.style.height = '180px';
+					spacer.style.pointerEvents = 'none';
+					target?.before(spacer);
+				}, 500);
+			});
+
+			await page.locator('.section-nav a[href="#min-konst"]').click();
+			await waitForAnchorPosition(page, 'min-konst');
+
+			const measurement = await measureAnchor(page, 'min-konst');
+			expect(measurement.hash).toBe('#min-konst');
+			expect(measurement.gap).toBeGreaterThanOrEqual(-1);
+			expect(measurement.gap).toBeLessThanOrEqual(maximumAnchorGap);
+		});
 	});
 }
 
