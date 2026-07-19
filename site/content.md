@@ -6,12 +6,12 @@ presentation:
   default:
     heading:
       align:
-        desktop: center
-        mobile: center
+        desktop: left
+        mobile: left
       size: medium
     body:
       align:
-        desktop: center
+        desktop: left
         mobile: left
       size: medium
   sections:
