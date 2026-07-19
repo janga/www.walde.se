@@ -31,26 +31,28 @@ features.
 
 The core model is file-driven:
 
-1. Configure the site in `site.config.mjs`.
+1. Configure the site in `site/config.mjs`.
 2. Define sections, text, gallery image references, alt text, and captions in
-   `content/site.md`.
-3. Store source images under `content/<section-id>/`.
-4. Run validation scripts to check configuration, content structure, image
+   `site/content.md`.
+3. Store source images under `site/images/<section-id>/`.
+4. Store static site files such as favicons, `robots.txt`, and `CNAME` under
+   `site/public/`.
+5. Run validation scripts to check configuration, content structure, image
    references, section order, and metadata policy.
-5. Generate optimized WebP variants from the referenced source images.
-6. Build a static Astro site.
-7. Commit, push, and deploy through GitHub Pages.
+6. Generate optimized WebP variants from the referenced source images.
+7. Build a static Astro site.
+8. Commit, push, and deploy through GitHub Pages.
 
 The two most important project files are:
 
 ```text
-site.config.mjs
-content/site.md
+site/config.mjs
+site/content.md
 ```
 
-`site.config.mjs` holds technical project configuration such as public URL,
+`site/config.mjs` holds technical project configuration such as public URL,
 navigation behavior, footer rendering, image metadata policy, GitHub repository,
-deploy branch, and workflow names. `content/site.md` holds editorial content:
+deploy branch, and workflow names. `site/content.md` holds editorial content:
 section order, section body text, gallery image references, alt text, and
 captions.
 
@@ -98,10 +100,12 @@ npm run build
 
 The main files and directories are:
 
-- `site.config.mjs`: technical site configuration.
-- `content/site.md`: editable content, sections, gallery rows, alt text, and
+- `site/config.mjs`: technical site configuration.
+- `site/content.md`: editable content, sections, gallery rows, alt text, and
   captions.
-- `content/<section-id>/`: source images for each section.
+- `site/images/<section-id>/`: source images for each section.
+- `site/public/`: static site-specific files copied directly into the published
+  site.
 - `src/`: Astro layout, page rendering, styles, and generated image manifest.
 - `scripts/`: command-line validation, image, local preview, and deploy tools.
 - `README-local.md`: current-site notes that should not live in the reusable
@@ -136,7 +140,7 @@ For ordinary content, layout, or image work, use this flow:
 | Step | What to do | How to do it |
 | --- | --- | --- |
 | 1 | Start a local preview when visual feedback is useful. | `npm run dev:local` |
-| 2 | Edit site content and gallery references. | Edit `content/site.md` and source images under `content/<section-id>/`. |
+| 2 | Edit site content and gallery references. | Edit `site/content.md` and source images under `site/images/<section-id>/`. |
 | 3 | Validate project configuration. | `npm run config:check` |
 | 4 | Validate content and gallery references. | `npm run content:check` |
 | 5 | Repair section order or moved gallery images when needed. | `npm run content:sync` |
@@ -192,11 +196,11 @@ npm run build:local
 
 ## Configuration
 
-Keep technical project configuration in `site.config.mjs`, not in
-`content/site.md`. Treat `site.config.mjs` as a per-site file when preparing a
+Keep technical project configuration in `site/config.mjs`, not in
+`site/content.md`. Treat `site/config.mjs` as a per-site file when preparing a
 reusable starter or engine repository.
 
-`site.config.mjs` defines:
+`site/config.mjs` defines:
 
 - `site.url`: the public canonical URL used by the layout and deploy monitor.
 - `navigation.smoothScroll`: controlled anchor scroll behavior and timing.
@@ -299,7 +303,7 @@ timestamp are hidden, the footer is not rendered.
 ## Content Model
 
 The site is built as one static page. Keep editable site content in
-`content/site.md`.
+`site/content.md`.
 
 The file uses frontmatter for site-wide data and section configuration:
 
@@ -331,14 +335,14 @@ When adding, renaming, or moving sections, keep these three values aligned:
 
 - The frontmatter section `id`.
 - The Markdown heading id, written as `## Section title {#section-id}`.
-- The source image directory under `content/<section-id>/`.
+- The source image directory under `site/images/<section-id>/`.
 
 ## Gallery Images
 
-Gallery images are source images under `content/<section-id>/`, next to
-`content/site.md`.
+Gallery images are source images under `site/images/<section-id>/`, next to
+`site/content.md`.
 
-Reference a gallery image from `content/site.md` with only the filename:
+Reference a gallery image from `site/content.md` with only the filename:
 
 ```yaml
 gallery:
@@ -351,17 +355,17 @@ Rules for source images:
 
 - Use `.jpg`, `.jpeg`, or `.png`.
 - Use lowercase, descriptive filenames with ASCII letters, numbers, and hyphens.
-- Keep image filenames globally unique under `content/`.
+- Keep image filenames globally unique under `site/images/`.
 - Keep each referenced image in the directory matching the section where it is
   used.
 - Only images listed in a section `gallery` are rendered on the site.
 
 Tracked images can remain in the file tree even when they are not currently
-referenced from `content/site.md`; `content:check` reports them under
+referenced from `site/content.md`; `content:check` reports them under
 `Unreferenced Images`. New untracked source images should be intentional and
 committed before deploy.
 
-If a gallery row is moved to another section in `content/site.md`, run:
+If a gallery row is moved to another section in `site/content.md`, run:
 
 ```sh
 npm run content:sync
@@ -382,12 +386,12 @@ npm run content:check
 This checks:
 
 - Section order and heading ids.
-- Image references in `content/site.md`.
-- Duplicate image filenames under `content/`.
+- Image references in `site/content.md`.
+- Duplicate image filenames under `site/images/`.
 - Whether referenced images exist.
 - Whether gallery images are placed in the expected section directory.
-- Images under `content/` that are not mounted because they are not referenced
-  from `content/site.md`.
+- Images under `site/images/` that are not mounted because they are not
+  referenced from `site/content.md`.
 
 Build the site locally with:
 
@@ -399,8 +403,9 @@ The build chain runs:
 
 1. `npm run config:check`
 2. `npm run content:check`
-3. `npm run images`
-4. `astro build`
+3. `npm run site:public`
+4. `npm run images`
+5. `astro build`
 
 The image pipeline generates WebP variants in `public/bilder/generated/`.
 That directory is build output and is not version-controlled. The generated
@@ -412,9 +417,14 @@ when the source image is large enough. The pipeline also creates a largest
 variant matching the source width when it is larger than the standard display
 widths.
 
+`site:public` copies files from `site/public/` into Astro's root `public/`
+directory before the static build. Files in `site/public/` are source files and
+should be version-controlled; copied files under root `public/` are build
+preparation output.
+
 GitHub Actions caches `public/bilder/generated/` between deploys. With a cache
 hit, GitHub can reuse generated WebP variants; with a cache miss, it rebuilds
-them from source images under `content/`.
+them from source images under `site/images/`.
 
 ## Image Metadata
 
@@ -426,7 +436,7 @@ npm run metadata:fix
 
 Run this only when new source images need metadata or when the build reports
 missing creator/artist metadata. The script reads `copyrightOwner` from
-`content/site.md`, checks source images under `content/`, and writes simple
+`site/content.md`, checks source images under `site/images/`, and writes simple
 copyright metadata only to images that are missing it.
 
 `npm run build` never modifies original source images. If `metadata:fix` updates
@@ -466,14 +476,14 @@ npm run deploy
 
 The deploy script is intentionally conservative. It:
 
-- Requires the current git branch to match `github.branch` in `site.config.mjs`.
+- Requires the current git branch to match `github.branch` in `site/config.mjs`.
 - Runs `npm run build`.
 - Verifies that the worktree is clean before pushing.
 - Pushes when the local deploy branch is ahead of `origin/<branch>`.
 - Skips push when the local deploy branch already matches `origin/<branch>`.
 - Refuses to deploy when the local deploy branch is behind or has diverged from
   `origin/<branch>`.
-- Checks the GitHub Pages workflow configured in `site.config.mjs`.
+- Checks the GitHub Pages workflow configured in `site/config.mjs`.
 - Fetches failed logs when the latest Pages run has failed.
 
 The deploy script does not create commits, push uncommitted changes, or run
@@ -486,7 +496,7 @@ desired workflow:
 npm run deploy:commit -- "Describe the change"
 ```
 
-`deploy:commit` builds, stages only allowed site/content changes, commits,
+`deploy:commit` builds, stages only allowed site changes, commits,
 pushes the configured deploy branch, and checks GitHub Pages. It does not run
 `npm run metadata:fix`.
 
@@ -506,7 +516,7 @@ URL.
 
 By default, `deploy:watch` reads the GitHub repository, branch, workflow name,
 public site URL, poll interval, timeout, and run scan limit from
-`site.config.mjs`. Command-line options can override those defaults for one run.
+`site/config.mjs`. Command-line options can override those defaults for one run.
 
 Common options:
 
@@ -528,10 +538,10 @@ Run:
 npm run config:check
 ```
 
-This validates `site.config.mjs` and reports missing required values, invalid
+This validates `site/config.mjs` and reports missing required values, invalid
 URLs, invalid booleans or numeric values, and invalid `Intl.DateTimeFormat`
 settings before a full build is attempted. Plain JavaScript syntax errors in
-`site.config.mjs` are reported as config-check failures with the runtime syntax
+`site/config.mjs` are reported as config-check failures with the runtime syntax
 message.
 
 ### Content Validation Errors
@@ -567,7 +577,7 @@ npm run build
 
 Commit any source images that `metadata:fix` updated. If a site deliberately
 does not require source image copyright metadata, set
-`images.requireCopyrightMetadata` to `false` in `site.config.mjs`.
+`images.requireCopyrightMetadata` to `false` in `site/config.mjs`.
 
 ### Local Preview Shows Stale Content
 
@@ -634,6 +644,7 @@ npm run config:check
 npm run content:check
 npm run content:sync
 npm run metadata:fix
+npm run site:public
 npm run images
 ```
 
@@ -678,24 +689,25 @@ the reusable project structure.
 README.md                          # Reusable project model and workflow
 README-local.md                    # Current site notes and local settings
 AGENTS.md                          # Additional instructions for coding agents
-site.config.mjs                    # Technical project config
-content/
-|-- site.md                         # Sections, text, image references, gallery metadata
-`-- <section-id>/                   # Source images for each section
+site/
+|-- config.mjs                      # Technical project config
+|-- content.md                      # Sections, text, image references, gallery metadata
+|-- images/<section-id>/            # Source images for each section
+`-- public/                         # Static site-specific files copied before build
 public/
-|-- CNAME                           # Optional GitHub Pages custom domain
 `-- bilder/generated/               # Generated WebP variants, not version-controlled
 src/
 |-- layouts/BaseLayout.astro        # Shared HTML shell and metadata
-|-- pages/index.astro               # Renders the single page from content/site.md
+|-- pages/index.astro               # Renders the single page from site/content.md
 |-- styles/global.css               # Layout, sticky navigation, responsive design
-|-- content.config.ts               # Validates content/site.md
+|-- content.config.ts               # Validates site/content.md
 `-- data/generated-images.json      # Generated image manifest, version-controlled
 scripts/
 |-- check-config.mjs                # Project config validation
 |-- deploy-site.mjs                 # Conservative local deploy command
 |-- watch-pages-deploy.mjs          # GitHub Pages workflow monitor
 |-- sync-content-sections.mjs       # Content validation and sync
+|-- sync-site-public.mjs            # Copies site/public into Astro public output
 |-- generate-images.mjs             # WebP generation pipeline
 `-- fix-image-metadata.mjs          # Source image metadata helper
 tests/                              # Playwright navigation regression tests
@@ -710,5 +722,6 @@ image tools, restores the generated image cache, runs `npm ci`, runs
 `npm run build`, uploads the generated `dist/` artifact, and publishes it to
 GitHub Pages.
 
-Site-specific static files such as `public/CNAME`, `public/robots.txt`, and
-`public/sitemap.xml` should be maintained together with `site.config.mjs`.
+Site-specific static files such as `site/public/CNAME`,
+`site/public/robots.txt`, and `site/public/sitemap.xml` should be maintained
+together with `site/config.mjs`.

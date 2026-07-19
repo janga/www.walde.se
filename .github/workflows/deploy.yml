@@ -36,7 +36,7 @@ jobs:
         uses: actions/cache@v6
         with:
           path: public/bilder/generated
-          key: generated-images-${{ runner.os }}-${{ hashFiles('content/site.md', 'content/**/*.jpg', 'content/**/*.jpeg', 'content/**/*.png', 'scripts/generate-images.mjs', 'scripts/lib/**/*.mjs', 'src/data/generated-images.json') }}
+          key: generated-images-${{ runner.os }}-${{ hashFiles('site/content.md', 'site/images/**/*.jpg', 'site/images/**/*.jpeg', 'site/images/**/*.png', 'scripts/generate-images.mjs', 'scripts/lib/**/*.mjs', 'src/data/generated-images.json') }}
           restore-keys: |
             generated-images-${{ runner.os }}-
 

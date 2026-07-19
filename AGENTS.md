@@ -18,11 +18,13 @@ here.
 - Commit before pushing.
 - After pushing to `main`, run `npm run deploy:watch` to monitor the GitHub
   Pages workflow for the current local commit.
-- Keep technical project settings in `site.config.mjs`; do not hardcode the
+- Keep technical project settings in `site/config.mjs`; do not hardcode the
   public URL, GitHub repo, deploy branch, Pages workflow name, footer text,
   smooth-scroll timing, or image metadata policy in scripts or components.
 - Keep editable content, section definitions, image references, gallery alt
-  text, and captions in `content/site.md`.
+  text, and captions in `site/content.md`.
+- Keep site-specific static files in `site/public/`; root `public/` is copied
+  build preparation output plus generated image output.
 - Do not add routes or split sections into separate Markdown files unless the
   user explicitly changes the single-page architecture.
 
@@ -31,7 +33,7 @@ here.
 - Start the dev server with `npm run dev:local`. Manage it with
   `npm run dev:stop`, `npm run dev:restart`, `npm run dev:status`, and
   `npm run dev:logs`.
-- Run `npm run config:check` after changing `site.config.mjs` or config
+- Run `npm run config:check` after changing `site/config.mjs` or config
   validation behavior.
 - Run `npm run content:check` before `npm run build` when changing content or
   gallery images.
@@ -40,6 +42,8 @@ here.
 - Run `npm run metadata:fix` only when new source images need copyright
   metadata, or when the build fails because
   `images.requireCopyrightMetadata` is true.
+- Run `npm run site:public` after changing `site/public/` when you need the
+  local root `public/` copy without a full build.
 - Run `npm run build` after content, layout, config, or image-pipeline changes.
 - Run `npm run build:local` when a local preview may be using stale content and
   should be rebuilt and restarted.
@@ -60,7 +64,7 @@ here.
   fixed header area. Avoid section-level `scroll-margin-top` unless you are
   deliberately testing anchor offsets.
 - When adding, renaming, or moving sections, keep the frontmatter section `id`,
-  the Markdown heading id, and the `content/<section-id>/` image directory in
+  the Markdown heading id, and the `site/images/<section-id>/` image directory in
   sync.
 - Do not commit unreferenced source images unless the user explicitly asks for
   them.

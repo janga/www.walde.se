@@ -1,8 +1,9 @@
-import siteConfig from '../../site.config.mjs';
+import siteConfig from '../../site/config.mjs';
+import { siteConfigLabel } from './site-paths.mjs';
 
 const assertObject = (value, path) => {
 	if (!value || typeof value !== 'object' || Array.isArray(value)) {
-		throw new Error(`${path} must be an object in site.config.mjs.`);
+		throw new Error(`${path} must be an object in ${siteConfigLabel}.`);
 	}
 
 	return value;
@@ -12,7 +13,7 @@ const readString = (object, key, path) => {
 	const value = object[key];
 
 	if (typeof value !== 'string' || value.trim() === '') {
-		throw new Error(`${path}.${key} must be a non-empty string in site.config.mjs.`);
+		throw new Error(`${path}.${key} must be a non-empty string in ${siteConfigLabel}.`);
 	}
 
 	return value.trim();
@@ -26,7 +27,7 @@ const readOptionalString = (object, key, path) => {
 	}
 
 	if (typeof value !== 'string' || value.trim() === '') {
-		throw new Error(`${path}.${key} must be a non-empty string when set in site.config.mjs.`);
+		throw new Error(`${path}.${key} must be a non-empty string when set in ${siteConfigLabel}.`);
 	}
 
 	return value.trim();
@@ -36,7 +37,7 @@ const readBoolean = (object, key, path, fallback) => {
 	const value = object[key] ?? fallback;
 
 	if (typeof value !== 'boolean') {
-		throw new Error(`${path}.${key} must be a boolean in site.config.mjs.`);
+		throw new Error(`${path}.${key} must be a boolean in ${siteConfigLabel}.`);
 	}
 
 	return value;
@@ -46,7 +47,7 @@ const readPositiveInteger = (object, key, path, fallback) => {
 	const value = object[key] ?? fallback;
 
 	if (!Number.isInteger(value) || value <= 0) {
-		throw new Error(`${path}.${key} must be a positive integer in site.config.mjs.`);
+		throw new Error(`${path}.${key} must be a positive integer in ${siteConfigLabel}.`);
 	}
 
 	return value;
@@ -56,7 +57,7 @@ const readPositiveNumber = (object, key, path, fallback) => {
 	const value = object[key] ?? fallback;
 
 	if (typeof value !== 'number' || !Number.isFinite(value) || value <= 0) {
-		throw new Error(`${path}.${key} must be a positive number in site.config.mjs.`);
+		throw new Error(`${path}.${key} must be a positive number in ${siteConfigLabel}.`);
 	}
 
 	return value;
@@ -68,7 +69,7 @@ const readUrl = (object, key, path) => {
 	try {
 		return new URL(value).href;
 	} catch {
-		throw new Error(`${path}.${key} must be an absolute URL in site.config.mjs.`);
+		throw new Error(`${path}.${key} must be an absolute URL in ${siteConfigLabel}.`);
 	}
 };
 
@@ -78,7 +79,7 @@ const readSmoothScroll = (navigation) => {
 	const maximumDurationMs = readPositiveInteger(rawSmoothScroll, 'maximumDurationMs', 'navigation.smoothScroll', 4_000);
 
 	if (maximumDurationMs < minimumDurationMs) {
-		throw new Error('navigation.smoothScroll.maximumDurationMs must be greater than or equal to minimumDurationMs in site.config.mjs.');
+		throw new Error(`navigation.smoothScroll.maximumDurationMs must be greater than or equal to minimumDurationMs in ${siteConfigLabel}.`);
 	}
 
 	return Object.freeze({
@@ -104,7 +105,7 @@ const readDateTimeFormat = (object, path) => {
 		});
 	} catch (error) {
 		const message = error instanceof Error ? error.message : String(error);
-		throw new Error(`${path} must be a valid Intl.DateTimeFormat configuration in site.config.mjs: ${message}`);
+		throw new Error(`${path} must be a valid Intl.DateTimeFormat configuration in ${siteConfigLabel}: ${message}`);
 	}
 
 	return Object.freeze({

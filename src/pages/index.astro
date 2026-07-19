@@ -8,7 +8,7 @@ import { getSectionsContent } from '../lib/sectionContent';
 const [site] = await getCollection('site');
 
 if (!site) {
-	throw new Error('Content file content/site.md is missing.');
+	throw new Error('Content file site/content.md is missing.');
 }
 
 const sections = site.data.sections;

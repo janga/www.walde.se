@@ -10,16 +10,19 @@ import {
 	supportedImageExtensions,
 } from './lib/site-content.mjs';
 import projectConfig from './lib/project-config.mjs';
+import {
+	astroPublicDir,
+	generatedImagesDir,
+	generatedImagesManifestPath,
+	originalImagesDir,
+	siteConfigLabel,
+	siteContentPath,
+	siteImagesDir,
+	siteImagesLabel,
+} from './lib/site-paths.mjs';
 
 const execFileAsync = promisify(execFile);
 
-const root = process.cwd();
-const publicDir = path.join(root, 'public');
-const contentDir = path.join(root, 'content');
-const generatedDir = path.join(publicDir, 'bilder', 'generated');
-const originalDir = path.join(publicDir, 'bilder', 'original');
-const manifestPath = path.join(root, 'src', 'data', 'generated-images.json');
-const siteContentPath = path.join(contentDir, 'site.md');
 const imageMetadataVersion = 2;
 const widths = [480, 768, 1080, 1440, 1920];
 const creatorTags = ['Artist', 'Creator', 'By-line'];
@@ -115,13 +118,13 @@ const getExifTool = async () => {
 };
 
 const toPublicPath = (filePath) => filePath.split(path.sep).join('/');
-const getPublicPath = (filePath) => `/${toPublicPath(path.relative(publicDir, filePath))}`;
-const getContentPath = (filePath) => toPublicPath(path.relative(contentDir, filePath));
-const getFilePathFromPublicPath = (publicPath) => path.join(publicDir, publicPath.replace(/^\//, ''));
+const getPublicPath = (filePath) => `/${toPublicPath(path.relative(astroPublicDir, filePath))}`;
+const getSiteImagePath = (filePath) => toPublicPath(path.relative(siteImagesDir, filePath));
+const getFilePathFromPublicPath = (publicPath) => path.join(astroPublicDir, publicPath.replace(/^\//, ''));
 
 const getGeneratedPath = (sourcePath, width) => {
-	const parsed = path.parse(path.relative(contentDir, sourcePath));
-	return path.join(generatedDir, parsed.dir, `${parsed.name}-${width}.webp`);
+	const parsed = path.parse(path.relative(siteImagesDir, sourcePath));
+	return path.join(generatedImagesDir, parsed.dir, `${parsed.name}-${width}.webp`);
 };
 
 const fail = (message) => {
@@ -160,7 +163,7 @@ const getContentSourcePath = ({ image, line }, imageIndex) => {
 	const sourcePath = imageIndex.get(image);
 
 	if (!sourcePath) {
-		fail(`Image file "${image}" does not exist anywhere under content/.`);
+		fail(`Image file "${image}" does not exist anywhere under ${siteImagesLabel}/.`);
 	}
 
 	return sourcePath;
@@ -168,28 +171,28 @@ const getContentSourcePath = ({ image, line }, imageIndex) => {
 
 const getReferencedSources = async () => {
 	const references = await getReferencedImages();
-	const imageIndex = await getImageIndex(contentDir, fail);
+	const imageIndex = await getImageIndex(siteImagesDir, fail);
 	const seen = new Map();
 	const sources = [];
 
 	for (const reference of references) {
 		const sourcePath = getContentSourcePath(reference, imageIndex);
-		const contentPath = getContentPath(sourcePath);
+		const siteImagePath = getSiteImagePath(sourcePath);
 		const imageName = path.basename(sourcePath);
 
 		if (seen.has(imageName)) {
 			const firstReference = seen.get(imageName);
-			fail(`Image reference "${imageName}" appears more than once in content/site.md, on lines ${firstReference.line} and ${reference.line}.`);
+			fail(`Image reference "${imageName}" appears more than once in site/content.md, on lines ${firstReference.line} and ${reference.line}.`);
 		}
 
 		const fileStat = await stat(sourcePath).catch(() => null);
 		if (!fileStat?.isFile()) {
-			fail(`Image file does not exist: content/${contentPath}`);
+			fail(`Image file does not exist: ${siteImagesLabel}/${siteImagePath}`);
 		}
 
 		const currentDirectory = path.basename(path.dirname(sourcePath));
 		if (reference.sectionId && currentDirectory !== reference.sectionId) {
-			fail(`Image "${imageName}" is used in section "${reference.sectionId}" but is located in content/${currentDirectory}/. Run npm run content:sync to move it.`);
+			fail(`Image "${imageName}" is used in section "${reference.sectionId}" but is located in ${siteImagesLabel}/${currentDirectory}/. Run npm run content:sync to move it.`);
 		}
 
 		seen.set(imageName, reference);
@@ -244,7 +247,7 @@ const validateSourceMetadata = (sourcePath, metadata) => {
 		return;
 	}
 
-	fail(`Image file is missing creator/artist metadata: content/${getContentPath(sourcePath)}. Run npm run metadata:fix and commit the updated image, or set images.requireCopyrightMetadata to false in site.config.mjs for this site.`);
+	fail(`Image file is missing creator/artist metadata: ${siteImagesLabel}/${getSiteImagePath(sourcePath)}. Run npm run metadata:fix and commit the updated image, or set images.requireCopyrightMetadata to false in ${siteConfigLabel} for this site.`);
 };
 
 const getVariantWidths = ({ width }) => {
@@ -264,7 +267,7 @@ const getVariants = (sourcePath, variantWidths) => variantWidths.map((width) => 
 
 const readManifest = async () => {
 	try {
-		return JSON.parse(await readFile(manifestPath, 'utf8'));
+		return JSON.parse(await readFile(generatedImagesManifestPath, 'utf8'));
 	} catch (error) {
 		if (error?.code === 'ENOENT') {
 			return {};
@@ -345,7 +348,7 @@ const removeUnreferencedGeneratedFiles = async (manifest) => {
 			.flatMap((entry) => entry.variants ?? [])
 			.map((variant) => getFilePathFromPublicPath(variant.src)),
 	);
-	const generatedFiles = await listGeneratedFiles(generatedDir);
+	const generatedFiles = await listGeneratedFiles(generatedImagesDir);
 
 	for (const generatedFile of generatedFiles) {
 		if (!expectedFiles.has(generatedFile)) {
@@ -357,15 +360,14 @@ const removeUnreferencedGeneratedFiles = async (manifest) => {
 const imageMagick = await getImageMagick();
 const exifTool = await getExifTool();
 
-await rm(originalDir, { recursive: true, force: true });
-await mkdir(generatedDir, { recursive: true });
+await rm(originalImagesDir, { recursive: true, force: true });
+await mkdir(generatedImagesDir, { recursive: true });
 
 const sources = await getReferencedSources();
 const previousManifest = await readManifest();
 const manifest = {};
 
 for (const sourcePath of sources) {
-	const contentPath = getContentPath(sourcePath);
 	const imageName = path.basename(sourcePath);
 	const sourceHash = await getSourceHash(sourcePath);
 	const sourceMetadata = await readMetadata(sourcePath);
@@ -397,5 +399,5 @@ for (const sourcePath of sources) {
 }
 
 await removeUnreferencedGeneratedFiles(manifest);
-await mkdir(path.dirname(manifestPath), { recursive: true });
-await writeFile(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+await mkdir(path.dirname(generatedImagesManifestPath), { recursive: true });
+await writeFile(generatedImagesManifestPath, `${JSON.stringify(manifest, null, 2)}\n`);

@@ -1,5 +1,6 @@
 import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
+import { siteContentLabel, siteImagesLabel } from './site-paths.mjs';
 
 export const supportedImageExtensions = new Set(['.jpg', '.jpeg', '.png']);
 
@@ -12,7 +13,7 @@ export const splitSiteFile = (source) => {
 	const match = source.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
 
 	if (!match) {
-		throw new Error('content/site.md is missing frontmatter delimited by ---.');
+		throw new Error(`${siteContentLabel} is missing frontmatter delimited by ---.`);
 	}
 
 	return {
@@ -105,7 +106,7 @@ export const getImageIndex = async (contentDir, fail) => {
 		const existingPath = imagesByName.get(imageName);
 
 		if (existingPath) {
-			fail(`Duplicate image filename "${imageName}" found at content/${toPosixPath(path.relative(contentDir, existingPath))} and content/${toPosixPath(path.relative(contentDir, imagePath))}. Image filenames must be globally unique.`);
+			fail(`Duplicate image filename "${imageName}" found at ${siteImagesLabel}/${toPosixPath(path.relative(contentDir, existingPath))} and ${siteImagesLabel}/${toPosixPath(path.relative(contentDir, imagePath))}. Image filenames must be globally unique.`);
 			continue;
 		}
 

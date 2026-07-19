@@ -9,6 +9,11 @@ import {
 	toPosixPath,
 } from './lib/site-content.mjs';
 import { projectConfig } from './lib/project-config.mjs';
+import {
+	siteContentLabel,
+	siteContentPath,
+	siteImagesLabel,
+} from './lib/site-paths.mjs';
 
 const execFileAsync = promisify(execFile);
 
@@ -24,12 +29,12 @@ const allowedExactPaths = new Set([
 	'astro.config.mjs',
 	'package-lock.json',
 	'package.json',
-	'public/CNAME',
-	'public/favicon.ico',
-	'public/favicon.svg',
-	'public/robots.txt',
-	'public/sitemap.xml',
-	'site.config.mjs',
+	'site/config.mjs',
+	'site/public/CNAME',
+	'site/public/favicon.ico',
+	'site/public/favicon.svg',
+	'site/public/robots.txt',
+	'site/public/sitemap.xml',
 	'tsconfig.json',
 ]);
 const failedConclusions = new Set(['action_required', 'cancelled', 'failure', 'startup_failure', 'timed_out']);
@@ -47,7 +52,7 @@ const deployUsage = [
 const deployCommitUsage = [
 	'Usage: npm run deploy:commit -- "Commit message"',
 	'',
-	`Builds, stages only allowed site/content changes, commits, pushes ${branch},`,
+	`Builds, stages only allowed site changes, commits, pushes ${branch},`,
 	'and checks GitHub Pages. Does not run npm run metadata:fix.',
 ].join('\n');
 
@@ -124,8 +129,7 @@ const getStatusEntries = async () => parseStatus(await runCapture(
 ));
 
 const getExpectedImagePaths = async () => {
-	const sitePath = path.join(root, 'content', 'site.md');
-	const { frontmatter } = await readSiteFile(sitePath);
+	const { frontmatter } = await readSiteFile(siteContentPath);
 	const imagePaths = new Set();
 
 	for (const section of getFrontmatterSections(frontmatter)) {
@@ -133,7 +137,7 @@ const getExpectedImagePaths = async () => {
 			if (image.includes('/') || image.includes('\\')) continue;
 			if (!supportedImageExtensions.has(path.extname(image).toLowerCase())) continue;
 
-			imagePaths.add(toPosixPath(path.join('content', section.id, image)));
+			imagePaths.add(toPosixPath(path.join(siteImagesLabel, section.id, image)));
 		}
 	}
 
@@ -143,12 +147,17 @@ const getExpectedImagePaths = async () => {
 const isUntracked = (entry) => entry.status === '??';
 
 const isExpectedUntracked = (entry, expectedImagePaths) => (
-	isUntracked(entry) && expectedImagePaths.has(entry.path)
+	isUntracked(entry)
+	&& (
+		expectedImagePaths.has(entry.path)
+		|| entry.path.startsWith('site/public/')
+	)
 );
 
 const isAllowedPath = (entry, filePath, expectedImagePaths) => (
-	filePath === 'content/site.md'
-	|| (!isUntracked(entry) && filePath.startsWith('content/'))
+	filePath === siteContentLabel
+	|| (!isUntracked(entry) && filePath.startsWith(`${siteImagesLabel}/`))
+	|| filePath.startsWith('site/public/')
 	|| expectedImagePaths.has(filePath)
 	|| filePath.startsWith('src/')
 	|| allowedExactPaths.has(filePath)
@@ -178,7 +187,7 @@ const assertDeployableStatus = async (entries, expectedImagePaths) => {
 	if (unexpectedUntracked.length > 0) {
 		fail([
 			'Refusing to deploy: unexpected untracked files are present.',
-			'Only new referenced gallery images under content/<section-id>/ are staged automatically.',
+			`Only new referenced gallery images under ${siteImagesLabel}/<section-id>/ are staged automatically.`,
 			...unexpectedUntracked.map((entry) => `- ${formatEntry(entry)}`),
 		].join('\n'));
 	}

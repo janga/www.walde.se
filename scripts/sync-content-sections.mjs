@@ -9,9 +9,13 @@ import {
 	readSiteFile,
 	toPosixPath,
 } from './lib/site-content.mjs';
+import {
+	siteContentLabel,
+	siteContentPath,
+	siteImagesDir,
+	siteImagesLabel,
+} from './lib/site-paths.mjs';
 
-const root = process.cwd();
-const sitePath = path.join(root, 'content', 'site.md');
 const args = new Set(process.argv.slice(2));
 const shouldWrite = args.has('--write');
 const shouldCheck = args.has('--check') || !shouldWrite;
@@ -45,26 +49,25 @@ const promptForWrite = async () => {
 	if (!process.stdin.isTTY) return false;
 
 	const rl = createInterface({ input, output });
-	const answer = await rl.question('This will rewrite Markdown sections in content/site.md and move gallery image files if needed. Continue? [y/N] ');
+	const answer = await rl.question(`This will rewrite Markdown sections in ${siteContentLabel} and move gallery image files if needed. Continue? [y/N] `);
 	rl.close();
 
 	return answer.trim().toLowerCase() === 'y';
 };
 
-const { frontmatter, body } = await readSiteFile(sitePath);
+const { frontmatter, body } = await readSiteFile(siteContentPath);
 const frontmatterSections = getFrontmatterSections(frontmatter);
 const frontmatterIds = frontmatterSections.map((section) => section.id);
 const { prelude, sections } = getBodySections(body);
-const contentDir = path.join(root, 'content');
 const sectionsById = new Map();
 const extraSections = [];
-const imageIndex = await getImageIndex(contentDir, fail);
+const imageIndex = await getImageIndex(siteImagesDir, fail);
 const imageMoves = [];
 const referencedImages = new Map();
 
 const getUnreferencedImages = () => Array.from(imageIndex.entries())
 	.filter(([imageName]) => !referencedImages.has(imageName))
-	.map(([, imagePath]) => `content/${toPosixPath(path.relative(contentDir, imagePath))}`)
+	.map(([, imagePath]) => `${siteImagesLabel}/${toPosixPath(path.relative(siteImagesDir, imagePath))}`)
 	.sort((left, right) => left.localeCompare(right, 'sv'));
 
 const getSectionReportOrder = () => {
@@ -152,7 +155,7 @@ const getReportLines = (title) => {
 		lines.push(
 			'',
 			'Unreferenced Images',
-			'These files are kept in content/ but are not mounted on the site:',
+			`These files are kept in ${siteImagesLabel}/ but are not mounted on the site:`,
 		);
 
 		for (const imagePath of unreferencedImages) {
@@ -233,7 +236,7 @@ for (const section of frontmatterSections) {
 			addSectionIssue(section.id, {
 				severity: 'error',
 				message: `Image reference "${imageName}" must be a filename without a directory.`,
-				fix: 'Use only the filename in content/site.md and keep the file in the matching content/<section-id>/ directory.',
+				fix: `Use only the filename in ${siteContentLabel} and keep the file in the matching ${siteImagesLabel}/<section-id>/ directory.`,
 			});
 			continue;
 		}
@@ -258,21 +261,21 @@ for (const section of frontmatterSections) {
 		if (!imagePath) {
 			addSectionIssue(section.id, {
 				severity: 'error',
-				message: `Image "${imageName}" does not exist anywhere under content/.`,
-				fix: `Add the source image to content/${section.id}/ or remove the gallery row.`,
+				message: `Image "${imageName}" does not exist anywhere under ${siteImagesLabel}/.`,
+				fix: `Add the source image to ${siteImagesLabel}/${section.id}/ or remove the gallery row.`,
 			});
 			continue;
 		}
 
 		const currentDirectory = path.basename(path.dirname(imagePath));
 		if (currentDirectory !== section.id) {
-			const targetPath = path.join(root, 'content', section.id, imageName);
+			const targetPath = path.join(siteImagesDir, section.id, imageName);
 			const targetExists = await stat(targetPath).then((entry) => entry.isFile()).catch(() => false);
 
 			if (targetExists) {
 				addSectionIssue(section.id, {
 					severity: 'error',
-					message: `Cannot move image "${imageName}" to content/${section.id}/ because the target file already exists.`,
+					message: `Cannot move image "${imageName}" to ${siteImagesLabel}/${section.id}/ because the target file already exists.`,
 					fix: 'Rename one of the files so image filenames remain globally unique.',
 				});
 				continue;
@@ -283,7 +286,7 @@ for (const section of frontmatterSections) {
 			if (!shouldWrite) {
 				addSectionIssue(section.id, {
 					severity: 'error',
-					message: `Image "${imageName}" is used here but is located in content/${currentDirectory}/.`,
+					message: `Image "${imageName}" is used here but is located in ${siteImagesLabel}/${currentDirectory}/.`,
 					fix: 'Run npm run content:sync to move it.',
 				});
 			}
@@ -305,7 +308,7 @@ if (shouldCheck) {
 }
 
 if (!hasOrderMismatch && imageMoves.length === 0) {
-	console.log('content/site.md: no sync needed.');
+	console.log(`${siteContentLabel}: no sync needed.`);
 	process.exit(0);
 }
 
@@ -322,12 +325,12 @@ if (!canWrite) {
 
 const nextBody = `${prelude}${orderedSections.map((section) => section.text).join('\n')}\n`;
 if (hasOrderMismatch) {
-	await writeFile(sitePath, `${frontmatter}${nextBody}`);
-	console.log('content/site.md: Markdown sections were sorted according to frontmatter.');
+	await writeFile(siteContentPath, `${frontmatter}${nextBody}`);
+	console.log(`${siteContentLabel}: Markdown sections were sorted according to frontmatter.`);
 }
 
 for (const move of imageMoves) {
 	await mkdir(path.dirname(move.to), { recursive: true });
 	await rename(move.from, move.to);
-	console.log(`Moved image "${move.imageName}" to content/${move.sectionId}/.`);
+	console.log(`Moved image "${move.imageName}" to ${siteImagesLabel}/${move.sectionId}/.`);
 }

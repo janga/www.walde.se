@@ -32,7 +32,7 @@ const withTempProject = async ({ site, files }, run) => {
 	const root = await mkdtemp(path.join(tmpdir(), 'walde-content-check-'));
 
 	try {
-		await writeFixtureFile(root, 'content/site.md', site);
+		await writeFixtureFile(root, 'site/content.md', site);
 
 		for (const file of files) {
 			await writeFixtureFile(root, file);
@@ -75,11 +75,11 @@ test('content:check groups section issues, global issues, and unreferenced image
 	await withTempProject({
 		site: brokenSite,
 		files: [
-			'content/karin-walde/karin.jpg',
-			'content/karin-walde/unreferenced.jpg',
-			'content/min-konst/duplicate.jpg',
-			'content/mitt-hem/home.jpg',
-			'content/mitt-hem/vav.jpeg',
+			'site/images/karin-walde/karin.jpg',
+			'site/images/karin-walde/unreferenced.jpg',
+			'site/images/min-konst/duplicate.jpg',
+			'site/images/mitt-hem/home.jpg',
+			'site/images/mitt-hem/vav.jpeg',
 		],
 	}, async (root) => {
 		const result = runContentScript(root, ['--check']);
@@ -88,13 +88,13 @@ test('content:check groups section issues, global issues, and unreferenced image
 		assert.equal(result.status, 1, output);
 		assert.match(output, /^Content check failed\./m);
 		assert.match(output, /Section and Gallery Issues\n\n\[min-konst\]\n  Errors:/);
-		assert.match(output, /Image "vav\.jpeg" is used here but is located in content\/mitt-hem\/\./);
-		assert.match(output, /Image "missing\.jpeg" does not exist anywhere under content\/\./);
+		assert.match(output, /Image "vav\.jpeg" is used here but is located in site\/images\/mitt-hem\/\./);
+		assert.match(output, /Image "missing\.jpeg" does not exist anywhere under site\/images\/\./);
 		assert.match(output, /Image "duplicate\.jpg" is referenced more than once in this section\./);
 		assert.match(output, /\[extra\]\n  Warnings:/);
 		assert.match(output, /Global Content Issues\n\nWarnings:\n- Markdown section order differs from frontmatter\./);
-		assert.match(output, /Unreferenced Images\nThese files are kept in content\/ but are not mounted on the site:/);
-		assert.match(output, /content\/karin-walde\/unreferenced\.jpg/);
+		assert.match(output, /Unreferenced Images\nThese files are kept in site\/images\/ but are not mounted on the site:/);
+		assert.match(output, /site\/images\/karin-walde\/unreferenced\.jpg/);
 	});
 });
 
@@ -119,26 +119,26 @@ test('content:sync moves referenced images and keeps unreferenced images in plac
 	await withTempProject({
 		site: movableSite,
 		files: [
-			'content/mitt-hem/home.jpg',
-			'content/mitt-hem/move-me.jpg',
-			'content/mitt-hem/unreferenced.jpg',
+			'site/images/mitt-hem/home.jpg',
+			'site/images/mitt-hem/move-me.jpg',
+			'site/images/mitt-hem/unreferenced.jpg',
 		],
 	}, async (root) => {
 		const syncResult = runContentScript(root, ['--write', '--yes']);
 		const syncOutput = getOutput(syncResult);
 
 		assert.equal(syncResult.status, 0, syncOutput);
-		assert.match(syncOutput, /Moved image "move-me\.jpg" to content\/min-konst\/\./);
-		assert.equal(await fileExists(path.join(root, 'content/min-konst/move-me.jpg')), true);
-		assert.equal(await fileExists(path.join(root, 'content/mitt-hem/move-me.jpg')), false);
-		assert.equal(await fileExists(path.join(root, 'content/mitt-hem/unreferenced.jpg')), true);
+		assert.match(syncOutput, /Moved image "move-me\.jpg" to site\/images\/min-konst\/\./);
+		assert.equal(await fileExists(path.join(root, 'site/images/min-konst/move-me.jpg')), true);
+		assert.equal(await fileExists(path.join(root, 'site/images/mitt-hem/move-me.jpg')), false);
+		assert.equal(await fileExists(path.join(root, 'site/images/mitt-hem/unreferenced.jpg')), true);
 
 		const checkResult = runContentScript(root, ['--check']);
 		const checkOutput = getOutput(checkResult);
 
 		assert.equal(checkResult.status, 0, checkOutput);
 		assert.match(checkOutput, /Content check passed\./);
-		assert.match(checkOutput, /content\/mitt-hem\/unreferenced\.jpg/);
+		assert.match(checkOutput, /site\/images\/mitt-hem\/unreferenced\.jpg/);
 	});
 });
 

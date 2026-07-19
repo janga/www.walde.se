@@ -11,7 +11,7 @@ const galleryImage = z.object({
 });
 
 const site = defineCollection({
-	loader: glob({ pattern: 'site.md', base: './content' }),
+	loader: glob({ pattern: 'content.md', base: './site' }),
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),

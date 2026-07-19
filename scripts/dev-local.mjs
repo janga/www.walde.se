@@ -24,6 +24,11 @@ const runAstro = async (args, options = {}) => execFileAsync(npmBin, ['run', 'as
 	...options,
 });
 
+const syncSitePublic = async () => execFileAsync(npmBin, ['run', 'site:public'], {
+	cwd: root,
+	maxBuffer: 1024 * 1024 * 10,
+});
+
 const getPortPids = async () => {
 	try {
 		const { stdout } = await execFileAsync('lsof', ['-nP', `-iTCP:${port}`, '-sTCP:LISTEN', '-t']);
@@ -206,6 +211,7 @@ const startServer = async ({ open = true } = {}) => {
 		throw new Error(`Port ${port} is already in use. Stop the process using it, then rerun npm run dev:local.`);
 	}
 
+	await syncSitePublic();
 	await runAstro(['dev', '--background', '--host', host, '--port', String(port)]);
 	await waitForServer();
 

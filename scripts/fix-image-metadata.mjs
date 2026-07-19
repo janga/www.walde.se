@@ -2,12 +2,14 @@ import { execFile } from 'node:child_process';
 import { readdir, readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
 import { promisify } from 'node:util';
+import {
+	siteContentLabel,
+	siteContentPath,
+	siteImagesDir,
+} from './lib/site-paths.mjs';
 
 const execFileAsync = promisify(execFile);
 
-const root = process.cwd();
-const contentDir = path.join(root, 'content');
-const siteContentPath = path.join(contentDir, 'site.md');
 const supportedExtensions = new Set(['.jpg', '.jpeg', '.png']);
 const metadataTags = [
 	'-Artist',
@@ -35,7 +37,7 @@ const getFrontmatter = (siteContent) => {
 	const match = siteContent.match(/^---\n([\s\S]*?)\n---/);
 
 	if (!match) {
-		fail('content/site.md is missing frontmatter.');
+		fail(`${siteContentLabel} is missing frontmatter.`);
 	}
 
 	return match[1];
@@ -47,7 +49,7 @@ const getCopyrightOwner = async () => {
 	const copyrightOwner = (match?.[1] ?? match?.[2] ?? match?.[3] ?? '').trim();
 
 	if (!copyrightOwner) {
-		fail('content/site.md must define copyrightOwner in frontmatter.');
+		fail(`${siteContentLabel} must define copyrightOwner in frontmatter.`);
 	}
 
 	return copyrightOwner;
@@ -107,7 +109,7 @@ await run('exiftool', ['-ver']).catch(() => {
 });
 
 const copyrightOwner = await getCopyrightOwner();
-const images = await listImageFiles(contentDir);
+const images = await listImageFiles(siteImagesDir);
 let updated = 0;
 let skipped = 0;
 

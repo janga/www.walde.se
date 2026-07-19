@@ -10,17 +10,17 @@ rules, and deploy workflow.
 - GitHub repository: `janga/www.walde.se`
 - Deploy branch: `main`
 - GitHub Pages workflow: `Deploy to GitHub Pages`
-- Custom domain file: `public/CNAME`
+- Custom domain file: `site/public/CNAME`
 
 The public URL, GitHub repository, deploy branch, and workflow name are defined
-in `site.config.mjs`.
+in `site/config.mjs`.
 
 The site is a single Astro page for Karin Walde. Editable content, section
-order, gallery rows, captions, and alt text live in `content/site.md`.
+order, gallery rows, captions, and alt text live in `site/content.md`.
 
 ## Local Configuration
 
-Current important values in `site.config.mjs`:
+Current important values in `site/config.mjs`:
 
 - `site.url`: `https://www.walde.se/`
 - `github.repo`: `janga/www.walde.se`
@@ -39,14 +39,14 @@ Current important values in `site.config.mjs`:
 
 If the public URL or custom domain changes, update these files together:
 
-- `site.config.mjs`
-- `public/CNAME`
-- `public/robots.txt`
-- `public/sitemap.xml`
+- `site/config.mjs`
+- `site/public/CNAME`
+- `site/public/robots.txt`
+- `site/public/sitemap.xml`
 
 ## Content Sections
 
-The current frontmatter sections in `content/site.md` are:
+The current frontmatter sections in `site/content.md` are:
 
 ```text
 karin-walde
@@ -60,24 +60,24 @@ Each section id must match:
 
 - the frontmatter section `id`
 - the Markdown heading id, for example `## Min konst {#min-konst}`
-- the source image directory under `content/<section-id>/`
+- the source image directory under `site/images/<section-id>/`
 
 Current source image directories:
 
 ```text
-content/karin-walde/
-content/runrondellerna/
-content/min-konst/
-content/om-mig/
-content/mitt-hem/
+site/images/karin-walde/
+site/images/runrondellerna/
+site/images/min-konst/
+site/images/om-mig/
+site/images/mitt-hem/
 ```
 
-`content/om-mig/` may be absent when the section has no gallery images.
+`site/images/om-mig/` may be absent when the section has no gallery images.
 
 ## Image Metadata
 
 For the Karin Walde site, `npm run metadata:fix` writes missing image metadata
-based on `copyrightOwner: Karin Walde` in `content/site.md`.
+based on `copyrightOwner: Karin Walde` in `site/content.md`.
 
 `images.requireCopyrightMetadata` is currently `true`, so `npm run build` fails
 when a referenced source image lacks creator/artist metadata.
@@ -158,16 +158,15 @@ gh run view RUN_ID --repo janga/www.walde.se --log-failed
 These files are specific to `www.walde.se`:
 
 ```text
-public/CNAME
-public/robots.txt
-public/sitemap.xml
-public/favicon.ico
-public/favicon.svg
-CNAME
+site/public/CNAME
+site/public/robots.txt
+site/public/sitemap.xml
+site/public/favicon.ico
+site/public/favicon.svg
 ```
 
-`public/CNAME` is copied into `dist/` during Astro build. The root `CNAME` is
-kept for compatibility with earlier GitHub Pages workflows.
+Files under `site/public/` are copied into Astro's root `public/` directory
+before build, and then into `dist/` by Astro.
 
 ## File Inventory
 

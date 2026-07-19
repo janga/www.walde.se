@@ -1,7 +1,7 @@
 const formatErrorMessage = (error) => {
 	if (error instanceof SyntaxError) {
 		return [
-			'site.config.mjs contains invalid JavaScript syntax.',
+			'site/config.mjs contains invalid JavaScript syntax.',
 			error.message,
 		].join('\n');
 	}
