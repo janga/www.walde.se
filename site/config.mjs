@@ -19,8 +19,8 @@ export default {
 		},
 	},
 	images: {
-		// Set to false to allow builds when source images lack copyright metadata.
-		requireCopyrightMetadata: true,
+		// Set to false to silence warnings when source images lack copyright metadata.
+		warnOnMissingCopyrightMetadata: true,
 	},
 	footer: {
 		// Omit this value to hide the copyright sentence.

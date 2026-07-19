@@ -32,12 +32,13 @@ Current important values in `site/config.mjs`:
 - `navigation.smoothScroll.minimumDurationMs`: `2_000`
 - `navigation.smoothScroll.maximumDurationMs`: `4_000`
 - `navigation.smoothScroll.durationPerPixelMs`: `0.22`
-- `images.requireCopyrightMetadata`: `true`
+- `images.warnOnMissingCopyrightMetadata`: `true`
 - `footer.copyrightMessage`: Karin-specific copyright sentence
 - `footer.buildInfo.enabled`: `true`
 - `footer.buildInfo.text`: `Byggd`
 - `footer.buildInfo.dateTimeFormat.locale`: `sv-SE`
 - `footer.buildInfo.dateTimeFormat.timeZone`: `Europe/Stockholm`
+- `@janga/cli-gallery`: `git+https://github.com/janga/cli-gallery.git#v0.1.1`
 
 If the public URL or custom domain changes, update these files together:
 
@@ -81,8 +82,10 @@ site/images/mitt-hem/
 For the Karin Walde site, `npm run metadata:fix` writes missing image metadata
 based on `copyrightOwner: Karin Walde` in `site/content.md`.
 
-`images.requireCopyrightMetadata` is currently `true`, so `npm run build` fails
-when a referenced source image lacks creator/artist metadata.
+`images.warnOnMissingCopyrightMetadata` is currently `true`, so `npm run build`
+warns when a referenced source image lacks creator/artist metadata. Builds and
+deploys do not fail because metadata is missing and do not write metadata
+automatically.
 
 The intended metadata values are:
 
@@ -93,8 +96,9 @@ Credit / Owner: Karin Walde
 Marked: True
 ```
 
-Run metadata fixing only when new source images need copyright metadata or when
-the build reports missing creator/artist metadata:
+Run metadata fixing only when new source images should intentionally receive
+copyright metadata or when a build warning identifies metadata that should be
+written:
 
 ```sh
 npm run metadata:fix
@@ -168,7 +172,8 @@ site/public/favicon.svg
 ```
 
 Files under `site/public/` are copied into Astro's root `public/` directory
-before build, and then into `dist/` by Astro.
+before build, and then into `dist/` by Astro. Root `public/` is build
+preparation output and should not be versioned.
 
 ## File Inventory
 

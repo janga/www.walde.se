@@ -6,35 +6,27 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "node scripts/dev-local.mjs",
-    "dev:local": "node scripts/dev-local.mjs",
-    "dev:restart": "node scripts/dev-local.mjs restart",
-    "dev:status": "node scripts/dev-local.mjs status",
-    "dev:logs": "node scripts/dev-local.mjs logs",
-    "dev:stop": "node scripts/dev-local.mjs stop",
-    "config:check": "node scripts/check-config.mjs",
-    "content:check": "node scripts/sync-content-sections.mjs --check",
-    "content:sync": "node scripts/sync-content-sections.mjs --write",
-    "metadata:fix": "node scripts/fix-image-metadata.mjs",
-    "site:public": "node scripts/sync-site-public.mjs",
-    "images": "node scripts/generate-images.mjs",
-    "build": "npm run config:check && npm run content:check && npm run site:public && npm run images && astro build",
-    "build:local": "npm run build && npm run dev:restart",
-    "deploy": "node scripts/deploy-site.mjs",
-    "deploy:commit": "node scripts/deploy-site.mjs commit",
-    "deploy:watch": "node scripts/watch-pages-deploy.mjs",
-    "test:content-check": "node scripts/test-content-check.mjs",
-    "test:site-public": "node scripts/test-site-public.mjs",
-    "test:navigation": "node scripts/test-navigation.mjs",
-    "test:navigation:stress": "node scripts/test-navigation.mjs tests/navigation-stress.spec.ts",
-    "test:navigation:preview": "node scripts/test-navigation-preview.mjs",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "npm run dev:local",
+    "dev:local": "cli-gallery dev:local",
+    "dev:restart": "cli-gallery dev:restart",
+    "dev:status": "cli-gallery dev:status",
+    "dev:logs": "cli-gallery dev:logs",
+    "dev:stop": "cli-gallery dev:stop",
+    "config:check": "cli-gallery config:check",
+    "content:check": "cli-gallery content:check",
+    "content:sync": "cli-gallery content:sync",
+    "metadata:fix": "cli-gallery metadata:fix",
+    "site:public": "cli-gallery site:public",
+    "images": "cli-gallery images",
+    "build": "cli-gallery build",
+    "build:local": "cli-gallery build:local",
+    "deploy": "cli-gallery deploy",
+    "deploy:commit": "cli-gallery deploy:commit",
+    "deploy:watch": "cli-gallery deploy:watch",
+    "doctor": "cli-gallery doctor",
+    "preview": "cli-gallery preview"
   },
   "dependencies": {
-    "astro": "^7.0.2"
-  },
-  "devDependencies": {
-    "@playwright/test": "^1.61.1"
+    "@janga/cli-gallery": "git+https://github.com/janga/cli-gallery.git#v0.1.1"
   }
 }

@@ -22,8 +22,8 @@ here.
   public URL, GitHub repo, deploy branch, Pages workflow name, footer text,
   smooth-scroll timing, or image metadata policy in scripts or components.
 - The site source directory defaults to `site/` and can be overridden with
-  `CLI_GALLERY_SITE_DIR`; use `scripts/lib/site-paths.mjs` instead of
-  hardcoding site paths in scripts.
+  `CLI_GALLERY_SITE_DIR` or `cli-gallery --site-dir <path>`. Do not
+  reintroduce local copies of engine path-resolution scripts.
 - Keep editable content, section definitions, image references, gallery alt
   text, and captions in the selected site `content.md`; for this repository the
   default path is `site/content.md`.
@@ -45,22 +45,16 @@ here.
 - Run `npm run content:sync` after moving gallery rows between sections so image
   files move to the matching section directory.
 - Run `npm run metadata:fix` only when new source images need copyright
-  metadata, or when the build fails because
-  `images.requireCopyrightMetadata` is true.
+  metadata, or when build warnings identify missing metadata that should be
+  written intentionally.
 - Run `npm run site:public` after changing `site/public/` when you need the
   local root `public/` copy without a full build.
-- Run `npm run test:site-public` after changing static-public sync behavior.
 - Run `npm run build` after content, layout, config, or image-pipeline changes.
 - Run `npm run build:local` when a local preview may be using stale content and
   should be rebuilt and restarted.
-- Run `npm run test:content-check` after changing content validation or
-  `content:sync` behavior.
-- Run `npm run test:navigation` after sticky navigation, anchor offset, or
-  scroll behavior changes.
-- Use `npm run test:navigation:stress` for intermittent anchor navigation
-  races.
-- Use `npm run test:navigation:preview` for production-like sticky-navigation
-  anchor testing against `dist/`.
+- Engine behavior tests live in the `cli-gallery` repository. This repository
+  should normally verify site changes with `npm run config:check`,
+  `npm run content:check`, and `npm run build`.
 
 ## Implementation Notes
 
@@ -74,6 +68,3 @@ here.
   sync.
 - Do not commit unreferenced source images unless the user explicitly asks for
   them.
-- If Playwright reports a missing Chromium browser, run
-  `npx playwright install chromium` once. In sandboxed Codex sessions,
-  Playwright may need escalation to launch Chromium.
