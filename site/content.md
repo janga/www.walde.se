@@ -85,7 +85,6 @@ sections:
       - image: verk07.png
         alt: "Blå spiralformad fossil med mörk kärna, inbäddad i ljusa fibrer och skimrande yta."
         caption: "Grafiskt blad av fossil."
-  - id: om-mig
   - id: mitt-hem
     gallery:
       - image: mitt-hem.jpeg
@@ -106,6 +105,7 @@ sections:
       - image: karin-utomhus.jpg
         alt: "Närporträtt av Karin Walde i röd blus, leende i mjukt sommarljus med grön bakgrund."
         caption: ""
+  - id: om-mig
 
 
 ---
