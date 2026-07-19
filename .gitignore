@@ -1,11 +1,11 @@
 # build output
 dist/
 
-# generated image output
-public/*
-!public/images/
-public/images/generated/
-public/images/original/
+# legacy generated public output
+/public/
+
+# generated build-preparation output
+site/.cli-gallery/public/
 
 # generated types
 .astro/

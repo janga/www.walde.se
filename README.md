@@ -81,8 +81,9 @@ Repository control files:
 
 Generated or local-only files:
 
-- `public/`: build-preparation output copied from `site/public/`, plus
-  generated images.
+- `site/.cli-gallery/public/`: build-preparation output copied from
+  `site/public/`, plus generated images.
+- `public/`: legacy build-preparation output from older engine versions.
 - `dist/`: final static build output.
 - `.astro/`: Astro cache and dev-server state.
 - `node_modules/`: installed dependencies.
@@ -101,7 +102,7 @@ Important values are configured in `site/config.mjs`:
 | Pages workflow | `Deploy to GitHub Pages` |
 | Site directory | default `site/` |
 | Custom domain file | `site/public/CNAME` |
-| Engine package | `git+https://github.com/janga/cli-gallery.git#v0.1.2` |
+| Engine package | `git+https://github.com/janga/cli-gallery.git#v0.1.3` |
 | Missing image metadata policy | warn, do not fail |
 
 If the public URL or custom domain changes, update these files together:
@@ -164,8 +165,9 @@ matches their gallery row.
 Original images live under `site/images/<section-id>/`. Only images referenced
 from `site/content.md` are rendered.
 
-Generated WebP variants are written under `public/images/generated/` during
-build. That output is not versioned. The manifest at
+Generated WebP variants are written under
+`site/.cli-gallery/public/images/generated/` during build. That output is not
+versioned. The manifest at
 `site/.cli-gallery/generated-images.json` is versioned site state and lets local
 builds and GitHub Actions reuse generated variants when source images have not
 changed.
@@ -212,18 +214,20 @@ site/public/favicon.ico
 site/public/favicon.svg
 ```
 
-`npm run site:public` copies files from `site/public/` into root `public/`.
-Astro then copies root `public/` into `dist/` during build.
+`npm run site:public` copies files from `site/public/` into
+`site/.cli-gallery/public/`. Astro then copies `site/.cli-gallery/public/` into
+`dist/` during build.
 
-Root `public/` is build-preparation output. Keep source files in
-`site/public/`.
+`site/.cli-gallery/public/` is generated build-preparation output. Keep source
+files in `site/public/`. Root `public/` is only legacy local output from older
+engine versions and can be removed.
 
 ## Engine Version
 
 This site pins the engine dependency in `package.json`:
 
 ```json
-"@janga/cli-gallery": "git+https://github.com/janga/cli-gallery.git#v0.1.2"
+"@janga/cli-gallery": "git+https://github.com/janga/cli-gallery.git#v0.1.3"
 ```
 
 To update the engine:

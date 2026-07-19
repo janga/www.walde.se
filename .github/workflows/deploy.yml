@@ -37,7 +37,7 @@ jobs:
       - name: Restore generated image cache
         uses: actions/cache@v6
         with:
-          path: public/images/generated
+          path: site/.cli-gallery/public/images/generated
           key: generated-images-${{ runner.os }}-${{ hashFiles(format('{0}/.cli-gallery/generated-images.json', env.CLI_GALLERY_SITE_DIR)) }}
           restore-keys: |
             generated-images-${{ runner.os }}-

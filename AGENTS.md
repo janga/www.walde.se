@@ -26,8 +26,8 @@ maintainer, put it in `README.md` instead of duplicating it here.
   text, and captions in the selected site `content.md`; for this repository the
   default path is `site/content.md`.
 - Keep site-specific static files in the selected site `public/`; for this
-  repository the default path is `site/public/`. Root `public/` is copied build
-  preparation output plus generated image output.
+  repository the default path is `site/public/`. `site/.cli-gallery/public/`
+  is copied build preparation output plus generated image output.
 - Do not add routes or split sections into separate Markdown files unless the
   user explicitly changes the single-page architecture.
 
@@ -46,7 +46,7 @@ maintainer, put it in `README.md` instead of duplicating it here.
   metadata, or when build warnings identify missing metadata that should be
   written intentionally.
 - Run `npm run site:public` after changing `site/public/` when you need the
-  local root `public/` copy without a full build.
+  local generated public copy without a full build.
 - Run `npm run build` after content, layout, config, or image-pipeline changes.
 - Run `npm run build:local` when a local preview may be using stale content and
   should be rebuilt and restarted.
