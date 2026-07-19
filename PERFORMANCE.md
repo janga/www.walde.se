@@ -15,7 +15,7 @@ Genomfört:
 - Galleriets `sizes` matchar mobilmarginal och desktopbredd bättre.
 - Display-`srcset` begränsas till högst 1920 px, medan klicklänken går till
   största genererade WebP.
-- GitHub Actions cachar `public/bilder/generated/` mellan deployer.
+- GitHub Actions cachar `public/images/generated/` mellan deployer.
 
 Medvetna beslut:
 

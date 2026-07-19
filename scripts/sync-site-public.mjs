@@ -6,7 +6,7 @@ import {
 	sitePublicLabel,
 } from './lib/site-paths.mjs';
 
-const keepAstroPublicEntries = new Set(['bilder']);
+const keepAstroPublicEntries = new Set(['images']);
 
 const readDirectory = async (directory) => {
 	try {

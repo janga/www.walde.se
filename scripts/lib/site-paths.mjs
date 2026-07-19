@@ -7,8 +7,8 @@ export const siteContentPath = path.join(siteDir, 'content.md');
 export const siteImagesDir = path.join(siteDir, 'images');
 export const sitePublicDir = path.join(siteDir, 'public');
 export const astroPublicDir = path.join(root, 'public');
-export const generatedImagesDir = path.join(astroPublicDir, 'bilder', 'generated');
-export const originalImagesDir = path.join(astroPublicDir, 'bilder', 'original');
+export const generatedImagesDir = path.join(astroPublicDir, 'images', 'generated');
+export const originalImagesDir = path.join(astroPublicDir, 'images', 'original');
 export const generatedImagesManifestPath = path.join(root, 'src', 'data', 'generated-images.json');
 
 export const siteConfigLabel = 'site/config.mjs';

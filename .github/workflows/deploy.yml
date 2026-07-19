@@ -35,7 +35,7 @@ jobs:
       - name: Restore generated image cache
         uses: actions/cache@v6
         with:
-          path: public/bilder/generated
+          path: public/images/generated
           key: generated-images-${{ runner.os }}-${{ hashFiles('site/content.md', 'site/images/**/*.jpg', 'site/images/**/*.jpeg', 'site/images/**/*.png', 'scripts/generate-images.mjs', 'scripts/lib/**/*.mjs', 'src/data/generated-images.json') }}
           restore-keys: |
             generated-images-${{ runner.os }}-

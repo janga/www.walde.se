@@ -3,9 +3,9 @@ dist/
 
 # generated image output
 public/*
-!public/bilder/
-public/bilder/generated/
-public/bilder/original/
+!public/images/
+public/images/generated/
+public/images/original/
 
 # generated types
 .astro/

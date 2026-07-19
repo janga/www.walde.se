@@ -407,7 +407,7 @@ The build chain runs:
 4. `npm run images`
 5. `astro build`
 
-The image pipeline generates WebP variants in `public/bilder/generated/`.
+The image pipeline generates WebP variants in `public/images/generated/`.
 That directory is build output and is not version-controlled. The generated
 image manifest, `src/data/generated-images.json`, stores hashes for source
 images and copied metadata so unchanged images can reuse existing WebP variants.
@@ -422,7 +422,7 @@ directory before the static build. Files in `site/public/` are source files and
 should be version-controlled; copied files under root `public/` are build
 preparation output.
 
-GitHub Actions caches `public/bilder/generated/` between deploys. With a cache
+GitHub Actions caches `public/images/generated/` between deploys. With a cache
 hit, GitHub can reuse generated WebP variants; with a cache miss, it rebuilds
 them from source images under `site/images/`.
 
@@ -695,7 +695,7 @@ site/
 |-- images/<section-id>/            # Source images for each section
 `-- public/                         # Static site-specific files copied before build
 public/
-`-- bilder/generated/               # Generated WebP variants, not version-controlled
+`-- images/generated/               # Generated WebP variants, not version-controlled
 src/
 |-- layouts/BaseLayout.astro        # Shared HTML shell and metadata
 |-- pages/index.astro               # Renders the single page from site/content.md
