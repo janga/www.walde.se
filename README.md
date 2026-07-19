@@ -102,7 +102,7 @@ Important values are configured in `site/config.mjs`:
 | Pages workflow | `Deploy to GitHub Pages` |
 | Site directory | default `site/` |
 | Custom domain file | `site/public/CNAME` |
-| Engine package | `git+https://github.com/janga/cli-gallery.git#v0.1.6` |
+| Engine package | `git+https://github.com/janga/cli-gallery.git#v0.1.7` |
 | Missing image metadata policy | warn, do not fail |
 
 If the public URL or custom domain changes, update these files together:
@@ -214,7 +214,7 @@ engine versions and can be removed.
 This site pins the engine dependency in `package.json`:
 
 ```json
-"@janga/cli-gallery": "git+https://github.com/janga/cli-gallery.git#v0.1.6"
+"@janga/cli-gallery": "git+https://github.com/janga/cli-gallery.git#v0.1.7"
 ```
 
 To update the engine:
