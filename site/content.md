@@ -2,31 +2,22 @@
 title: Karin Walde, konstnär
 description: Konstnären Karin Waldes officiella webbplats.
 copyrightOwner: Karin Walde
-presentation:
-  default:
-    heading:
-      align:
-        desktop: left
-        mobile: left
-      size: medium
-    body:
-      align:
-        desktop: left
-        mobile: left
-      size: medium
-  sections:
-    karin-walde:
-      heading:
-        align:
-          desktop: left
-          mobile: left
-        size: large
-      body:
-        align:
-          desktop: left
-          mobile: left
+defaultPresentation:
+  heading:
+    align:
+      desktop: left
+      mobile: left
+    size: medium
+  body:
+    align:
+      desktop: left
+      mobile: left
+    size: medium
 sections:
   - id: karin-walde
+    presentation:
+      heading:
+        size: large
     gallery:
       - image: tva-fossiler.jpg
         alt: "Två grafiska blad med inspiration från gotländska fossil."
@@ -132,6 +123,10 @@ I den andra rondellen står fyra runstenar. De är nygjorda kopior av runstenar 
 ## Min konst {#min-konst}
 Ett urval av min konst. Välkommen att kontakta mig för att se mer på utställningar eller i min ateljé. [karin@walde.se](mailto:karin@walde.se)
 0730-577 855
+## Mitt hem {#mitt-hem}
+
+[karin@walde.se](mailto:karin@walde.se)
+0730-577 855
 ## Om mig {#om-mig}
 Född 1941 i Jokkmokk, sedan 1946 bosatt i Täby.
 
@@ -172,8 +167,3 @@ Fick Täby kommuns kulturpris 2021.
 - Näsby slott i Täby
 - Skaraborgs läns landsting 
 - Västernorrlands landsting
-
-## Mitt hem {#mitt-hem}
-
-[karin@walde.se](mailto:karin@walde.se)
-0730-577 855

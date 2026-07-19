@@ -102,7 +102,7 @@ Important values are configured in `site/config.mjs`:
 | Pages workflow | `Deploy to GitHub Pages` |
 | Site directory | default `site/` |
 | Custom domain file | `site/public/CNAME` |
-| Engine package | `git+https://github.com/janga/cli-gallery.git#v0.1.5` |
+| Engine package | `git+https://github.com/janga/cli-gallery.git#v0.1.6` |
 | Missing image metadata policy | warn, do not fail |
 
 If the public URL or custom domain changes, update these files together:
@@ -117,39 +117,20 @@ If the public URL or custom domain changes, update these files together:
 The site is one static page. Editable content, section order, gallery rows,
 captions, and alt text live in `site/content.md`.
 
-Current frontmatter sections:
-
-```text
-karin-walde
-runrondellerna
-min-konst
-om-mig
-mitt-hem
-```
-
 Each section must keep these values aligned:
 
 - the frontmatter section `id`
 - the Markdown heading id, for example `## Min konst {#min-konst}`
 - the source image directory under `site/images/<section-id>/`
 
-Section presentation is configured in frontmatter under `presentation`.
-`presentation.default` defines heading and body defaults for sections that do
-not need custom layout, while `presentation.sections.karin-walde` overrides the
-first section with left-aligned heading and body text plus a larger heading
-size.
+The frontmatter `sections` list is the source of truth for section order. Run
+`npm run content:sync` after changing that order so the Markdown sections are
+rewritten to match it.
 
-Current source image directories:
-
-```text
-site/images/karin-walde/
-site/images/runrondellerna/
-site/images/min-konst/
-site/images/om-mig/
-site/images/mitt-hem/
-```
-
-`site/images/om-mig/` may be absent while the section has no gallery images.
+Section presentation is configured in frontmatter. `defaultPresentation`
+defines heading and body defaults for sections that do not need custom layout,
+while `sections[].presentation` contains any section-specific overrides. The
+first section, `karin-walde`, overrides only the heading size.
 
 Run this after editing content or gallery references:
 
@@ -233,7 +214,7 @@ engine versions and can be removed.
 This site pins the engine dependency in `package.json`:
 
 ```json
-"@janga/cli-gallery": "git+https://github.com/janga/cli-gallery.git#v0.1.5"
+"@janga/cli-gallery": "git+https://github.com/janga/cli-gallery.git#v0.1.6"
 ```
 
 To update the engine:
