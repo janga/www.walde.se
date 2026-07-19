@@ -33,7 +33,7 @@ sections:
         caption: "Två grafiska blad med fossil från Gotland som motiv."
       - image: karin-walde.jpg
         alt: "Karin Walde står i grönska med blombukett och håller Täby kommuns kulturpris i handen."
-        caption: "Jag fick Täby kommuns kulturpris för min konst 2021."
+        caption: "Fick Täby kommuns kulturpris för min konst 2021."
       - image: lysande-rondell.png
         alt: "Nattbild av 55 meter lång corténstålring i rondell, med violett lysande runnamn längs hela formen."
         caption: "Offentlig utsmyckning: En av de två rondellerna med runmotiv vid E18 i Roslags Näsby, Täby."
