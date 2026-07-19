@@ -24,6 +24,7 @@
     "deploy:commit": "node scripts/deploy-site.mjs commit",
     "deploy:watch": "node scripts/watch-pages-deploy.mjs",
     "test:content-check": "node scripts/test-content-check.mjs",
+    "test:site-public": "node scripts/test-site-public.mjs",
     "test:navigation": "node scripts/test-navigation.mjs",
     "test:navigation:stress": "node scripts/test-navigation.mjs tests/navigation-stress.spec.ts",
     "test:navigation:preview": "node scripts/test-navigation-preview.mjs",

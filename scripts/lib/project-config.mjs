@@ -1,5 +1,7 @@
-import siteConfig from '../../site/config.mjs';
-import { siteConfigLabel } from './site-paths.mjs';
+import { pathToFileURL } from 'node:url';
+import { siteConfigLabel, siteConfigPath } from './site-paths.mjs';
+
+const { default: siteConfig } = await import(pathToFileURL(siteConfigPath).href);
 
 const assertObject = (value, path) => {
 	if (!value || typeof value !== 'object' || Array.isArray(value)) {

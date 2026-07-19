@@ -10,9 +10,11 @@ import {
 } from './lib/site-content.mjs';
 import { projectConfig } from './lib/project-config.mjs';
 import {
+	siteConfigLabel,
 	siteContentLabel,
 	siteContentPath,
 	siteImagesLabel,
+	sitePublicLabel,
 } from './lib/site-paths.mjs';
 
 const execFileAsync = promisify(execFile);
@@ -29,12 +31,12 @@ const allowedExactPaths = new Set([
 	'astro.config.mjs',
 	'package-lock.json',
 	'package.json',
-	'site/config.mjs',
-	'site/public/CNAME',
-	'site/public/favicon.ico',
-	'site/public/favicon.svg',
-	'site/public/robots.txt',
-	'site/public/sitemap.xml',
+	siteConfigLabel,
+	`${sitePublicLabel}/CNAME`,
+	`${sitePublicLabel}/favicon.ico`,
+	`${sitePublicLabel}/favicon.svg`,
+	`${sitePublicLabel}/robots.txt`,
+	`${sitePublicLabel}/sitemap.xml`,
 	'tsconfig.json',
 ]);
 const failedConclusions = new Set(['action_required', 'cancelled', 'failure', 'startup_failure', 'timed_out']);
@@ -150,14 +152,14 @@ const isExpectedUntracked = (entry, expectedImagePaths) => (
 	isUntracked(entry)
 	&& (
 		expectedImagePaths.has(entry.path)
-		|| entry.path.startsWith('site/public/')
+		|| entry.path.startsWith(`${sitePublicLabel}/`)
 	)
 );
 
 const isAllowedPath = (entry, filePath, expectedImagePaths) => (
 	filePath === siteContentLabel
 	|| (!isUntracked(entry) && filePath.startsWith(`${siteImagesLabel}/`))
-	|| filePath.startsWith('site/public/')
+	|| filePath.startsWith(`${sitePublicLabel}/`)
 	|| expectedImagePaths.has(filePath)
 	|| filePath.startsWith('src/')
 	|| allowedExactPaths.has(filePath)

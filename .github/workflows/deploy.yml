@@ -18,6 +18,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      CLI_GALLERY_SITE_DIR: site
 
     steps:
       - name: Checkout
@@ -36,7 +38,7 @@ jobs:
         uses: actions/cache@v6
         with:
           path: public/images/generated
-          key: generated-images-${{ runner.os }}-${{ hashFiles('site/content.md', 'site/images/**/*.jpg', 'site/images/**/*.jpeg', 'site/images/**/*.png', 'scripts/generate-images.mjs', 'scripts/lib/**/*.mjs', 'src/data/generated-images.json') }}
+          key: generated-images-${{ runner.os }}-${{ hashFiles(format('{0}/content.md', env.CLI_GALLERY_SITE_DIR), format('{0}/images/**/*.jpg', env.CLI_GALLERY_SITE_DIR), format('{0}/images/**/*.jpeg', env.CLI_GALLERY_SITE_DIR), format('{0}/images/**/*.png', env.CLI_GALLERY_SITE_DIR), 'scripts/generate-images.mjs', 'scripts/lib/**/*.mjs', 'src/data/generated-images.json') }}
           restore-keys: |
             generated-images-${{ runner.os }}-
 

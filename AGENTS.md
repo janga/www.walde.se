@@ -21,10 +21,15 @@ here.
 - Keep technical project settings in `site/config.mjs`; do not hardcode the
   public URL, GitHub repo, deploy branch, Pages workflow name, footer text,
   smooth-scroll timing, or image metadata policy in scripts or components.
+- The site source directory defaults to `site/` and can be overridden with
+  `CLI_GALLERY_SITE_DIR`; use `scripts/lib/site-paths.mjs` instead of
+  hardcoding site paths in scripts.
 - Keep editable content, section definitions, image references, gallery alt
-  text, and captions in `site/content.md`.
-- Keep site-specific static files in `site/public/`; root `public/` is copied
-  build preparation output plus generated image output.
+  text, and captions in the selected site `content.md`; for this repository the
+  default path is `site/content.md`.
+- Keep site-specific static files in the selected site `public/`; for this
+  repository the default path is `site/public/`. Root `public/` is copied build
+  preparation output plus generated image output.
 - Do not add routes or split sections into separate Markdown files unless the
   user explicitly changes the single-page architecture.
 
@@ -44,6 +49,7 @@ here.
   `images.requireCopyrightMetadata` is true.
 - Run `npm run site:public` after changing `site/public/` when you need the
   local root `public/` copy without a full build.
+- Run `npm run test:site-public` after changing static-public sync behavior.
 - Run `npm run build` after content, layout, config, or image-pipeline changes.
 - Run `npm run build:local` when a local preview may be using stale content and
   should be rebuilt and restarted.

@@ -15,9 +15,13 @@ const test = (name, run) => {
 
 const fileExists = async (filePath) => access(filePath).then(() => true, () => false);
 
-const runContentScript = (root, args) => spawnSync(process.execPath, [contentScript, ...args], {
+const runContentScript = (root, args, env = {}) => spawnSync(process.execPath, [contentScript, ...args], {
 	cwd: root,
 	encoding: 'utf8',
+	env: {
+		...process.env,
+		...env,
+	},
 });
 
 const getOutput = (result) => `${result.stdout}${result.stderr}`;
@@ -28,11 +32,11 @@ const writeFixtureFile = async (root, relativePath, contents = 'fixture image') 
 	await writeFile(filePath, contents);
 };
 
-const withTempProject = async ({ site, files }, run) => {
+const withTempProject = async ({ site, files, siteDirectory = 'site' }, run) => {
 	const root = await mkdtemp(path.join(tmpdir(), 'walde-content-check-'));
 
 	try {
-		await writeFixtureFile(root, 'site/content.md', site);
+		await writeFixtureFile(root, `${siteDirectory}/content.md`, site);
 
 		for (const file of files) {
 			await writeFixtureFile(root, file);
@@ -95,6 +99,23 @@ test('content:check groups section issues, global issues, and unreferenced image
 		assert.match(output, /Global Content Issues\n\nWarnings:\n- Markdown section order differs from frontmatter\./);
 		assert.match(output, /Unreferenced Images\nThese files are kept in site\/images\/ but are not mounted on the site:/);
 		assert.match(output, /site\/images\/karin-walde\/unreferenced\.jpg/);
+	});
+});
+
+test('content:check respects CLI_GALLERY_SITE_DIR', async () => {
+	await withTempProject({
+		site: movableSite,
+		siteDirectory: 'custom-site',
+		files: [
+			'custom-site/images/min-konst/move-me.jpg',
+			'custom-site/images/mitt-hem/home.jpg',
+		],
+	}, async (root) => {
+		const result = runContentScript(root, ['--check'], { CLI_GALLERY_SITE_DIR: 'custom-site' });
+		const output = getOutput(result);
+
+		assert.equal(result.status, 0, output);
+		assert.match(output, /Content check passed\./);
 	});
 });
 

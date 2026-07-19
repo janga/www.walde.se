@@ -50,6 +50,9 @@ site/config.mjs
 site/content.md
 ```
 
+`site/` is the default site source directory. Set `CLI_GALLERY_SITE_DIR` to use
+another directory with the same internal structure.
+
 `site/config.mjs` holds technical project configuration such as public URL,
 navigation behavior, footer rendering, image metadata policy, GitHub repository,
 deploy branch, and workflow names. `site/content.md` holds editorial content:
@@ -100,7 +103,8 @@ npm run build
 
 The main files and directories are:
 
-- `site/config.mjs`: technical site configuration.
+- `site/config.mjs`: technical site configuration in the default site
+  directory.
 - `site/content.md`: editable content, sections, gallery rows, alt text, and
   captions.
 - `site/images/<section-id>/`: source images for each section.
@@ -199,6 +203,18 @@ npm run build:local
 Keep technical project configuration in `site/config.mjs`, not in
 `site/content.md`. Treat `site/config.mjs` as a per-site file when preparing a
 reusable starter or engine repository.
+
+The site source directory defaults to `site/`. To run the same code against a
+different site directory, set `CLI_GALLERY_SITE_DIR` for the command:
+
+```sh
+CLI_GALLERY_SITE_DIR=my-site npm run build
+```
+
+The selected directory must contain `config.mjs`, `content.md`, optional static
+files under `public/`, and source images under `images/<section-id>/`. Update
+the `CLI_GALLERY_SITE_DIR` value in `.github/workflows/deploy.yml` too if a
+repository deploys from a directory other than `site/`.
 
 `site/config.mjs` defines:
 
@@ -417,14 +433,15 @@ when the source image is large enough. The pipeline also creates a largest
 variant matching the source width when it is larger than the standard display
 widths.
 
-`site:public` copies files from `site/public/` into Astro's root `public/`
-directory before the static build. Files in `site/public/` are source files and
-should be version-controlled; copied files under root `public/` are build
-preparation output.
+`site:public` copies files from the selected site directory's `public/`
+subdirectory into Astro's root `public/` directory before the static build.
+Files in the site `public/` directory are source files and should be
+version-controlled; copied files under root `public/` are build preparation
+output.
 
 GitHub Actions caches `public/images/generated/` between deploys. With a cache
 hit, GitHub can reuse generated WebP variants; with a cache miss, it rebuilds
-them from source images under `site/images/`.
+them from source images under the selected site `images/` directory.
 
 ## Image Metadata
 
@@ -555,6 +572,18 @@ npm run content:check
 Use the grouped report to fix global content problems, section-specific gallery
 problems, duplicate image names, missing image files, or misplaced images.
 
+### Static Public File Sync Errors
+
+Run:
+
+```sh
+npm run test:site-public
+```
+
+This verifies that `site:public` copies static files from the selected site
+directory into root `public/`, removes stale root-public files, and keeps
+generated image output under `public/images/`.
+
 ### Gallery Rows Moved Between Sections
 
 Run:
@@ -670,6 +699,7 @@ npm run deploy:watch -- --help
 
 ```sh
 npm run test:content-check
+npm run test:site-public
 npm run test:navigation
 npm run test:navigation:stress
 npm run test:navigation:preview
@@ -689,7 +719,7 @@ the reusable project structure.
 README.md                          # Reusable project model and workflow
 README-local.md                    # Current site notes and local settings
 AGENTS.md                          # Additional instructions for coding agents
-site/
+site/                              # Default site source directory
 |-- config.mjs                      # Technical project config
 |-- content.md                      # Sections, text, image references, gallery metadata
 |-- images/<section-id>/            # Source images for each section
@@ -698,16 +728,18 @@ public/
 `-- images/generated/               # Generated WebP variants, not version-controlled
 src/
 |-- layouts/BaseLayout.astro        # Shared HTML shell and metadata
-|-- pages/index.astro               # Renders the single page from site/content.md
+|-- pages/index.astro               # Renders the single page from configured content.md
 |-- styles/global.css               # Layout, sticky navigation, responsive design
-|-- content.config.ts               # Validates site/content.md
+|-- content.config.ts               # Validates configured content.md
 `-- data/generated-images.json      # Generated image manifest, version-controlled
 scripts/
 |-- check-config.mjs                # Project config validation
 |-- deploy-site.mjs                 # Conservative local deploy command
 |-- watch-pages-deploy.mjs          # GitHub Pages workflow monitor
 |-- sync-content-sections.mjs       # Content validation and sync
-|-- sync-site-public.mjs            # Copies site/public into Astro public output
+|-- sync-site-public.mjs            # Copies configured public/ into Astro public output
+|-- test-content-check.mjs          # Content validation regression tests
+|-- test-site-public.mjs            # Static public file sync regression tests
 |-- generate-images.mjs             # WebP generation pipeline
 `-- fix-image-metadata.mjs          # Source image metadata helper
 tests/                              # Playwright navigation regression tests

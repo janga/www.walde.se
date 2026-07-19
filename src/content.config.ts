@@ -1,7 +1,16 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
+import { isAbsolute } from 'node:path';
 import { z } from 'astro/zod';
 
+const siteDirectory = (process.env.CLI_GALLERY_SITE_DIR ?? 'site').trim();
+if (!siteDirectory) {
+	throw new Error('CLI_GALLERY_SITE_DIR must not be empty.');
+}
+
+const siteBase = siteDirectory.startsWith('.') || isAbsolute(siteDirectory)
+	? siteDirectory
+	: `./${siteDirectory}`;
 const contentImageName = z.string().regex(/^[a-z0-9][a-z0-9.-]*\.(jpe?g|png)$/i);
 
 const galleryImage = z.object({
@@ -11,7 +20,7 @@ const galleryImage = z.object({
 });
 
 const site = defineCollection({
-	loader: glob({ pattern: 'content.md', base: './site' }),
+	loader: glob({ pattern: 'content.md', base: siteBase }),
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),

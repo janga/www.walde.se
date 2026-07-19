@@ -1,7 +1,9 @@
+import { siteConfigLabel } from './lib/site-paths.mjs';
+
 const formatErrorMessage = (error) => {
 	if (error instanceof SyntaxError) {
 		return [
-			'site/config.mjs contains invalid JavaScript syntax.',
+			`${siteConfigLabel} contains invalid JavaScript syntax.`,
 			error.message,
 		].join('\n');
 	}

@@ -5,10 +5,12 @@ import SiteSection from '../components/SiteSection.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getSectionsContent } from '../lib/sectionContent';
 
+const siteDirectory = (process.env.CLI_GALLERY_SITE_DIR ?? 'site').trim();
+const siteContentLabel = `${siteDirectory || 'site'}/content.md`;
 const [site] = await getCollection('site');
 
 if (!site) {
-	throw new Error('Content file site/content.md is missing.');
+	throw new Error(`Content file ${siteContentLabel} is missing.`);
 }
 
 const sections = site.data.sections;

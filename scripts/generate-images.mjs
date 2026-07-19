@@ -16,6 +16,7 @@ import {
 	generatedImagesManifestPath,
 	originalImagesDir,
 	siteConfigLabel,
+	siteContentLabel,
 	siteContentPath,
 	siteImagesDir,
 	siteImagesLabel,
@@ -182,7 +183,7 @@ const getReferencedSources = async () => {
 
 		if (seen.has(imageName)) {
 			const firstReference = seen.get(imageName);
-			fail(`Image reference "${imageName}" appears more than once in site/content.md, on lines ${firstReference.line} and ${reference.line}.`);
+			fail(`Image reference "${imageName}" appears more than once in ${siteContentLabel}, on lines ${firstReference.line} and ${reference.line}.`);
 		}
 
 		const fileStat = await stat(sourcePath).catch(() => null);

@@ -10,6 +10,7 @@ rules, and deploy workflow.
 - GitHub repository: `janga/www.walde.se`
 - Deploy branch: `main`
 - GitHub Pages workflow: `Deploy to GitHub Pages`
+- Site source directory: default `site/` (`CLI_GALLERY_SITE_DIR` is not set)
 - Custom domain file: `site/public/CNAME`
 
 The public URL, GitHub repository, deploy branch, and workflow name are defined
@@ -22,6 +23,7 @@ order, gallery rows, captions, and alt text live in `site/content.md`.
 
 Current important values in `site/config.mjs`:
 
+- `CLI_GALLERY_SITE_DIR`: unset, so the default `site/` directory is used
 - `site.url`: `https://www.walde.se/`
 - `github.repo`: `janga/www.walde.se`
 - `github.branch`: `main`
