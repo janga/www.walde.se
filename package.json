@@ -27,6 +27,6 @@
     "preview": "cli-gallery preview"
   },
   "dependencies": {
-    "@janga/cli-gallery": "git+https://github.com/janga/cli-gallery.git#v0.1.4"
+    "@janga/cli-gallery": "git+https://github.com/janga/cli-gallery.git#v0.1.5"
   }
 }

@@ -2,22 +2,31 @@
 title: Karin Walde, konstnär
 description: Konstnären Karin Waldes officiella webbplats.
 copyrightOwner: Karin Walde
-sections:
-  - id: karin-walde
+presentation:
+  default:
     heading:
       align:
-        desktop: left
-        mobile: left
-      fontSize:
-        desktop: "clamp(1.65rem, 4.6vw, 5.65rem)"
-        mobile: "clamp(1.9rem, 8vw, 3.2rem)"
+        desktop: center
+        mobile: center
+      size: medium
     body:
       align:
-        desktop: left
+        desktop: center
         mobile: left
-      fontSize:
-        desktop: "clamp(1rem, 0.96rem + 0.18vw, 1.125rem)"
-        mobile: "clamp(1rem, 0.96rem + 0.18vw, 1.125rem)"
+      size: medium
+  sections:
+    karin-walde:
+      heading:
+        align:
+          desktop: left
+          mobile: left
+        size: large
+      body:
+        align:
+          desktop: left
+          mobile: left
+sections:
+  - id: karin-walde
     gallery:
       - image: tva-fossiler.jpg
         alt: "Två grafiska blad med inspiration från gotländska fossil."
