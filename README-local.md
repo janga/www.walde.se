@@ -38,7 +38,7 @@ Current important values in `site/config.mjs`:
 - `footer.buildInfo.text`: `Byggd`
 - `footer.buildInfo.dateTimeFormat.locale`: `sv-SE`
 - `footer.buildInfo.dateTimeFormat.timeZone`: `Europe/Stockholm`
-- `@janga/cli-gallery`: `git+https://github.com/janga/cli-gallery.git#v0.1.1`
+- `@janga/cli-gallery`: `git+https://github.com/janga/cli-gallery.git#v0.1.2`
 
 If the public URL or custom domain changes, update these files together:
 

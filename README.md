@@ -73,7 +73,7 @@ Commit any source images changed by `metadata:fix`.
 This site pins the engine dependency in `package.json`:
 
 ```json
-"@janga/cli-gallery": "git+https://github.com/janga/cli-gallery.git#v0.1.1"
+"@janga/cli-gallery": "git+https://github.com/janga/cli-gallery.git#v0.1.2"
 ```
 
 To update, change the tag, run `npm install`, run the validation/build commands,
