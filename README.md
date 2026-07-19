@@ -102,7 +102,7 @@ Important values are configured in `site/config.mjs`:
 | Pages workflow | `Deploy to GitHub Pages` |
 | Site directory | default `site/` |
 | Custom domain file | `site/public/CNAME` |
-| Engine package | `git+https://github.com/janga/cli-gallery.git#v0.1.3` |
+| Engine package | `git+https://github.com/janga/cli-gallery.git#v0.1.4` |
 | Missing image metadata policy | warn, do not fail |
 
 If the public URL or custom domain changes, update these files together:
@@ -132,6 +132,11 @@ Each section must keep these values aligned:
 - the frontmatter section `id`
 - the Markdown heading id, for example `## Min konst {#min-konst}`
 - the source image directory under `site/images/<section-id>/`
+
+The first section, `karin-walde`, also defines section presentation in
+frontmatter. Treat `site/content.md` as the source of truth for heading and body
+alignment, and for the desktop and mobile `clamp(...)` font sizes used by that
+section.
 
 Current source image directories:
 
@@ -227,7 +232,7 @@ engine versions and can be removed.
 This site pins the engine dependency in `package.json`:
 
 ```json
-"@janga/cli-gallery": "git+https://github.com/janga/cli-gallery.git#v0.1.3"
+"@janga/cli-gallery": "git+https://github.com/janga/cli-gallery.git#v0.1.4"
 ```
 
 To update the engine:

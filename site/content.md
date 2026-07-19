@@ -4,6 +4,20 @@ description: Konstnären Karin Waldes officiella webbplats.
 copyrightOwner: Karin Walde
 sections:
   - id: karin-walde
+    heading:
+      align:
+        desktop: left
+        mobile: left
+      fontSize:
+        desktop: "clamp(1.65rem, 4.6vw, 5.65rem)"
+        mobile: "clamp(1.9rem, 8vw, 3.2rem)"
+    body:
+      align:
+        desktop: left
+        mobile: left
+      fontSize:
+        desktop: "clamp(1rem, 0.96rem + 0.18vw, 1.125rem)"
+        mobile: "clamp(1rem, 0.96rem + 0.18vw, 1.125rem)"
     gallery:
       - image: tva-fossiler.jpg
         alt: "Två grafiska blad med inspiration från gotländska fossil."
