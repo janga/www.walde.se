@@ -1,12 +1,10 @@
 ## Agent Instructions
 
 `README.md` is the canonical project manual. Read it before changing this
-project. Read `README-local.md` too when touching site-specific content,
-deployment settings, domain files, or current-site documentation.
+project.
 
 Keep this file limited to agent operating rules. If a fact is useful to a human
-maintainer, put it in `README.md` or `README-local.md` instead of duplicating it
-here.
+maintainer, put it in `README.md` instead of duplicating it here.
 
 ## Working Rules
 

@@ -1,28 +1,28 @@
 # www.walde.se
 
 This repository contains the site-specific source for
-[`https://www.walde.se/`](https://www.walde.se/). The reusable gallery engine
-lives in [`janga/cli-gallery`](https://github.com/janga/cli-gallery) and is
-used here through the `@janga/cli-gallery` package.
+[`https://www.walde.se/`](https://www.walde.se/), Karin Walde's official
+single-page artist site.
 
-## Structure
+The reusable gallery engine lives in
+[`janga/cli-gallery`](https://github.com/janga/cli-gallery). This repository
+does not own engine code; it owns content, images, domain files, site
+configuration, and deployment state for `www.walde.se`.
 
-The site-owned files are:
+## Mental Model
 
-- `site/config.mjs`: public URL, GitHub repository, deploy branch, Pages
-  workflow name, footer settings, navigation timing, and image metadata policy.
-- `site/content.md`: page sections, section order, gallery image references,
-  alt text, captions, and editable body text.
-- `site/images/<section-id>/`: original source images.
-- `site/public/`: versioned static files such as `CNAME`, `robots.txt`,
-  `sitemap.xml`, and favicons.
-- `site/.cli-gallery/generated-images.json`: site-specific generated image
-  manifest used to reuse generated WebP variants between builds.
+The split between the two repositories is:
 
-Root `public/`, `dist/`, and `.astro/` are build output or build-preparation
-state and are ignored by Git.
+- `cli-gallery`: reusable CLI, Astro renderer, validation scripts, image
+  pipeline, local dev wrapper, and deploy helpers.
+- `www.walde.se`: site content, original images, static public files, GitHub
+  Pages workflow, and the pinned engine dependency.
 
-## Commands
+The npm scripts in this repository are thin aliases around `cli-gallery`. Use
+`npm run doctor` when you want to confirm which engine package, site directory,
+output directories, and generated manifest a command will use.
+
+## Quick Start
 
 Install dependencies:
 
@@ -30,7 +30,7 @@ Install dependencies:
 npm install
 ```
 
-Run locally:
+Start local development:
 
 ```sh
 npm run dev:local
@@ -44,31 +44,181 @@ npm run content:check
 npm run build
 ```
 
-Inspect which site directory and engine package a command will use:
+The local dev server runs at:
 
-```sh
-npm run doctor
+```text
+http://localhost:4321/
 ```
 
-The npm scripts are thin aliases around `cli-gallery`. The selected site
-directory defaults to `site/`; set `CLI_GALLERY_SITE_DIR` or pass
-`cli-gallery --site-dir <path> ...` before the command to use another site
-directory.
+Manage it with:
 
-## Image Metadata
+```sh
+npm run dev:status
+npm run dev:logs
+npm run dev:restart
+npm run dev:stop
+```
+
+## Repository Structure
+
+Site-owned source files:
+
+- `site/config.mjs`: technical site configuration.
+- `site/content.md`: editable page content, section order, gallery rows, alt
+  text, and captions.
+- `site/images/<section-id>/`: original source images for each section.
+- `site/public/`: versioned static files copied into the published site.
+- `site/.cli-gallery/generated-images.json`: generated image manifest used to
+  reuse WebP variants between builds.
+
+Repository control files:
+
+- `package.json`: site commands and pinned `@janga/cli-gallery` dependency.
+- `package-lock.json`: exact dependency lock for local builds and GitHub
+  Actions.
+- `.github/workflows/deploy.yml`: site-owned GitHub Pages deployment workflow.
+- `AGENTS.md`: operating rules for coding agents working in this repository.
+
+Generated or local-only files:
+
+- `public/`: build-preparation output copied from `site/public/`, plus
+  generated images.
+- `dist/`: final static build output.
+- `.astro/`: Astro cache and dev-server state.
+- `node_modules/`: installed dependencies.
+
+These generated directories are ignored by Git.
+
+## Current Site Settings
+
+Important values are configured in `site/config.mjs`:
+
+| Setting | Value |
+| --- | --- |
+| Public URL | `https://www.walde.se/` |
+| GitHub repository | `janga/www.walde.se` |
+| Deploy branch | `main` |
+| Pages workflow | `Deploy to GitHub Pages` |
+| Site directory | default `site/` |
+| Custom domain file | `site/public/CNAME` |
+| Engine package | `git+https://github.com/janga/cli-gallery.git#v0.1.2` |
+| Missing image metadata policy | warn, do not fail |
+
+If the public URL or custom domain changes, update these files together:
+
+- `site/config.mjs`
+- `site/public/CNAME`
+- `site/public/robots.txt`
+- `site/public/sitemap.xml`
+
+## Content
+
+The site is one static page. Editable content, section order, gallery rows,
+captions, and alt text live in `site/content.md`.
+
+Current frontmatter sections:
+
+```text
+karin-walde
+runrondellerna
+min-konst
+om-mig
+mitt-hem
+```
+
+Each section must keep these values aligned:
+
+- the frontmatter section `id`
+- the Markdown heading id, for example `## Min konst {#min-konst}`
+- the source image directory under `site/images/<section-id>/`
+
+Current source image directories:
+
+```text
+site/images/karin-walde/
+site/images/runrondellerna/
+site/images/min-konst/
+site/images/om-mig/
+site/images/mitt-hem/
+```
+
+`site/images/om-mig/` may be absent while the section has no gallery images.
+
+Run this after editing content or gallery references:
+
+```sh
+npm run content:check
+```
+
+Run this after moving gallery rows between sections:
+
+```sh
+npm run content:sync
+```
+
+`content:sync` can move source image files into the section directory that
+matches their gallery row.
+
+## Images And Metadata
+
+Original images live under `site/images/<section-id>/`. Only images referenced
+from `site/content.md` are rendered.
+
+Generated WebP variants are written under `public/images/generated/` during
+build. That output is not versioned. The manifest at
+`site/.cli-gallery/generated-images.json` is versioned site state and lets local
+builds and GitHub Actions reuse generated variants when source images have not
+changed.
+
+For this site, `npm run metadata:fix` writes missing source-image metadata based
+on:
+
+```text
+copyrightOwner: Karin Walde
+```
+
+The intended metadata values are:
+
+```text
+Artist / Creator / By-line: Karin Walde
+Copyright / Rights / CopyrightNotice: Copyright Karin Walde. All rights reserved.
+Credit / Owner: Karin Walde
+Marked: True
+```
 
 Builds and deploys warn when referenced source images lack copyright or creator
-metadata, but they do not fail and do not write metadata automatically.
+metadata. They do not fail because metadata is missing and do not write metadata
+automatically.
 
-Run this only when source images should be tagged intentionally:
+Run metadata fixing only when source images should intentionally receive
+copyright metadata:
 
 ```sh
 npm run metadata:fix
+npm run build
 ```
 
 Commit any source images changed by `metadata:fix`.
 
-## Updating The Engine
+## Static Public Files
+
+These files are specific to `www.walde.se` and should be versioned:
+
+```text
+site/public/CNAME
+site/public/robots.txt
+site/public/sitemap.xml
+site/public/favicon.ico
+site/public/favicon.svg
+```
+
+`npm run site:public` copies files from `site/public/` into root `public/`.
+Astro then copies root `public/` into `dist/` during build.
+
+Root `public/` is build-preparation output. Keep source files in
+`site/public/`.
+
+## Engine Version
 
 This site pins the engine dependency in `package.json`:
 
@@ -76,13 +226,22 @@ This site pins the engine dependency in `package.json`:
 "@janga/cli-gallery": "git+https://github.com/janga/cli-gallery.git#v0.1.2"
 ```
 
-To update, change the tag, run `npm install`, run the validation/build commands,
-and commit the resulting `package.json` and `package-lock.json` changes.
+To update the engine:
+
+1. Change the tag in `package.json`.
+2. Run `npm install`.
+3. Run `npm run config:check`.
+4. Run `npm run content:check`.
+5. Run `npm run build`.
+6. Commit `package.json` and `package-lock.json`.
+
+Use HTTPS in the dependency string so GitHub Actions can install the package
+without SSH credentials.
 
 ## Deploying
 
 The GitHub Pages workflow belongs to this repository because the deploy target,
-domain files, and repository settings are site-specific.
+custom domain, static public files, and repository settings are site-specific.
 
 Normal publishing flow:
 
@@ -98,4 +257,36 @@ npm run deploy
 npm run deploy:watch
 ```
 
-See [`README-local.md`](./README-local.md) for current Karin Walde site notes.
+After pushing directly to `main`, monitor the Pages workflow with:
+
+```sh
+npm run deploy:watch
+```
+
+Manual GitHub CLI checks:
+
+```sh
+gh run list --repo janga/www.walde.se --branch main --limit 3
+gh run view RUN_ID --repo janga/www.walde.se --log-failed
+```
+
+## Troubleshooting
+
+Inspect resolved paths and package version:
+
+```sh
+npm run doctor
+```
+
+If local preview shows stale content or images:
+
+```sh
+npm run build:local
+```
+
+If content validation reports unreferenced images, either reference them from
+`site/content.md` or leave them intentionally unmounted. Do not commit new
+unreferenced source images unless that is deliberate.
+
+For engine behavior, implementation details, or reusable workflow
+documentation, see the `cli-gallery` repository.
