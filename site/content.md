@@ -2,6 +2,8 @@
 title: Karin Walde, konstnär
 description: Konstnären Karin Waldes officiella webbplats.
 defaultPresentation:
+  backgroundColor: "#999999"
+  textColor: "#000000"
   heading:
     align:
       desktop: left
