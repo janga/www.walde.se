@@ -1,13 +1,8 @@
 # www.walde.se
 
-This repository contains the site-specific source for
-[`https://www.walde.se/`](https://www.walde.se/), Karin Walde's official
-single-page artist site.
+This repository contains the site-specific source for [`https://www.walde.se/`](https://www.walde.se/), Karin Walde's official single-page artist site.
 
-The reusable gallery engine lives in
-[`janga/cli-gallery`](https://github.com/janga/cli-gallery). This repository
-does not own engine code; it owns content, images, domain files, site
-configuration, and deployment state for `www.walde.se`.
+The reusable gallery engine lives in [`janga/cli-gallery`](https://github.com/janga/cli-gallery). This repository does not own engine code; it owns content, images, domain files, site configuration, and deployment state for `www.walde.se`.
 
 ## Mental Model
 
@@ -102,8 +97,7 @@ Important values are configured in `site/config.mjs`:
 | Pages workflow | `Deploy to GitHub Pages` |
 | Site directory | default `site/` |
 | Custom domain file | `site/public/CNAME` |
-| Engine package | `git+https://github.com/janga/cli-gallery.git#v0.1.7` |
-| Missing image metadata policy | warn, do not fail |
+| Engine package | `git+https://github.com/janga/cli-gallery.git#v0.1.8` |
 
 If the public URL or custom domain changes, update these files together:
 
@@ -147,7 +141,7 @@ npm run content:sync
 `content:sync` can move source image files into the section directory that
 matches their gallery row.
 
-## Images And Metadata
+## Images
 
 Original images live under `site/images/<section-id>/`. Only images referenced
 from `site/content.md` are rendered.
@@ -158,37 +152,6 @@ versioned. The manifest at
 `site/.cli-gallery/generated-images.json` is versioned site state and lets local
 builds and GitHub Actions reuse generated variants when source images have not
 changed.
-
-For this site, `npm run metadata:fix` writes missing source-image metadata based
-on:
-
-```text
-copyrightOwner: Karin Walde
-```
-
-The intended metadata values are:
-
-```text
-Artist / Creator / By-line: Karin Walde
-Copyright / Rights / CopyrightNotice: Copyright Karin Walde. All rights reserved.
-Credit / Owner: Karin Walde
-Marked: True
-```
-
-Builds and deploys warn when referenced source images lack copyright or creator
-metadata. They do not fail because metadata is missing and do not write metadata
-automatically.
-
-Run metadata fixing only when source images should intentionally receive
-copyright metadata:
-
-```sh
-npm run metadata:fix
-npm run build
-```
-
-Commit any source images changed by `metadata:fix`.
-
 ## Static Public Files
 
 These files are specific to `www.walde.se` and should be versioned:
@@ -214,7 +177,7 @@ engine versions and can be removed.
 This site pins the engine dependency in `package.json`:
 
 ```json
-"@janga/cli-gallery": "git+https://github.com/janga/cli-gallery.git#v0.1.7"
+"@janga/cli-gallery": "git+https://github.com/janga/cli-gallery.git#v0.1.8"
 ```
 
 To update the engine:

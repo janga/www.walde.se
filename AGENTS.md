@@ -18,7 +18,7 @@ maintainer, put it in `README.md` instead of duplicating it here.
   Pages workflow for the current local commit.
 - Keep technical project settings in `site/config.mjs`; do not hardcode the
   public URL, GitHub repo, deploy branch, Pages workflow name, footer text,
-  smooth-scroll timing, or image metadata policy in scripts or components.
+  or smooth-scroll timing in scripts or components.
 - The site source directory defaults to `site/` and can be overridden with
   `CLI_GALLERY_SITE_DIR` or `cli-gallery --site-dir <path>`. Do not
   reintroduce local copies of engine path-resolution scripts.
@@ -42,9 +42,6 @@ maintainer, put it in `README.md` instead of duplicating it here.
   gallery images.
 - Run `npm run content:sync` after moving gallery rows between sections so image
   files move to the matching section directory.
-- Run `npm run metadata:fix` only when new source images need copyright
-  metadata, or when build warnings identify missing metadata that should be
-  written intentionally.
 - Run `npm run site:public` after changing `site/public/` when you need the
   local generated public copy without a full build.
 - Run `npm run build` after content, layout, config, or image-pipeline changes.

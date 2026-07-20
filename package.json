@@ -15,7 +15,6 @@
     "config:check": "cli-gallery config:check",
     "content:check": "cli-gallery content:check",
     "content:sync": "cli-gallery content:sync",
-    "metadata:fix": "cli-gallery metadata:fix",
     "site:public": "cli-gallery site:public",
     "images": "cli-gallery images",
     "build": "cli-gallery build",
@@ -27,6 +26,6 @@
     "preview": "cli-gallery preview"
   },
   "dependencies": {
-    "@janga/cli-gallery": "git+https://github.com/janga/cli-gallery.git#v0.1.7"
+    "@janga/cli-gallery": "git+https://github.com/janga/cli-gallery.git#v0.1.8"
   }
 }

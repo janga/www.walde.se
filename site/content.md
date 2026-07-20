@@ -1,7 +1,6 @@
 ---
 title: Karin Walde, konstnär
 description: Konstnären Karin Waldes officiella webbplats.
-copyrightOwner: Karin Walde
 defaultPresentation:
   heading:
     align:
