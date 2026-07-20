@@ -1,7 +1,7 @@
 ## Agent Instructions
 
-`README.md` is the canonical project manual. Read it before changing this
-project.
+`README.md` is the project entry point and `docs/` contains site-specific
+human-facing documentation. Read them before changing this project.
 
 Keep this file limited to agent operating rules. If a fact is useful to a human
 maintainer, put it in `README.md` instead of duplicating it here.
