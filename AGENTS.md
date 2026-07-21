@@ -14,6 +14,17 @@ maintainer, put it in `README.md` instead of duplicating it here.
 - Before committing, run `git status --short` and make sure untracked files are
   intentional.
 - Commit before pushing.
+- For visual presentation, layout, color, spacing, sticky navigation, footer,
+  and content-presentation changes, prefer human local inspection before
+  automated tests. Start or reuse a local dev server and give the user the URL
+  when visual inspection is needed. After the user approves the visual result,
+  run the relevant site checks before committing, unless the user explicitly
+  says to skip tests.
+- Exceptions to human-first testing: run a quick relevant automated check early
+  when config validation, content validation, build mechanics, dependency
+  installation, or deploy behavior may be broken by the change. If the user
+  explicitly says to skip tests, do not run them and report that they were
+  skipped.
 - After pushing to `main`, run `npm run deploy:watch` to monitor the GitHub
   Pages workflow for the current local commit.
 - Keep technical project settings in `site/config.mjs`; do not hardcode the

@@ -23,9 +23,11 @@
     "deploy:commit": "cli-gallery deploy:commit",
     "deploy:watch": "cli-gallery deploy:watch",
     "doctor": "cli-gallery doctor",
-    "preview": "cli-gallery preview"
+    "preview": "cli-gallery preview",
+    "engine:update": "cli-gallery engine:update",
+    "engine:version": "cli-gallery engine:version"
   },
   "dependencies": {
-    "@janga/cli-gallery": "git+https://github.com/janga/cli-gallery.git#v0.1.12"
+    "@janga/cli-gallery": "0.1.16"
   }
 }

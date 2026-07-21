@@ -6,28 +6,34 @@ This document collects routine maintenance tasks specific to `www.walde.se`.
 
 ```sh
 npm run doctor
+npm run engine:version
 ```
 
-This prints the resolved site directory, generated output paths, and installed
-engine root.
+`doctor` prints the resolved site directory, generated output paths, and
+installed engine root. `engine:version` prints the declared and installed engine
+versions plus the installed Astro version.
 
 ## Update cli-gallery
 
 The engine dependency is pinned in `package.json` and locked in
 `package-lock.json`.
 
-To update it:
-
-1. Change the `@janga/cli-gallery` tag in `package.json`.
-2. Run `npm install`.
-3. Keep the dependency URL in HTTPS form so GitHub Actions can install it
-   without SSH credentials.
-4. Run:
+To update to npm `latest` and run checks/build:
 
 ```sh
-npm run config:check
-npm run content:check
-npm run build
+npm run engine:update
+```
+
+To update to a specific published version:
+
+```sh
+npm run engine:update -- 0.1.16
+```
+
+To inspect npm `latest` before updating:
+
+```sh
+npm run engine:version -- --latest
 ```
 
 Commit `package.json` and `package-lock.json` together. Commit generated image

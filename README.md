@@ -14,8 +14,8 @@ workflow.
 
 - `cli-gallery` provides the generic CLI, renderer, validation, image
   generation, local preview, build, and deploy helpers.
-- `www.walde.se` provides one concrete site that depends on a pinned
-  `@janga/cli-gallery` tag.
+- `www.walde.se` provides one concrete site that depends on an exact npm
+  version of `@janga/cli-gallery`.
 - Editable site content lives in `site/content.md`.
 - Technical site settings live in `site/config.mjs`.
 - Original images live in `site/images/<section-id>/`.
