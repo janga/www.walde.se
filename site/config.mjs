@@ -13,7 +13,7 @@ site: {
     navigation: {
 	smoothScroll: {
 	    // Set to false to make section links jump directly to the target anchor.
-	    enabled: true,
+	    enabled: false,
 
 	    // Minimum and maximum animation time for controlled anchor navigation.
 	    minimumDurationMs: 2_000,
