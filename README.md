@@ -54,7 +54,8 @@ npm run build
 - Run the site locally: [Local Development](docs/local-development.md)
 - Publish the site: [Publishing](docs/publishing.md)
 - Maintain domain and search files: [Domain And Search](docs/domain-and-search.md)
-- Update the engine dependency and handle routine upkeep: [Maintenance](docs/maintenance.md)
+- Update the engine dependency: `npm run engine:update`. See [Maintenance](docs/maintenance.md)
+  for version selection, checks, and commit guidance.
 - Review licensing and usage restrictions: [Copyright](COPYRIGHT.md)
 
 ## Generic Engine Reference
