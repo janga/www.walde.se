@@ -1,55 +1,60 @@
 const siteUrl = 'https://www.walde.se/';
 
 export default {
-	site: {
-		// Public canonical URL for this site.
-		url: siteUrl,
-	},
-	navigation: {
-		smoothScroll: {
-			// Set to false to make section links jump directly to the target anchor.
-			enabled: true,
+site: {
+// Public canonical URL for this site.
+    url: siteUrl,
+},			
 
-			// Minimum and maximum animation time for controlled anchor navigation.
-			minimumDurationMs: 2_000,
-			maximumDurationMs: 4_000,
+    typography: {
+	fontFamily: "Arial, 'Helvetica Neue', Helvetica, sans-serif",
+        //fontFamily: "'Comic Sans MS', 'Comic Sans', cursive",
+    },
+    navigation: {
+	smoothScroll: {
+	    // Set to false to make section links jump directly to the target anchor.
+	    enabled: true,
 
-			// Additional duration per pixel of scroll distance, before min/max clamping.
-			durationPerPixelMs: 0.22,
-		},
-	},
-	footer: {
-		// Omit this value to hide the copyright sentence.
-		copyrightMessage: '© Karin Walde. Bilder, konstverk och texter får inte användas utan tillstånd.',
+	    // Minimum and maximum animation time for controlled anchor navigation.
+	    minimumDurationMs: 2_000,
+	    maximumDurationMs: 4_000,
 
-		// Set enabled to false to hide the build timestamp while keeping its config.
-		buildInfo: {
-			enabled: true,
+	    // Additional duration per pixel of scroll distance, before min/max clamping.
+	    durationPerPixelMs: 0.22,
+	},
+    },
+    footer: {
+	// Omit this value to hide the copyright sentence.
+	copyrightMessage: '© Karin Walde. Bilder, konstverk och texter får inte användas utan tillstånd.',
 
-			// Text shown before the formatted build timestamp.
-			text: 'Byggd',
+	// Set enabled to false to hide the build timestamp while keeping its config.
+	buildInfo: {
+	    enabled: true,
 
-			// Standard Intl.DateTimeFormat options for the build timestamp.
-			dateTimeFormat: {
-				locale: 'sv-SE',
-				timeZone: 'Europe/Stockholm',
-				dateStyle: 'short',
-				timeStyle: 'short',
-			},
-		},
+	    // Text shown before the formatted build timestamp.
+	    text: 'Byggd',
+
+	    // Standard Intl.DateTimeFormat options for the build timestamp.
+	    dateTimeFormat: {
+		locale: 'sv-SE',
+		timeZone: 'Europe/Stockholm',
+		dateStyle: 'short',
+		timeStyle: 'short',
+	    },
 	},
-	github: {
-		// Repository and workflow details used by deploy scripts.
-		repo: 'janga/www.walde.se',
-		branch: 'main',
-		pagesWorkflow: 'Deploy to GitHub Pages',
+    },
+    github: {
+	// Repository and workflow details used by deploy scripts.
+	repo: 'janga/www.walde.se',
+	branch: 'main',
+	pagesWorkflow: 'Deploy to GitHub Pages',
+    },
+    deploy: {
+	watch: {
+	    // Defaults for npm run deploy:watch.
+	    intervalMs: 10_000,
+	    timeoutMs: 15 * 60_000,
+	    runLimit: 10,
 	},
-	deploy: {
-		watch: {
-			// Defaults for npm run deploy:watch.
-			intervalMs: 10_000,
-			timeoutMs: 15 * 60_000,
-			runLimit: 10,
-		},
-	},
+    },
 };
