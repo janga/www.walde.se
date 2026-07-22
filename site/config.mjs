@@ -1,10 +1,10 @@
 const siteUrl = 'https://www.walde.se/';
 
 export default {
-site: {
-// Public canonical URL for this site.
-    url: siteUrl,
-},			
+    site: {
+	// Public canonical URL for this site.
+	url: siteUrl,
+    },			
 
     typography: {
 	fontFamily: "Arial, 'Helvetica Neue', Helvetica, sans-serif",
@@ -13,7 +13,7 @@ site: {
     navigation: {
 	smoothScroll: {
 	    // Set to false to make section links jump directly to the target anchor.
-	    enabled: false,
+	    enabled: true,
 
 	    // Minimum and maximum animation time for controlled anchor navigation.
 	    minimumDurationMs: 2_000,
@@ -43,6 +43,10 @@ site: {
 	    },
 	},
     },
+    gallery: {
+	width: '880px',
+    },
+
     github: {
 	// Repository and workflow details used by deploy scripts.
 	repo: 'janga/www.walde.se',
