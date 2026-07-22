@@ -28,6 +28,6 @@
     "engine:version": "cli-gallery engine:version"
   },
   "dependencies": {
-    "@janga/cli-gallery": "0.1.20"
+    "@janga/cli-gallery": "0.1.21"
   }
 }
