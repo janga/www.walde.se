@@ -29,7 +29,7 @@ for Karin Walde-specific maintenance and publishing context.
 
 ```sh
 npm install
-npm run dev:local
+npm run gallery:dev
 ```
 
 The local preview runs at:
@@ -38,11 +38,11 @@ The local preview runs at:
 http://localhost:4321/
 ```
 
-Validate and build before committing site changes:
+Use `gallery:*` scripts for gallery-specific work. `npm run build` is kept as this pure site repository's publish build alias. Validate and build before committing site changes:
 
 ```sh
-npm run config:check
-npm run content:check
+npm run gallery:config:check
+npm run gallery:content:check
 npm run build
 ```
 

@@ -52,7 +52,7 @@ Generated directories are ignored by Git:
 If local output looks stale, run:
 
 ```sh
-npm run build:local
+npm run gallery:build:local
 ```
 
 ## Agent Files

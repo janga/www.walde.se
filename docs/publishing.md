@@ -22,8 +22,8 @@ It also restores the generated image cache from
 Run:
 
 ```sh
-npm run config:check
-npm run content:check
+npm run gallery:config:check
+npm run gallery:content:check
 npm run build
 git status --short
 git diff
@@ -38,16 +38,16 @@ The normal flow is:
 ```sh
 git add ...
 git commit -m "Describe the change"
-npm run deploy
+npm run gallery:deploy
 ```
 
-`npm run deploy` expects the intended deploy branch to be committed and clean.
+`npm run gallery:deploy` expects the intended deploy branch to be committed and clean.
 It does not create commits from uncommitted work.
 
 After pushing directly to `main`, monitor the Pages workflow with:
 
 ```sh
-npm run deploy:watch
+npm run gallery:deploy:watch
 ```
 
 ## Failed Deploys

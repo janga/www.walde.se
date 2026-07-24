@@ -24,7 +24,7 @@ globally unique under `site/images/`.
 2. Add or update the gallery row in `site/content.md`.
 3. Add meaningful `alt` text unless the content decision is intentionally empty.
 4. Add or update the caption when the site should display one.
-5. Run `npm run content:check`.
+5. Run `npm run gallery:content:check`.
 6. Run `npm run build` before committing.
 
 ## Unreferenced Images

@@ -7,7 +7,7 @@ pinned `cli-gallery` package.
 
 ```sh
 npm install
-npm run dev:local
+npm run gallery:dev
 ```
 
 Open:
@@ -22,17 +22,17 @@ The generic dev-server behavior is documented in
 ## Manage The Local Server
 
 ```sh
-npm run dev:status
-npm run dev:logs
-npm run dev:logs -- --follow
-npm run dev:restart
-npm run dev:stop
+npm run gallery:dev:status
+npm run gallery:dev:logs
+npm run gallery:dev:logs -- --follow
+npm run gallery:dev:restart
+npm run gallery:dev:stop
 ```
 
 Use this when content or image output appears stale:
 
 ```sh
-npm run build:local
+npm run gallery:build:local
 ```
 
 ## Validate Locally
@@ -40,8 +40,8 @@ npm run build:local
 Before committing site changes, run:
 
 ```sh
-npm run config:check
-npm run content:check
+npm run gallery:config:check
+npm run gallery:content:check
 npm run build
 ```
 

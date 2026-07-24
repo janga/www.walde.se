@@ -40,14 +40,14 @@ and fallback behavior are documented in
 After content edits:
 
 ```sh
-npm run content:check
+npm run gallery:content:check
 ```
 
 After changing section order or moving gallery rows between sections:
 
 ```sh
-npm run content:sync
-npm run content:check
+npm run gallery:sync
+npm run gallery:content:check
 ```
 
 `content:sync` may rewrite Markdown section order and move referenced image

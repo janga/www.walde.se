@@ -6,29 +6,32 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "npm run dev:local",
-    "dev:local": "cli-gallery dev:local",
-    "dev:restart": "cli-gallery dev:restart",
-    "dev:status": "cli-gallery dev:status",
-    "dev:logs": "cli-gallery dev:logs",
-    "dev:stop": "cli-gallery dev:stop",
-    "config:check": "cli-gallery config:check",
-    "content:check": "cli-gallery content:check",
-    "content:sync": "cli-gallery content:sync",
-    "site:public": "cli-gallery site:public",
-    "images": "cli-gallery images",
-    "build": "cli-gallery build",
-    "build:local": "cli-gallery build:local",
-    "deploy": "cli-gallery deploy",
-    "deploy:commit": "cli-gallery deploy:commit",
-    "deploy:watch": "cli-gallery deploy:watch",
-    "doctor": "cli-gallery doctor",
-    "preview": "cli-gallery preview",
+    "dev": "npm run gallery:dev",
+    "gallery:dev": "cli-gallery dev:local",
+    "gallery:dev:lan": "cli-gallery dev:lan",
+    "gallery:dev:restart": "cli-gallery dev:restart",
+    "gallery:dev:status": "cli-gallery dev:status",
+    "gallery:dev:logs": "cli-gallery dev:logs",
+    "gallery:dev:stop": "cli-gallery dev:stop",
+    "gallery:check": "npm run gallery:config:check && npm run gallery:content:check",
+    "gallery:config:check": "cli-gallery config:check",
+    "gallery:content:check": "cli-gallery content:check",
+    "gallery:sync": "cli-gallery content:sync",
+    "gallery:public": "cli-gallery site:public",
+    "gallery:images": "cli-gallery images",
+    "gallery:build": "cli-gallery build",
+    "gallery:build:local": "cli-gallery build:local",
+    "gallery:deploy": "cli-gallery deploy",
+    "gallery:deploy:commit": "cli-gallery deploy:commit",
+    "gallery:deploy:watch": "cli-gallery deploy:watch",
+    "gallery:doctor": "cli-gallery doctor",
+    "gallery:preview": "cli-gallery preview",
     "engine:update": "cli-gallery engine:update",
-    "engine:version": "cli-gallery engine:version"
+    "engine:version": "cli-gallery engine:version",
+    "build": "npm run gallery:build"
   },
   "dependencies": {
-    "@janga/cli-gallery": "0.1.22"
+    "@janga/cli-gallery": "0.2.0"
   },
   "allowScripts": {
     "esbuild@0.28.1": true

@@ -31,13 +31,13 @@ sections:
         caption: "Offentlig utsmyckning: En av de två rondellerna med runmotiv vid E18 i Roslags Näsby, Täby."
       - image: grafiska-blad.jpeg
         alt: ""
-        caption: "Grafiska blad."
+        caption: "Grafiska blad i utställningen som jag har hemma."
       - image: verk10.png
         alt: "Utställningsrum med textila verk: mörk lodrät väv, vit spetsform på brun fond, ovalt väggobjekt och smal svart skulptur."
         caption: "Bildväv och objekt. Separatutställning på Karby gård, Täby."
       - image: verk13.png
         alt: "Kompakt vävateljé med färgstarka garnspolar, arbetsbord, symaskin och fönsterljus över taken."
-        caption: "Ateljén i mitt hem i Näsbypark. Här gör jag grafik och bildvävar."
+        caption: "Ett av mina arbetsrum."
   
   - id: runrondellerna
     gallery:
@@ -49,7 +49,7 @@ sections:
         caption: "Våra vikingatida grannar! Belysta namn vid Roslags Näsby trafikplats, Täby."
       - image: verk12.png
         alt: "Karin Walde håller en vit modellring med röda runtecken framför hyllor med burkar och böcker."
-        caption: "Förlaga i miniformat till det 55 meter långa konstverket i rondellen."
+        caption: "Förlaga i miniformat till den 55 meter långa corténstålsringen."
   
   - id: min-konst
     gallery:
@@ -68,31 +68,22 @@ sections:
       - image: img-6207.jpeg
         alt: ""
         caption: "Grafik i litet format."
-      - image: verk08.png
-        alt: "Rosa fossilskiva med mörkt radiellt centrum, omgiven av glödande orange och blå kornighet."
-        caption: "Grafiskt blad av fossil."
       - image: verk15.png
         alt: "Roddbåt sedd framifrån inifrån båten, lågt mot horisont, vatten och nästan tom himmel."
         caption: "Litografi."
-      - image: verk07.png
-        alt: "Blå spiralformad fossil med mörk kärna, inbäddad i ljusa fibrer och skimrande yta."
-        caption: "Grafiskt blad av fossil."
   - id: mitt-hem
     gallery:
       - image: mitt-hem.jpeg
         alt: ""
         caption: "Ett konstnärshem är inget vanligt hem."
-      - image: img-6214.jpeg
-        alt: "Färgkartor med blå, gröna, röda och gula remsor, med en färgfläckig arbetsrock hängd framför."
-        caption: ""
       - image: koppartrad.jpeg
-        alt: ""
-        caption: ""
-      - image: trad.jpeg
         alt: ""
         caption: ""
       - image: verk14.png
         alt: "Färgfläckiga plasthandskar i vitt, grönt, blått och svart upphängda på lina i ateljén."
+        caption: ""
+      - image: trad.jpeg
+        alt: ""
         caption: ""
       - image: karin-utomhus.jpg
         alt: "Närporträtt av Karin Walde i röd blus, leende i mjukt sommarljus med grön bakgrund."
@@ -114,11 +105,11 @@ Grafik, fiber art, offentlig utsmyckning, objekt och akvarell.
 
 2023 invigdes de två stora rondellerna i Roslags Näsby, Täby, som jag har formgivit och som har fått mycket uppmärksamhet.
 
-När jag var barn cyklade jag varje dag förbi runhällen vid Roslags Näsby. Den gjorde starkt intryck på mig redan då. Många år senare fick jag möjlighet att återvända till samma plats – nu med två rondeller som låter Täbys vikingatid möta dagens trafik.
+När jag var barn cyklade jag varje dag förbi runhällen vid Roslags Näsby. Den gjorde starkt intryck på mig. Många år senare fick jag möjlighet att återvända till samma plats – nu med två rondeller som låter Täbys vikingatid möta dagens trafik.
 
-I den ena rondellen löper en 55 meter lång ring av corténstål med namn på människor som faktiskt levde här för tusen år sedan. "Jarlabanke är det första namnet man ser när man kommer från motorvägen. Han säger hej när man kommer till Täby, och Estrid säger hej då när man lämnar."
+I den ena rondellen löper en 55 meter lång ring av corténstål med namn på människor som levde här för tusen år sedan. "Jarlabanke är det första namnet man ser när man kommer från motorvägen. Han säger hej när man kommer till Täby, och Estrid säger hej då när man lämnar."
 
-En detalj jag tycker om är att flera av namnen är kvinnonamn. Det påminner om att det inte bara var män som reste ut i världen. De gav sig av utan karta, kompass eller gps – medan vi andra sitter i bilar och klagar på trafiken. 
+Namnen är utvalda bland de vanligaste från Täbys runstenar. En detalj jag tycker om är att flera av namnen är kvinnonamn. Det påminner om att det inte bara var män som reste ut i världen.
 
 I den andra rondellen står fyra runstenar. De är nygjorda kopior av runstenar som man vet har funnits i Täby, men sedan försvunnit.
 ## Min konst {#min-konst}

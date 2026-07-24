@@ -263,54 +263,6 @@
       }
     ]
   },
-  "verk07.png": {
-    "outputVersion": 2,
-    "sourceHash": "3c720b9d5d2ad9c3eeb7e6b846b89a7ef7b75d6a2699c1ca27718243457bd2b0",
-    "width": 1108,
-    "height": 1104,
-    "variants": [
-      {
-        "src": "/images/generated/min-konst/verk07-3c720b9d-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/images/generated/min-konst/verk07-3c720b9d-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/generated/min-konst/verk07-3c720b9d-1080.webp",
-        "width": 1080
-      },
-      {
-        "src": "/images/generated/min-konst/verk07-3c720b9d-1108.webp",
-        "width": 1108
-      }
-    ]
-  },
-  "verk08.png": {
-    "outputVersion": 2,
-    "sourceHash": "f9e25b23081cb1dd7cad56f080ea019a32a968285b6d92ee43be870df3c10ed6",
-    "width": 1100,
-    "height": 1104,
-    "variants": [
-      {
-        "src": "/images/generated/min-konst/verk08-f9e25b23-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/images/generated/min-konst/verk08-f9e25b23-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/generated/min-konst/verk08-f9e25b23-1080.webp",
-        "width": 1080
-      },
-      {
-        "src": "/images/generated/min-konst/verk08-f9e25b23-1100.webp",
-        "width": 1100
-      }
-    ]
-  },
   "verk09.png": {
     "outputVersion": 2,
     "sourceHash": "011b2755e81b9adf0166ab9dbcc5643a79d875f791fb01354d8fd0ca4f8da190",
@@ -360,38 +312,6 @@
       {
         "src": "/images/generated/min-konst/verk17-40f54fd1-776.webp",
         "width": 776
-      }
-    ]
-  },
-  "img-6214.jpeg": {
-    "outputVersion": 2,
-    "sourceHash": "8fcc06548abacb44ecd4fee06ab7ee767df93d995dc8bbf0b3b9a9a30ad9f13a",
-    "width": 4032,
-    "height": 3024,
-    "variants": [
-      {
-        "src": "/images/generated/mitt-hem/img-6214-8fcc0654-480.webp",
-        "width": 480
-      },
-      {
-        "src": "/images/generated/mitt-hem/img-6214-8fcc0654-768.webp",
-        "width": 768
-      },
-      {
-        "src": "/images/generated/mitt-hem/img-6214-8fcc0654-1080.webp",
-        "width": 1080
-      },
-      {
-        "src": "/images/generated/mitt-hem/img-6214-8fcc0654-1440.webp",
-        "width": 1440
-      },
-      {
-        "src": "/images/generated/mitt-hem/img-6214-8fcc0654-1920.webp",
-        "width": 1920
-      },
-      {
-        "src": "/images/generated/mitt-hem/img-6214-8fcc0654-4032.webp",
-        "width": 4032
       }
     ]
   },

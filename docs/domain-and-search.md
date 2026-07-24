@@ -28,7 +28,7 @@ When the public URL or custom domain changes, update these files together:
 Then run:
 
 ```sh
-npm run config:check
+npm run gallery:config:check
 npm run build
 ```
 
