@@ -93,20 +93,16 @@ sections:
 ---
 ## Karin Walde {#karin-walde}
 
-Ateljé och utställning i Näsbypark, Täby. 
-
 Grafik, fiber art, offentlig utsmyckning, objekt och akvarell.
 
-[karin@walde.se](mailto:karin@walde.se)
+Ateljé och utställning i Näsbypark, Täby. [karin@walde.se](mailto:karin@walde.se)
 0730-577 855
 
 ### Nästa utställning 12–13 september! 
 
 Välkomna på Täby Vallentuna Konstrunda, där 45 konstnärer deltar. Jag öppnar mitt hem med ateljéer och utställning på Tornvägen 7 klockan 11–17. 
 
-Besök även samlingsutställningarna med alla deltagande konstnärer på Karby gård och Vallentuna kulturhus.
-
-[Läs mer om alla deltagande konstnärer här](https://tabyvallentunakonstrunda.se/). Jag är nummer 27.
+Besök även samlingsutställningarna med [alla deltagande konstnärer](https://tabyvallentunakonstrunda.se/) på Karby gård och Vallentuna kulturhus.
 
 Välkomna att kika in i min värld!
 
