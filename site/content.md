@@ -15,10 +15,6 @@ defaultPresentation:
       mobile: left
     size: medium
 sections:
-  - id: konstrundan
-    visible:
-      from: "2026-08-01"
-      until: "2026-09-01"
   - id: karin-walde
     presentation:
       heading:
@@ -95,19 +91,6 @@ sections:
 
 
 ---
-## Nästa utställning 12-13 september! {#konstrundan}
-
-**Välkomna på Konstrundan Täby-Vallentuna, där 45 konstnärer deltar.**  
-Jag öppnar mitt hem med ateljéer och utställning på Tornvägen 7 kl. 11:00-17:00. 
-
-Besök även samlingsutställningarna med alla deltagande konstnärer:
-
-* **Karby Gård**, Karbygårdsvägen 1, Täby
-*  **Konstkuben i Vallentuna kulturhus**, Allévägen 1, Vallentuna
-
-[Läs mer om alla deltagande konstnärer här](https://tabyvallentunakonstrunda.se/). Jag är nummer 27.
-
-Välkomna att kika in i min värld!
 ## Karin Walde {#karin-walde}
 
 Ateljé och utställning i Näsbypark, Täby. 
@@ -116,6 +99,17 @@ Grafik, fiber art, offentlig utsmyckning, objekt och akvarell.
 
 [karin@walde.se](mailto:karin@walde.se)
 0730-577 855
+
+### Nästa utställning 12–13 september! 
+
+Välkomna på Täby Vallentuna Konstrunda, där 45 konstnärer deltar. Jag öppnar mitt hem med ateljéer och utställning på Tornvägen 7 klockan 11–17. 
+
+Besök även samlingsutställningarna med alla deltagande konstnärer på Karby gård och Vallentuna kulturhus.
+
+[Läs mer om alla deltagande konstnärer här](https://tabyvallentunakonstrunda.se/). Jag är nummer 27.
+
+Välkomna att kika in i min värld!
+
 ## Runrondellerna {#runrondellerna}
 
 2023 invigdes de två stora rondellerna i Roslags Näsby, Täby, som jag har formgivit och som har fått mycket uppmärksamhet.
@@ -127,6 +121,8 @@ I den ena rondellen löper en 55 meter lång ring av corténstål med namn på m
 Namnen är utvalda bland de vanligaste från Täbys runstenar. En detalj jag tycker om är att flera av namnen är kvinnonamn. Det påminner om att det inte bara var män som reste ut i världen.
 
 I den andra rondellen står fyra runstenar. De är nygjorda kopior av runstenar som man vet har funnits i Täby, men sedan försvunnit.
+
+
 ## Min konst {#min-konst}
 Ett urval av min konst. Välkommen att kontakta mig för att se mer på utställningar eller i min ateljé. [karin@walde.se](mailto:karin@walde.se)
 0730-577 855
