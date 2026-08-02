@@ -98,10 +98,12 @@ sections:
 ## Nästa utställning 12-13 september! {#konstrundan}
 
 **Välkomna på Konstrundan Täby-Vallentuna, där 45 konstnärer deltar.**  
-Jag öppnar mitt hem med ateljéer och utställning på Tornvägen 7 kl. 11:00-17:00. Besök även samlingsutställningarna med alla deltagande konstnärer:
+Jag öppnar mitt hem med ateljéer och utställning på Tornvägen 7 kl. 11:00-17:00. 
 
-* Karby Gård, Karbygårdsvägen 1 Täby
-* Vallentuna
+Besök även samlingsutställningarna med alla deltagande konstnärer:
+
+* **Karby Gård**, Karbygårdsvägen 1, Täby
+*  **Konstkuben i Vallentuna kulturhus**, Allévägen 1, Vallentuna
 
 [Läs mer om alla deltagande konstnärer här](https://tabyvallentunakonstrunda.se/). Jag är nummer 27.
 
