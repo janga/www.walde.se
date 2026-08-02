@@ -15,6 +15,10 @@ defaultPresentation:
       mobile: left
     size: medium
 sections:
+  - id: konstrundan
+    visible:
+      from: "2026-08-01"
+      until: "2026-09-01"
   - id: karin-walde
     presentation:
       heading:
@@ -38,7 +42,6 @@ sections:
       - image: verk13.png
         alt: "Kompakt vävateljé med färgstarka garnspolar, arbetsbord, symaskin och fönsterljus över taken."
         caption: "Ett av mina arbetsrum."
-  
   - id: runrondellerna
     gallery:
       - image: verk11.png
@@ -92,8 +95,18 @@ sections:
 
 
 ---
-## Karin Walde {#karin-walde}
+## Nästa utställning 12-13 september! {#konstrundan}
 
+**Välkomna på Konstrundan Täby-Vallentuna, där 45 konstnärer deltar.**  
+Jag öppnar mitt hem med ateljéer och utställning på Tornvägen 7 kl. 11:00-17:00. Besök även samlingsutställningarna med alla deltagande konstnärer:
+
+* Karby Gård, Karbygårdsvägen 1 Täby
+* Vallentuna
+
+[Läs mer om alla deltagande konstnärer här](https://tabyvallentunakonstrunda.se/). Jag är nummer 27.
+
+Välkomna att kika in i min värld!
+## Karin Walde {#karin-walde}
 
 Ateljé och utställning i Näsbypark, Täby. 
 
