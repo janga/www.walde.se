@@ -14,6 +14,8 @@ defaultPresentation:
       desktop: left
       mobile: left
     size: medium
+    lineHeight: 1.2
+    paragraphSpacing: 0.55em
 sections:
   - id: karin-walde
     presentation:

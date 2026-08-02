@@ -31,7 +31,7 @@
     "build": "npm run gallery:build"
   },
   "dependencies": {
-    "@janga/cli-gallery": "0.2.1"
+    "@janga/cli-gallery": "0.2.2"
   },
   "allowScripts": {
     "esbuild@0.28.1": true
