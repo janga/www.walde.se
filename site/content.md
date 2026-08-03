@@ -4,23 +4,19 @@ description: Konstnären Karin Waldes officiella webbplats.
 defaultPresentation:
   backgroundColor: "#000000"
   textColor: "#ffffff"
-  heading:
-    align:
-      desktop: left
-      mobile: left
-    size: medium
-  body:
-    align:
-      desktop: left
-      mobile: left
-    size: medium
-    lineHeight: 1.2
-    paragraphSpacing: 0.55em
+  typography:
+    preset: quiet-gallery
+    overrides:
+      body:
+        paragraphSpacing: 0.6em
+        lineHeight: 1.38
 sections:
   - id: karin-walde
     presentation:
-      heading:
-        size: large
+      typography:
+        overrides:
+          heading:
+            size: large
     gallery:
       - image: tva-fossiler.jpg
         alt: "Två grafiska blad med inspiration från gotländska fossil."
