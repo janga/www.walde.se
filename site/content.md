@@ -84,10 +84,9 @@ sections:
 
 Grafik, fiber art, offentlig utsmyckning, objekt och akvarell.
 
-Ateljé och utställning i Näsbypark, Täby. [karin@walde.se](mailto:karin@walde.se)
-0730-577 855
+Ateljé och utställning i Näsbypark, Täby. [karin@walde.se](mailto:karin@walde.se), 0730-577 855
 
-### [Nästa utställning 12–13 september]{.highlight}
+### [Nästa utställning 12–13 september!]{.highlight}
 
 Välkomna på Täby Vallentuna Konstrunda, där 45 konstnärer deltar. Jag öppnar mitt hem med ateljéer och utställning på Tornvägen 7 klockan 11–17. 
 
