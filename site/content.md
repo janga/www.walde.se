@@ -1,18 +1,6 @@
 ---
 title: Karin Walde, konstnär
 description: Konstnären Karin Waldes officiella webbplats.
-defaultPresentation:
-  backgroundColor: "#000000"
-  textColor: "#ffffff"
-  typography:
-    preset: quiet-gallery
-    overrides:
-      body:
-        paragraphSpacing: 0.6em
-        lineHeight: 1.38
-  inlineStyles:
-    highlight:
-      color: "#ffd84d"
 sections:
   - id: karin-walde
     presentation:
@@ -99,7 +87,7 @@ Grafik, fiber art, offentlig utsmyckning, objekt och akvarell.
 Ateljé och utställning i Näsbypark, Täby. [karin@walde.se](mailto:karin@walde.se)
 0730-577 855
 
-### [Nästa utställning 12–13 september]{.highlight} 
+### [Nästa utställning 12–13 september]{.highlight}
 
 Välkomna på Täby Vallentuna Konstrunda, där 45 konstnärer deltar. Jag öppnar mitt hem med ateljéer och utställning på Tornvägen 7 klockan 11–17. 
 

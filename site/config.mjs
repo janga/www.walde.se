@@ -6,6 +6,15 @@ export default {
 	url: siteUrl,
     },			
 
+    locale: {
+	lang: 'sv',
+	labels: {
+	    skipToContent: 'Hoppa till innehåll',
+	    sectionNavigation: 'Sektioner',
+	    gallery: 'Galleri',
+	},
+    },
+
     typography: {
 	fontFamily: "Arial, 'Helvetica Neue', Helvetica, sans-serif",
         //fontFamily: "'Comic Sans MS', 'Comic Sans', cursive",
