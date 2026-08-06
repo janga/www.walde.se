@@ -6,34 +6,34 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "npm run gallery:dev",
-    "gallery:dev": "cli-gallery dev:local",
-    "gallery:dev:lan": "cli-gallery dev:lan",
-    "gallery:dev:restart": "cli-gallery dev:restart",
-    "gallery:dev:status": "cli-gallery dev:status",
-    "gallery:dev:logs": "cli-gallery dev:logs",
-    "gallery:dev:stop": "cli-gallery dev:stop",
-    "gallery:check": "npm run gallery:config:check && npm run gallery:content:check",
-    "gallery:config:check": "cli-gallery config:check",
-    "gallery:content:check": "cli-gallery content:check",
-    "gallery:sync": "cli-gallery content:sync",
-    "gallery:public": "cli-gallery site:public",
-    "gallery:images": "cli-gallery images",
-    "gallery:build": "cli-gallery build",
-    "gallery:build:local": "cli-gallery build:local",
-    "gallery:deploy": "cli-gallery deploy",
-    "gallery:deploy:commit": "cli-gallery deploy:commit",
-    "gallery:deploy:watch": "cli-gallery deploy:watch",
-    "gallery:doctor": "cli-gallery doctor",
-    "gallery:preview": "cli-gallery preview",
-    "engine:update": "cli-gallery engine:update",
-    "engine:version": "cli-gallery engine:version",
-    "build": "npm run gallery:build"
-  },
-  "dependencies": {
-    "@janga/cli-gallery": "0.5.0"
+    "dev": "npm run norna:dev",
+    "norna:dev": "norna dev:local",
+    "norna:dev:lan": "norna dev:lan",
+    "norna:dev:restart": "norna dev:restart",
+    "norna:dev:status": "norna dev:status",
+    "norna:dev:logs": "norna dev:logs",
+    "norna:dev:stop": "norna dev:stop",
+    "norna:check": "npm run norna:config:check && npm run norna:content:check",
+    "norna:config:check": "norna config:check",
+    "norna:content:check": "norna content:check",
+    "norna:sync": "norna content:sync",
+    "norna:public": "norna site:public",
+    "norna:images": "norna images",
+    "norna:build": "norna build",
+    "norna:build:local": "norna build:local",
+    "norna:deploy": "norna deploy",
+    "norna:deploy:commit": "norna deploy:commit",
+    "norna:deploy:watch": "norna deploy:watch",
+    "norna:doctor": "norna doctor",
+    "norna:preview": "norna preview",
+    "norna:engine:update": "norna engine:update",
+    "norna:engine:version": "norna engine:version",
+    "build": "npm run norna:build"
   },
   "allowScripts": {
     "esbuild@0.28.1": true
+  },
+  "dependencies": {
+    "@janga/norna": "0.7.1"
   }
 }
