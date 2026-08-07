@@ -2,7 +2,7 @@
 
 This repository owns the concrete `www.walde.se` site. It does not contain the
 reusable renderer or CLI implementation; those come from the pinned
-`@janga/cli-gallery` dependency in `package.json` and `package-lock.json`.
+`@janga/norna` dependency in `package.json` and `package-lock.json`.
 
 ## Repository Responsibilities
 
@@ -12,11 +12,11 @@ This repository owns:
 - Original source images in `site/images/<section-id>/`.
 - Site-specific static public files in `site/public/`.
 - Technical site configuration in `site/config.mjs`.
-- Generated image manifest state in `site/.cli-gallery/generated-images.json`.
+- Generated image manifest state in `site/.norna/generated-images.json`.
 - The GitHub Pages workflow in `.github/workflows/deploy.yml`.
 - Copyright and usage policy in `COPYRIGHT.md`.
 
-The `cli-gallery` engine owns:
+The `norna` engine owns:
 
 - CLI command behavior.
 - Content and config validation logic.
@@ -33,14 +33,14 @@ Versioned site source:
 - `site/content.md`
 - `site/images/`
 - `site/public/`
-- `site/.cli-gallery/generated-images.json`
+- `site/.norna/generated-images.json`
 - `.github/workflows/deploy.yml`
 - `package.json`
 - `package-lock.json`
 
 Generated or local-only output:
 
-- `site/.cli-gallery/public/`
+- `site/.norna/public/`
 - `dist/`
 - `.astro/`
 - `node_modules/`

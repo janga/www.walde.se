@@ -28,9 +28,9 @@ When the public URL or custom domain changes, update these files together:
 Then run:
 
 ```sh
-npm run gallery:config:check
+npm run norna:config:check
 npm run build
 ```
 
-`site/public/` is source. `site/.cli-gallery/public/` is generated
+`site/public/` is source. `site/.norna/public/` is generated
 build-preparation output and should not be edited directly.

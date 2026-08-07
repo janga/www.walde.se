@@ -1,7 +1,7 @@
 # www.walde.se Documentation
 
 This directory contains documentation specific to Karin Walde's site
-repository. Generic `cli-gallery` behavior is documented in the engine
+repository. Generic `norna` behavior is documented in the engine
 repository and linked where needed.
 
 ## Recommended Reading
@@ -21,4 +21,4 @@ For publishing and maintenance:
 4. [Copyright](../COPYRIGHT.md)
 
 For generic engine behavior, use the
-[cli-gallery documentation](https://github.com/janga/cli-gallery/blob/main/docs/README.md).
+[norna documentation](https://github.com/janga/norna/blob/main/docs/README.md).

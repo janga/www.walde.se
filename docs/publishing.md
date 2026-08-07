@@ -2,7 +2,7 @@
 
 This document describes publishing for `www.walde.se`. For generic deploy
 behavior, see
-[cli-gallery Publishing](https://github.com/janga/cli-gallery/blob/main/docs/publishing.md).
+[norna Publishing](https://github.com/janga/norna/blob/main/docs/publishing.md).
 
 ## Workflow Ownership
 
@@ -14,16 +14,16 @@ The GitHub Pages workflow belongs to this repository:
 
 The workflow builds `dist/` from this repository and deploys it to GitHub Pages.
 It also restores the generated image cache from
-`site/.cli-gallery/public/images/generated` using a key based on
-`site/.cli-gallery/generated-images.json`.
+`site/.norna/public/images/generated` using a key based on
+`site/.norna/generated-images.json`.
 
 ## Before Publishing
 
 Run:
 
 ```sh
-npm run gallery:config:check
-npm run gallery:content:check
+npm run norna:config:check
+npm run norna:content:check
 npm run build
 git status --short
 git diff
@@ -38,16 +38,16 @@ The normal flow is:
 ```sh
 git add ...
 git commit -m "Describe the change"
-npm run gallery:deploy
+npm run norna:deploy
 ```
 
-`npm run gallery:deploy` expects the intended deploy branch to be committed and clean.
+`npm run norna:deploy` expects the intended deploy branch to be committed and clean.
 It does not create commits from uncommitted work.
 
 After pushing directly to `main`, monitor the Pages workflow with:
 
 ```sh
-npm run gallery:deploy:watch
+npm run norna:deploy:watch
 ```
 
 ## Failed Deploys
@@ -60,4 +60,4 @@ gh run view RUN_ID --repo janga/www.walde.se --log-failed
 ```
 
 Do not change generic deploy behavior in this repository. Engine deploy helpers
-belong in `cli-gallery`.
+belong in `norna`.

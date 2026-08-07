@@ -2,7 +2,7 @@
 
 Use this document when adding, replacing, or reorganizing Karin Walde's source
 images. For the generic image pipeline, see
-[cli-gallery Images And Metadata](https://github.com/janga/cli-gallery/blob/main/docs/images-and-metadata.md).
+[norna Images And Metadata](https://github.com/janga/norna/blob/main/docs/images-and-metadata.md).
 
 ## Source Images
 
@@ -24,7 +24,7 @@ globally unique under `site/images/`.
 2. Add or update the gallery row in `site/content.md`.
 3. Add meaningful `alt` text unless the content decision is intentionally empty.
 4. Add or update the caption when the site should display one.
-5. Run `npm run gallery:content:check`.
+5. Run `npm run norna:content:check`.
 6. Run `npm run build` before committing.
 
 ## Unreferenced Images
@@ -38,14 +38,14 @@ but new unreferenced source images should be deliberate.
 Generated WebP variants are written under:
 
 ```text
-site/.cli-gallery/public/images/generated/
+site/.norna/public/images/generated/
 ```
 
 They are build-preparation output and are not versioned. The versioned manifest
 is:
 
 ```text
-site/.cli-gallery/generated-images.json
+site/.norna/generated-images.json
 ```
 
 Do not edit generated WebP files or the generated public directory by hand.
@@ -56,7 +56,7 @@ Copyright and usage restrictions for this repository are documented in
 [`COPYRIGHT.md`](../COPYRIGHT.md). The visible footer copyright sentence is
 configured in `site/config.mjs`.
 
-The current `cli-gallery` engine does not provide a command for checking or
+The current `norna` engine does not provide a command for checking or
 writing embedded image metadata. Generated WebP files are not a metadata source;
 the engine creates them with embedded metadata stripped. Keep rights and credits
 in site-owned documentation, captions, and source files as appropriate.

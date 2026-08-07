@@ -5,15 +5,15 @@ This document collects routine maintenance tasks specific to `www.walde.se`.
 ## Inspect Paths And Engine Version
 
 ```sh
-npm run doctor
-npm run engine:version
+npm run norna:doctor
+npm run norna:engine:version
 ```
 
 `doctor` prints the resolved site directory, generated output paths, and
-installed engine root. `engine:version` prints the declared and installed engine
+installed engine root. `norna:engine:version` prints the declared and installed engine
 versions plus the installed Astro version.
 
-## Update cli-gallery
+## Update Norna
 
 The engine dependency is pinned in `package.json` and locked in
 `package-lock.json`.
@@ -21,19 +21,19 @@ The engine dependency is pinned in `package.json` and locked in
 To update to npm `latest` and run checks/build:
 
 ```sh
-npm run engine:update
+npm run norna:engine:update
 ```
 
 To update to a specific published version:
 
 ```sh
-npm run engine:update -- 0.1.16
+npm run norna:engine:update -- 0.7.1
 ```
 
 To inspect npm `latest` before updating:
 
 ```sh
-npm run engine:version -- --latest
+npm run norna:engine:version -- --latest
 ```
 
 Commit `package.json` and `package-lock.json` together. Commit generated image
@@ -43,7 +43,7 @@ manifest changes only when the build intentionally changes image output state.
 
 Generated directories are ignored by Git:
 
-- `site/.cli-gallery/public/`
+- `site/.norna/public/`
 - `dist/`
 - `.astro/`
 - `node_modules/`
@@ -52,7 +52,7 @@ Generated directories are ignored by Git:
 If local output looks stale, run:
 
 ```sh
-npm run gallery:build:local
+npm run norna:build:local
 ```
 
 ## Agent Files

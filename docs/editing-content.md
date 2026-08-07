@@ -2,7 +2,7 @@
 
 Use this document when changing Karin Walde's page text, section order, gallery
 rows, alt text, or captions. For the generic content schema, see
-[cli-gallery Content](https://github.com/janga/cli-gallery/blob/main/docs/content.md).
+[norna Content](https://github.com/janga/norna/blob/main/docs/content.md).
 
 ## Source File
 
@@ -33,21 +33,21 @@ section needs different heading or body presentation.
 
 Read the actual current values in `site/content.md`. The generic allowed values
 and fallback behavior are documented in
-[cli-gallery Content](https://github.com/janga/cli-gallery/blob/main/docs/content.md).
+[norna Content](https://github.com/janga/norna/blob/main/docs/content.md).
 
 ## Checks
 
 After content edits:
 
 ```sh
-npm run gallery:content:check
+npm run norna:content:check
 ```
 
 After changing section order or moving gallery rows between sections:
 
 ```sh
-npm run gallery:sync
-npm run gallery:content:check
+npm run norna:sync
+npm run norna:content:check
 ```
 
 `content:sync` may rewrite Markdown section order and move referenced image

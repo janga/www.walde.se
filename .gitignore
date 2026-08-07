@@ -5,6 +5,7 @@ dist/
 /public/
 
 # generated build-preparation output
+site/.norna/public/
 site/.cli-gallery/public/
 
 # generated types
